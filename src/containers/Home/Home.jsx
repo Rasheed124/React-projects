@@ -1,12 +1,34 @@
 import React from 'react'
 
-import Header from '../../components/Header/Header'
-
-import Skill from '../../components/Skill/Skill'
 
 import { motion } from 'framer-motion';
-import { Button } from '../../components';
-import ProjectList from '../../components/ProjectList/ProjectList';
+
+
+import { Button, ProjectList, Skill, Header } from '../../components';
+
+// import Swiper styles
+import "swiper/swiper.scss";
+import 'swiper/css/navigation';
+import "swiper/components/effect-coverflow/effect-coverflow.scss";
+
+
+// we will use Pagination and Coverflow
+import SwiperCore, { Navigation, EffectCoverflow } from "swiper";
+
+// import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// configure Swiper to use modules
+SwiperCore.use([Navigation, EffectCoverflow]);
+
+
+
+
+
+
+
+
+
 
 
 
@@ -19,7 +41,7 @@ const Home = () => {
                 <Header />
             </div>
 
-            {/* Skills */}
+            {/* SKILLS */}
             <section className="py-14 ">
                 <div className="flex flex-col max-w-6xl mx-auto  ">
                     <div className=" pb-5">
@@ -76,7 +98,7 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Projects */}
+            {/* PROJECTS */}
             <section className="py-14 ">
                 <div className="flex flex-col max-w-6xl mx-auto  ">
                     <div className=" pb-5">
@@ -122,6 +144,69 @@ const Home = () => {
                                 title={"TERRA HALE"}
                             />
                         </div>
+                    </div>
+
+                    <div className="self-center mt-10">
+                        <Button title={"View more"} />
+                    </div>
+
+                </div>
+            </section>
+
+
+            {/* CLIENT REVIEWS */}
+            <section className="py-14 ">
+                <div className="flex flex-col max-w-6xl mx-auto  ">
+                    <div className=" pb-5 px-5">
+                        <Swiper
+                            className="max-w-4xl "
+                            effect="coverflow"
+                            // install Swiper modules
+                            modules={[Navigation, EffectCoverflow]}
+                            spaceBetween={50}
+
+                            slidesPerView={1}
+                            grabCursor="true"
+                            loop="true"
+                            navigation
+                            pagination={{ clickable: true }}
+                            scrollbar={{ draggable: true }}
+                            onSwiper={(swiper) => console.log(swiper)}
+                            onSlideChange={() => console.log('slide change')}
+                        >
+
+                            <SwiperSlide>
+                                <div className="flex flex-col justify-center items-center text-center">
+
+                                    <h3>Terra Hale Fitness</h3>
+                                    <div>
+                                        <p className="font-libre-baskerville">Sylvia is, quite simply, a one-stop-shop marketing master. Whether she's working on social media, blogs, or emails, Sylvia produces high-quality, highly engaging content that speaks to our customers, while very much embracing our unique brand spirit. Her custom digital strategies are sympathetic to our specific needs and resources, and make every attempt to maximize results. She's also an endless source of creative ideas and we always look forward to working together.</p>
+                                        <h4>Michal Joa, Founder</h4>
+                                    </div>
+                                </div >
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="flex flex-col justify-center items-center text-center">
+
+                                    <h3>Terra Hale Fitness</h3>
+                                    <div>
+                                        <p className="font-libre-baskerville">Sylvia is, quite simply, a one-stop-shop marketing master. Whether she's working on social media, blogs, or emails, Sylvia produces high-quality, highly engaging content that speaks to our customers, while very much embracing our unique brand spirit. Her custom digital strategies are sympathetic to our specific needs and resources, and make every attempt to maximize results. She's also an endless source of creative ideas and we always look forward to working together.</p>
+                                        <h4>Michal Joa, Founder</h4>
+                                    </div>
+                                </div >
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="flex flex-col justify-center items-center text-center">
+
+                                    <h3>Terra Hale Fitness</h3>
+                                    <div>
+                                        <p className="font-libre-baskerville">Sylvia is, quite simply, a one-stop-shop marketing master. Whether she's working on social media, blogs, or emails, Sylvia produces high-quality, highly engaging content that speaks to our customers, while very much embracing our unique brand spirit. Her custom digital strategies are sympathetic to our specific needs and resources, and make every attempt to maximize results. She's also an endless source of creative ideas and we always look forward to working together.</p>
+                                        <h4>Michal Joa, Founder</h4>
+                                    </div>
+                                </div >
+                            </SwiperSlide>
+
+                        </Swiper>
                     </div>
 
                     <div className="self-center mt-10">

@@ -1,8 +1,13 @@
 import React from 'react'
 
+
+// Import Swiper React components
+
+
+
 const Carousel = () => {
     return (
-        <div>Carousel</div>
+        <div>Res</div>
     )
 }
 

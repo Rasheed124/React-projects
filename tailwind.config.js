@@ -22,7 +22,7 @@ module.exports = {
       // },
 
       fontFamily: {
-        // "libre-baskerville": ['Libre Baskerville', "serif"],
+        "libre-baskerville": ['Libre Baskerville', "serif"],
         "Antonio": ['Antonio', "sans-serif"],
         "Sohne-Bold-light": "Bold-light",
         "Sohne-Bold": "Bold",
