@@ -1,3 +1,80 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Google Fonts */
+/* @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&display=swap');
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+@font-face {
+    font-family: "Light-cursive";
+    /*Can be any text*/
+    src: local("sohne"),
+        url("./fonts/sohne/test-soehne-buch-kursiv.woff2") format("truetype");
+}
+
+@font-face {
+    font-family: "Bold";
+    /*Can be any text*/
+    src: local("sohne"),
+        url("./fonts/sohne/test-soehne-extrafett.woff2") format("truetype");
+}
+
+@font-face {
+    font-family: "Bold-light";
+    /*Can be any text*/
+    src: local("sohne"),
+        url("./fonts/sohne/test-soehne-buch.woff2") format("truetype");
+}
+
+@font-face {
+    font-family: "migra-extraLight";
+    /*Can be any text*/
+    src: local("migra"),
+        url("./fonts/FontsFree-Net-Migra-Extralight.ttf") format("truetype");
+}
+
+
+@font-face {
+    font-family: "Bold-thin";
+    /*Can be any text*/
+    src: local("sohne"),
+        url("./fonts/sohne/test-soehne-extraleicht.woff2") format("truetype");
+}
+
+body {
+    @apply bg-deep-black font-Sohne-Bold-light text-light-white;
+}
+
+::selection {
+    @apply bg-bg-overlay text-deep-black;
+}
+
+/* Button Link */
+
+/* #btn-link {
+    @variants hover {
+        .btn span:first-of-type {
+            @apply transform -translate-x-full transition-transform duration-500;
+        }
+    }
+
+} */
+
+
+
+#btn-link:hover .btn span:last-of-type {
+    @apply translate-x-0;
+}
+
+.link-swipe:hover span:first-of-type {
+    @apply -translate-y-full;
+
+}
+
+.link-swipe:hover span:last-of-type {
+    @apply translate-y-0;
+
+}
