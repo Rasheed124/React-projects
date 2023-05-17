@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
 
+
       colors: {
         "deep-black": "#272727",
         "light-white": "#DCD7D2",
@@ -14,12 +15,10 @@ module.exports = {
         "deep-overlay-black": "#2a2a2a",
         "bg-overlay": "#dedfb0",
         "header-dark-overlay": "#E8C333",
+        "contact-dark-overlay": "#837875",
 
       },
-      // backgroundImage: {
-      //   'header-pattern': ,
 
-      // },
 
       fontFamily: {
         "libre-baskerville": ['Libre Baskerville', "serif"],

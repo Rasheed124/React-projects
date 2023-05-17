@@ -45,12 +45,17 @@
 }
 
 body {
-    @apply bg-deep-black font-Sohne-Bold-light text-light-white;
+    @apply font-Sohne-Bold-light bg-light-white;
 }
 
 ::selection {
     @apply bg-bg-overlay text-deep-black;
 }
+
+/* .swiper-button-next,
+.swiper-button-prev {
+    @apply hidden xl: block
+} */
 
 /* Button Link */
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-// import { homeBanner } from '../../constants'
+import { images } from '../../constants'
 
 const Header = () => {
     return (
@@ -31,7 +31,7 @@ const Header = () => {
 
                 {/* HEADER BANNER */}
                 <div className="hidden bg-cover bg-center bg-no-repeat min-h-[30vh] xl:flex justify-center items-center">
-                    <img className="object-cover w-full " src={require("../../assets/home-banner.png")} alt="" />
+                    <img className="object-cover w-full " src={images.homeBanner} alt="" />
                 </div>
 
             </div >

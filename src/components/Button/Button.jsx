@@ -2,10 +2,10 @@ import React from 'react'
 import { HiArrowNarrowRight } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 
-const Button = ({ title }) => {
+const Button = ({ title, hoverColor = "hover:text-header-dark-overlay" }) => {
     return (
 
-        <Link className="block hover:transition-colors duration-500 hover:text-header-dark-overlay" id="btn-link" to="">
+        <Link className={`block hover:transition-colors duration-500 ${hoverColor}`} id="btn-link" to="">
             <div className="flex justify-center items-center gap-3 text-lg font-Antonio">
                 <div className="uppercase">
                     {title}
