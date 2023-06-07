@@ -4,7 +4,7 @@ import Link from "next/link"
 
 const NavbarStudio = (props: any) => {
     return (
-        // Render Default Studio Navbar
+
         <div>
 
             <div className="flex justify-start items-center p-6 ">
@@ -13,6 +13,8 @@ const NavbarStudio = (props: any) => {
                     Go To website
                 </Link>
             </div>
+
+            {/* Render Default Studio Navbar */}
             <>{props.renderDefault(props)}</>
         </div>
     )
