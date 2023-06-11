@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 
 import { HiMenu, HiX } from "react-icons/hi";
-import { Link } from 'react-router-dom'
+import Link  from 'next/link'
 
 import { motion } from 'framer-motion';
 import useMediaQuery from '../UseMediaQuery'
@@ -30,7 +30,7 @@ const Navbar = () => {
                                 <ul className='flex justify-between items-center '>
                                     {['About', 'Portfolio', 'Contact'].map(item => (
                                         <li>
-                                            <Link to={item} className="font-bold font-Antonio">
+                                            <Link href={item} className="font-bold font-Antonio">
                                                 <div className="relative overflow-y-hidden link-swipe">
                                                     <span className=" transform transition-transform translate-y-0 duration-300">
                                                         {item}
@@ -61,7 +61,7 @@ const Navbar = () => {
                         // Mobile Nav
                         <div className="pb-6  ">
                             <div className="flex justify-between items-center   ">
-                                <Link to={"/"} className="block text-2xl font-semibold font-Sohne-Bold ">
+                                <Link href={"/"} className="block text-2xl font-semibold font-Sohne-Bold ">
                                     <h2>Durodola Abdulhad</h2>
                                 </Link>
 
@@ -120,7 +120,7 @@ const Navbar = () => {
                             <ul className='flex flex-col justify-between items-start absolute top-0 left-0 w-full bg-white p-5 z-10 space-y-3'>
                                 {['about', 'portfolio', 'contact'].map(item => (
                                     <li>
-                                        <Link to={item} className="font-bold font-Antonio lowercase">
+                                        <Link href={item} className="font-bold font-Antonio lowercase">
                                             <div className="relative overflow-y-hidden link-swipe">
                                                 <span className=" transform transition-transform translate-y-0 duration-300">
                                                     {item}

@@ -20,11 +20,11 @@ module.exports = {
       },
 
       fontFamily: {
-        // "libre-baskerville": ['Libre Baskerville', "serif"],
-        "Antonio": ['Antonio', "sans-serif"],
-        // "Sohne-Bold-light": "Bold-light",
+        "libre-baskerville":  ["var(--font-libre_baskerville)"] ,
+        "Antonio":  ["var(--font-antonio)"] ,
+        "Sohne-Bold": ["var(--font-sohneBold)"] ,
         // "Sohne-Bold": "Bold",
-        // "migra-light": "migra",
+        "migra-light":  ["var(--font-migraLight)"],
       },
 
       maxWidth: {

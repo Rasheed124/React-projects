@@ -42,7 +42,7 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, { schemaType
                     // url: (doc: SanityDocument) => getPreviewUrl(doc),
 
                     url: `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"
-                        }/api/draft`,
+                        }/api/preview`,
 
                     defaultSize: `desktop`, // default `desktop`
 

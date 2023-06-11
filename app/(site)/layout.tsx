@@ -7,9 +7,35 @@ import { Antonio } from 'next/font/google'
 import { Libre_Baskerville } from 'next/font/google'
 
 
+import localFont from 'next/font/local'
+ 
 
-const antonio = Antonio({ subsets: ['latin'], weight: "400", })
-// const libre_baskerville = Libre_Baskerville({ subsets: ['latin'] })
+// Font files can be colocated inside of `pages`
+const sohneBold = localFont({ 
+  src: '../fonts/sohne/test-soehne-buch.woff2' ,
+  variable: '--font-sohneBold',
+
+})
+
+const migraLight = localFont({ 
+  src: '../fonts/FontsFree-Net-Migra-Extralight.ttf',
+  variable: '--font-migraLight',
+
+ })
+
+const antonio = Antonio( { 
+  subsets: ['latin'],
+  weight: "400",
+  variable: '--font-antonio',
+
+ })
+
+
+const libre_baskerville = Libre_Baskerville({ 
+  subsets: ['latin'],
+  weight: "400",
+  variable: '--font-libre_baskerville',
+ })
 
 export const metadata = {
   title: 'Durodola Abdulhad',
@@ -23,7 +49,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${antonio.className} bg-light-white`}>
+      <body className={`${antonio.variable} ${sohneBold.variable} ${migraLight.variable} ${libre_baskerville.variable} bg-light-white`}>
         {/* Header */}
         <main className="bg-deep-black">
           <div className="max-w-8xl mx-auto ">
