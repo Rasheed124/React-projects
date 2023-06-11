@@ -20,7 +20,7 @@ const query = groq`
 
 
 
-export default async function Home() {
+export default async function Blog() {
     const { isEnabled } = draftMode();
 
     const posts = await client.fetch(query);
@@ -28,15 +28,7 @@ export default async function Home() {
     if (isEnabled) {
         return (
 
-            <BlogList posts={posts} />
-
-        );
-    }
-
-
-    return (
-
-        <PreviewSuspense fallback={
+             <PreviewSuspense fallback={
             <div role="status">
                 <p className="text-center text-lg text-[#F7AB0A]">
                     Loading Preview Data....
@@ -49,5 +41,17 @@ export default async function Home() {
 
         </PreviewSuspense>
 
+
+
+        );
+    }
+
+
+    return (
+
+        
+            <BlogList posts={posts} />
+
+       
     );
 }

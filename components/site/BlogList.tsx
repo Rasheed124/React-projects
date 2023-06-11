@@ -1,5 +1,4 @@
 import urlFor from "@/lib/urlFor";
-import category from "@/schemas/category";
 import { ArrowDownRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import ClientSideRoute from "./ClientSideRoute";

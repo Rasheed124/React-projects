@@ -77,3 +77,13 @@ interface Title {
     current: string;
 
 }
+interface HomeBanner extends Base {
+    name: string
+    address: string;
+    handleText: string;
+    bannerImage: string;
+    handle: Slug;
+    skills: string;
+
+
+}

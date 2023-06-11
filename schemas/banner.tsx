@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
     name: 'homeBanner',
-    title: 'Home Banner',
+    title: 'Banner',
     type: 'document',
     fields: [
         defineField({
@@ -22,8 +22,8 @@ export default defineType({
         }),
         defineField({
             name: 'handleText',
-            title: 'Handle',
-            type: 'text',
+            title: 'Handle Text',
+            type: 'string',
         }),
        defineField({
             name: 'handle',
@@ -37,6 +37,13 @@ export default defineType({
             options: {
                 hotspot: true,
             },
+             fields: [
+                {
+                    name: "alt",
+                    title: "Alt",
+                    type: "string",
+                }
+            ]
         }),
     ],
 })
