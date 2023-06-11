@@ -22,5 +22,21 @@ export async function getHomeBanner(): Promise<HomeBanner[]> {
 }
 
 
+// Getting HomeBanner
+export async function getSkills(): Promise<HomeBanner[]> {
+
+    return client.fetch(
+
+        groq`*[_type == "skills"]{
+            _id,
+            heading,
+            subHeading,
+            skillsDetails[]->
+             } | order(_createdAt desc)`
+    )
+
+}
+
+
 
 

@@ -1,7 +1,4 @@
 
-
-
-
 import { draftMode } from "next/headers";
 
 import { groq } from "next-sanity";
@@ -57,10 +54,13 @@ export default async function Home() {
 
 
     return (
+    <div className="bg-deep-black text-light-white px-4 xl:px-0">
+               <Banner homeBanners={homeBanners} />
+        
+    </div>
 
    
 
-               <Banner homeBanners={homeBanners} />
 
   
        
