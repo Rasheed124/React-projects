@@ -49,15 +49,16 @@
                     </div>
 
                     {/* HEADER BANNER */}
-                    <div className="hidden bg-cover bg-center bg-no-repeat min-h-[30vh] xl:flex justify-center items-center">
-                        {/* <img className="object-cover w-full " src={images.homeBanner} alt="" /> */}
-
-                        <Image 
+                    <div className="hidden relative bg-cover bg-center bg-no-repeat min-h-[30vh] xl:flex justify-center items-center">
+                      <div>
+                          <Image 
                         src={homeBanner.bannerImage}
                         alt={homeBanner.name}
                         fill
-                        className="object-cover w-full"
-                        />
+                            className="object-cover w-full"
+                        /> 
+                        </div>
+                    
                     </div>
 
                 </div >
