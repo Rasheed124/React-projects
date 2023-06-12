@@ -1,7 +1,8 @@
 
+
+
 import { draftMode } from "next/headers";
 
-import { groq } from "next-sanity";
 
 import PreviewSuspense from "@/components/site/PreviewSuspense";
 import { getHomeBanner, getSkills } from '@/schemas/utils/sanity.utils';
@@ -9,22 +10,16 @@ import PreviewBanner from '@/components/site/HomeBanner/PreviewBanner';
 
 import Banner from '@/components/site/HomeBanner/Banner'
 
-import { motion } from "framer-motion";
 import Skills from "@/components/site/Skills/Skills";
+import PreviewSkills from "@/components/site/Skills/PreviewSkills";
+import getServerSideQueries from "@/components/site/getServerSideQueries";
 
 
+const BannerQuery = getServerSideQueries().BannerQuery;
 
-const query =  
-   groq`*[_type == "homeBanner"]{
-            _id, 
-            name,
-            address,
-            skills,
-            handleText,
-            "bannerImage" : bannerImage.asset->url,
-            "handle": handle.current,
-    
-        }`
+const SkillQuery = getServerSideQueries().SkillQuery;
+
+
 
 
 
@@ -46,8 +41,16 @@ export default async function Home() {
             </div>
         }>
 
-            {/* Preview Blog List */}
-            <PreviewBanner query={query}  />
+               <div className=" text-light-white px-4 xl:px-0">
+                  {/* Preview Blog List */} 
+                  <PreviewBanner query={BannerQuery}  />
+
+                    <PreviewSkills query={SkillQuery}  /> 
+
+               </div>
+
+      
+
 
         </PreviewSuspense>
 
@@ -65,7 +68,6 @@ export default async function Home() {
         </div>
 
          {/* SKILLS */}
-
          <div>
             <Skills skills={skills} />
          </div>

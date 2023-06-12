@@ -1,14 +1,10 @@
-import { groq } from 'next-sanity'
 
-import { client } from "@/lib/sanity.client";
+import { groq } from "next-sanity";
 
+export default  function getServerSideQueries() {
 
-// Getting HomeBanner
-export async function getHomeBanner(): Promise<HomeBanner[]> {
-
-    return client.fetch(
-
-        groq`*[_type == "homeBanner"]{
+      const BannerQuery =  
+   groq`*[_type == "homeBanner"]{
             _id, 
             name,
             address,
@@ -16,17 +12,11 @@ export async function getHomeBanner(): Promise<HomeBanner[]> {
             handleText,
             "bannerImage" : bannerImage.asset->url,
             "handle": handle.current,
+    
         }`
-    )
-
-}
 
 
-// Getting HomeBanner
-export async function getSkills(): Promise<Skills[]> {
-
-    return client.fetch(
-
+const SkillQuery =  
     groq`*[_type == "skills"]{
             _id,
             heading,
@@ -36,10 +26,7 @@ export async function getSkills(): Promise<Skills[]> {
              "image" : image.asset->url,
             }
              } | order(_createdAt desc)`
-    )
 
+
+ return ({ BannerQuery, SkillQuery} )
 }
-
-
-
-

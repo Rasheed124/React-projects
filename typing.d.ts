@@ -97,7 +97,7 @@ interface Skills extends Base {
     name: string
     heading: string;
     subHeading: string;
-    handle: Skill[];
+    skillsDetails: Skill[];
 
 }
 
