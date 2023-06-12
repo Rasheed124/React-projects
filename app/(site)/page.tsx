@@ -15,21 +15,24 @@ import PreviewSkills from "@/components/site/Skills/PreviewSkills";
 import getServerSideQueries from "@/components/site/getServerSideQueries";
 
 
+
 const BannerQuery = getServerSideQueries().BannerQuery;
 
 const SkillQuery = getServerSideQueries().SkillQuery;
 
 
 
-
-
 export default async function Home() {
     const { isEnabled } = draftMode();
 
+
+    // FETCHING DATA
     const homeBanners = await getHomeBanner();
     const skills = await getSkills();
 
   
+
+    // SETTING PREVIEW MODE
     if (isEnabled) {
         return (
 
@@ -48,10 +51,6 @@ export default async function Home() {
                     <PreviewSkills query={SkillQuery}  /> 
 
                </div>
-
-      
-
-
         </PreviewSuspense>
 
 

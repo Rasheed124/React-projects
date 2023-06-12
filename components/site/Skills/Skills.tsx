@@ -59,7 +59,7 @@ import { motion } from 'framer-motion';
                                     skill.skillsDetails.map(skillDetail => (
 
                                                 <motion.div
-
+                                                    id={skillDetail._id}
                                                     className=" mb-5 md:mb-0  text-left "
                                                     initial="hidden"
                                                     whileInView="visible"

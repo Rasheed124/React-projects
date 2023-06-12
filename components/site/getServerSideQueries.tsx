@@ -3,17 +3,17 @@ import { groq } from "next-sanity";
 
 export default  function getServerSideQueries() {
 
-      const BannerQuery =  
-   groq`*[_type == "homeBanner"]{
-            _id, 
-            name,
-            address,
-            skills,
-            handleText,
-            "bannerImage" : bannerImage.asset->url,
-            "handle": handle.current,
-    
-        }`
+ const BannerQuery =  
+      groq`*[_type == "homeBanner"]{
+                _id, 
+                name,
+                address,
+                skills,
+                handleText,
+                "bannerImage" : bannerImage.asset->url,
+                "handle": handle.current,
+        
+            }`
 
 
 const SkillQuery =  
