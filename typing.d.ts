@@ -85,5 +85,19 @@ interface HomeBanner extends Base {
     handle: Slug;
     skills: string;
 
+}
+
+interface Skill extends Base {
+    description: string;
+    title: string;
+    image: string;
+}
+
+interface Skills extends Base {
+    name: string
+    heading: string;
+    subHeading: string;
+    handle: Skill[];
 
 }
+

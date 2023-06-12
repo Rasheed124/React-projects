@@ -23,7 +23,7 @@ export async function getHomeBanner(): Promise<HomeBanner[]> {
 
 
 // Getting HomeBanner
-export async function getSkills(): Promise<HomeBanner[]> {
+export async function getSkills(): Promise<Skills[]> {
 
     return client.fetch(
 
@@ -31,7 +31,7 @@ export async function getSkills(): Promise<HomeBanner[]> {
             _id,
             heading,
             subHeading,
-            skillsDetails[]->
+            handle[]->
              } | order(_createdAt desc)`
     )
 

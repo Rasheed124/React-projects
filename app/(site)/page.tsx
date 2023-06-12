@@ -4,10 +4,13 @@ import { draftMode } from "next/headers";
 import { groq } from "next-sanity";
 
 import PreviewSuspense from "@/components/site/PreviewSuspense";
-import { getHomeBanner } from '@/schemas/utils/sanity.utils';
+import { getHomeBanner, getSkills } from '@/schemas/utils/sanity.utils';
 import PreviewBanner from '@/components/site/HomeBanner/PreviewBanner';
 
 import Banner from '@/components/site/HomeBanner/Banner'
+
+import { motion } from "framer-motion";
+import Skills from "@/components/site/Skills/Skills";
 
 
 
@@ -29,6 +32,7 @@ export default async function Home() {
     const { isEnabled } = draftMode();
 
     const homeBanners = await getHomeBanner();
+    const skills = await getSkills();
 
   
     if (isEnabled) {
@@ -55,7 +59,17 @@ export default async function Home() {
 
     return (
     <div className="bg-deep-black text-light-white px-4 xl:px-0">
+
+        <div>
                <Banner homeBanners={homeBanners} />
+        </div>
+
+         {/* SKILLS */}
+
+         <div>
+            <Skills skills={skills} />
+         </div>
+       
         
     </div>
 
