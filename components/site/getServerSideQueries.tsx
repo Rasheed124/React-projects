@@ -33,15 +33,12 @@ const SkillQuery =
 
 
 const ProjectsQuery = 
+
     groq`*[_type == "projects"]{
             _id,
-            heading,
-             projectsDetails[]->{
-              subHeading,
-            }
+              ...,
+           
              } | order(_createdAt desc)`
-
-
 
  return ({ BannerQuery, SkillQuery, ProjectsQuery} )
 

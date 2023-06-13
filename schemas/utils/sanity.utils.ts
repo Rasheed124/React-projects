@@ -48,10 +48,8 @@ export async function getProjects(): Promise<Projects[]> {
 
     groq`*[_type == "projects"]{
             _id,
-            heading,
-             projectsDetails[]->{
-              subHeading,
-            }
+              ...,
+           
              } | order(_createdAt desc)`
     )
 
@@ -59,21 +57,33 @@ export async function getProjects(): Promise<Projects[]> {
 
 
 // Getting Each Project
-// export async function getProject(): Promise<Project> {
+export async function getProject(slug: string): Promise<Projects> {
+
+    return client.fetch(
+
+    groq`*[_type == "projects" && slug.current == $slug][0]{
+            _id,
+              ...,
+           
+             } | order(_createdAt desc)`,
+             {slug}
+    )
+
+}
+
+// export async function getPage(slug: string): Promise<Page> {
+
 
 //     return client.fetch(
 
-//     groq`*[_type == "projects"]{
-//             _id,
-            // projectsDetails[]->{
-            //   ...,
-            //   subHeading,
-             //   shortdescription,
-            //   description,
-            //   skillsTitle,
-            //   projectImage
-            // }
-//              } | order(_createdAt desc)`
+//         groq`*[_type == "page" && slug.current == $slug][0]{
+//             _id, 
+//             _createdAt,
+//             title,
+//             "slug": slug.current,
+//             content
+//         }`,
+//         { slug }
 //     )
 
 // }

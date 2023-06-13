@@ -25,6 +25,7 @@ const migraLight = localFont({
 
 const antonio = Antonio( { 
   subsets: ['latin'],
+  weight: "700",
   variable: '--font-antonio',
 
  })
@@ -33,7 +34,7 @@ const antonio = Antonio( {
 const libre_baskerville = Libre_Baskerville({ 
   subsets: ['latin'],
   weight: "700",
-  // display: 'swap',
+  display: 'swap',
   variable: '--font-libre_baskerville',
  })
 
