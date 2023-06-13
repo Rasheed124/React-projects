@@ -56,7 +56,7 @@ import { motion } from 'framer-motion';
 
                             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5  w-full px-5 ">
                                   {
-                                    skill.skillsDetails.map(skillDetail => (
+                                    skill.skillsDetails.map((skillDetail) => (
 
                                                 <motion.div
                                                     id={skillDetail._id}

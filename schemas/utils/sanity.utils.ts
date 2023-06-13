@@ -22,7 +22,7 @@ export async function getHomeBanner(): Promise<HomeBanner[]> {
 }
 
 
-// Getting HomeBanner
+// Getting Skills
 export async function getSkills(): Promise<Skills[]> {
 
     return client.fetch(
@@ -41,5 +41,23 @@ export async function getSkills(): Promise<Skills[]> {
 }
 
 
+// Getting Projects
+
+export async function getProjects(): Promise<Projects[]> {
+
+    return client.fetch(
+
+    groq`*[_type == "skills"]{
+            _id,
+            heading,
+            subHeading,
+             skillsDetails[]->{
+               ...,
+             "image" : image.asset->url,
+            }
+             } | order(_createdAt desc)`
+    )
+
+}
 
 
