@@ -11,6 +11,11 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'shortdescription',
+      title: 'Short Description',
+      type: 'string',
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'text',
@@ -29,7 +34,7 @@ export default defineType({
       type: 'array',
       of: [
           {  
-              name: 'addProjectImage', 
+              name: 'image', 
               type: 'image', title: 'Add images Required',
               options: {
                 hotspot: true,
@@ -50,7 +55,7 @@ export default defineType({
       title: 'Project Link',
       type: 'object',
          fields: [
-          {  name: 'websiteText', type: 'string', title: 'Add Website ' },
+          {  name: 'share', type: 'string', title: 'Add Website ' },
         ],
     }),
   ],

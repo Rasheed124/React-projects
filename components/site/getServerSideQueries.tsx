@@ -3,6 +3,8 @@ import { groq } from "next-sanity";
 
 export default  function getServerSideQueries() {
 
+
+  // Home Banner
  const BannerQuery =  
       groq`*[_type == "homeBanner"]{
                 _id, 
@@ -16,6 +18,7 @@ export default  function getServerSideQueries() {
             }`
 
 
+// Skills
 const SkillQuery =  
     groq`*[_type == "skills"]{
             _id,
@@ -28,5 +31,19 @@ const SkillQuery =
              } | order(_createdAt desc)`
 
 
- return ({ BannerQuery, SkillQuery} )
+
+const ProjectsQuery = 
+    groq`*[_type == "projects"]{
+            _id,
+            heading,
+             projectsDetails[]->{
+              subHeading,
+            }
+             } | order(_createdAt desc)`
+
+
+
+ return ({ BannerQuery, SkillQuery, ProjectsQuery} )
+
+
 }

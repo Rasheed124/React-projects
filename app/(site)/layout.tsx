@@ -32,9 +32,8 @@ const antonio = Antonio( {
 
 const libre_baskerville = Libre_Baskerville({ 
   subsets: ['latin'],
-  weight: "400",
-  fallback: ['system-ui', 'libre_baskerville'],
-  display: 'swap',
+  weight: "700",
+  // display: 'swap',
   variable: '--font-libre_baskerville',
  })
 

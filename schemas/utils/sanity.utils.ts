@@ -41,23 +41,41 @@ export async function getSkills(): Promise<Skills[]> {
 }
 
 
-// Getting Projects
-
+// Getting All Project
 export async function getProjects(): Promise<Projects[]> {
 
     return client.fetch(
 
-    groq`*[_type == "skills"]{
+    groq`*[_type == "projects"]{
             _id,
             heading,
-            subHeading,
-             skillsDetails[]->{
-               ...,
-             "image" : image.asset->url,
+             projectsDetails[]->{
+              subHeading,
             }
              } | order(_createdAt desc)`
     )
 
 }
+
+
+// Getting Each Project
+// export async function getProject(): Promise<Project> {
+
+//     return client.fetch(
+
+//     groq`*[_type == "projects"]{
+//             _id,
+            // projectsDetails[]->{
+            //   ...,
+            //   subHeading,
+             //   shortdescription,
+            //   description,
+            //   skillsTitle,
+            //   projectImage
+            // }
+//              } | order(_createdAt desc)`
+//     )
+
+// }
 
 

@@ -100,11 +100,22 @@ interface Skills extends Base {
     skillsDetails: Skill[];
 
 }
-interface Projects extends Base {
-    name: string
-    heading: string;
-    subHeading: string;
 
+interface Project extends Base {
+    subHeading: string;
+    image: string;
+    subHeading: string;
+    description: string
+    shortdescription: string
+//    projectImage: arr;
+
+    
 
 }
+
+interface Projects extends Base {
+    heading: string;
+    projectsDetails: Project[]
+}
+
 
