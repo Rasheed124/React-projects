@@ -120,7 +120,7 @@ interface Projects extends Base {
     url: string;
     skillsTitle: string
     keyResult: string
-    clientTestimonials:  string
+    testimonials:  string
 
 
 

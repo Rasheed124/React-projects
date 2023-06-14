@@ -80,7 +80,7 @@ async function Projects({ params: { slug } }: Props) {
                                 <h3 className="text-2xl text-deep-black font-bold font-Antonio mb-3">CLIENT TESTIMONIAL</h3>
 
                                     <div>
-                                        {project.clientTestimonials}
+                                        {project.testimonials}
 
                                     </div>
 

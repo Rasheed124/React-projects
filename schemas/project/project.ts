@@ -53,8 +53,8 @@ export default defineType({
     }),
 
     defineField({
-       name: 'clientTestimonials',
-      title: 'Client Testimonials',
+       name: 'testimonials',
+      title: 'Testimonials',
       type: 'text',
     }),
     defineField({
