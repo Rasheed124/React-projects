@@ -65,7 +65,7 @@ export async function getProject(slug: string): Promise<Projects> {
             _id,
               ...,
            
-             } | order(_createdAt desc)`,
+             } `,
              {slug}
     )
 

@@ -116,7 +116,12 @@ interface Projects extends Base {
     image: string;
     description: string
     shortdescription: string
-    slug: Slug;
+    slug: string;
+    url: string;
+    skillsTitle: string
+    keyResult: string
+    clientTestimonials:  string
+
 
 
 }

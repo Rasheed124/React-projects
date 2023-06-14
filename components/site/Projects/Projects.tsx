@@ -16,13 +16,10 @@ const Projects = ({projects} : Props) => {
 
 
 
-           <div className="py-14 ">
+           <section className="py-14 ">
              <div className="flex flex-col max-w-6xl mx-auto  ">
-                {projects.map(  (project) => (
 
-            
-                           <div className=" pb-5">
-                                <motion.div
+                          <motion.div
                                 className="text-center py-7 px-5"
                                 initial="hidden"
                                 whileInView="visible"
@@ -32,18 +29,17 @@ const Projects = ({projects} : Props) => {
                                     hidden: { opacity: 0, y: 50 },
                                     visible: { opacity: 1, y: 0 },
                                 }}
-
                             >
                                 <h2 className=" text-sm pb-3 mb-5 xl:mb-0">
-                                     
-                                         
-                                    </h2>
+                                         SELECT PROJECT
+                                 </h2>
 
                             </motion.div>
 
+
+                         {projects.map(  (project) => (
                               <div className="grid grid-cols-1  w-full px-5 ">
                                  
-                                           {/* /portfolio/${project.title.toLowerCase().split(' ').concat('').join("")} */}
 
                                     <ClientSideRoute 
                                     
@@ -95,16 +91,11 @@ const Projects = ({projects} : Props) => {
                       
                                </div>
 
-                        </div>
-
-            
-
-                     
-                ))}
+                          ))}
 
            </div>
 
-           </div>
+           </section>
     
     )
 

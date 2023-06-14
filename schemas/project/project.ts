@@ -44,6 +44,20 @@ export default defineType({
         ],
     }),
     defineField({
+      name: 'keyResult',
+      title: 'Key Result',
+      type: 'array',
+         of: [
+          {  name: 'addResult', type: 'text', title: 'Add key Result' }
+        ],
+    }),
+
+    defineField({
+       name: 'clientTestimonials',
+      title: 'Client Testimonials',
+      type: 'text',
+    }),
+    defineField({
       name: 'projectImage',
       title: 'projectImage',
       type: 'array',
@@ -54,7 +68,8 @@ export default defineType({
               options: {
                 hotspot: true,
             }, 
-          }
+          },
+
         ],
     }),
    defineField({
@@ -62,7 +77,7 @@ export default defineType({
       title: 'Share Project',
       type: 'array',
          of: [
-          {  name: 'share', type: 'slug', title: 'Add Social Media Handle' }
+          {  name: 'share', type: 'url', title: 'Add Social Media Handle' }
         ],
     }),
     defineField({
@@ -70,7 +85,7 @@ export default defineType({
       title: 'Project Link',
       type: 'object',
          fields: [
-          {  name: 'share', type: 'string', title: 'Add Website ' },
+          {  name: 'share', type: 'url', title: 'Add Website ' },
         ],
     }),
       
