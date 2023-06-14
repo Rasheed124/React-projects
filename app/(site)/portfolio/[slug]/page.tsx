@@ -26,8 +26,6 @@ async function Projects({ params: { slug } }: Props) {
 
     const project: Projects = await client.fetch(query, { slug })
 
-
-    // {console.log(project)}
     return (
 
         <div className="bg-light-white">
@@ -66,10 +64,13 @@ async function Projects({ params: { slug } }: Props) {
                                 <h3 className="text-2xl text-deep-black font-bold font-Antonio mb-3">KEY RESULTS</h3>
 
                                 <div className=" grid grid-cols-1 space-y-5   place-items-start  max-w-md  ">
-                                    {Array.from(project.keyResult).map(result => (
+                                    { project.keyResult &&   Array.from(project.keyResult).map(result => (
 
                                             <p className="text-lg border-b border-dotted pb-3 "> <span></span> {result}</p>
-                                      ))}
+                                      ))
+                                      
+                                      
+                                      }
                                  </div>
 
                              </div>
