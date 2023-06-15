@@ -101,19 +101,17 @@ interface Skills extends Base {
 
 }
 
-// interface Project extends Base {
-//     subHeading: string;
-//     image: string;
-//     subHeading: string;
-//     description: string
-//     shortdescription: string
+interface ProjectContent extends Base {
+    title: string;
+    image: string;
+    url: string
+}
 
-// }
+
 
 interface Projects extends Base {
     heading: string;
     title: string;
-    image: string;
     description: string
     shortdescription: string
     slug: string;
@@ -121,8 +119,10 @@ interface Projects extends Base {
     skillsTitle: string
     keyResult: string
     testimonials:  string
-
-
+    shareProject: string
+    projectlink: string
+    projectContent : ProjectContent[]
+  
 
 }
 

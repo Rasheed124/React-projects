@@ -57,21 +57,16 @@ export default defineType({
       title: 'Testimonials',
       type: 'text',
     }),
-    defineField({
-      name: 'projectImage',
-      title: 'projectImage',
-      type: 'array',
-      of: [
-          {  
-              name: 'image', 
-              type: 'image', title: 'Add images Required',
-              options: {
-                hotspot: true,
-            }, 
-          },
 
-        ],
-    }),
+           defineField({
+            name: 'projectContent',
+            title: 'Project Media Content',
+            type: 'array',
+            of: [{ type: 'reference', to: { type: 'projectGallery' } }],
+        }),
+
+
+ 
    defineField({
       name: 'shareProject',
       title: 'Share Project',
@@ -80,14 +75,14 @@ export default defineType({
           {  name: 'share', type: 'url', title: 'Add Social Media Handle' }
         ],
     }),
-    defineField({
-      name: 'projectLink',
+
+        defineField({
+      name: 'projectlink',
       title: 'Project Link',
-      type: 'object',
-         fields: [
-          {  name: 'share', type: 'url', title: 'Add Website ' },
-        ],
+      type: 'url',
     }),
+
+  
       
     ],
 })
