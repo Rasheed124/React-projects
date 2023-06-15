@@ -5,7 +5,7 @@ import { draftMode } from "next/headers";
 
 
 import PreviewSuspense from "@/components/site/PreviewSuspense";
-import { getHomeBanner, getProjects, getSkills } from '@/schemas/utils/sanity.utils';
+import { getHomeBanner, getProjects, getSkills, getTestimonials } from '@/schemas/utils/sanity.utils';
 import PreviewBanner from '@/components/site/HomeBanner/PreviewBanner';
 
 import Banner from '@/components/site/HomeBanner/Banner'
@@ -15,6 +15,7 @@ import PreviewSkills from "@/components/site/Skills/PreviewSkills";
 import getServerSideQueries from "@/components/site/getServerSideQueries";
 import Projects from "@/components/site/Projects/Projects";
 import PreviewProjects from "@/components/site/Projects/PreviewProjects";
+import Testimonial from "@/components/site/Testimonial/Testimonial";
 
 
 
@@ -35,6 +36,7 @@ export default async function Home() {
     const homeBanners = await getHomeBanner();
     const skills = await getSkills();
     const projects = await getProjects();
+    const testimonials = await getTestimonials();
 
   
 
@@ -74,19 +76,18 @@ export default async function Home() {
     <div className="bg-deep-black text-light-white px-4 xl:px-0">
 
             {/* BANNERS */}
-            <div>
                 <Banner homeBanners={homeBanners} />
-            </div>
-
+           
             {/* SKILLS */}
-            <div className=" ">
                 <Skills skills={skills} />
-           </div>
-    
-          {/* PROJECTS */}
-             <div className="  ">
+          
+             {/* PROJECTS */}
                   <Projects projects={projects} />
-            </div>
+
+             {/* Testimonials */}
+             <Testimonial testimonials={testimonials} />
+            
+            
     </div>
 
    

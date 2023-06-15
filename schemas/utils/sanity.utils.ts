@@ -72,3 +72,19 @@ export async function getProject(slug: string): Promise<Projects> {
 
 }
 
+
+// Getting Skills
+export async function getTestimonials(): Promise<Testimonial[]> {
+
+    return client.fetch(
+
+    groq`*[_type == "testimonial"]{
+            _id,
+            title,
+            description,
+            author
+
+             } | order(_createdAt desc)`
+    )
+
+}

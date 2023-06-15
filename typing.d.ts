@@ -77,6 +77,8 @@ interface Title {
     current: string;
 
 }
+
+// Banner
 interface HomeBanner extends Base {
     name: string
     address: string;
@@ -87,12 +89,13 @@ interface HomeBanner extends Base {
 
 }
 
+
+// Skill
 interface Skill extends Base {
     description: string;
     title: string;
     image: string;
 }
-
 interface Skills extends Base {
     name: string
     heading: string;
@@ -101,14 +104,13 @@ interface Skills extends Base {
 
 }
 
+
+// Project
 interface ProjectContent extends Base {
     title: string;
     image: string;
     url: string
 }
-
-
-
 interface Projects extends Base {
     heading: string;
     title: string;
@@ -122,8 +124,17 @@ interface Projects extends Base {
     shareProject: string
     projectlink: string
     projectContent : ProjectContent[]
-  
 
 }
+
+
+
+// Testimonial
+interface Testimonial extends Base {
+    title: string;
+    description: string;
+    author: string
+}
+
 
 

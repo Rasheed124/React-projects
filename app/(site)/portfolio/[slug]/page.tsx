@@ -47,14 +47,34 @@ async function Projects({ params: { slug } }: Props) {
                         <div>
                             {project.projectContent && project.projectContent.map(content => (
 
-                                   <Image 
+                                <div>
+                                    { content.image &&  <Image 
+                                                      src={urlFor(content.image).url()}
+                                                      width={400}
+                                                      height={600} 
+                                                      alt={project.title}
+                                                    /> 
+                                     }
 
-                                    src={urlFor(content.image).url()}
-                                     width={400}
-                                     height={400} 
-                                     alt={project.title}
+                                    { content.url && 
+
+
+                                    //   <Link href={`/${content.url}`}>
+                                            <iframe 
+                                                width={400}
+                                                height={600}
+                                                src={`${content.url}`}>
+                                            </iframe> 
+                                    //   </Link>
+
                                  
-                                   /> 
+                                 }    
+                                </div>
+
+                                
+                            
+
+                          
                             ) )
                               
                             }  

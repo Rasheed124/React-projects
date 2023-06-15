@@ -40,7 +40,18 @@ const ProjectsQuery =
            
              } | order(_createdAt desc)`
 
- return ({ BannerQuery, SkillQuery, ProjectsQuery} )
+
+const TestimonialsQuery = 
+
+    groq`*[_type == "testimonial"]{
+            _id,
+            title,
+            description,
+            author
+
+             } | order(_createdAt desc)`
+
+ return ({ BannerQuery, SkillQuery, ProjectsQuery, TestimonialsQuery} )
 
 
 }
