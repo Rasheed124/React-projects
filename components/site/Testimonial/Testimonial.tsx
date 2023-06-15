@@ -3,17 +3,23 @@ import Link from "next/link";
    
 import { motion } from 'framer-motion';
 
+
+
+// import Swiper core and required modules
+import { Navigation, Scrollbar, EffectFade } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Styles must use direct files imports
 import 'swiper/css';
-import 'swiper/css/navigation';
+
+import 'swiper/css/effect-fade';
+
 
 
 
 import Image from 'next/image';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar } from 'swiper';
 
-
-import { EffectFade } from 'swiper';
 
 import { FaQuoteLeft } from 'react-icons/fa'
 
@@ -39,7 +45,14 @@ const Testimonial =({testimonials}: Props) => {
                         <div className=" pb-5 px-5">
 
                                <Swiper
-                                        spaceBetween={50}
+                                        modules={[Navigation, Scrollbar, EffectFade]}
+                                        effect="fade"
+                                        speed={1000}
+                             // fadeEffect={true}
+                                          scrollbar={{ draggable: true }}
+                                        //   navigation
+                                           
+                                        spaceBetween={100}
                                         slidesPerView={1}
                                   
                                     >
