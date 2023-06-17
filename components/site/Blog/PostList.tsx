@@ -3,7 +3,7 @@
 import urlFor from "@/lib/urlFor";
 import { ArrowDownRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
-import ClientSideRoute from "./ClientSideRoute";
+import ClientSideRoute from "../ClientSideRoute";
 
 import Link from "next/link";
 
@@ -19,7 +19,7 @@ type Props = {
 };
 
 
-const BlogList = ({ posts }: Props) => {
+const PostList = ({ posts }: Props) => {
 
 
     return (
@@ -116,4 +116,4 @@ const BlogList = ({ posts }: Props) => {
     )
 }
 
-export default BlogList
+export default PostList

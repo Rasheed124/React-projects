@@ -3,7 +3,7 @@
 
 import { usePreview } from "@/lib/sanity.preview"
 
-import BlogList from "./BlogList"
+import PostList from "./PostList"
 
 type Props = {
 
@@ -11,14 +11,14 @@ type Props = {
 }
 
 
-export default function PreviewBlogList({ query }: Props) {
+export default function PreviewPostList({ query }: Props) {
     const posts = usePreview(null, query);
 
     console.log("Loading..", posts)
 
     // Modified but not yet publish
 
-    return <BlogList posts={posts} />
+    return <PostList posts={posts} />
 
 
 }

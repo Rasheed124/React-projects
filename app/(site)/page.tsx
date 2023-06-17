@@ -16,8 +16,11 @@ import getServerSideQueries from "@/components/site/getServerSideQueries";
 import Projects from "@/components/site/Projects/Projects";
 import PreviewProjects from "@/components/site/Projects/PreviewProjects";
 import Testimonial from "@/components/site/Testimonial/Testimonial";
-import BlogList from "@/components/site/BlogList";
-import PreviewBlogList from "@/components/site/PreviewBlogList";
+import PreviewPostList from "@/components/site/Blog/PreviewPostList";
+import PostList from "@/components/site/Blog/PostList";
+import PreviewTestimonials from "@/components/site/Testimonial/PreviewTestimonial";
+// import PostList from "@/components/site/PostList;
+// import PreviewBlogList from "@/components/site/PreviewBlogList";
 
 
 
@@ -28,7 +31,9 @@ const SkillQuery = getServerSideQueries().SkillQuery;
 
 const ProjectsQuery = getServerSideQueries().ProjectsQuery;
 
-const PostQuery =  getServerSideQueries().TestimonialsQuery
+const PostQuery =  getServerSideQueries().PostQuery
+
+const TestimonialQuery = getServerSideQueries().TestimonialsQuery
 
 
 
@@ -41,7 +46,6 @@ export default async function Home() {
     const skills = await getSkills();
     const projects = await getProjects();
     const testimonials = await getTestimonials();
-
     const posts = await getBlogList();
 
 
@@ -68,8 +72,10 @@ export default async function Home() {
 
                     <PreviewProjects query={ProjectsQuery} />
 
+                    <PreviewTestimonials query={TestimonialQuery}  />
 
-                   <PreviewBlogList query={PostQuery} />
+
+                     <PreviewPostList query={PostQuery} />
                     
 
                </div>
@@ -97,7 +103,7 @@ export default async function Home() {
              <Testimonial testimonials={testimonials} />
 
 
-              <BlogList posts={posts} />
+            <PostList posts={posts} />
             
             
     </div>
