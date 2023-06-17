@@ -1,7 +1,18 @@
+"use client"
+
 import urlFor from "@/lib/urlFor";
 import { ArrowDownRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import ClientSideRoute from "./ClientSideRoute";
+
+import Link from "next/link";
+
+import { motion } from 'framer-motion';
+
+import { BsEye } from 'react-icons/bs';
+import { BiMessageAlt } from 'react-icons/bi';
+import { SlLike } from 'react-icons/sl';
+
 
 type Props = {
     posts: Post[];
@@ -12,72 +23,72 @@ const BlogList = ({ posts }: Props) => {
 
 
     return (
-        <div className="">
+                 <section className="py-14 ">
+                       <div className="flex flex-col max-w-6xl mx-auto  ">
+                            <div className=" pb-5 px-5 text-center">
+                                 <h4 className="font-Antonio text-2xl ">Recent Blog Posts</h4>
 
-            <hr className="border-[#F7AB0A] mb-10" />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16 pb-24">
+                                <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 ">
 
-                {posts.map(post => (
+                                     {posts.map(post => (
+                                        <ClientSideRoute key={post._id} route={`/post/${post.slug.current}`} >
+                                                <div className="flex flex-col justify-center text-left">
 
-                    <ClientSideRoute key={post._id} route={`/post/${post.slug.current}`} >
+                                                    <div className="">
+                                                        <div className="relative h-[200px] w-full">
 
-                        <div className="flex flex-col group cursor-pointer">
+                                                        <Image
+                                                        className="max-w-full w-full absolute top-0 left-0"
+                                                        src={urlFor(post.mainImage).url()}
+                                                        alt={post.author.name}
+                                                        fill
+                                                    />
 
-                            <div className="relative w-full h-80 drop-shadow-xl group-hover:scale-105 transition-transform duration-500 ease-out">
-                                <Image
-                                    className="object-cover object-left lg:object-center"
-                                    src={urlFor(post.mainImage).url()}
-                                    alt={post.author.name}
-                                    fill
-                                />
+                                                        </div>
+                                               
+                                                
+                                                        <div className="border-b py-5 ">
 
-                                <div className="absolute bottom-0 w-full bg-opacity-20 bg-black backdrop-blur-lg rounded drop-shadow-lg text-white p-5 flex justify-between">
+                                                            <div className="flex gap-8 mb-5">
+                                                                <span>Mar 8, 2021</span>
+                                                                <span>8 min.</span>
+                                                            </div>
 
-                                    <div>
-                                        <p className="font-bold">{post.title}</p>
+                                                            <div   className="text-xl block  transition-colors hover:duration-700 hover:text-header-dark-overlay">
+                                                                Major Content-Type: Words
+                                                            </div>
 
-                                        <p>{new Date(post._createdAt).toLocaleDateString(
-                                            "en-Us", {
-                                            day: "numeric",
-                                            month: "long",
-                                            year: "numeric",
-                                        }
-                                        )}
-                                        </p>
-                                    </div>
+                                                        </div>
 
-                                    <div className="flex flex-col md:flex gap-y-2 md:gap-x-2 items-center">
-                                        {post.categories.map(category => (
-                                            <div className="bg-[#F7AB0A] text-center text-black p-4 rounded-full text-sm font-semibold">
-                                                <p>{category.title}</p>
-                                            </div>
-                                        ))}
+                                                        <div className="flex w-full  mt-5">
+                                                            <p className="flex justify-center items-center mr-5">
+                                                                <BsEye className="mr-2" />
+                                                                <span >470</span>
+                                                            </p>
+                                                            <div  className="flex justify-center items-center mr-5" >
+                                                                <BiMessageAlt className="mr-2" />
+                                                                <span >470</span>
+                                                            </div>
+                                                            <div className="flex ">
+                                                                <div  className="flex justify-center items-center self-end" >
+                                                                    <SlLike className="mr-2" />
+                                                                    <span >470</span>
+                                                                </div>
+                                                            </div>
 
-                                    </div>
-                                </div>
+
+                                                        </div>
+                                                    </div>
+                                                 </div>
+                                        </ClientSideRoute>
+                                      ))}
+
+                               </div>
                             </div>
 
-                            <div className="mt-5 flex-1 ">
-                                <p className="underline text-lg font-bold">{post.title}</p>
-                                <p className="text-gray-400 ">{post.description}</p>
-                            </div>
 
-                            <p className="mt-5 font-bold flex items-center group-hover:underline">
-                                Read Post
-                                <ArrowDownRightIcon className="ml-2 h-4 w-4" />
-                            </p>
-
-                        </div>
-
-                    </ClientSideRoute>
-
-                ))}
-
-            </div>
-
-
-
-        </div>
+                         </div>
+                  </section>
     )
 }
 

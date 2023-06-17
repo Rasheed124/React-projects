@@ -51,7 +51,16 @@ const TestimonialsQuery =
 
              } | order(_createdAt desc)`
 
- return ({ BannerQuery, SkillQuery, ProjectsQuery, TestimonialsQuery} )
+
+const PostQuery =   groq`
+  *[_type == "post"]{
+    ...,
+    author->,
+    categories[]->
+   } | order(_createdAt desc)
+   `;
+
+ return ({ BannerQuery, SkillQuery, ProjectsQuery, TestimonialsQuery, PostQuery} )
 
 
 }

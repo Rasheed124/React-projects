@@ -88,3 +88,20 @@ export async function getTestimonials(): Promise<Testimonial[]> {
     )
 
 }
+
+
+export async function getBlogList(): Promise<Post[]> {
+
+    return client.fetch(
+
+        groq`
+        *[_type == "post"]{
+            ...,
+            author->,
+            categories[]->
+        } | order(_createdAt desc) `
+
+            )
+
+
+}

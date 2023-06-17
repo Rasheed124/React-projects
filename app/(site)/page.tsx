@@ -5,7 +5,7 @@ import { draftMode } from "next/headers";
 
 
 import PreviewSuspense from "@/components/site/PreviewSuspense";
-import { getHomeBanner, getProjects, getSkills, getTestimonials } from '@/schemas/utils/sanity.utils';
+import { getBlogList, getHomeBanner, getProjects, getSkills, getTestimonials } from '@/schemas/utils/sanity.utils';
 import PreviewBanner from '@/components/site/HomeBanner/PreviewBanner';
 
 import Banner from '@/components/site/HomeBanner/Banner'
@@ -16,6 +16,8 @@ import getServerSideQueries from "@/components/site/getServerSideQueries";
 import Projects from "@/components/site/Projects/Projects";
 import PreviewProjects from "@/components/site/Projects/PreviewProjects";
 import Testimonial from "@/components/site/Testimonial/Testimonial";
+import BlogList from "@/components/site/BlogList";
+import PreviewBlogList from "@/components/site/PreviewBlogList";
 
 
 
@@ -25,6 +27,8 @@ const SkillQuery = getServerSideQueries().SkillQuery;
 
 
 const ProjectsQuery = getServerSideQueries().ProjectsQuery;
+
+const PostQuery =  getServerSideQueries().TestimonialsQuery
 
 
 
@@ -37,6 +41,10 @@ export default async function Home() {
     const skills = await getSkills();
     const projects = await getProjects();
     const testimonials = await getTestimonials();
+
+    const posts = await getBlogList();
+
+
 
   
 
@@ -61,6 +69,7 @@ export default async function Home() {
                     <PreviewProjects query={ProjectsQuery} />
 
 
+                   <PreviewBlogList query={PostQuery} />
                     
 
                </div>
@@ -86,6 +95,9 @@ export default async function Home() {
 
              {/* Testimonials */}
              <Testimonial testimonials={testimonials} />
+
+
+              <BlogList posts={posts} />
             
             
     </div>

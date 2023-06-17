@@ -25,7 +25,7 @@ import { motion } from 'framer-motion';
 
                 {skills.map( skill => (
 
-                      <div id={skill._id} className="flex flex-col max-w-6xl mx-auto  ">
+                      <div key={skill._id} className="flex flex-col max-w-6xl mx-auto  ">
                         <div className="  text-center py-7 px-5 ">
                     
 
@@ -59,7 +59,7 @@ import { motion } from 'framer-motion';
                                     skill.skillsDetails.map((skillDetail) => (
 
                                                 <motion.div
-                                                    id={skillDetail._id}
+                                                    key={skillDetail._id}
                                                     className=" mb-5 md:mb-0  text-left "
                                                     initial="hidden"
                                                     whileInView="visible"

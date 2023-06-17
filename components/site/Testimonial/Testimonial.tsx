@@ -1,30 +1,25 @@
    "use client";
+
+import Image from 'next/image';
 import Link from "next/link";
-   
-import { motion } from 'framer-motion';
 
-
-
+import React from "react";
+import { useEffect, useState } from "react";
 // import Swiper core and required modules
 import { Navigation, Scrollbar, EffectFade } from 'swiper';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Styles must use direct files imports
-import 'swiper/css';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
-import 'swiper/css/effect-fade';
-
-
-
-
-import Image from 'next/image';
 
 
 import { FaQuoteLeft } from 'react-icons/fa'
 
-import { register } from "swiper/element/bundle";
-register();
+
 
 
     type Props = {
@@ -33,9 +28,12 @@ register();
 
 
 
-
-
 const Testimonial =({testimonials}: Props) => {
+
+  
+  const prevRef = React.useRef();
+  const nextRef = React.useRef();
+
 
 
     return (
@@ -43,24 +41,28 @@ const Testimonial =({testimonials}: Props) => {
                <section className="py-14 ">
                     <div className="flex flex-col max-w-6xl mx-auto  ">
                         <div className=" pb-5 px-5">
-
+                             
                                <Swiper
-                                        modules={[Navigation, Scrollbar, EffectFade]}
-                                        effect="fade"
+                                        modules={[Navigation, EffectFade]}
+                                        effect="crossfade"
                                         speed={1000}
-                             // fadeEffect={true}
-                                          scrollbar={{ draggable: true }}
-                                        //   navigation
-                                           
+                                 
+                                         navigation={{
+                                            prevEl: prevRef?.current,
+                                            nextEl: nextRef?.current
+                                        }}
                                         spaceBetween={100}
                                         slidesPerView={1}
-                                  
+                                        updateOnWindowResize
+                                        observer
+                                        observeParents
+                                
                                     >
 
                                      <div className=" text-center">
                                            {testimonials.map( testimonial => (
 
-                                             <SwiperSlide>
+                                             <SwiperSlide key={testimonial._id}>
 
                                                 <div className=" text-center">
                                                     <h3 className="text-2xl font-bold font-Antonio">{testimonial.title}</h3>
@@ -77,6 +79,8 @@ const Testimonial =({testimonials}: Props) => {
                                           ))}
                                        </div>
                                </Swiper>
+
+                              
                         </div>
 
                     </div>

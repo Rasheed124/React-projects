@@ -16,7 +16,7 @@
 
                 <div className="">
                     {homeBanners.map(homeBanner => (
-                    <div id={homeBanner._id}  className="flex flex-col pt-10 px-2   text-center ">
+                    <div key={homeBanner._id}  className="flex flex-col pt-10 px-2   text-center ">
                                 {/* HEADER CONTENT */}
 
                                 <div className="max-w-sm sm:max-w-lg  md:max-w-3xl mx-auto  mb-10 p-2 lg:py-16">

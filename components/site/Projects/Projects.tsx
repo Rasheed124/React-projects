@@ -38,7 +38,7 @@ const Projects = ({projects} : Props) => {
 
 
                          {projects.map(  (project) => (
-                              <div className="grid grid-cols-1  w-full px-5 ">
+                              <div  className="grid grid-cols-1  w-full px-5 ">
                                  
 
                                     <ClientSideRoute 
