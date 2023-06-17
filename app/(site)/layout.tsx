@@ -25,7 +25,8 @@ const migraLight = localFont({
 
 const antonio = Antonio( { 
   subsets: ['latin'],
-  weight: "700",
+  fallback: ['system-ui', 'antonio'],
+
   variable: '--font-antonio',
 
  })

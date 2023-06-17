@@ -31,32 +31,55 @@ const BlogList = ({ posts }: Props) => {
                                 <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 ">
 
                                      {posts.map(post => (
-                                        <ClientSideRoute key={post._id} route={`/post/${post.slug.current}`} >
+                                        <div key={post._id}  >
                                                 <div className="flex flex-col justify-center text-left">
 
-                                                    <div className="">
-                                                        <div className="relative h-[200px] w-full">
+                                                       <motion.div
+                                                        className=" "
+                                                        initial="hidden"
+                                                        whileInView="visible"
+                                                        viewport={{ once: true, amount: 0.8 }}
+                                                        transition={{ duration: 0.6, }}
+                                                        variants={{
+                                                            hidden: { opacity: 0, y: 60 },
+                                                            visible: { opacity: 1, y: 0 },
+                                                        }}
+                                                    >
+                                                     <ClientSideRoute route={`/post/${post.slug.current}`}>
 
-                                                        <Image
-                                                        className="max-w-full w-full absolute top-0 left-0"
+                                                        <div  className="relative h-[200px] w-full">
+                                                          <Image
+                                                        className="object-cover object-left lg:object-center"
                                                         src={urlFor(post.mainImage).url()}
                                                         alt={post.author.name}
                                                         fill
-                                                    />
-
+                                                         />
                                                         </div>
+
+                                                 
+
+                                                    </ClientSideRoute>
                                                
                                                 
                                                         <div className="border-b py-5 ">
 
                                                             <div className="flex gap-8 mb-5">
-                                                                <span>Mar 8, 2021</span>
+                                                                <span>
+                                                                    {new Date(post._createdAt).toLocaleDateString(
+                                                                        "en-Us", {
+                                                                        day: "numeric",
+                                                                        month: "long",
+                                                                        year: "numeric",
+                                                                    }
+                                                                    )}
+                                                                </span>
                                                                 <span>8 min.</span>
                                                             </div>
 
-                                                            <div   className="text-xl block  transition-colors hover:duration-700 hover:text-header-dark-overlay">
-                                                                Major Content-Type: Words
-                                                            </div>
+                                                             <ClientSideRoute route={`/post/${post.slug.current}`}>
+                                                                
+                                                                <h3 className="text-xl block  transition-colors hover:duration-700 hover:text-header-dark-overlay">{post.title}</h3>
+                                                            </ClientSideRoute>
 
                                                         </div>
 
@@ -78,9 +101,10 @@ const BlogList = ({ posts }: Props) => {
 
 
                                                         </div>
-                                                    </div>
+                                                    </motion.div>
+
                                                  </div>
-                                        </ClientSideRoute>
+                                        </div>
                                       ))}
 
                                </div>
