@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
+import Link  from 'next/link'
+
 
 
 import { motion } from 'framer-motion';
@@ -51,14 +52,14 @@ const Footer = () => {
                                             <p>Toronto-based. </p>
                                             <p>   Working worldwide.</p>
 
-                                            <Link className="mt-2 block">dmediaplux@gmail.com</Link>
+                                            <Link href={'/'} className="mt-2 block">dmediaplux@gmail.com</Link>
                                         </div>
                                         <div className="place-self-start">
                                             <h4 className="font-Antonio font-bold mb-3 text-xl">LINKS</h4>
 
 
-                                            <Link className="block">INSTAGRAM</Link>
-                                            <Link className="block ">LINKEDIN</Link>
+                                            <Link href={'/'} className="block">INSTAGRAM</Link>
+                                            <Link href={'/'} className="block ">LINKEDIN</Link>
                                         </div>
                                     </div>
                                 </div>

@@ -19,6 +19,7 @@ import Testimonial from "@/components/site/Testimonial/Testimonial";
 import PreviewPostList from "@/components/site/Blog/PreviewPostList";
 import PostList from "@/components/site/Blog/PostList";
 import PreviewTestimonials from "@/components/site/Testimonial/PreviewTestimonial";
+import Layout from "@/components/site/Navbars/NavbarLayout";
 // import PostList from "@/components/site/PostList;
 // import PreviewBlogList from "@/components/site/PreviewBlogList";
 
@@ -90,7 +91,9 @@ export default async function Home() {
     return (
     <div className="bg-deep-black text-light-white px-4 xl:px-0">
 
-            {/* BANNERS */}
+        <Layout route="/">
+
+                  {/* BANNERS */}
                 <Banner homeBanners={homeBanners} />
            
             {/* SKILLS */}
@@ -104,6 +107,9 @@ export default async function Home() {
 
 
             <PostList posts={posts} />
+        </Layout>
+
+      
             
             
     </div>

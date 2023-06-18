@@ -8,7 +8,7 @@ import PreviewSuspense from "@/components/site/PreviewSuspense";
 import Layout from "@/components/site/Navbars/NavbarLayout";
 
 
-export default async function Blog() {
+export default async function Portfolio() {
     const { isEnabled } = draftMode();
 
 
@@ -47,7 +47,7 @@ export default async function Blog() {
 
         <Layout route="/contact">
 
-             <div>Welcome to my Blog Page
+             <div>Welcome to my Portfolio Page
 
              </div>
         </Layout>

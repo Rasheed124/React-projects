@@ -12,7 +12,7 @@ import useMediaQuery from '../UseMediaQuery'
 
 
 
-const Navbar = () => {
+const NavbarAbout = () => {
 
     const [MenuIsToggle, setMenuIstoggle] = useState(false)
 
@@ -34,21 +34,45 @@ const Navbar = () => {
 
                             <div className="">
                                 <ul className="space-x-12">
-                                    {['About', 'Portfolio', 'Contact'].map(item => (
-                                        <li className="inline-block">
-                                            <Link href={item} className="font-bold font-Antonio text-lg ">
+                                                  <li className="inline-block">
+                                            <Link href={'/about'} className="font-bold font-Antonio">
                                                 <div className="relative overflow-y-hidden link-swipe">
                                                     <span className=" transform transition-transform translate-y-0 duration-300">
-                                                        {item}
+                                                        About
                                                     </span>
                                                     <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
-                                                        {item}
+                                                       About
                                                     </span>
-
+                                              
                                                 </div>
                                             </Link>
                                         </li>
-                                    ))}
+                                        <li className="inline-block">
+                                            <Link href={'/portfolio'} className="font-bold font-Antonio">
+                                                <div className="relative overflow-y-hidden link-swipe">
+                                                    <span className=" transform transition-transform translate-y-0 duration-300">
+                                                        Portfolio
+                                                    </span>
+                                                    <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                       Portfolio
+                                                    </span>
+                                              
+                                                </div>
+                                            </Link>
+                                        </li>
+                                        <li className="inline-block">
+                                            <Link href={'/contact'} className="font-bold font-Antonio">
+                                                <div className="relative overflow-y-hidden link-swipe">
+                                                    <span className=" transform transition-transform translate-y-0 duration-300">
+                                                        Contact
+                                                    </span>
+                                                    <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                       Contact
+                                                    </span>
+                                              
+                                                </div>
+                                            </Link>
+                                        </li>
                                 </ul>
                             </div>
 
@@ -107,21 +131,45 @@ const Navbar = () => {
 
                         >
                             <ul className='flex flex-col justify-between items-start absolute top-8 bg-white left-0 w-full p-5 z-10 space-y-3'>
-                                {['About', 'Portfolio', 'Contact'].map(item => (
-                                    <li>
-                                        <Link href={item} className="font-bold font-Antonio text-light-white">
-                                            <div className="relative overflow-y-hidden link-swipe">
-                                                <span className=" transform transition-transform translate-y-0 duration-300">
-                                                    {item}
-                                                </span>
-                                                <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
-                                                    {item}
-                                                </span>
-
-                                            </div>
-                                        </Link>
-                                    </li>
-                                ))}
+                                  <li>
+                                            <Link href={'/about'} className="font-bold font-Antonio">
+                                                <div className="relative overflow-y-hidden link-swipe">
+                                                    <span className=" transform transition-transform translate-y-0 duration-300">
+                                                        About
+                                                    </span>
+                                                    <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                       About
+                                                    </span>
+                                              
+                                                </div>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href={'/portfolio'} className="font-bold font-Antonio">
+                                                <div className="relative overflow-y-hidden link-swipe">
+                                                    <span className=" transform transition-transform translate-y-0 duration-300">
+                                                        Portfolio
+                                                    </span>
+                                                    <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                       Portfolio
+                                                    </span>
+                                              
+                                                </div>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href={'/contact'} className="font-bold font-Antonio">
+                                                <div className="relative overflow-y-hidden link-swipe">
+                                                    <span className=" transform transition-transform translate-y-0 duration-300">
+                                                        Contact
+                                                    </span>
+                                                    <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                       Contact
+                                                    </span>
+                                              
+                                                </div>
+                                            </Link>
+                                        </li>
                             </ul>
                         </motion.div >
                     )}
@@ -132,4 +180,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default NavbarAbout

@@ -24,42 +24,11 @@ const Navbar = () => {
                 <div className=" pt-6 px-5">
 
                     {/* DESKTOP NAV */}
-                    {isAboveSmallScreens ? (
-                        <div>
-                            <div className="lg:border-t lg:pt-2">
-                                <ul className='flex justify-between items-center '>
-                                    {['About', 'Portfolio', 'Contact'].map(item => (
-                                        <li>
-                                            <Link href={item} className="font-bold font-Antonio">
-                                                <div className="relative overflow-y-hidden link-swipe">
-                                                    <span className=" transform transition-transform translate-y-0 duration-300">
-                                                        {item}
-                                                    </span>
-                                                    <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
-                                                        {item}
-                                                    </span>
-                                                    {/* <motion.span
-                                                        initial="hidden"
-                                                        viewport={{ once: false, amount: 0.5 }}
-                                                        transition={{ duration: 0.5 }}
-                                                        variants={{
-                                                            hidden: { opacity: 0, y: -50 },
-                                                            visible: { opacity: 1, y: 0 },
-                                                        }}
-                                                    >
-                                                        {item}
-                                                    </motion.span> */}
-                                                </div>
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    ) : (
+                    {!isAboveSmallScreens ? (
 
-                        // Mobile Nav
-                        <div className="pb-6  ">
+                        // Mobile  Nav
+
+                       <div className="pb-6  ">
                             <div className="flex justify-between items-center   ">
                                 <Link href={"/"} className="block text-2xl font-semibold font-Sohne-Bold ">
                                     <h2>Durodola Abdulhad</h2>
@@ -101,6 +70,60 @@ const Navbar = () => {
                             </div>
                         </div>
 
+
+                       
+                    ) : (
+
+                        // Desktop Nav
+                         <div>
+                            <div className="lg:border-t lg:pt-2">
+                                <ul className='flex justify-between items-center '>
+                                   
+                                        <li>
+                                            <Link href={'/about'} className="font-bold font-Antonio">
+                                                <div className="relative overflow-y-hidden link-swipe">
+                                                    <span className=" transform transition-transform translate-y-0 duration-300">
+                                                        About
+                                                    </span>
+                                                    <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                       About
+                                                    </span>
+                                              
+                                                </div>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href={'/portfolio'} className="font-bold font-Antonio">
+                                                <div className="relative overflow-y-hidden link-swipe">
+                                                    <span className=" transform transition-transform translate-y-0 duration-300">
+                                                        Portfolio
+                                                    </span>
+                                                    <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                       Portfolio
+                                                    </span>
+                                              
+                                                </div>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href={'/contact'} className="font-bold font-Antonio">
+                                                <div className="relative overflow-y-hidden link-swipe">
+                                                    <span className=" transform transition-transform translate-y-0 duration-300">
+                                                        Contact
+                                                    </span>
+                                                    <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                       Contact
+                                                    </span>
+                                              
+                                                </div>
+                                            </Link>
+                                        </li>
+                                  
+                                </ul>
+                            </div>
+                        </div>
+                   
+
                     )}
 
                     {/* MOBILE NAV */}
@@ -118,21 +141,45 @@ const Navbar = () => {
 
                         >
                             <ul className='flex flex-col justify-between items-start absolute top-0 left-0 w-full bg-white p-5 z-10 space-y-3'>
-                                {['about', 'portfolio', 'contact'].map(item => (
-                                    <li>
-                                        <Link href={item} className="font-bold font-Antonio lowercase">
-                                            <div className="relative overflow-y-hidden link-swipe">
-                                                <span className=" transform transition-transform translate-y-0 duration-300">
-                                                    {item}
-                                                </span>
-                                                <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
-                                                    {item}
-                                                </span>
-
-                                            </div>
-                                        </Link>
-                                    </li>
-                                ))}
+                                                           <li>
+                                            <Link href={'/about'} className="font-bold font-Antonio">
+                                                <div className="relative overflow-y-hidden link-swipe">
+                                                    <span className=" transform transition-transform translate-y-0 duration-300">
+                                                        About
+                                                    </span>
+                                                    <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                       About
+                                                    </span>
+                                              
+                                                </div>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href={'/portfolio'} className="font-bold font-Antonio">
+                                                <div className="relative overflow-y-hidden link-swipe">
+                                                    <span className=" transform transition-transform translate-y-0 duration-300">
+                                                        Portfolio
+                                                    </span>
+                                                    <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                       Portfolio
+                                                    </span>
+                                              
+                                                </div>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href={'/contact'} className="font-bold font-Antonio">
+                                                <div className="relative overflow-y-hidden link-swipe">
+                                                    <span className=" transform transition-transform translate-y-0 duration-300">
+                                                        Contact
+                                                    </span>
+                                                    <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                       Contact
+                                                    </span>
+                                              
+                                                </div>
+                                            </Link>
+                                        </li>
                             </ul>
                         </motion.div >
                     )}
