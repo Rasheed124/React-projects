@@ -28,7 +28,7 @@
     "react-icons": "^4.9.0",
     "sanity": "^3.11.5",
     "sanity-plugin-iframe-pane": "^2.3.1",
-    "sanity-plugin-mux-input": "^2.0.17",
+    "sanity-plugin-mux-input": "2.0.17",
     "styled-components": "^5.3.9",
     "swiper": "^9.4.1",
     "tailwindcss": "3.3.2",

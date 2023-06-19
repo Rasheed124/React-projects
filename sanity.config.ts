@@ -1,7 +1,12 @@
 import { defineConfig } from 'sanity'
+
+import {muxInput} from 'sanity-plugin-mux-input'
+
 import { deskTool } from 'sanity/desk'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
+
+
 
 // Customize Files
 import Logo from './components/studio/Logo'
@@ -23,7 +28,10 @@ export default defineConfig({
   apiVersion,
 
 
-  plugins: [deskTool({ defaultDocumentNode: defaultDocumentNode }), visionTool()],
+  plugins: [
+    deskTool({ defaultDocumentNode: defaultDocumentNode }), visionTool() , muxInput()
+  
+  ],
 
   schema: {
     types: schemaTypes,

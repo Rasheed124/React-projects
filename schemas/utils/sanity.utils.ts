@@ -65,6 +65,17 @@ export async function getProject(slug: string): Promise<Projects> {
             _id,
               ...,
 
+               projectContent[]{
+                   ...,
+                     _type == "muxVideo" => {
+                         ...,
+                        asset->{
+                            ...,
+                           "url": "https://stream.mux.com/" + playbackId
+                }
+            }
+        }  
+
       
              } `,
              {slug}

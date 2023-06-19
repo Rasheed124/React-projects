@@ -21,9 +21,9 @@ export default defineType({
     }),
 
     defineField({
-      name: 'url',
-      title: 'Video Link',
-      type: 'url',
+      name: 'video',
+      title: 'Video',
+      type: 'mux.video',
     }),
 
   

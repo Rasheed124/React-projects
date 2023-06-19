@@ -15,4 +15,7 @@ import projectContent from './project/projectContent'
 import testimonial from './testimonial'
 
 
+
+
+
 export const schemaTypes = [post, author, category, blockContent, homeBanner, skill, skills, project, projectContent, testimonial]
