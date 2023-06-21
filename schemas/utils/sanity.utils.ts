@@ -49,6 +49,7 @@ export async function getProjects(): Promise<Projects[]> {
     groq`*[_type == "projects"]{
             _id,
               ...,
+                  "projectImage" : projectImage.asset->url,
            
              } | order(_createdAt desc)`
     )

@@ -82,6 +82,15 @@ export default defineType({
       type: 'url',
     }),
 
+        defineField({
+        name: 'projectImage',
+        title: 'Project Image',
+        type: 'image',
+          options: {
+            hotspot: true,
+        },
+    }),
+
   
       
     ],

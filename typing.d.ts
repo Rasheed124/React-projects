@@ -124,6 +124,7 @@ interface Projects extends Base {
     testimonials:  string
     shareProject: string
     projectlink: string
+    projectImage: string
     projectContent : ProjectContent[]
 
 }

@@ -8,7 +8,7 @@ import PreviewSuspense from "@/components/site/PreviewSuspense";
 import Layout from "@/components/site/Navbars/NavbarLayout";
 import getServerSideQueries from "@/components/site/getServerSideQueries";
 import { getProjects } from "@/schemas/utils/sanity.utils";
-import Portfolio from "@/components/site/Portfolio/Portfolio";
+import PortfolioProject from "@/components/site/Portfolio/Portfolio"
 import PreviewPortfolio from "@/components/site/Portfolio/PreviewPortfolio";
 
 const ProjectsQuery = getServerSideQueries().ProjectsQuery;
@@ -55,7 +55,7 @@ export default async function Portfolio() {
         <Layout route="/contact">
 
 
-             <Portfolio projects={portfolio}  />
+             <PortfolioProject projects={portfolio}  />
            
 
         </Layout>
