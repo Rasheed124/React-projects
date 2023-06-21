@@ -5,7 +5,7 @@ import { draftMode } from "next/headers";
 
 
 import PreviewSuspense from "@/components/site/PreviewSuspense";
-import { getBlogList, getHomeBanner, getProjects, getSkills, getTestimonials } from '@/schemas/utils/sanity.utils';
+import { getBlogList, getContact, getHomeBanner, getProjects, getSkills, getTestimonials } from '@/schemas/utils/sanity.utils';
 import PreviewBanner from '@/components/site/HomeBanner/PreviewBanner';
 
 import Banner from '@/components/site/HomeBanner/Banner'
@@ -20,6 +20,8 @@ import PreviewPostList from "@/components/site/Blog/PreviewPostList";
 import PostList from "@/components/site/Blog/PostList";
 import PreviewTestimonials from "@/components/site/Testimonial/PreviewTestimonial";
 import Layout from "@/components/site/Navbars/NavbarLayout";
+import ContactInfo from "@/components/site/contact/contactInfo";
+import PreviewContactInfo from "@/components/site/contact/PreviewContactInfo";
 // import PostList from "@/components/site/PostList;
 // import PreviewBlogList from "@/components/site/PreviewBlogList";
 
@@ -35,6 +37,7 @@ const ProjectsQuery = getServerSideQueries().ProjectsQuery;
 const PostQuery =  getServerSideQueries().PostQuery
 
 const TestimonialQuery = getServerSideQueries().TestimonialsQuery
+const ContactInfoQuery = getServerSideQueries().ContactQuery
 
 
 
@@ -48,6 +51,7 @@ export default async function Home() {
     const projects = await getProjects();
     const testimonials = await getTestimonials();
     const posts = await getBlogList();
+    const contacts = await getContact();
 
 
 
@@ -77,6 +81,8 @@ export default async function Home() {
 
 
                      <PreviewPostList query={PostQuery} />
+
+                     <PreviewContactInfo query={ContactInfoQuery} />
                     
 
                </div>
@@ -96,7 +102,7 @@ export default async function Home() {
                   {/* BANNERS */}
                 <Banner homeBanners={homeBanners} />
            
-            {/* SKILLS */}
+                {/* SKILLS */}
                 <Skills skills={skills} />
           
              {/* PROJECTS */}
@@ -105,8 +111,15 @@ export default async function Home() {
              {/* Testimonials */}
              <Testimonial testimonials={testimonials} />
 
-
+             {/* Blog Post */}
             <PostList posts={posts} />
+
+             {/* Contact Info */}
+            <ContactInfo  contacts={contacts} />
+
+
+
+            
         </Layout>
 
       

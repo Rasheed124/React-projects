@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useState } from 'react'
 
 import { HiMenu, HiX } from "react-icons/hi";
@@ -10,9 +10,14 @@ import useMediaQuery from '../UseMediaQuery'
 
 
 
+    type Props = {
+        abouts: About[];
+    };
 
 
-const NavbarAbout = () => {
+
+
+const NavbarAbout =  ({ abouts }: Props) => {
 
     const [MenuIsToggle, setMenuIstoggle] = useState(false)
 

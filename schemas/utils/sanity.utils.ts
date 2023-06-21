@@ -139,3 +139,19 @@ export async function getAbout(): Promise<About[]> {
     )
 
 }
+export async function getContact(): Promise<Contact[]> {
+
+    return client.fetch(
+
+        groq`
+        
+        *[_type == "contact"]{
+          ...,
+         
+             } | order(_createdAt desc)
+        `
+
+        
+    )
+
+}

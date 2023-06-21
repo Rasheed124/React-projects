@@ -154,4 +154,17 @@ interface About extends Base {
 
 
 
+interface Contact extends Base {
+    title: string;
+    logo: string;
+    text: string
+    mail: string
+    infoText: string
+    socialHandle: string
+    marquee: string
+    heading: string
+}
+
+
+
 

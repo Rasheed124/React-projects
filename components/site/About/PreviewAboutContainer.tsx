@@ -17,7 +17,7 @@ export default function PreviewAbout({ query }: Props) {
     const aboutQuery = usePreview(null, query);
     // Modified but not yet publish
 
-    return <AboutContainer about= {aboutQuery} />
+    return <AboutContainer abouts= {aboutQuery} />
 
 
 }
