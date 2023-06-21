@@ -4,7 +4,7 @@
 
 import { usePreview } from "@/lib/sanity.preview"
 
-import ContactInfo from "./contactInfo";
+import ContactInfo from "./ContactInfo";
 
 
 type Props = {

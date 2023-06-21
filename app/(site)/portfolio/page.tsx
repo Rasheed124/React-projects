@@ -6,10 +6,17 @@ import { draftMode } from "next/headers";
 
 import PreviewSuspense from "@/components/site/PreviewSuspense";
 import Layout from "@/components/site/Navbars/NavbarLayout";
+import getServerSideQueries from "@/components/site/getServerSideQueries";
+import { getProjects } from "@/schemas/utils/sanity.utils";
+import Portfolio from "@/components/site/Portfolio/Portfolio";
+import PreviewPortfolio from "@/components/site/Portfolio/PreviewPortfolio";
 
+const ProjectsQuery = getServerSideQueries().ProjectsQuery;
 
 export default async function Portfolio() {
     const { isEnabled } = draftMode();
+
+    const portfolio  =  await getProjects()
 
 
 
@@ -27,9 +34,9 @@ export default async function Portfolio() {
         }>
 
                <div className=" text-light-white px-4 xl:px-0">
-                  {/* Preview Blog List */} 
+                  {/* Preview Port List */} 
                    <div>
-
+                    <PreviewPortfolio  query={ProjectsQuery} />
                    </div>
                     
 
@@ -47,9 +54,10 @@ export default async function Portfolio() {
 
         <Layout route="/contact">
 
-             <div>Welcome to my Portfolio Page
 
-             </div>
+             <Portfolio projects={portfolio}  />
+           
+
         </Layout>
 
       

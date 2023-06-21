@@ -15,11 +15,17 @@ const sohneBold = localFont({
   src: '../fonts/sohne/test-soehne-buch.woff2' ,
   variable: '--font-sohneBold',
 
+
+
 })
 
 const migraLight = localFont({ 
   src: '../fonts/FontsFree-Net-Migra-Extralight.ttf',
+  fallback: ['system-ui', 'migraLight'],
+  display : 'fallback',
   variable: '--font-migraLight',
+
+
 
  })
 

@@ -58,7 +58,13 @@ export default async function About() {
     return (
     <div className=" text-deep-black ">
 
+        <Layout  route="/about">
+
             <AboutContainer abouts={aboutContainer} />
+
+
+        </Layout>
+
   
     </div>
 

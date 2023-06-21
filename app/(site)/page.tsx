@@ -20,8 +20,9 @@ import PreviewPostList from "@/components/site/Blog/PreviewPostList";
 import PostList from "@/components/site/Blog/PostList";
 import PreviewTestimonials from "@/components/site/Testimonial/PreviewTestimonial";
 import Layout from "@/components/site/Navbars/NavbarLayout";
-import ContactInfo from "@/components/site/contact/contactInfo";
-import PreviewContactInfo from "@/components/site/contact/PreviewContactInfo";
+
+import PreviewContactInfo from "@/components/site/Contact/PreviewContactInfo";
+import ContactInfo from "@/components/site/Contact/ContactInfo";
 // import PostList from "@/components/site/PostList;
 // import PreviewBlogList from "@/components/site/PreviewBlogList";
 
@@ -115,7 +116,9 @@ export default async function Home() {
             <PostList posts={posts} />
 
              {/* Contact Info */}
-            <ContactInfo  contacts={contacts} />
+
+             <ContactInfo contacts={contacts} />
+          
 
 
 
