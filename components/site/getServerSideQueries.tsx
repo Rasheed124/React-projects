@@ -60,7 +60,24 @@ const PostQuery =   groq`
    } | order(_createdAt desc)
    `;
 
- return ({ BannerQuery, SkillQuery, ProjectsQuery, TestimonialsQuery, PostQuery} )
+
+
+const AboutQuery = groq`
+        
+        *[_type == "about"]{
+          ...,
+           "image" : image.asset->url,
+             companys[]->{
+               ...,
+             "image" : image.asset->url,
+            }
+             } | order(_createdAt desc)
+
+        `;
+
+
+
+ return ({ BannerQuery, SkillQuery, ProjectsQuery, TestimonialsQuery, PostQuery, AboutQuery} )
 
 
 }

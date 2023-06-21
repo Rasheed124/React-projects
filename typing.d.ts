@@ -110,6 +110,7 @@ interface ProjectContent extends Base {
     title: string;
     image: string;
     url: string
+    video: string
 }
 interface Projects extends Base {
     heading: string;
@@ -135,6 +136,22 @@ interface Testimonial extends Base {
     description: string;
     author: string
 }
+
+
+interface Company extends Base {
+    title: string;
+    image: string;
+    url: string
+}
+
+interface About extends Base {
+    title: string;
+    storyText: string;
+    image: string
+    heading: string
+    companys: Company[]
+}
+
 
 
 

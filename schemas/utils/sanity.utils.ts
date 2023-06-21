@@ -116,3 +116,26 @@ export async function getBlogList(): Promise<Post[]> {
 
 
 }
+
+
+export async function getAbout(): Promise<About[]> {
+
+    return client.fetch(
+
+        groq`
+        
+        *[_type == "about"]{
+          ...,
+           "image" : image.asset->url,
+             companys[]->{
+               ...,
+             "image" : image.asset->url,
+            }
+             } | order(_createdAt desc)
+
+        `
+
+        
+    )
+
+}

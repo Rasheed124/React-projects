@@ -22,6 +22,13 @@ async function Projects({ params: { slug } }: Props) {
     groq`*[_type == "projects" && slug.current == $slug][0]{
             _id,
               ...,
+                _type == "muxVideo" => {
+            ...,
+            asset->{
+                ...,
+                "video": "https://stream.mux.com/" + playbackId
+                }
+            },
 
 
         projectContent[]->{
@@ -60,11 +67,16 @@ async function Projects({ params: { slug } }: Props) {
 
 
                                     //   <Link href={`/${content.url}`}>
-                                            <iframe 
-                                                width={400}
-                                                height={600}
-                                                src={`${content.url}`}>
-                                            </iframe> 
+                                            // <iframe 
+                                            //     width={400}
+                                            //     height={600}
+                                            //    >
+                                            // </iframe> 
+
+
+                                            <video src={`${content.video}`} width={600} height={600} controls>
+                                            </video>
+
                                     //   </Link>
 
                                  

@@ -26,7 +26,7 @@ const migraLight = localFont({
 const antonio = Antonio( { 
   subsets: ['latin'],
   fallback: ['system-ui', 'antonio'],
-
+  display : 'fallback',
   variable: '--font-antonio',
 
  })
@@ -51,9 +51,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${antonio.variable} ${sohneBold.variable} ${migraLight.variable} ${libre_baskerville.variable} bg-light-white`}>
+      <body className={`${antonio.variable} ${sohneBold.variable} ${migraLight.variable} ${libre_baskerville.variable} bg-transparent `}>
         {/* Header */}
-        <main className="bg-deep-black">
+        <main className="bg-transparent">
           <div className="max-w-8xl mx-auto ">
             {children}
           </div>

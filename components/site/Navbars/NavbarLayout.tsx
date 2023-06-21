@@ -9,11 +9,13 @@ import NavbarAbout from "./NavbarAbout";
 const Layout = (
     
    {
-    children, route
+    children, route 
 }: {
     children: React.ReactNode,
 
     route: string;
+
+   
 }) => {
     return (
 

@@ -21,8 +21,8 @@ const NavbarAbout = () => {
     return (
 
         <>
-            <nav className="bg-light-white  text-deep-black " >
-                <div className="py-6 px-5">
+            <nav className="bg-transparent relative  text-white " >
+                <div className="py-6 px-5 absolute top-10 left-0 w-full bg-red-900">
 
                     <div className=" flex justify-between items-center">
 

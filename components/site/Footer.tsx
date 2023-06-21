@@ -15,7 +15,7 @@ const Footer = () => {
     return (
 
         <>
-            <footer className="pb-14  bg-contact-dark-overlay">
+            <footer className="pb-14  bg-contact-dark-overlay text-deep-black">
                 <div className="flex flex-col w-full  ">
                     <div className=" pb-5">
 
