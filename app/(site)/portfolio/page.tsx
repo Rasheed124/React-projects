@@ -7,16 +7,16 @@ import { draftMode } from "next/headers";
 import PreviewSuspense from "@/components/site/PreviewSuspense";
 import Layout from "@/components/site/Navbars/NavbarLayout";
 import getServerSideQueries from "@/components/site/getServerSideQueries";
-import { getProjects } from "@/schemas/utils/sanity.utils";
+import { getPortFolioProjectsQuery } from "@/schemas/utils/sanity.utils";
 import PortfolioProject from "@/components/site/Portfolio/Portfolio"
 import PreviewPortfolio from "@/components/site/Portfolio/PreviewPortfolio";
 
-const ProjectsQuery = getServerSideQueries().ProjectsQuery;
+const ProjectsQuery = getServerSideQueries().PortFolioProjectsQuery;
 
 export default async function Portfolio() {
     const { isEnabled } = draftMode();
 
-    const portfolio  =  await getProjects()
+    const portfolio  =  await getPortFolioProjectsQuery()
 
 
 
@@ -50,7 +50,7 @@ export default async function Portfolio() {
 
 
     return (
-    <div className="bg-deep-black text-light-white px-4 xl:px-0">
+    <div className=" text-light-white ">
 
         <Layout route="/contact">
 

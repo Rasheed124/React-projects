@@ -34,7 +34,17 @@ const SkillQuery =
 
 const ProjectsQuery = 
 
-    groq`*[_type == "projects"]{
+    groq`*[_type == "projects"][0..5] {
+            _id,
+              ...,
+              
+           
+             } | order(_createdAt desc)`
+
+
+const PortFolioProjectsQuery = 
+
+    groq`*[_type == "projects"] {
             _id,
               ...,
                   "projectImage" : projectImage.asset->url,
@@ -86,7 +96,7 @@ const ContactQuery = groq`
 
 
 
- return ({ BannerQuery, SkillQuery, ProjectsQuery, TestimonialsQuery, PostQuery, AboutQuery, ContactQuery} )
+ return ({ BannerQuery, SkillQuery, ProjectsQuery, TestimonialsQuery, PostQuery, AboutQuery, ContactQuery, PortFolioProjectsQuery} )
 
 
 }

@@ -39,7 +39,7 @@ const ContactInfo = ({contacts} :Props ) => {
                          
                         </div>
 
-                        <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center mt-16 space-y-3">
+                        <div className="flex uppercase flex-col lg:flex-row justify-center lg:justify-between items-center mt-16 space-y-3">
                             <div>
                                 <h3 className="text-xl font-bold font-Antonio">{contact.logo}</h3>
                             </div>

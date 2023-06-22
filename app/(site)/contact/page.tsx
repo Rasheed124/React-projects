@@ -6,10 +6,21 @@ import { draftMode } from "next/headers";
 
 import PreviewSuspense from "@/components/site/PreviewSuspense";
 import Layout from "@/components/site/Navbars/NavbarLayout";
+import PreviewContact from "@/components/site/Contact/PreviewContact";
+import getServerSideQueries from "@/components/site/getServerSideQueries";
+import Contact from "@/components/site/Contact/Contact";
+import { getContact } from "@/schemas/utils/sanity.utils";
+
+
+
+const ContactQuery = getServerSideQueries().ContactQuery
 
 
 export default async function Contact() {
     const { isEnabled } = draftMode();
+
+    const contacts = await getContact();
+
 
 
 
@@ -26,9 +37,11 @@ export default async function Contact() {
             </div>
         }>
 
-               <div className=" text-light-white px-4 xl:px-0">
+               <div className=" text-light-white ">
                   {/* Preview Blog List */} 
                    <div>
+
+                   <PreviewContact query={ContactQuery} />
 
                    </div>
                     
@@ -43,13 +56,13 @@ export default async function Contact() {
 
 
     return (
-    <div className="bg-deep-black text-light-white px-4 xl:px-0">
+ <div className=" text-deep-black ">
 
         <Layout route="/contact">
 
-             <div>Welcome to my Contact Page
+           
 
-             </div>
+            
         </Layout>
 
       

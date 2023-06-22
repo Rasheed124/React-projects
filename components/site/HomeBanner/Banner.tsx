@@ -21,7 +21,7 @@
 
                                 <div className="max-w-sm sm:max-w-lg  md:max-w-3xl mx-auto  mb-10 p-2 lg:py-16">
                                     <div className="   leading-[10rem] flex justify-center items-center  ">
-                                        <h2 className="text-[6rem] text-light-white sm:whitespace-nowrap sm:text-[4.2rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[10rem] sm:px-5  font-Antonio leading-[7rem] lg:tracking-[-0.5rem] ">{homeBanner.name}</h2>
+                                        <h2 className="text-[6rem] text-light-white sm:whitespace-nowrap sm:text-[4.2rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[10rem] sm:px-5 tracking-[0.8rem] font-Antonio leading-[7rem] lg:tracking-[-0.5rem] uppercase ">{homeBanner.name}</h2>
                                     </div>
                                 </div> 
 

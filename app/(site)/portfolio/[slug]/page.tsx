@@ -105,12 +105,11 @@ async function Projects({ params: { slug } }: Props) {
                                 <p>{project.description}</p>
                              </div>
                              
-                            <div className=" grid grid-cols-2 place-items-start  max-w-[350px] mb-5  ">
-                                {Array.from(project.skillsTitle).map(skill => (
-
-                                        <p className="text-lg "> <span className="text-black">✔</span> {skill}</p>
-                                ))}
-                             </div>
+                                    { project.skillsTitle && Array.from(project.skillsTitle).map(skill => (
+                                        <div className=" grid grid-cols-2 place-items-start  max-w-[350px] mb-5  ">
+                                            <p className="text-lg "> <span className="text-black">✔</span> {skill}</p>
+                                        </div>
+                                   ))}
 
                                 {/* KEY RESULT */}
 

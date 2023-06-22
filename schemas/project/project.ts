@@ -60,7 +60,7 @@ export default defineType({
 
            defineField({
             name: 'projectContent',
-            title: 'Project Media Content',
+            title: 'Projects Gallery',
             type: 'array',
             of: [{ type: 'reference', to: { type: 'projectGallery' } }],
         }),

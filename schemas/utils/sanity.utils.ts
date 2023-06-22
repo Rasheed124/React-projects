@@ -46,7 +46,21 @@ export async function getProjects(): Promise<Projects[]> {
 
     return client.fetch(
 
-    groq`*[_type == "projects"]{
+    groq`*[_type == "projects"][0..4] {
+            _id,
+              ...,
+          
+           
+             } | order(_createdAt desc)`
+    )
+
+}
+
+export async function getPortFolioProjectsQuery(): Promise<Projects[]> {
+
+    return client.fetch(
+
+    groq`*[_type == "projects"] {
             _id,
               ...,
                   "projectImage" : projectImage.asset->url,
