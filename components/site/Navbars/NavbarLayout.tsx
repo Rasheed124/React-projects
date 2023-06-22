@@ -22,11 +22,13 @@ const Layout = (
         <div>
             { route == '/' &&  <Navbar />}
         
-          {route != '/'  && route != '/about'  &&  <NavbarMain />}   
+           {route != '/'  && route != '/about'  &&   <NavbarMain />}   
+       
 
             {children}
 
-          {route != '/' && route == '/about'  &&  <Footer />}   
+          {route != '/' && route == '/about'    &&  <Footer />}   
+          {  route == '/contact'   &&  <Footer />}   
         </div>
     );
 }

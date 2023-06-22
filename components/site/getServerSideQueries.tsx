@@ -95,8 +95,17 @@ const ContactQuery = groq`
         `;
 
 
+const Contact = groq`
+        
+        *[_type == "contact"]{
+          ...,
+         
+             } | order(_createdAt desc)
+        `;
 
- return ({ BannerQuery, SkillQuery, ProjectsQuery, TestimonialsQuery, PostQuery, AboutQuery, ContactQuery, PortFolioProjectsQuery} )
+
+
+ return ({ BannerQuery, SkillQuery, ProjectsQuery, TestimonialsQuery, PostQuery, AboutQuery, ContactQuery, Contact, PortFolioProjectsQuery} )
 
 
 }

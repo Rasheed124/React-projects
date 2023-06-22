@@ -139,6 +139,7 @@ interface Testimonial extends Base {
 }
 
 
+// About 
 interface Company extends Base {
     title: string;
     image: string;
@@ -154,7 +155,7 @@ interface About extends Base {
 }
 
 
-
+// Contact
 interface Contact extends Base {
     title: string;
     logo: string;
@@ -164,6 +165,22 @@ interface Contact extends Base {
     socialHandle: string
     marquee: string
     heading: string
+}
+
+
+
+// Content Writing 
+interface Content extends Base {
+    title: string;
+    image: string;
+    url: string
+    description: string
+}
+
+interface ContentWriting extends Base {
+    title: string;
+    subTitle: string;
+    content: Company[]
 }
 
 

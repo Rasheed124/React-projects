@@ -19,6 +19,9 @@ import company from './about/company'
 
 import contact from './contact/contact'
 
+import writing from './writing/contentWriting'
+import contentPost from './writing/contentPost'
+
 
 
 
@@ -41,5 +44,8 @@ export const schemaTypes = [
     about,
     company,
 
-    contact
+    contact,
+
+    writing,
+    contentPost
 ]
