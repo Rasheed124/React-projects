@@ -6,10 +6,19 @@ import { draftMode } from "next/headers";
 
 import PreviewSuspense from "@/components/site/PreviewSuspense";
 import Layout from "@/components/site/Navbars/NavbarLayout";
+import { getBlogList } from "@/schemas/utils/sanity.utils";
 
+import BlogList from "@/components/site/Blog/BlogList";
+import getServerSideQueries from "@/components/site/getServerSideQueries";
+import PreviewBlogList from "@/components/site/Blog/PreviewBlogList";
+
+
+const BlogListQuery = getServerSideQueries().BlogListQuery
 
 export default async function Blog() {
     const { isEnabled } = draftMode();
+
+    const blogList =  await getBlogList()
 
 
 
@@ -19,18 +28,16 @@ export default async function Blog() {
         return (
 
             <PreviewSuspense fallback={
-            <div role="status" className="flex min-h-screen justify-center items-center bg-deep-black">
+            <div role="status" className="flex min-h-screen justify-center items-center ">
                 <p className="text-center text-lg text-light-white  ">
                     Loading Preview Data....
                 </p>
             </div>
         }>
 
-               <div className=" text-light-white px-4 xl:px-0">
+               <div className=" text-deep-black px-4 xl:px-0">
                   {/* Preview Blog List */} 
-                   <div>
-
-                   </div>
+                   <PreviewBlogList query={BlogListQuery} />
                     
 
                </div>
@@ -43,13 +50,12 @@ export default async function Blog() {
 
 
     return (
-    <div className="bg-deep-black text-light-white px-4 xl:px-0">
+    <div className=" text-deep-black px-4 xl:px-0">
 
         <Layout route="/contact">
 
-             <div>Welcome to my Blog Page
-
-             </div>
+            <BlogList posts={blogList} />
+           
         </Layout>
 
       

@@ -116,6 +116,22 @@ export async function getTestimonials(): Promise<Testimonial[]> {
 }
 
 
+export async function getPostList(): Promise<Post[]> {
+
+    return client.fetch(
+
+        groq`
+        *[_type == "post"][0...5]{
+            ...,
+            author->,
+            categories[]->
+        } | order(_createdAt desc) `
+
+            )
+
+
+}
+
 export async function getBlogList(): Promise<Post[]> {
 
     return client.fetch(
@@ -170,6 +186,8 @@ export async function getContactInfo(): Promise<Contact[]> {
     )
 
 }
+
+
 export async function getContact(): Promise<Contact[]> {
 
     return client.fetch(
@@ -181,8 +199,26 @@ export async function getContact(): Promise<Contact[]> {
          
              } | order(_createdAt desc)
         `
+    )
 
+}
+
+
+export async function getContentWriting(): Promise<ContentWriting[]> {
+
+    return client.fetch(
+
+        groq`
         
+        *[_type == "contentWriting"]{
+            ...,
+             writings[]->{
+               ...,
+             "image" : image.asset->url,
+            }
+         
+             } | order(_createdAt desc)
+        `
     )
 
 }

@@ -81,7 +81,7 @@ import { motion } from 'framer-motion';
                                                         className="w-full absolute top-0 left-0 max-w-full"
                                                     
                                                     />
-                                                {/* <img className="w-36" src={} alt="" /> */}
+                                 
                                                   </div>
                                                 <div className="space-y-5 ">
                                                   <h4 className="font-Antonio font-bold uppercase">{skillDetail.title}</h4>

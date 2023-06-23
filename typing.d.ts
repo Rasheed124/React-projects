@@ -168,9 +168,8 @@ interface Contact extends Base {
 }
 
 
-
 // Content Writing 
-interface Content extends Base {
+interface WritingPost extends Base {
     title: string;
     image: string;
     url: string
@@ -180,7 +179,7 @@ interface Content extends Base {
 interface ContentWriting extends Base {
     title: string;
     subTitle: string;
-    content: Company[]
+    writings: WritingPost[]
 }
 
 

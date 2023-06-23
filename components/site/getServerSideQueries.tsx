@@ -64,6 +64,15 @@ const TestimonialsQuery =
 
 
 const PostQuery =   groq`
+  *[_type == "post"][0...5]{
+    ...,
+    author->,
+    categories[]->
+   } | order(_createdAt desc)
+   `;
+
+
+const BlogListQuery =   groq`
   *[_type == "post"]{
     ...,
     author->,
@@ -104,8 +113,33 @@ const Contact = groq`
         `;
 
 
+const ContactWritingQuery =   groq`
+        
+        *[_type == "contentWriting"]{
+            ...,
+             writings[]->{
+               ...,
+             "image" : image.asset->url,
+            }
+         
+             } | order(_createdAt desc)
+        `
 
- return ({ BannerQuery, SkillQuery, ProjectsQuery, TestimonialsQuery, PostQuery, AboutQuery, ContactQuery, Contact, PortFolioProjectsQuery} )
+
+
+ return ({ 
+  BannerQuery, 
+  SkillQuery, 
+  ProjectsQuery, 
+  TestimonialsQuery, 
+  PostQuery, 
+  AboutQuery, 
+  ContactQuery, 
+  Contact, 
+  PortFolioProjectsQuery, 
+  ContactWritingQuery,
+  BlogListQuery
+} )
 
 
 }

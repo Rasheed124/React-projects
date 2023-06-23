@@ -6,20 +6,21 @@ import { draftMode } from "next/headers";
 
 import PreviewSuspense from "@/components/site/PreviewSuspense";
 import Layout from "@/components/site/Navbars/NavbarLayout";
-import ContentWriting from "@/components/site/ContactWriting/ContentWriting";
+import ContentWriting from "@/components/site/ContentWriting/ContentWriting";
 import getServerSideQueries from "@/components/site/getServerSideQueries";
-import { getContact } from "@/schemas/utils/sanity.utils";
+import { getContentWriting } from "@/schemas/utils/sanity.utils";
+import PreviewContentWriting from "@/components/site/ContentWriting/PreviewContactWriting";
 
 
 
 
-const ContactQuery = getServerSideQueries().ContactQuery
+const contentwritingQuery = getServerSideQueries().ContactWritingQuery
 
 
 export default async function ContactWriting() {
     const { isEnabled } = draftMode();
 
-    const contacts = await getContact();
+    const contentwriting = await getContentWriting();
 
 
     // SETTING PREVIEW MODE
@@ -36,12 +37,8 @@ export default async function ContactWriting() {
 
                <div className=" text-light-white ">
                   {/* Preview Blog List */} 
-                   <div>
-
-            
-
-                   </div>
-                    
+                   
+                  <PreviewContentWriting query={contentwritingQuery} />
 
                </div>
         </PreviewSuspense>
@@ -57,7 +54,7 @@ export default async function ContactWriting() {
 
         <Layout route="/contact">
 
-             <ContentWriting  />
+             <ContentWriting contentwritings={contentwriting} />
          
             
         </Layout>

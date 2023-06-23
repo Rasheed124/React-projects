@@ -5,7 +5,7 @@ import { draftMode } from "next/headers";
 
 
 import PreviewSuspense from "@/components/site/PreviewSuspense";
-import { getBlogList, getContact, getContactInfo, getHomeBanner, getProjects, getSkills, getTestimonials } from '@/schemas/utils/sanity.utils';
+import {  getContactInfo, getHomeBanner, getPostList, getProjects, getSkills, getTestimonials } from '@/schemas/utils/sanity.utils';
 import PreviewBanner from '@/components/site/HomeBanner/PreviewBanner';
 
 import Banner from '@/components/site/HomeBanner/Banner'
@@ -51,7 +51,7 @@ export default async function Home() {
     const skills = await getSkills();
     const projects = await getProjects();
     const testimonials = await getTestimonials();
-    const posts = await getBlogList();
+    const posts = await getPostList();
     const contactInfo = await getContactInfo();
 
 

@@ -19,10 +19,10 @@ export default defineType({
     }),
 
     defineField({
-        name: 'content',
-        title: 'Content',
+        name: 'writings',
+        title: 'Content Writing',
         type: 'array',
-        of: [{ type: 'reference', to: { type: 'contentPost' } }],
+        of: [{ type: 'reference', to: { type: 'writingPost' } }],
     }),
 
 
