@@ -77,41 +77,70 @@ const Navbar = () => {
                         // Desktop Nav
                          <div>
                             <div className="lg:border-t lg:pt-2">
-                                <ul className='flex justify-between items-center '>
+                                <ul className='flex justify-between items-center justify-items-start '>
                                    
                                         <li>
-                                            <Link href={'/about'} className="font-bold font-Antonio">
+                                            <Link href={'/about'} className="font-bold font-Antonio block">
                                                 <div className="relative overflow-y-hidden link-swipe">
-                                                    <span className=" transform transition-transform translate-y-0 duration-300">
+                                                    <span className="block  transform transition-transform translate-y-0 duration-300">
                                                         About
                                                     </span>
-                                                    <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                    <span className='block absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
                                                        About
                                                     </span>
                                               
                                                 </div>
                                             </Link>
+
+                                    
                                         </li>
-                                        <li>
-                                            <Link href={'/portfolio'} className="font-bold font-Antonio">
+
+
+                                        <li className="relative ">
+                                            <Link href={'/portfolio'} className="font-bold font-Antonio block">
                                                 <div className="relative overflow-y-hidden link-swipe">
-                                                    <span className=" transform transition-transform translate-y-0 duration-300">
+                                                    <span className="block  transform transition-transform translate-y-0 duration-300">
                                                         Portfolio
                                                     </span>
-                                                    <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                    <span className='block absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
                                                        Portfolio
                                                     </span>
                                               
                                                 </div>
                                             </Link>
+
+                                               <ul className="p-5 w-full absolute flex flex-col top-7 border left-0 bg-deep-black">
+                                                      <li>
+                                                       <Link href={'/about'} className="font-bold font-Antonio block">
+                                                         <div className="">
+                                                              <span className="block ">
+                                                                 Social Media & Strategy
+                                                               </span>
+                                                           </div>
+                                                        </Link>
+                                                 </li>
+                                                 <li>
+                                                       <Link href={'/about'} className="font-bold font-Antonio block">
+                                                         <div className="">
+                                                              <span className="block ">
+                                                                 Content Writing
+                                                               </span>
+                                                           </div>
+                                                        </Link>
+                                                 </li>
+                                              </ul>
+
+                                           
                                         </li>
+
+
                                         <li>
-                                            <Link href={'/contact'} className="font-bold font-Antonio">
+                                            <Link href={'/contact'} className="font-bold font-Antonio block">
                                                 <div className="relative overflow-y-hidden link-swipe">
-                                                    <span className=" transform transition-transform translate-y-0 duration-300">
+                                                    <span className=" transform transition-transform translate-y-0 duration-300 block">
                                                         Contact
                                                     </span>
-                                                    <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                    <span className='block absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
                                                        Contact
                                                     </span>
                                               
