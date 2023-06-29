@@ -1,4 +1,5 @@
-
+// "use client"
+import NavbarMain from '@/components/site/Navbars/NavBarMain'
 import '../styles/globals.css'
 
 
@@ -61,6 +62,7 @@ export default function RootLayout({
         {/* Header */}
         <main className="bg-transparent">
           <div className="max-w-8xl mx-auto ">
+
             {children}
           </div>
         </main>

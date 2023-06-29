@@ -4,6 +4,8 @@ import Image from "next/image";
 import { PortableText } from "@portabletext/react"
 
 import urlFor from "@/lib/urlFor";
+import Navbar from "@/components/site/Navbars/Navbar";
+import Link from "next/link";
 
 // import {Porta}
 
@@ -28,79 +30,119 @@ async function Post({ params: { slug } }: Props) {
     const post: Post = await client.fetch(query, { slug })
 
     // console.log(post)
+    
 
 
     return (
+    
         <article className="px-10 pb-20">
 
-            <section className="space-y-2 border border-[#F7AB0A] text-white">
-                <div className="relative min-h-56 flex  flex-col md:flex-row  justify-between">
-                    <div className="absolute top-0 w-full h-full opacity-10 blur-sm p-10">
-                        <Image
-                            className="object-cover object-center mx-auto"
-                            // src={urlFor(post.mainImage).url()}
-                            alt={post.author.name}
-                            fill
+        
+            <section className="py-14  ">
+                       <div className="  ">
+                            <div className=" pb-5 max-w-5xl  mx-auto  ">
 
-                            src={urlFor(post.mainImage).url()}
-                        />
+                                <div className="py-10  ">
 
+                                    <div className="flex justify-between ">
 
-                    </div>
+                                        <div className="max-w-2xl ">
+                                            <ul className="flex  space-x-5">
 
-                    <section className="p-5 bg-[#F7AB0A] w-full">
-                        <div className="flex  flex-col md:flex-row  justify-between gap-y-5">
-                            <div>
-                                <h1 className="text-4xl font-extrabold">{post.title}</h1>
-                                <p>
-                                    {new Date(post._createdAt).toLocaleDateString(
-                                        "en-Us", {
-                                        day: "numeric",
-                                        month: "long",
-                                        year: "numeric",
-                                    }
-                                    )}
-                                </p>
-                            </div>
+                                             
+                                                <li className="text-lg hover:text-light-white transition-colors duration-700 ">
+                                                    <Link href={'/blog'} >
+                                                        All Posts
+                                                    </Link>
+                                                </li>
 
-                            <div className="flex items-center space-x-2">
-                                <Image
-                                    className="rounded-full"
-                                    src={urlFor(post.author.image).url()}
-                                    alt={post.author.name}
-                                    height={40}
-                                    width={40}
-                                />
+                                            {post.categories.map(category => (
+                                                 <li className="text-lg  " key={category._id}>
+                                                    <Link href={'/'} >
+                                                       {category.title}
+                                                    </Link>
+                                                </li>
+                                         ))}
+                                               
+                                        
+                                            </ul>
+                                        </div>
 
-                                <div className="p-24">
-                                    <h3 className="text-lg font-bold">{post.author.name}</h3>
-                                    <div>
-                                        {/* AUTHOR BIO */}
+                                        <div>
+                                            <form action="/">
+                                                <div>
+                                                    <input type="search" name="" id="" />
+                                                </div>
+                                            </form>
+
+                                        </div>
                                     </div>
                                 </div>
 
+                                {/* <div className="mt-10 grid grid-cols-1 max-w-4xl min-h-screen w-full border mx-auto gap-10 text-center  px-5 "></div> */}
+                                <div className="mt-10  max-w-4xl  shadow-sm mx-auto   p-5 ">
+
+                                    <div className="flex justify-between items-center ">
+                                        <div className="flex space-x-2 justify-center items-center">
+
+                                            <div className="mr-5">
+                                                  <Image
+                                                    className="rounded-full"
+                                                    src={urlFor(post.author.image).url()}
+                                                    alt={post.author.name}
+                                                    height={40}
+                                                    width={40}
+                                                   />
+                                            </div>
+                                             <h3 className="text-lg font-bold hover:text-light-white transition-colors duration-700 ">{post.author.name}</h3>
+                                               <p>
+                                                {new Date(post._createdAt).toLocaleDateString(
+                                                    "en-Us", {
+                                                    day: "numeric",
+                                                    month: "long",
+                                                    year: "numeric",
+                                                }
+                                                )}
+                                            </p>
+                                             <h4>8 min Read</h4>
+                                        </div>
+
+                                        <div>
+                                            <Link href={'/'}>
+                                               <h5>share</h5>
+                                               
+                                            </Link>
+                                        </div>
+                                    </div>
+
+                                    <div className="my-2 p-2 ">
+
+                                        <h3 className="font-semibold text-xl font-Sohne-Bold mb-3">{post.title}</h3>
+
+                                            <p> <span className="mr-2">Updated at: </span> 
+                                                {new Date(post._updatedAt).toLocaleDateString(
+                                                    "en-Us", {
+                                                    day: "numeric",
+                                                    month: "long",
+                                                    year: "numeric",
+                                                }
+                                                )}
+                                            </p>
+                                    </div>
+
+                                    <div>
+                                          <PortableText value={post.Body} />
+                                    </div>
+
+                                    
+                               </div>
                             </div>
 
-                            <div>
 
-                                <h2 className="italic pt-10">{post.description}</h2>
-                                <div className="flex items-center justify-end mt-auto space-x-2">
-                                    {post.categories.map(category => (
-                                        <p
-                                            key={category._id}
-                                            className="bg-gray-400 text-center text-white px-3 py-1 rounded-full text-sm font-semibold mt-4">
-                                            {category.title}
-                                        </p>
-                                    ))}
+                         </div>
+                  </section>
 
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </section>
-
-            <PortableText value={post.Body} />
+          
         </article>
     )
 }
@@ -108,11 +150,3 @@ async function Post({ params: { slug } }: Props) {
 export default Post
 
 
-// async const Post = ({ params: { slug } }: Props) => {
-//     return (
-//         <div>Post : {slug}</div>
-//     )
-// }
-
-
-// export default Post

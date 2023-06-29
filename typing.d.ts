@@ -50,7 +50,7 @@ interface Block {
     children: Span[];
     markDefs: any[];
     mainImage: Image;
-    style: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    style: "normal" | "h1" | "h2" | "h3" | "h4" | "h6" |  "p" | "blockquote";
 }
 
 

@@ -22,7 +22,10 @@ const Layout = (
         <div>
             { route == '/' &&  <Navbar />}
         
-           {route != '/'  && route != '/about'  &&   <NavbarMain />}   
+           {route != '/'  && route != '/about'  &&   <NavbarMain />}  
+
+
+      
        
 
             {children}

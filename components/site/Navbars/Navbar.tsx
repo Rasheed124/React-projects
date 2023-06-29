@@ -77,39 +77,66 @@ const Navbar = () => {
                         // Desktop Nav
                          <div>
                             <div className="lg:border-t lg:pt-2">
-                                <ul className='flex justify-between items-center justify-items-start '>
+                                <ul className='flex justify-between items-start  '>
                                    
-                                        <li>
-                                            <Link href={'/about'} className="font-bold font-Antonio block">
-                                                <div className="relative overflow-y-hidden link-swipe">
-                                                    <span className="block  transform transition-transform translate-y-0 duration-300">
-                                                        About
-                                                    </span>
-                                                    <span className='block absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
-                                                       About
-                                                    </span>
+                                         <li className=" ">
+
+                                                <Link href={'/portfolio'} className="font-bold font-Antonio block">
+                                                   <div className="relative overflow-y-hidden link-swipe">
+                                                      <span className="block  transform transition-transform translate-y-0 duration-300">
+                                                          About
+                                                      </span>
+                                                       <span className='block absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                          About
+                                                      </span>
                                               
-                                                </div>
-                                            </Link>
+                                                    </div>
+                                                </Link>
 
-                                    
-                                        </li>
+                                         
+                                                 <ul className=" mt-3   p-5 w-full border  bg-deep-black">
+                                                      <li>
+                                                       <Link href={'/blog'} className="font-bold font-Antonio block">
+                                                         <div className="">
+                                                              <span className="block ">
+                                                                 Blog
+                                                               </span>
+                                                           </div>
+                                                        </Link>
+                                                 </li>
+                                                 <li>
+                                                       <Link href={'/about'} className="font-bold font-Antonio block">
+                                                         <div className="">
+                                                              <span className="block ">
+                                                                Resume
+                                                               </span>
+                                                           </div>
+                                                        </Link>
+                                                 </li>
+                                                </ul>
+                                          
+                                          
+                                           
+                                           </li>
 
 
-                                        <li className="relative ">
-                                            <Link href={'/portfolio'} className="font-bold font-Antonio block">
-                                                <div className="relative overflow-y-hidden link-swipe">
-                                                    <span className="block  transform transition-transform translate-y-0 duration-300">
-                                                        Portfolio
-                                                    </span>
-                                                    <span className='block absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
-                                                       Portfolio
-                                                    </span>
+
+                                        <li className=" ">
+
+                                                <Link href={'/portfolio'} className="font-bold font-Antonio block">
+                                                   <div className="relative overflow-y-hidden link-swipe">
+                                                      <span className="block  transform transition-transform translate-y-0 duration-300">
+                                                          Portfolio
+                                                      </span>
+                                                       <span className='block absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                          Portfolio
+                                                      </span>
                                               
-                                                </div>
-                                            </Link>
+                                                    </div>
+                                                </Link>
 
-                                               <ul className="p-5 w-full absolute flex flex-col top-7 border left-0 bg-deep-black">
+                                         
+                                                 <ul className=" mt-3   p-5 w-full border  bg-deep-black">
                                                       <li>
                                                        <Link href={'/about'} className="font-bold font-Antonio block">
                                                          <div className="">
@@ -128,10 +155,11 @@ const Navbar = () => {
                                                            </div>
                                                         </Link>
                                                  </li>
-                                              </ul>
-
+                                                </ul>
+                                          
+                                          
                                            
-                                        </li>
+                                           </li>
 
 
                                         <li>
