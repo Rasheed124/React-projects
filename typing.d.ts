@@ -11,7 +11,7 @@ type Base = {
 
 interface Post extends Base {
     author: Author;
-    Body: Block[];
+    body: Block[];
     categories: Category[];
     mainImage: Image;
     slug: Slug;
@@ -50,7 +50,7 @@ interface Block {
     children: Span[];
     markDefs: any[];
     mainImage: Image;
-    style: "normal" | "h1" | "h2" | "h3" | "h4" | "h6" |  "p" | "blockquote";
+    style: "normal" | "h1" | "h2" | "h3" | "h4" | "h6" |  "blockquote";
 }
 
 

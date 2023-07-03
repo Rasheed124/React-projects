@@ -6,6 +6,7 @@ import { PortableText } from "@portabletext/react"
 import urlFor from "@/lib/urlFor";
 import Navbar from "@/components/site/Navbars/Navbar";
 import Link from "next/link";
+import { RichTextComponents } from "@/components/studio/RichComponentText";
 
 // import {Porta}
 
@@ -80,7 +81,7 @@ async function Post({ params: { slug } }: Props) {
                                 </div>
 
                                 {/* <div className="mt-10 grid grid-cols-1 max-w-4xl min-h-screen w-full border mx-auto gap-10 text-center  px-5 "></div> */}
-                                <div className="mt-10  max-w-4xl  shadow-sm mx-auto   p-5 ">
+                                <div className="mt-10  max-w-3xl  shadow-sm mx-auto   p-5 ">
 
                                     <div className="flex justify-between items-center ">
                                         <div className="flex space-x-2 justify-center items-center">
@@ -130,12 +131,15 @@ async function Post({ params: { slug } }: Props) {
                                             </p>
                                     </div>
 
-                                    <div>
-                                          <PortableText value={post.Body} />
-                                    </div>
-
+                                
                                     
                                </div>
+
+                                   <div className="py-3 mt-5 max-w-3xl  mx-auto   ">
+                                          <PortableText value={post.body}
+                                          components={RichTextComponents}  />
+                                    </div>
+
                             </div>
 
 

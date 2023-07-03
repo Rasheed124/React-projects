@@ -34,7 +34,7 @@ const SkillQuery =
 
 const ProjectsQuery = 
 
-    groq`*[_type == "projects"][0..5] {
+    groq`*[_type == "projects"][0..4] {
             _id,
               ...,
               
