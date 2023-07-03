@@ -28,19 +28,20 @@ export default async function Blog() {
         return (
 
             <PreviewSuspense fallback={
-            <div role="status" className="flex min-h-screen justify-center items-center ">
+            <div role="status" className="flex min-h-screen justify-center items-center bg-deep-black">
                 <p className="text-center text-lg text-light-white  ">
                     Loading Preview Data....
                 </p>
             </div>
         }>
 
-               <div className=" text-deep-black px-4 xl:px-0">
-                  {/* Preview Blog List */} 
-                   <PreviewBlogList query={BlogListQuery} />
-                    
+                <Layout route="/contact">
 
-               </div>
+                  <PreviewBlogList query={BlogListQuery} />
+           
+              </Layout>
+
+             
         </PreviewSuspense>
 
 

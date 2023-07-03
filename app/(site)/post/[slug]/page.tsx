@@ -7,6 +7,7 @@ import urlFor from "@/lib/urlFor";
 import Navbar from "@/components/site/Navbars/Navbar";
 import Link from "next/link";
 import { RichTextComponents } from "@/components/studio/RichComponentText";
+import Layout from "@/components/site/Navbars/NavbarLayout";
 
 // import {Porta}
 
@@ -30,13 +31,16 @@ async function Post({ params: { slug } }: Props) {
 
     const post: Post = await client.fetch(query, { slug })
 
-    // console.log(post)
+ 
     
 
 
     return (
-    
-        <article className="px-10 pb-20">
+
+        
+        <Layout route="/contact">
+
+             <article className="px-10 pb-20">
 
         
             <section className="py-14  ">
@@ -57,13 +61,15 @@ async function Post({ params: { slug } }: Props) {
                                                     </Link>
                                                 </li>
 
-                                            {post.categories.map(category => (
+                                            {post && post.categories.map(category => (
                                                  <li className="text-lg  " key={category._id}>
                                                     <Link href={'/'} >
                                                        {category.title}
                                                     </Link>
                                                 </li>
                                          ))}
+
+                                         {/* {post.categories.map()} */}
                                                
                                         
                                             </ul>
@@ -87,6 +93,7 @@ async function Post({ params: { slug } }: Props) {
                                         <div className="flex space-x-2 justify-center items-center">
 
                                             <div className="mr-5">
+                                                {/* {post.author.image && } */}
                                                   <Image
                                                     className="rounded-full"
                                                     src={urlFor(post.author.image).url()}
@@ -148,6 +155,12 @@ async function Post({ params: { slug } }: Props) {
 
           
         </article>
+
+
+            
+        </Layout>
+    
+      
     )
 }
 

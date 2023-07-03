@@ -33,12 +33,16 @@ export default async function Portfolio() {
             </div>
         }>
 
-               <div className=" text-light-white px-4 xl:px-0">
-                  {/* Preview Port List */} 
-                   <div>
-                    <PreviewPortfolio  query={ProjectsQuery} />
-                   </div>
-                    
+               <div className=" text-light-white">
+                   <Layout route="/contact">
+
+
+                    <PortfolioProject projects={portfolio}  />
+           
+
+                  </Layout>
+
+      
 
                </div>
         </PreviewSuspense>

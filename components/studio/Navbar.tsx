@@ -27,7 +27,7 @@ const Navbar = (props: any) => {
            
 
                 <div className="py-8  text-center">
-                    <p className="text-xl font-Antonio">Duromedia Abdulhad Studio</p>
+                    <p className="text-xl font-Antonio uppercase">Duromedia Abdulhad Studio</p>
                 </div>
             </div>
 
