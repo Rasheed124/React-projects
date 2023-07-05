@@ -2,7 +2,7 @@
 
 
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { HiMenu, HiX } from "react-icons/hi";
 import Link  from 'next/link'
@@ -13,8 +13,8 @@ import useMediaQuery from '../UseMediaQuery'
    import Image from "next/image";
 import { motion } from 'framer-motion';
 import urlFor from "@/lib/urlFor";
-
-
+import AnimatedNavbar from '../Navbars/AnimatedNavbar';
+import SetScrollSize from '../SetScrollSize';
 
 
     type Props = {
@@ -27,6 +27,9 @@ import urlFor from "@/lib/urlFor";
      const [MenuIsToggle, setMenuIstoggle] = useState(false)
 
       const isAboveSmallScreens = useMediaQuery("(min-width: 1024px)");
+
+      const isScrollSize =  SetScrollSize(137);
+
 
   
         return(
@@ -47,8 +50,18 @@ import urlFor from "@/lib/urlFor";
                                 visible: { opacity: 1, },
                             }}
                            >
-                                <nav className="bg-transparent pt-5 mx-10  text-white " >
-                                    <div className="  py-6 border-t border-white">
+                           {/* {animateHeader &&  <AnimatedNavbar /> } */}
+
+                             <nav className={`
+                                 
+                                 ${ !isAboveSmallScreens ? "bg-deep-black fixed w-full top-0 text-light-white transition duration-700 translate-y-0" :
+                                 
+                                 isScrollSize  ? "bg-deep-black fixed w-full top-0 text-light-white transition duration-700 translate-y-0 " : "bg-transparent pt-4 mx-10  text-light-white transform transition duration-700 translate-y-3"} }
+                             
+                             `} >
+                                    <div className={`
+                                        ${  !isAboveSmallScreens ? "border-0 py-6 px-5" : isScrollSize ? "border-0 py-6 px-5" : "py-6 border-t border-white"}
+                                    `}>
 
                                         <div className=" flex justify-between items-center">
 
@@ -58,49 +71,120 @@ import urlFor from "@/lib/urlFor";
                                             {/* DESKTOP NAV */}
                                             {isAboveSmallScreens ? (
 
-                                                <div className="">
-                                                    <ul className="space-x-12">
-                                                                    <li className="inline-block">
-                                                                <Link href={'/about'} className="font-bold font-Antonio">
-                                                                    <div className="relative overflow-y-hidden link-swipe">
-                                                                        <span className=" transform transition-transform translate-y-0 duration-300">
-                                                                            About
-                                                                        </span>
-                                                                        <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
-                                                                        About
-                                                                        </span>
-                                                                
-                                                                    </div>
-                                                                </Link>
-                                                            </li>
-                                                            <li className="inline-block">
-                                                                <Link href={'/portfolio'} className="font-bold font-Antonio">
-                                                                    <div className="relative overflow-y-hidden link-swipe">
-                                                                        <span className=" transform transition-transform translate-y-0 duration-300">
-                                                                            Portfolio
-                                                                        </span>
-                                                                        <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
-                                                                        Portfolio
-                                                                        </span>
-                                                                
-                                                                    </div>
-                                                                </Link>
-                                                            </li>
-                                                            <li className="inline-block">
-                                                                <Link href={'/contact'} className="font-bold font-Antonio">
-                                                                    <div className="relative overflow-y-hidden link-swipe">
-                                                                        <span className=" transform transition-transform translate-y-0 duration-300">
-                                                                            Contact
-                                                                        </span>
-                                                                        <span className='absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
-                                                                        Contact
-                                                                        </span>
-                                                                
-                                                                    </div>
-                                                                </Link>
-                                                            </li>
-                                                    </ul>
+                                                     <div className="">
+                              
+                                         <ul className='space-x-12  '>
+
+                                         <li className=" inline-block p-1 group transition-all duration-500">
+                                                <Link href={'/about'} className="font-extrabold  text-xl font-Antonio block">
+                                                   <div className="relative uppercase overflow-y-hidden link-swipe">
+                                                      <span className="block   transform transition-transform translate-y-0 duration-300">
+                                                          About
+                                                      </span>
+                                                       <span className='block absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                          About
+                                                      </span>
+                                              
+                                                    </div>
+                                                </Link>
+                                                <div className="z-20 relative font-Sohne-Bold hidden transition-all duration-500 group-hover:block hover:block ">
+                                               
+
+                                                        <ul className="space-y-3 top-2 absolute flex flex-col flex-grow left-0  py-5 px-5 bg-deep-overlay-black ">
+                                                      <li className="">
+                                                       <Link href={'/blog'} className=" whitespace-nowrap  block  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-light-white hover:after:w-full hover:after:h-0.5">
+                                                         <div className="">
+                                                              <span className="block text-lg ">
+                                                                 Blog
+                                                               </span>
+                                                           </div>
+                                                        </Link>
+                                                 </li>
+                                                      <li className="">
+                                                       <Link href={'#'} className=" whitespace-nowrap  block  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-light-white hover:after:w-full hover:after:h-0.5">
+                                                         <div className="">
+                                                              <span className="block text-lg ">
+                                                                 Resume
+                                                               </span>
+                                                           </div>
+                                                        </Link>
+                                                 </li>
+                                           
+                                                </ul>
                                                 </div>
+                                              
+                                          
+                                          
+                                           
+                                           </li>
+
+                                    
+                                         <li className="inline-block  p-1 group transition-all duration-500">
+                                                <Link href={'#'} className="font-extrabold  text-xl font-Antonio block">
+                                                   <div className="relative uppercase overflow-y-hidden link-swipe">
+                                                      <span className="block   transform transition-transform translate-y-0 duration-300">
+                                                          Porfolio
+                                                      </span>
+                                                       <span className='block absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                          Porfolio
+                                                      </span>
+                                              
+                                                    </div>
+                                                </Link>
+                                                <div className="z-20 relative font-Sohne-Bold hidden transition-all duration-500 group-hover:block hover:block ">
+                                                     <ul className="space-y-3 top-2 absolute flex flex-col flex-grow  -left-24   py-5 px-5 bg-deep-overlay-black ">
+                                                        <li className="">
+                                                       <Link href={'/blog'} className=" whitespace-nowrap  block  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-light-white hover:after:w-full hover:after:h-0.5">
+                                                         <div className="">
+                                                              <span className="block text-lg ">
+                                                                 Social Media & Strategy
+                                                               </span>
+                                                           </div>
+                                                        </Link>
+                                                 </li>
+                                                            <li className="">
+                                                       <Link href={'/content-writing'} className=" whitespace-nowrap  block  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-light-white hover:after:w-full hover:after:h-0.5">
+                                                         <div className="">
+                                                              <span className="block text-lg ">
+                                                                  Content Writing
+                                                               </span>
+                                                           </div>
+                                                        </Link>
+                                                 </li>
+                                                </ul>
+                                                </div>
+                                              
+                                          
+                                          
+                                           
+                                           </li>
+
+                                    
+                                         <li className=" inline-block p-1 group transition-all duration-500">
+                                                <Link href={'/contact'} className="font-extrabold  text-xl font-Antonio block">
+                                                   <div className="relative uppercase overflow-y-hidden link-swipe">
+                                                      <span className="block   transform transition-transform translate-y-0 duration-300">
+                                                          Contact
+                                                      </span>
+                                                       <span className='block absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                          Contact
+                                                      </span>
+                                              
+                                                    </div>
+                                                </Link>
+                                              
+                                              
+                                          
+                                          
+                                           
+                                           </li>
+
+                                    
+
+                                      
+                                  
+                                </ul>
+                            </div>
 
                                             ) : (
 
@@ -202,6 +286,8 @@ import urlFor from "@/lib/urlFor";
                                     </div>
                                 </nav>
 
+                      
+                              
                             
                             
                             

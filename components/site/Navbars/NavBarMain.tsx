@@ -7,6 +7,7 @@ import Link  from 'next/link'
 
 import { motion } from 'framer-motion';
 import useMediaQuery from '../UseMediaQuery'
+import SetScrollSize from '../SetScrollSize';
 
 
 
@@ -16,17 +17,27 @@ const NavbarMain = () => {
 
     const [MenuIsToggle, setMenuIstoggle] = useState(false);
 
-    const [IsChecked, setIsChecked] = useState(false)
+      const isScrollSize =  SetScrollSize(137);
+    
 
     const isAboveSmallScreens = useMediaQuery("(min-width: 1024px)");
 
     return (
 
         <>
-            <nav className="bg-deep-black  text-light-white"   >
-                <div className="py-6 px-5">
 
-                    <div className=" flex justify-between items-center">
+                        <nav className={`
+                                 
+                                 ${ !isAboveSmallScreens ? "bg-deep-black fixed w-full top-0 z-50 text-light-white transition duration-200 translate-y-0" :
+                                 
+                                 isScrollSize  ? "bg-deep-black z-50 fixed w-full top-0 text-light-white transition duration-500 translate-y-0 " : "bg-light-white pt-4   text-deep-overlay-black transform transition duration-700 translate-y-0"} }
+                             
+                             `} >
+                                    <div className={`
+                                        ${  !isAboveSmallScreens ? "border-0 py-6 px-5" : isScrollSize ? "border-0 py-6 px-5" : "py-6 border-b border-deep-overlay-black"}
+                                    `}>
+
+                    <div className=" flex justify-between items-center px-6">
 
                         <Link href={"/"} className="block text-2xl hover:transition-colors hover:duration-500 hover:text-header-dark-overlay font-semibold font-Antonio">
                             <h2>Durodola Abdulhad</h2>
@@ -51,25 +62,28 @@ const NavbarMain = () => {
                                                     </div>
                                                 </Link>
                                                 <div className="z-20 relative font-Sohne-Bold hidden transition-all duration-500 group-hover:block hover:block ">
-                                                     <ul className=" [direction:rtl]  absolute flex flex-col flex-grow top-0 left-0  py-5 px-5 bg-deep-overlay-black ">
-                                                      <li>
-                                                       <Link href={'/blog'} className=" whitespace-nowrap [text-orientation:sideways] block">
+                                               
+
+                                                      <ul className={` space-y-1  absolute flex flex-col flex-grow top-2 left-0  py-5 px-5 bg-deep-overlay-black ${isAboveSmallScreens && !isScrollSize ? "text-light-white  " : " text-deep-overlay-black"}`}>
+                                                      <li className="">
+                                                       <Link href={'/blog'} className=" whitespace-nowrap  block  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-light-white hover:after:w-full hover:after:h-0.5">
                                                          <div className="">
-                                                              <span className="block text-lg whitespace-nowrap   [direction:rtl] ">
+                                                              <span className="block text-lg ">
                                                                  Blog
                                                                </span>
                                                            </div>
                                                         </Link>
                                                  </li>
-                                                 <li>
-                                                       <Link href={'#'} className=" whitespace-nowrap block ">
+                                                      <li className="">
+                                                       <Link href={'#'} className=" whitespace-nowrap  block  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-light-white hover:after:w-full hover:after:h-0.5">
                                                          <div className="">
-                                                              <span className="block  whitespace-nowrap text-lg  [direction:rtl]">
-                                                                Resume  
+                                                              <span className="block text-lg ">
+                                                                 Resume
                                                                </span>
                                                            </div>
                                                         </Link>
                                                  </li>
+                                           
                                                 </ul>
                                                 </div>
                                               
@@ -92,21 +106,21 @@ const NavbarMain = () => {
                                                     </div>
                                                 </Link>
                                                 <div className="z-20 relative font-Sohne-Bold hidden transition-all duration-500 group-hover:block hover:block ">
-                                                     <ul className="  absolute flex flex-col flex-grow top-0 -left-24   py-5 px-5 bg-deep-overlay-black ">
-                                                      <li>
-                                                       <Link href={'/portfolio'} className=" whitespace-nowrap   block">
+                                                        <ul className={` space-y-1  absolute flex flex-col flex-grow top-2 -left-24  py-5 px-5 bg-deep-overlay-black ${isAboveSmallScreens && !isScrollSize ? "text-light-white  " : " text-deep-overlay-black"}`}>
+                                                        <li className="">
+                                                       <Link href={'/blog'} className=" whitespace-nowrap  block  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-light-white hover:after:w-full hover:after:h-0.5">
                                                          <div className="">
-                                                              <span className="block text-lg   [direction:rtl] ">
+                                                              <span className="block text-lg ">
                                                                  Social Media & Strategy
                                                                </span>
                                                            </div>
                                                         </Link>
                                                  </li>
-                                                 <li>
-                                                       <Link href={'/content-writing'} className=" whitespace-nowrap  block ">
+                                                            <li className="">
+                                                       <Link href={'/blog'} className=" whitespace-nowrap  block  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-light-white hover:after:w-full hover:after:h-0.5">
                                                          <div className="">
-                                                              <span className="block   text-lg [direction:rtl] ">
-                                                                Content Writing
+                                                              <span className="block text-lg ">
+                                                                  Content Writing
                                                                </span>
                                                            </div>
                                                         </Link>

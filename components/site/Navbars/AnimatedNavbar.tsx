@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { HiMenu, HiX } from "react-icons/hi";
 import Link  from 'next/link'
 
+
 import { motion } from 'framer-motion';
 import useMediaQuery from '../UseMediaQuery'
 
@@ -11,76 +12,33 @@ import useMediaQuery from '../UseMediaQuery'
 
 
 
-const Navbar = () => {
+const AnimatedNavbar = () => {
 
     const [MenuIsToggle, setMenuIstoggle] = useState(false);
 
-    const [IsHover, setIsHover] = useState(false)
+    const [IsChecked, setIsChecked] = useState(false)
 
     const isAboveSmallScreens = useMediaQuery("(min-width: 1024px)");
 
     return (
 
         <>
-            <nav className="bg-deep-black text-light-white">
-                <div className=" pt-6 px-5">
+            <nav className="bg-deep-black  text-light-white"   >
+                <div className="py-6 px-5">
 
-                    {/* MOBILE NAV */}
-                    {!isAboveSmallScreens ? (
+                    <div className=" flex justify-between items-center">
 
-                        // Mobile  Nav
-                       <div className="pb-6  ">
-                            <div className="flex justify-between items-center   ">
-                                <Link href={"/"} className="block text-2xl font-semibold font-Antonio ">
-                                    <h2>Durodola Abdulhad</h2>
-                                </Link>
+                        <Link href={"/"} className="block text-2xl hover:transition-colors hover:duration-500 hover:text-header-dark-overlay font-semibold font-Antonio">
+                            <h2>Durodola Abdulhad</h2>
+                        </Link>
+                        {/* DESKTOP NAV */}
+                        {isAboveSmallScreens ? (
 
-                                <div className='flex justify-center items-center'>
+                            <div className="">
+                              
+                                         <ul className='space-x-12  '>
 
-                                    {!MenuIsToggle ? (
-                                        // Open Menu
-                                        <div className="">
-                                            <button className="outline-none " onClick={() => setMenuIstoggle(!MenuIsToggle)}>
-                                                <HiMenu className=" text-2xl " />
-                                            </button>
-                                        </div>
-
-                                    ) : (
-
-                                        // Close Menu
-                                        <div className=" ">
-                                            <motion.button
-                                                className="outline-none "
-                                                initial="hidden"
-                                                whileInView="visible"
-                                                viewport={{ once: false, amount: 0.5 }}
-                                                transition={{ duration: 0.8 }}
-                                                variants={{
-                                                    hidden: { opacity: 0, y: 0 },
-                                                    visible: { opacity: 1, y: 0 },
-                                                }}
-                                                onClick={() => setMenuIstoggle(!MenuIsToggle)}>
-                                                <HiX className="text-2xl" />
-                                            </motion.button>
-                                        </div>
-
-                                    )}
-
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                       
-                    ) : (
-
-                        // Desktop Nav
-                         <div>
-                            <div className="lg:border-t lg:pt-2">
-                                <ul className='flex justify-between items-start  '>
-
-                                         <li className="  p-1 group transition-all duration-500">
+                                         <li className=" inline-block p-1 group transition-all duration-500">
                                                 <Link href={'/about'} className="font-extrabold  text-xl font-Antonio block">
                                                    <div className="relative uppercase overflow-y-hidden link-swipe">
                                                       <span className="block   transform transition-transform translate-y-0 duration-300">
@@ -92,8 +50,10 @@ const Navbar = () => {
                                               
                                                     </div>
                                                 </Link>
-                                                <div className="relative font-Sohne-Bold hidden transition-all duration-500 group-hover:block hover:block ">
-                                                     <ul className="space-y-1  absolute flex flex-col flex-grow top-0 left-0  py-5 px-5 bg-deep-overlay-black ">
+                                                <div className="z-20 relative font-Sohne-Bold hidden transition-all duration-500 group-hover:block hover:block ">
+                                               
+
+                                                        <ul className="space-y-1  absolute flex flex-col flex-grow top-0 left-0  py-5 px-5 bg-deep-overlay-black ">
                                                       <li className="">
                                                        <Link href={'/blog'} className=" whitespace-nowrap  block  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-light-white hover:after:w-full hover:after:h-0.5">
                                                          <div className="">
@@ -122,7 +82,7 @@ const Navbar = () => {
                                            </li>
 
                                     
-                                         <li className="  p-1 group transition-all duration-500">
+                                         <li className="inline-block  p-1 group transition-all duration-500">
                                                 <Link href={'#'} className="font-extrabold  text-xl font-Antonio block">
                                                    <div className="relative uppercase overflow-y-hidden link-swipe">
                                                       <span className="block   transform transition-transform translate-y-0 duration-300">
@@ -134,10 +94,9 @@ const Navbar = () => {
                                               
                                                     </div>
                                                 </Link>
-                                                <div className="relative font-Sohne-Bold hidden transition-all duration-500 group-hover:block hover:block ">
-                                                     <ul className="space-y-1  absolute flex flex-col flex-grow top-0 left-0  py-5 px-5 bg-deep-overlay-black ">
-                                                  
-                                                            <li className="">
+                                                <div className="z-20 relative font-Sohne-Bold hidden transition-all duration-500 group-hover:block hover:block ">
+                                                     <ul className="  absolute flex flex-col flex-grow top-0 -left-24   py-5 px-5 bg-deep-overlay-black ">
+                                                        <li className="">
                                                        <Link href={'/blog'} className=" whitespace-nowrap  block  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-light-white hover:after:w-full hover:after:h-0.5">
                                                          <div className="">
                                                               <span className="block text-lg ">
@@ -155,7 +114,6 @@ const Navbar = () => {
                                                            </div>
                                                         </Link>
                                                  </li>
-                                           
                                                 </ul>
                                                 </div>
                                               
@@ -165,7 +123,7 @@ const Navbar = () => {
                                            </li>
 
                                     
-                                         <li className="  p-1 group transition-all duration-500">
+                                         <li className=" inline-block p-1 group transition-all duration-500">
                                                 <Link href={'/contact'} className="font-extrabold  text-xl font-Antonio block">
                                                    <div className="relative uppercase overflow-y-hidden link-swipe">
                                                       <span className="block   transform transition-transform translate-y-0 duration-300">
@@ -190,10 +148,39 @@ const Navbar = () => {
                                   
                                 </ul>
                             </div>
-                        </div>
-                   
 
-                    )}
+                        ) : (
+
+                            <div className="   ">
+                                {!MenuIsToggle ? (
+                                    // Open Menu
+                                    <div className="">
+                                        <button className="outline-none " onClick={() => setMenuIstoggle(!MenuIsToggle)}>
+                                            <HiMenu className="text-white text-2xl " />
+                                        </button>
+                                    </div>
+
+                                ) : (
+                                    // Close Menu
+                                    <div className=" ">
+                                        <button
+                                            className="outline-none "
+                                          
+                                            onClick={() => setMenuIstoggle(!MenuIsToggle)}
+
+                                        >
+                                            <HiX className="text-white text-2xl" />
+                                        </button>
+                                    </div>
+                                )}
+
+                            </div>
+
+                        )}
+
+
+                    </div>
+
 
                     {/* MOBILE NAV */}
                     {!isAboveSmallScreens && MenuIsToggle && (
@@ -209,8 +196,8 @@ const Navbar = () => {
                             }}
 
                         >
-                            <ul className='flex flex-col justify-between items-start absolute top-0 left-0 w-full bg-white p-5 z-10 space-y-3'>
-                                           <li>
+                            <ul className='flex flex-col justify-between items-start absolute top-8 bg-white left-0 w-full p-5 z-10 space-y-3'>
+                                            <li>
                                             <Link href={'/about'} className="font-bold font-Antonio">
                                                 <div className="relative overflow-y-hidden link-swipe">
                                                     <span className=" transform transition-transform translate-y-0 duration-300">
@@ -259,4 +246,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default AnimatedNavbar
