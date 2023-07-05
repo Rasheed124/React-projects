@@ -6,6 +6,7 @@ import NavbarMain from "./NavBarMain";
 import Navbar from "./Navbar";
 
 
+
 const Layout = (
     
    {
@@ -19,20 +20,34 @@ const Layout = (
 }) => {
     return (
 
-        <div>
-            { route == '/' &&  <Navbar />}
+           <div>
+
+         
+               
+                  {route == '/'  ?  <Navbar />  : "" }  
+                  {route !== '/' && route !== '/about'  ?  <NavbarMain />  : "" }  
+                   
+
+
+                  
+
+                  {children}
+                
+                 {route !== '/'  ?  <Footer />  : "" }  
+
+           </div>
+
+        // <div>
+        //     { route == '/' &&  <Navbar />}
         
-           {route != '/'  && route != '/about'  &&   <NavbarMain />}  
+        //    {route != '/'  && route != '/about'  &&   <NavbarMain />}  
 
 
-      
-       
+        //     {children}
 
-            {children}
-
-          {route != '/' && route == '/about'    &&  <Footer />}   
-          {  route == '/contact'   &&  <Footer />}   
-        </div>
+        //   {route != '/' && route == '/about'    &&  <Footer />}   
+        //   {  route == '/contact'   &&  <Footer />}   
+        // </div>
     );
 }
 

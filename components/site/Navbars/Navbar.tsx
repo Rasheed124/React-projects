@@ -13,7 +13,9 @@ import useMediaQuery from '../UseMediaQuery'
 
 const Navbar = () => {
 
-    const [MenuIsToggle, setMenuIstoggle] = useState(false)
+    const [MenuIsToggle, setMenuIstoggle] = useState(false);
+
+    const [IsHover, setIsHover] = useState(false)
 
     const isAboveSmallScreens = useMediaQuery("(min-width: 1024px)");
 
@@ -23,14 +25,13 @@ const Navbar = () => {
             <nav className="bg-deep-black text-light-white">
                 <div className=" pt-6 px-5">
 
-                    {/* DESKTOP NAV */}
+                    {/* MOBILE NAV */}
                     {!isAboveSmallScreens ? (
 
                         // Mobile  Nav
-
                        <div className="pb-6  ">
                             <div className="flex justify-between items-center   ">
-                                <Link href={"/"} className="block text-2xl font-semibold font-Sohne-Bold ">
+                                <Link href={"/"} className="block text-2xl font-semibold font-Antonio ">
                                     <h2>Durodola Abdulhad</h2>
                                 </Link>
 
@@ -78,12 +79,11 @@ const Navbar = () => {
                          <div>
                             <div className="lg:border-t lg:pt-2">
                                 <ul className='flex justify-between items-start  '>
-                                   
-                                         <li className=" ">
 
-                                                <Link href={'/portfolio'} className="font-bold font-Antonio block">
-                                                   <div className="relative overflow-y-hidden link-swipe">
-                                                      <span className="block  transform transition-transform translate-y-0 duration-300">
+                                         <li className="  p-1 group transition-all duration-500">
+                                                <Link href={'/about'} className="font-extrabold  text-xl font-Antonio block">
+                                                   <div className="relative uppercase overflow-y-hidden link-swipe">
+                                                      <span className="block   transform transition-transform translate-y-0 duration-300">
                                                           About
                                                       </span>
                                                        <span className='block absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
@@ -92,89 +92,98 @@ const Navbar = () => {
                                               
                                                     </div>
                                                 </Link>
-
-                                         
-                                                 <ul className=" mt-3   p-5 w-full border  bg-deep-black">
+                                                <div className="relative font-Sohne-Bold hidden transition-all duration-500 group-hover:block hover:block ">
+                                                     <ul className="  absolute flex flex-col flex-grow top-0 left-0  py-5 px-5 bg-deep-overlay-black ">
                                                       <li>
-                                                       <Link href={'/blog'} className="font-bold font-Antonio block">
+                                                       <Link href={'/blog'} className=" whitespace-nowrap  block">
                                                          <div className="">
-                                                              <span className="block ">
+                                                              <span className="block text-lg whitespace-nowrap">
                                                                  Blog
                                                                </span>
                                                            </div>
                                                         </Link>
                                                  </li>
                                                  <li>
-                                                       <Link href={'/about'} className="font-bold font-Antonio block">
+                                                       <Link href={'#'} className=" whitespace-nowrap block ">
                                                          <div className="">
-                                                              <span className="block ">
-                                                                Resume
+                                                              <span className="block  whitespace-nowrap text-lg">
+                                                                Resume  
                                                                </span>
                                                            </div>
                                                         </Link>
                                                  </li>
                                                 </ul>
+                                                </div>
+                                              
                                           
                                           
                                            
                                            </li>
 
-
-
-                                        <li className=" ">
-
-                                                <Link href={'/portfolio'} className="font-bold font-Antonio block">
-                                                   <div className="relative overflow-y-hidden link-swipe">
-                                                      <span className="block  transform transition-transform translate-y-0 duration-300">
-                                                          Portfolio
+                                    
+                                         <li className="  p-1 group transition-all duration-500">
+                                                <Link href={'#'} className="font-extrabold  text-xl font-Antonio block">
+                                                   <div className="relative uppercase overflow-y-hidden link-swipe">
+                                                      <span className="block   transform transition-transform translate-y-0 duration-300">
+                                                          Porfolio
                                                       </span>
                                                        <span className='block absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
-                                                          Portfolio
+                                                          Porfolio
                                                       </span>
                                               
                                                     </div>
                                                 </Link>
-
-                                         
-                                                 <ul className=" mt-3   p-5 w-full border  bg-deep-black">
+                                                <div className="relative font-Sohne-Bold hidden transition-all duration-500 group-hover:block hover:block ">
+                                                     <ul className="  absolute flex flex-col flex-grow top-0 left-0  py-5 px-5 bg-deep-overlay-black ">
                                                       <li>
-                                                       <Link href={'/about'} className="font-bold font-Antonio block">
+                                                       <Link href={'/portfolio'} className=" whitespace-nowrap  block">
                                                          <div className="">
-                                                              <span className="block ">
+                                                              <span className="block text-lg whitespace-nowrap">
                                                                  Social Media & Strategy
                                                                </span>
                                                            </div>
                                                         </Link>
                                                  </li>
                                                  <li>
-                                                       <Link href={'/about'} className="font-bold font-Antonio block">
+                                                       <Link href={'/content-writing'} className=" whitespace-nowrap block ">
                                                          <div className="">
-                                                              <span className="block ">
-                                                                 Content Writing
+                                                              <span className="block  whitespace-nowrap text-lg">
+                                                                Content Writing
                                                                </span>
                                                            </div>
                                                         </Link>
                                                  </li>
                                                 </ul>
+                                                </div>
+                                              
                                           
                                           
                                            
                                            </li>
 
-
-                                        <li>
-                                            <Link href={'/contact'} className="font-bold font-Antonio block">
-                                                <div className="relative overflow-y-hidden link-swipe">
-                                                    <span className=" transform transition-transform translate-y-0 duration-300 block">
-                                                        Contact
-                                                    </span>
-                                                    <span className='block absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
-                                                       Contact
-                                                    </span>
+                                    
+                                         <li className="  p-1 group transition-all duration-500">
+                                                <Link href={'/contact'} className="font-extrabold  text-xl font-Antonio block">
+                                                   <div className="relative uppercase overflow-y-hidden link-swipe">
+                                                      <span className="block   transform transition-transform translate-y-0 duration-300">
+                                                          Contact
+                                                      </span>
+                                                       <span className='block absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 '>
+                                                          Contact
+                                                      </span>
                                               
-                                                </div>
-                                            </Link>
-                                        </li>
+                                                    </div>
+                                                </Link>
+                                              
+                                              
+                                          
+                                          
+                                           
+                                           </li>
+
+                                    
+
+                                      
                                   
                                 </ul>
                             </div>
@@ -198,7 +207,7 @@ const Navbar = () => {
 
                         >
                             <ul className='flex flex-col justify-between items-start absolute top-0 left-0 w-full bg-white p-5 z-10 space-y-3'>
-                                                           <li>
+                                           <li>
                                             <Link href={'/about'} className="font-bold font-Antonio">
                                                 <div className="relative overflow-y-hidden link-swipe">
                                                     <span className=" transform transition-transform translate-y-0 duration-300">

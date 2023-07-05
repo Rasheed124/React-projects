@@ -34,7 +34,7 @@ const PortfolioProject = ({projects} : Props) => {
                       {projects.map( project => (
 
                         <motion.div
-                         onMouseEnter={() => setIsHover(true)}
+                        
                             key={project._id}
                             className={`min-h-screen z-10 cursor-pointer overflow-hidden  relative bg-cover  transition duration-700 bg-no-repeat bg-center bg-deep-black bg-blend-overlay bg-opacity-20 hover:bg-opacity-25`} style={{ backgroundImage: `url(${project.projectImage})` }} 
                             initial="hidden"
@@ -47,21 +47,10 @@ const PortfolioProject = ({projects} : Props) => {
                             }}
                            >
 
-                           {!isHover && 
-                            <div className={`relative min-h-screen z-20  w-full`} style={{ backgroundImage: `url(${Blurry})` }} 
-                                   
-                                 onMouseLeave={() => setIsHover(false)} >  <Image
-                            key={project._id}
-                                    className={`object-cover max-w-full `}
-                                    src={blurBg}
-                                    alt={'bg-bllurry'}
-                                    fill
-                                    
-                                
-                                />
-                            </div>
+                         
+                        
 
-                                }
+                             
                             <ClientSideRoute route={`/portfolio/${project.slug.current}`}>
                                 <div className="absolute z-30 left-10 bottom-10 ">
                                    <h1 className="font-Antonio text-2xl transition-all duration-500 hover:underline font-bold">{project.title}</h1>

@@ -56,7 +56,7 @@ export default async function Portfolio() {
     return (
     <div className=" text-light-white ">
 
-        <Layout route="/contact">
+        <Layout route="/projects">
 
 
              <PortfolioProject projects={portfolio}  />

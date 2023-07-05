@@ -35,16 +35,14 @@ export default async function Contact() {
             </div>
         }>
 
-               <div className=" text-light-white ">
-                  {/* Preview Blog List */} 
-                   <div>
+                <Layout route="/contact">
 
-                     <PreviewContact query={ContactQuery} />
+                       <PreviewContact query={ContactQuery} />
+        
+             </Layout>
 
-                   </div>
-                    
 
-               </div>
+           
         </PreviewSuspense>
 
 

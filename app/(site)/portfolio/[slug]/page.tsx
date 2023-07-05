@@ -3,9 +3,10 @@ import { groq } from "next-sanity";
 import  GrFormCheckmark from 'react-icons/gr'
 
 import urlFor from "@/lib/urlFor";
-import { PortableText } from "@portabletext/react";
+
 import Link from "next/link";
 import Image from "next/image";
+import Layout from "@/components/site/Navbars/NavbarLayout";
 
 
 
@@ -22,6 +23,7 @@ async function Projects({ params: { slug } }: Props) {
     groq`*[_type == "projects" && slug.current == $slug][0]{
             _id,
               ...,
+                text[]{
                 _type == "muxVideo" => {
             ...,
             asset->{
@@ -35,6 +37,7 @@ async function Projects({ params: { slug } }: Props) {
                ...,
              "image" : image.asset->url,
             }
+                }
            
              } `
          
@@ -43,7 +46,9 @@ async function Projects({ params: { slug } }: Props) {
 
     return (
 
-        <div className="bg-white ">
+          <Layout route="/contact">
+
+  <div className="bg-white ">
 
               <div className="max-w-6xl mx-auto  grid grid-cols-1 md:grid-cols-2 gap-5 py-10 px-4 ">
 
@@ -54,7 +59,7 @@ async function Projects({ params: { slug } }: Props) {
                         <div>
                             {project.projectContent && project.projectContent.map(content => (
 
-                                <div>
+                                <div className="space-y-5">
                                     { content.image &&  <Image 
                                                       src={urlFor(content.image).url()}
                                                       width={400}
@@ -63,23 +68,11 @@ async function Projects({ params: { slug } }: Props) {
                                                     /> 
                                      }
 
-                                    { content.url && 
-
-
-                                    //   <Link href={`/${content.url}`}>
-                                            // <iframe 
-                                            //     width={400}
-                                            //     height={600}
-                                            //    >
-                                            // </iframe> 
-
+                                    { content.video && 
 
                                             <video src={`${content.video}`} width={600} height={600} controls>
                                             </video>
 
-                                    //   </Link>
-
-                                 
                                  }    
                                 </div>
 
@@ -226,7 +219,10 @@ async function Projects({ params: { slug } }: Props) {
 
 
            
-        </div>
+                 </div>
+          </Layout>
+
+      
     )
 }
 

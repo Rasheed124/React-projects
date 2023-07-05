@@ -53,7 +53,7 @@ export default async function Blog() {
     return (
     <div className=" text-deep-black px-4 xl:px-0">
 
-        <Layout route="/contact">
+        <Layout route="/blog">
 
             <BlogList posts={blogList} />
            
