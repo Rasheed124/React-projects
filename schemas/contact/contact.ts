@@ -46,8 +46,6 @@ export default defineType({
         type: 'text',
     }),
 
-
-     
    defineField({
       name: 'socialHandle',
       title: 'Social Handles',

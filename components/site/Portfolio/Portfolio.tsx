@@ -52,7 +52,7 @@ const PortfolioProject = ({projects} : Props) => {
 
                              
                             <ClientSideRoute route={`/portfolio/${project.slug.current}`}>
-                                <div className="absolute z-30 left-10 bottom-10 ">
+                                <div className="absolute z-10 left-10 bottom-10 ">
                                    <h1 className="font-Antonio text-2xl transition-all duration-500 hover:underline font-bold">{project.title}</h1>
 
                                 </div>

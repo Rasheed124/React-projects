@@ -17,7 +17,6 @@ export default function PreviewBlogList({ query }: Props) {
 
 
     // Modified but not yet publish
-
     return <BlogList posts={blogPosts} />
 
 

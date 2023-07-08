@@ -30,7 +30,7 @@ const NavbarMain = () => {
                                  
                                  ${ !isAboveSmallScreens ? "bg-deep-black fixed w-full top-0 z-50 text-light-white transition duration-200 translate-y-0" :
                                  
-                                 isScrollSize  ? "bg-deep-black z-50 fixed w-full top-0 text-light-white transition duration-500 translate-y-0 " : "bg-light-white pt-4   text-deep-overlay-black transform transition duration-700 translate-y-0"} }
+                                 isScrollSize  ? "bg-deep-black z-50 fixed w-full top-0 text-light-white transition duration-200 translate-y-0 " : "bg-white pt-4   text-deep-overlay-black transform transition duration-700 translate-y-0"} }
                              
                              `} >
                                     <div className={`
@@ -61,10 +61,10 @@ const NavbarMain = () => {
                                               
                                                     </div>
                                                 </Link>
-                                                <div className="z-20 relative font-Sohne-Bold hidden transition-all duration-500 group-hover:block hover:block ">
+                                                <div className=" relative font-Sohne-Bold hidden transition-all duration-500 group-hover:block hover:block ">
                                                
 
-                                                      <ul className={` space-y-1  absolute flex flex-col flex-grow top-2 left-0  py-5 px-5 bg-deep-overlay-black ${isAboveSmallScreens && !isScrollSize ? "text-light-white  " : " text-deep-overlay-black"}`}>
+                                                      <ul className={`   space-y-1  absolute flex flex-col flex-grow top-2 left-0  py-5 px-5 bg-deep-overlay-black ${isAboveSmallScreens && !isScrollSize ? "text-light-white  " : " text-light-white"}`}>
                                                       <li className="">
                                                        <Link href={'/blog'} className=" whitespace-nowrap  block  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-light-white hover:after:w-full hover:after:h-0.5">
                                                          <div className="">
@@ -108,7 +108,7 @@ const NavbarMain = () => {
                                                 <div className="z-20 relative font-Sohne-Bold hidden transition-all duration-500 group-hover:block hover:block ">
                                                         <ul className={` space-y-1  absolute flex flex-col flex-grow top-2 -left-24  py-5 px-5 bg-deep-overlay-black ${isAboveSmallScreens && !isScrollSize ? "text-light-white  " : " text-deep-overlay-black"}`}>
                                                         <li className="">
-                                                       <Link href={'/blog'} className=" whitespace-nowrap  block  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-light-white hover:after:w-full hover:after:h-0.5">
+                                                       <Link href={'/portfolio'} className=" whitespace-nowrap  block  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-light-white hover:after:w-full hover:after:h-0.5">
                                                          <div className="">
                                                               <span className="block text-lg ">
                                                                  Social Media & Strategy
@@ -117,7 +117,7 @@ const NavbarMain = () => {
                                                         </Link>
                                                  </li>
                                                             <li className="">
-                                                       <Link href={'/blog'} className=" whitespace-nowrap  block  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-light-white hover:after:w-full hover:after:h-0.5">
+                                                       <Link href={'/content-writing'} className=" whitespace-nowrap  block  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-light-white hover:after:w-full hover:after:h-0.5">
                                                          <div className="">
                                                               <span className="block text-lg ">
                                                                   Content Writing

@@ -1,54 +1,28 @@
    "use client";
 
 
-import Footer from "../Footer";
+import { getContactInfo } from "@/schemas/utils/sanity.utils";
+import Footer from "../Footer/Footer";
 import NavbarMain from "./NavBarMain";
 import Navbar from "./Navbar";
 
 
 
-const Layout = (
-    
-   {
-    children, route 
-}: {
-    children: React.ReactNode,
+export default async function Layout( { children, route }: {children: React.ReactNode, route: string;})  
 
-    route: string;
 
-   
-}) => {
+{
+
+      const contactInfo = await getContactInfo();
     return (
 
            <div>
-
-         
-               
-                  {route == '/'  ?  <Navbar />  : "" }  
-                  {route !== '/' && route !== '/about'  ?  <NavbarMain />  : "" }  
-                   
-
-
-                  
-
-                  {children}
-                
-                 {route !== '/'  ?  <Footer />  : "" }  
-
+                {route == '/'  ?  <Navbar />  : "" }  
+                {route !== '/' && route !== '/about'  ?  <NavbarMain  />  : "" }  
+                    {children}
+                 {route !== '/'  ?  <Footer footer={contactInfo}/>  : "" }  
            </div>
 
-        // <div>
-        //     { route == '/' &&  <Navbar />}
-        
-        //    {route != '/'  && route != '/about'  &&   <NavbarMain />}  
-
-
-        //     {children}
-
-        //   {route != '/' && route == '/about'    &&  <Footer />}   
-        //   {  route == '/contact'   &&  <Footer />}   
-        // </div>
     );
 }
 
-export default Layout;

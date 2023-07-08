@@ -5,15 +5,21 @@ import Link  from 'next/link'
 import { motion } from 'framer-motion';
 
 
+    type Props = {
+        footer: Contact[];
+    };
 
 
-const Footer = () => {
+    
+
+const Footer = ({ footer} :Props) => {
 
 
     return (
 
         <>
-            <footer className="pb-14  bg-contact-dark-overlay text-deep-black">
+         {footer && footer.map( footerData => (
+     <footer className="pb-14  bg-contact-dark-overlay text-deep-black">
                 <div className="flex flex-col w-full  ">
                     <div className=" pb-5">
 
@@ -33,8 +39,7 @@ const Footer = () => {
                                     </form>
 
                                     <div className="mb-6">
-                                        <p>*Sign up to receive a monthly summary of my favourite marketing links, articles and tools.
-                                            Coming soon to an inbox near you.</p>
+                                        <p>{footerData.infoText}</p>
                                     </div>
                                     <div className="flex flex-col md:flex-row gap-8">
 
@@ -57,7 +62,7 @@ const Footer = () => {
 
                                 <div className="grid grid-cols-1 place-content-end ">
 
-                                    <h2 className="font-Antonio text-5xl font-bold mb-2 ">Durodola Abdulhad</h2>
+                                    <h2 className="font-Antonio text-5xl font-bold mb-2 ">{footerData.logo}</h2>
 
                                     <p>© 2023 Durodola Abdulhad. All Rights Reserved.</p>
 
@@ -74,6 +79,8 @@ const Footer = () => {
 
                 </div>
             </footer>
+
+         ))}
         </>
 
 

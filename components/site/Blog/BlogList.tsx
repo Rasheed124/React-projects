@@ -25,21 +25,21 @@ const BlogList = ({ posts }: Props) => {
 
 
     return (
-                 <section className="py-14 ">
+                 <section className="py-14  bg-light-white">
                        <div className="flex flex-col   ">
                             <div className=" pb-5  ">
 
-                                <div className="py-10  ">
+                                <div className="pt-10  ">
 
-                                    <div className=" w-full max-w-2xl ">
-                                       <h4 className=" font-extrabold text-7xl text-deep-black z-30 pl-10"> Blog</h4>
+                                    <div className=" w-full max-w-2xl mt-14 md:mt-0 ">
+                                       <h4 className=" font-extrabold text-7xl text-deep-black z-30 pl-10 "> Blog</h4>
                                        <span className="relative w-full block -z-10 bg-light-white -top-[35px] left-0 h-[150px] ">
                                                 
                                        </span>
                                     </div>
                                 </div>
 
-                                <div className="mt-10 grid grid-cols-1 gap-10 text-center max-w-6xl mx-auto px-5 ">
+                                <div className=" md:mt-6 grid grid-cols-1 gap-10 text-center max-w-6xl mx-auto px-5 ">
 
                                      {posts.map(post => (
                                         <div key={post._id}  >
@@ -98,7 +98,7 @@ const BlogList = ({ posts }: Props) => {
 
                                                              <ClientSideRoute route={`/post/${post.slug.current}`}>
                                                                 
-                                                                <h3 className="text-2xl block font-semibold  transition-colors hover:duration-700 hover:text-header-dark-overlay">{post.title}</h3>
+                                                                <h3 className="text-2xl block font-semibold  transition-colors hover:duration-700 hover:text-white font-Antonio">{post.title}</h3>
 
                                                                 <p className="text-lg ">{post.description}</p>
                                                             </ClientSideRoute>

@@ -8,6 +8,7 @@ import Navbar from "@/components/site/Navbars/Navbar";
 import Link from "next/link";
 import { RichTextComponents } from "@/components/studio/RichComponentText";
 import Layout from "@/components/site/Navbars/NavbarLayout";
+import { draftMode } from "next/headers";
 
 // import {Porta}
 
@@ -20,6 +21,9 @@ type Props = {
 
 async function Post({ params: { slug } }: Props) {
 
+        const { isEnabled } = draftMode();
+
+
     const query = groq`
   *[_type == 'post' && slug.current == $slug][0]
   {
@@ -31,8 +35,20 @@ async function Post({ params: { slug } }: Props) {
 
     const post: Post = await client.fetch(query, { slug })
 
+
+
+
  
-    
+    if(isEnabled) {
+
+        return(
+         <div>
+
+            Enabled
+         </div>
+
+        )
+    }
 
 
     return (
@@ -40,7 +56,7 @@ async function Post({ params: { slug } }: Props) {
         
         <Layout route="/contact">
 
-             <article className="px-10 pb-20">
+             <article className="px-10 pb-20 border">
 
         
             <section className="py-14  ">
@@ -49,20 +65,20 @@ async function Post({ params: { slug } }: Props) {
 
                                 <div className="py-10  ">
 
-                                    <div className="flex justify-between ">
+                                    <div className="pt-10 flex flex-col md:flex-row  space-y-5 md:space-y-0 justify-between ">
 
-                                        <div className="max-w-2xl ">
-                                            <ul className="flex  space-x-5">
+                                        <div className=" ">
+                                            <ul className="flex flex-col md:flex-row  space-x-5 ">
 
                                              
-                                                <li className="text-lg hover:text-light-white transition-colors duration-700 ">
+                                                <li className="text-lg font-bold hover:text-light-white transition-colors duration-700 ">
                                                     <Link href={'/blog'} >
                                                         All Posts
                                                     </Link>
                                                 </li>
 
                                             {post && post.categories.map(category => (
-                                                 <li className="text-lg  " key={category._id}>
+                                                 <li className="text-lg  hover:text-light-white transition-colors duration-700" key={category._id}>
                                                     <Link href={'/'} >
                                                        {category.title}
                                                     </Link>
@@ -75,10 +91,10 @@ async function Post({ params: { slug } }: Props) {
                                             </ul>
                                         </div>
 
-                                        <div>
+                                        <div className=" w-full md:max-w-[200px]  ">
                                             <form action="/">
                                                 <div>
-                                                    <input type="search" name="" id="" />
+                                                    <input className="border outline-none px-3 py-1.5" type="search" name="" id="" />
                                                 </div>
                                             </form>
 
@@ -90,9 +106,9 @@ async function Post({ params: { slug } }: Props) {
                                 <div className="mt-10  max-w-3xl  shadow-sm mx-auto   p-5 ">
 
                                     <div className="flex justify-between items-center ">
-                                        <div className="flex space-x-2 justify-center items-center">
+                                        <div className="flex flex-wrap max-w-lg space-x-2 justify-center items-start md:items-center">
 
-                                            <div className="mr-5">
+                                            <div className="mr-1 md:mr-4">
                                                 {/* {post.author.image && } */}
                                                   <Image
                                                     className="rounded-full"
@@ -102,7 +118,7 @@ async function Post({ params: { slug } }: Props) {
                                                     width={40}
                                                    />
                                             </div>
-                                             <h3 className="text-lg font-bold hover:text-light-white transition-colors duration-700 ">{post.author.name}</h3>
+                                             <h3 className="text-lg font-bold   ">{post.author.name}</h3>
                                                <p>
                                                 {new Date(post._createdAt).toLocaleDateString(
                                                     "en-Us", {
@@ -115,8 +131,8 @@ async function Post({ params: { slug } }: Props) {
                                              <h4>8 min Read</h4>
                                         </div>
 
-                                        <div>
-                                            <Link href={'/'}>
+                                        <div className="flex flex-wrap max-w-md">
+                                            <Link className="font-medium" href={'/'}>
                                                <h5>share</h5>
                                                
                                             </Link>
