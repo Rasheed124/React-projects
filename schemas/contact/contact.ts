@@ -37,9 +37,12 @@ export default defineType({
     defineField({
         name: 'infoText',
         title: 'Info Text',
-        type: 'string',
+      type: 'array',
+         of: [
+          {  name: 'address', type: 'string', title: 'Add Address' }
+        ],
     }),
-
+    
      defineField({
         name: 'form',
         title: 'Form Info',

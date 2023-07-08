@@ -1,25 +1,16 @@
-
 "use client";
 
-
-import { usePreview } from "@/lib/sanity.preview"
+import { usePreview } from "@/lib/sanity.preview";
 
 import Contact from "./ContactPage";
 
-
 type Props = {
-    query: string;
-}
-
+  query: string;
+};
 
 export default function PreviewContact({ query }: Props) {
+  const contact = usePreview(null, query);
+  // Modified but not yet publish
 
-    const contact = usePreview(null, query);
-    // Modified but not yet publish
-
-    return <Contact contactPage= {contact} />
-
-
+  return <Contact contactPage={contact} />;
 }
-
-

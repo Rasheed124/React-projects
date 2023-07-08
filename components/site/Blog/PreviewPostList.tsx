@@ -1,24 +1,19 @@
 "use client";
 
+import { usePreview } from "@/lib/sanity.preview";
 
-import { usePreview } from "@/lib/sanity.preview"
-
-import PostList from "./PostList"
+import PostList from "./PostList";
 
 type Props = {
-
-    query: string;
-}
-
+  query: string;
+};
 
 export default function PreviewPostList({ query }: Props) {
-    const posts = usePreview(null, query);
+  const posts = usePreview(null, query);
 
-    console.log("Loading..", posts)
+  console.log("Loading..", posts);
 
-    // Modified but not yet publish
+  // Modified but not yet publish
 
-    return <PostList posts={posts} />
-
-
+  return <PostList posts={posts} />;
 }

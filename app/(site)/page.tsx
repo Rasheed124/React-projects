@@ -1,14 +1,17 @@
-
-
-
 import { draftMode } from "next/headers";
 
-
 import PreviewSuspense from "@/components/site/PreviewSuspense";
-import {  getContactInfo, getHomeBanner, getPostList, getProjects, getSkills, getTestimonials } from '@/schemas/utils/sanity.utils';
-import PreviewBanner from '@/components/site/HomeBanner/PreviewBanner';
+import {
+  getContactInfo,
+  getHomeBanner,
+  getPostList,
+  getProjects,
+  getSkills,
+  getTestimonials,
+} from "@/schemas/utils/sanity.utils";
+import PreviewBanner from "@/components/site/HomeBanner/PreviewBanner";
 
-import Banner from '@/components/site/HomeBanner/Banner'
+import Banner from "@/components/site/HomeBanner/Banner";
 
 import Skills from "@/components/site/Skills/Skills";
 import PreviewSkills from "@/components/site/Skills/PreviewSkills";
@@ -26,118 +29,85 @@ import ContactInfo from "@/components/site/Contact/ContactInfo";
 // import PostList from "@/components/site/PostList;
 // import PreviewBlogList from "@/components/site/PreviewBlogList";
 
-
-
 const BannerQuery = getServerSideQueries().BannerQuery;
 
 const SkillQuery = getServerSideQueries().SkillQuery;
 
-
 const ProjectsQuery = getServerSideQueries().ProjectsQuery;
 
-const PostQuery =  getServerSideQueries().PostQuery
+const PostQuery = getServerSideQueries().PostQuery;
 
-const TestimonialQuery = getServerSideQueries().TestimonialsQuery
-const ContactInfoQuery = getServerSideQueries().ContactQuery
-
-
+const TestimonialQuery = getServerSideQueries().TestimonialsQuery;
+const ContactInfoQuery = getServerSideQueries().ContactQuery;
 
 export default async function Home() {
-    const { isEnabled } = draftMode();
+  const { isEnabled } = draftMode();
 
+  // FETCHING DATA
+  const homeBanners = await getHomeBanner();
+  const skills = await getSkills();
+  const projects = await getProjects();
+  const testimonials = await getTestimonials();
+  const posts = await getPostList();
+  const contactInfo = await getContactInfo();
 
-    // FETCHING DATA
-    const homeBanners = await getHomeBanner();
-    const skills = await getSkills();
-    const projects = await getProjects();
-    const testimonials = await getTestimonials();
-    const posts = await getPostList();
-    const contactInfo = await getContactInfo();
-
-
-
-
-    // SETTING PREVIEW MODE
-    if (isEnabled) {
-        return (
-
-            <PreviewSuspense fallback={
-            <div role="status" className="flex min-h-screen justify-center items-center bg-deep-black">
-                <p className="text-center text-lg text-light-white ">
-                    Loading Preview Data....
-                </p>
-            </div>
-        }>
-
-               <div className=" text-light-white px-4 xl:px-0 bg-deep-black ">
-
-                <Layout route="/">
-                      {/* Preview Blog List */} 
-                     <PreviewBanner query={BannerQuery}  />
-
-                    <PreviewSkills query={SkillQuery}  /> 
-
-                    <PreviewProjects query={ProjectsQuery} />
-
-                    <PreviewTestimonials query={TestimonialQuery}  />
-
-
-                     <PreviewPostList query={PostQuery} />
-
-                     <PreviewContactInfo query={ContactInfoQuery} />
-                    
-
-                </Layout>
-         
-
-               </div>
-        </PreviewSuspense>
-
-
-
-        );
-    }
-
-
+  // SETTING PREVIEW MODE
+  if (isEnabled) {
     return (
-    <div className="bg-deep-black text-light-white px-4 xl:px-0">
+      <PreviewSuspense
+        fallback={
+          <div
+            role="status"
+            className="flex min-h-screen justify-center items-center bg-deep-black"
+          >
+            <p className="text-center text-lg text-light-white ">
+              Loading Preview Data....
+            </p>
+          </div>
+        }
+      >
+        <div className=" text-light-white px-4 xl:px-0 bg-deep-black ">
+          <Layout route="/">
+            {/* Preview Blog List */}
+            <PreviewBanner query={BannerQuery} />
 
-        <Layout route="/">
+            <PreviewSkills query={SkillQuery} />
 
-                  {/* BANNERS */}
-                <Banner homeBanners={homeBanners} />
-           
-                {/* SKILLS */}
-                <Skills skills={skills} />
-          
-             {/* PROJECTS */}
-                  <Projects projects={projects} />
+            <PreviewProjects query={ProjectsQuery} />
 
-             {/* Testimonials */}
-             <Testimonial testimonials={testimonials} />
+            <PreviewTestimonials query={TestimonialQuery} />
 
-             {/* Blog Post */}
-            <PostList posts={posts} />
+            <PreviewPostList query={PostQuery} />
 
-             {/* Contact Info */}
-
-             <ContactInfo contacts={contactInfo} />
-          
-
-
-
-            
-        </Layout>
-
-      
-            
-            
-    </div>
-
-   
-
-
-  
-       
+            <PreviewContactInfo query={ContactInfoQuery} />
+          </Layout>
+        </div>
+      </PreviewSuspense>
     );
+  }
+
+  return (
+    <div className="bg-deep-black text-light-white px-4 xl:px-0">
+      <Layout route="/">
+        {/* BANNERS */}
+        <Banner homeBanners={homeBanners} />
+
+        {/* SKILLS */}
+        <Skills skills={skills} />
+
+        {/* PROJECTS */}
+        <Projects projects={projects} />
+
+        {/* Testimonials */}
+        <Testimonial testimonials={testimonials} />
+
+        {/* Blog Post */}
+        <PostList posts={posts} />
+
+        {/* Contact Info */}
+
+        <ContactInfo contacts={contactInfo} />
+      </Layout>
+    </div>
+  );
 }

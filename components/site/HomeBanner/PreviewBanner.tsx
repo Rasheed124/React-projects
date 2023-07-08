@@ -1,23 +1,15 @@
 "use client";
 
-
-import { usePreview } from "@/lib/sanity.preview"
+import { usePreview } from "@/lib/sanity.preview";
 import Banner from "./Banner";
 
-
 type Props = {
-    query: string;
-}
-
+  query: string;
+};
 
 export default function PreviewBanner({ query }: Props) {
+  const homeBanners = usePreview(null, query);
+  // Modified but not yet publish
 
-    const homeBanners = usePreview(null, query);
-    // Modified but not yet publish
-
-    return <Banner homeBanners= {homeBanners} />
-
-
+  return <Banner homeBanners={homeBanners} />;
 }
-
-
