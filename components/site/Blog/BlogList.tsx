@@ -29,7 +29,7 @@ type Props = {
 const BlogList = ({ posts }: Props) => {
   const [IsShowShareIcons, setIsShowShareIcons] = useState(false);
 
-  const [ClickedIndex, setClickedIndex] = useState({});
+  const [ClickedIndex, setClickedIndex] = useState([]);
 
   const handleClick = (index: any) => () => {
     setClickedIndex((state: any) => ({

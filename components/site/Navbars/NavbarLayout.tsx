@@ -5,34 +5,30 @@ import Footer from "../Footer/Footer";
 import NavbarMain from "./NavBarMain";
 import Navbar from "./Navbar";
 
-import { HiOutlineShare } from "react-icons/hi";
 
-import { MdOutlineCancel } from "react-icons/md";
-import Link from "next/link";
 
-const Layout = async ({
+export default async function Layout({
   children,
   route,
 }: {
   children: React.ReactNode;
   route: string;
-}) => {
-  const contactInfo = await getContactInfo();
+}) 
+
+
+{
+
+   const contactInfo = await getContactInfo();
+
 
   return (
-    <div className="">
-       
-      <div>
-        {route === "/" ? <Navbar /> : null}
-        {route !== "/" && route !== "/about" ? <NavbarMain /> : null}
-      </div>
+    <>
+      {route === "/" ? <Navbar /> : null}
+      {route !== "/" && route !== "/about" ? <NavbarMain /> : null}
 
-      <div>{children}</div>
+      {children}
 
-      <div>
-        {route !== "/" ? <Footer footer={contactInfo} /> : null}
-      </div>
-    </div>
+      {route !== "/" ? <Footer footer={contactInfo} /> : null}
+    </>
   );
-};
-export default Layout;
+}
