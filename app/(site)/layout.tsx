@@ -1,5 +1,5 @@
-// "use client"
-import NavbarMain from "@/components/site/Navbars/NavBarMain";
+
+
 import "../styles/globals.css";
 
 import { fonts } from "../fonts/font";

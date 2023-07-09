@@ -131,6 +131,17 @@ export async function getPostList(): Promise<Post[]> {
 
 
 }
+export async function getPostSlug(slug: string): Promise<Post[]> {
+  return client.fetch(
+    groq`
+        *[_type == "post" && slug.current == $slug][0]{
+            ...,
+            author->,
+            categories[]->
+        } | order(_createdAt desc) `,
+    { slug },
+  );
+}
 
 export async function getBlogList(): Promise<Post[]> {
 

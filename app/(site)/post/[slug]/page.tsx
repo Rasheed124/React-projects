@@ -9,6 +9,8 @@ import Link from "next/link";
 import { RichTextComponents } from "@/components/studio/RichComponentText";
 import Layout from "@/components/site/Navbars/NavbarLayout";
 import { draftMode } from "next/headers";
+import { PreviewSuspense } from "next-sanity/preview";
+import { usePreview } from "@/lib/sanity.preview";
 
 // import {Porta}
 
@@ -21,6 +23,7 @@ type Props = {
 async function Post({ params: { slug } }: Props) {
   const { isEnabled } = draftMode();
 
+
   const query = groq`
   *[_type == 'post' && slug.current == $slug][0]
   {
@@ -30,11 +33,20 @@ async function Post({ params: { slug } }: Props) {
    }
    `;
 
+  const singlePostTitleQuery = groq`
+  *[_type == 'post'][0]
+  {
+    title
+   }
+   `;
+
+  const single: Post = await client.fetch(singlePostTitleQuery, { slug });
+
   const post: Post = await client.fetch(query, { slug });
 
-  if (isEnabled) {
-    return <div>Enabled</div>;
-  }
+  const Postquery = null;
+
+   
 
   return (
     <Layout route="/contact">
