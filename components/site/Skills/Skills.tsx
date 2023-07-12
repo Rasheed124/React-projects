@@ -49,7 +49,7 @@ const Skills = ({ skills }: Props) => {
                   viewport={{ once: true, amount: 0.8 }}
                   transition={{ duration: 0.6, delay: 0 }}
                   variants={{
-                    hidden: { opacity: 0, y: 60 },
+                    hidden: { opacity: 0, y: 20 },
                     visible: { opacity: 1, y: 0 },
                   }}
                 >

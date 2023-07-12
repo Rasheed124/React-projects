@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 // import Swiper core and required modules
 import { Navigation, Scrollbar, EffectFade } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -24,8 +24,8 @@ type Props = {
 };
 
 const Testimonial = ({ testimonials }: Props) => {
-  const prevRef = React.useRef();
-  const nextRef = React.useRef();
+  const prevRef = useRef();
+  const nextRef = useRef();
 
   return (
     <section className="py-14 ">
@@ -34,6 +34,7 @@ const Testimonial = ({ testimonials }: Props) => {
           <Swiper
             modules={[Navigation, EffectFade]}
             effect="crossfade"
+            grabCursor={true}
             speed={1000}
             navigation={{
               prevEl: prevRef?.current,

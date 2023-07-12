@@ -67,7 +67,7 @@ export default async function Home() {
         }
       >
         <div className=" text-light-white px-4 xl:px-0 bg-deep-black ">
-          <Layout route="/">
+          <Layout  route="/">
             {/* Preview Blog List */}
             <PreviewBanner query={BannerQuery} />
 

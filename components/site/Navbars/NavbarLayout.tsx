@@ -1,25 +1,22 @@
 "use client";
 
 import { getContactInfo } from "@/schemas/utils/sanity.utils";
-import Footer from "../Footer/Footer";
 import NavbarMain from "./NavBarMain";
 import Navbar from "./Navbar";
+import Footer from "../Footer/Footer";
 
 
 
-export default async function Layout({
+const Layout =  ( {
   children,
   route,
+
 }: {
   children: React.ReactNode;
   route: string;
-}) 
+}) => {
 
-
-{
-
-   const contactInfo = await getContactInfo();
-
+  // const contactInfo = await getContactInfo();
 
   return (
     <>
@@ -28,7 +25,8 @@ export default async function Layout({
 
       {children}
 
-      {route !== "/" ? <Footer footer={contactInfo} /> : null}
+      {/* {route !== "/" ? <Footer footer={contactInfo} /> : null} */}
     </>
   );
-}
+};
+export default Layout;

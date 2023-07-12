@@ -7,3 +7,6 @@
     @apply bg-deep-overlay text-deep-black;
 }
 
+.swiper-button-prev{
+     @apply border border-red-950;
+}

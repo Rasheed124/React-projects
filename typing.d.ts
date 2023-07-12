@@ -1,3 +1,6 @@
+
+
+
 type Base = {
   _createdAt: string;
   _id: string;
@@ -162,3 +165,4 @@ interface ContentWriting extends Base {
   subTitle: string;
   writings: WritingPost[];
 }
+

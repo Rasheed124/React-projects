@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 import { HiMenu, HiX } from "react-icons/hi";
+import { BiChevronDown, BiChevronRight } from "react-icons/bi";
 import Link from "next/link";
 
 import { motion } from "framer-motion";
@@ -11,6 +12,11 @@ import SetScrollSize from "../SetScrollSize";
 const NavbarMain = () => {
   const [MenuIsToggle, setMenuIstoggle] = useState(false);
 
+  const [DropDownIsToggle, setDropDownIsToggle] = useState(false);
+
+  
+  const [DropDownIsToggleP, setDropDownIsToggleP] = useState(false);
+
   const isScrollSize = SetScrollSize(137);
 
   const isAboveSmallScreens = useMediaQuery("(min-width: 1024px)");
@@ -19,29 +25,29 @@ const NavbarMain = () => {
     <>
       <nav
         className={`
-                                 
-                                 ${
-                                   !isAboveSmallScreens
-                                     ? "bg-deep-black fixed w-full top-0 z-50 text-light-white transition duration-200 translate-y-0"
-                                     : isScrollSize
-                                     ? "bg-deep-black z-50 fixed w-full top-0 text-light-white transition duration-200 translate-y-0 "
-                                     : "bg-white pt-4   text-deep-overlay-black transform transition duration-700 translate-y-0"
-                                 } }
-                             
-                             `}
+                              
+                    ${
+                      !isAboveSmallScreens
+                        ? "bg-deep-black fixed w-full top-0 z-50 text-light-white transition duration-200 translate-y-0"
+                        : isScrollSize
+                        ? "bg-deep-black z-50 fixed w-full top-0 text-light-white transition duration-200 translate-y-0 "
+                        : "bg-white pt-4 z-[80] text-deep-overlay-black transform transition duration-700 translate-y-0"
+                    } 
+                
+                `}
       >
         <div
           className={`
-                                        ${
-                                          !isAboveSmallScreens
-                                            ? "border-0 py-6 px-5"
-                                            : isScrollSize
-                                            ? "border-0 py-6 px-5"
-                                            : "py-6 border-b border-deep-overlay-black"
-                                        }
-                                    `}
+                        ${
+                          !isAboveSmallScreens
+                            ? "border-0 py-6 px-4"
+                            : isScrollSize
+                            ? "border-0 py-6 px-4"
+                            : "py-6 border-b border-deep-overlay-black"
+                        }
+                    `}
         >
-          <div className=" flex justify-between items-center px-6">
+          <div className=" flex justify-between items-center px-5">
             <Link
               href={"/"}
               className="block text-2xl hover:transition-colors hover:duration-500 hover:text-header-dark-overlay font-semibold font-Antonio"
@@ -68,11 +74,7 @@ const NavbarMain = () => {
                     </Link>
                     <div className=" relative font-Sohne-Bold hidden transition-all duration-500 group-hover:block hover:block ">
                       <ul
-                        className={`   space-y-1  absolute flex flex-col flex-grow top-2 left-0  py-5 px-5 bg-deep-overlay-black ${
-                          isAboveSmallScreens && !isScrollSize
-                            ? "text-light-white  "
-                            : " text-light-white"
-                        }`}
+                        className={`  text-light-white  space-y-1  absolute flex flex-col flex-grow top-1 left-0  py-5 px-5 bg-deep-overlay-black`}
                       >
                         <li className="">
                           <Link
@@ -112,13 +114,9 @@ const NavbarMain = () => {
                         </span>
                       </div>
                     </Link>
-                    <div className="z-20 relative font-Sohne-Bold hidden transition-all duration-500 group-hover:block hover:block ">
+                    <div className="z-50 relative font-Sohne-Bold hidden transition-all duration-500 group-hover:block hover:block ">
                       <ul
-                        className={` space-y-1  absolute flex flex-col flex-grow top-2 -left-24  py-5 px-5 bg-deep-overlay-black ${
-                          isAboveSmallScreens && !isScrollSize
-                            ? "text-light-white  "
-                            : " text-deep-overlay-black"
-                        }`}
+                        className={` space-y-1  absolute flex flex-col flex-grow top-1 -left-24  py-5 px-5  bg-deep-overlay-black text-light-white `}
                       >
                         <li className="">
                           <Link
@@ -205,42 +203,174 @@ const NavbarMain = () => {
                 visible: { opacity: 1, y: 0 },
               }}
             >
-              <ul className="flex flex-col justify-between items-start absolute top-8 bg-white left-0 w-full p-5 z-10 space-y-3">
-                <li>
-                  <Link href={"/about"} className="font-bold font-Antonio">
-                    <div className="relative overflow-y-hidden link-swipe">
-                      <span className=" transform transition-transform translate-y-0 duration-300">
-                        About
-                      </span>
-                      <span className="absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 ">
-                        About
-                      </span>
+            
+
+              <ul className="flex flex-col text-deep-black justify-between items-start absolute top-6 bg-white left-0 w-full p-5 z-10 space-y-3.5">
+                <li className="w-full ">
+                  <div className="flex justify-between  items-center">
+                    <Link
+                      href={"/about"}
+                      className="font-bold font-Antonio  w-1/2 block"
+                    >
+                      <div className=" ">
+                        <span className=" transform transition-transform translate-y-0 duration-300">
+                          About
+                        </span>
+                      </div>
+                    </Link>
+
+                    <div className="  ">
+                      {!DropDownIsToggle ? (
+                        // Open Menu
+                        <button
+                          className="outline-none pl-5  py-[2px] "
+                          onClick={() => setDropDownIsToggle(!DropDownIsToggle)}
+                        >
+                          <BiChevronRight className="w-6 h-6 " />
+                        </button>
+                      ) : (
+                        // Close Menu
+                        <button
+                          className="outline-none  pl-5  py-[2px]"
+                          onClick={() => setDropDownIsToggle(!DropDownIsToggle)}
+                        >
+                          <BiChevronDown className="w-6 h-6 " />
+                        </button>
+                      )}
                     </div>
-                  </Link>
+                  </div>
+
+                  {DropDownIsToggle && (
+                    <motion.div
+                      className="   py-2.5"
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: false }}
+                      transition={{ duration: 0.5 }}
+                      variants={{
+                        hidden: { opacity: 0, y: 0 },
+                        visible: { opacity: 1, y: 0 },
+                      }}
+                    >
+                      <ul className={`space-y-1py-5 px-5`}>
+                        <li className="">
+                          <Link
+                            href={"/blog"}
+                            className=" whitespace-nowrap  w-2/3 block "
+                          >
+                            <div className="">
+                              <span className="block text-lg ">Blog</span>
+                            </div>
+                          </Link>
+                        </li>
+                        <li className="">
+                          <Link
+                            href={"#"}
+                            className=" whitespace-nowrap   w-2/3 block "
+                          >
+                            <div className="">
+                              <span className="block text-lg ">Resume</span>
+                            </div>
+                          </Link>
+                        </li>
+                      </ul>
+                    </motion.div>
+                  )}
                 </li>
-                <li>
-                  <Link href={"/portfolio"} className="font-bold font-Antonio">
-                    <div className="relative overflow-y-hidden link-swipe">
-                      <span className=" transform transition-transform translate-y-0 duration-300">
-                        Portfolio
-                      </span>
-                      <span className="absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 ">
-                        Portfolio
-                      </span>
+
+                <li className="w-full ">
+                  <div className="flex justify-between  items-center">
+                    <Link
+                      href={"#"}
+                      className="font-bold font-Antonio  w-1/2 block"
+                    >
+                      <div className=" ">
+                        <span className=" transform transition-transform translate-y-0 duration-300">
+                          Portfolio
+                        </span>
+                      </div>
+                    </Link>
+
+                    <div className="  ">
+                      {!DropDownIsToggleP ? (
+                        // Open Menu
+                        <button
+                          className="outline-none pl-5  py-[2px] "
+                          onClick={() =>
+                            setDropDownIsToggleP(!DropDownIsToggleP)
+                          }
+                        >
+                          <BiChevronRight className="w-6 h-6 " />
+                        </button>
+                      ) : (
+                        // Close Menu
+                        <button
+                          className="outline-none  pl-5  py-[2px]"
+                          onClick={() =>
+                            setDropDownIsToggleP(!DropDownIsToggleP)
+                          }
+                        >
+                          <BiChevronDown className="w-6 h-6 " />
+                        </button>
+                      )}
                     </div>
-                  </Link>
+                  </div>
+
+                  {DropDownIsToggleP && (
+                    <motion.div
+                      className="   py-2.5"
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: false }}
+                      transition={{ duration: 0.5 }}
+                      variants={{
+                        hidden: { opacity: 0, y: 0 },
+                        visible: { opacity: 1, y: 0 },
+                      }}
+                    >
+                      <ul className={`space-y-1py-5 px-5`}>
+                        <li className="">
+                          <Link
+                            href={"/portfolio"}
+                            className=" whitespace-nowrap  w-2/3 block "
+                          >
+                            <div className="">
+                              <span className="block text-lg ">
+                                Social Media Strategy
+                              </span>
+                            </div>
+                          </Link>
+                        </li>
+                        <li className="">
+                          <Link
+                            href={"/content-writing"}
+                            className=" whitespace-nowrap   w-2/3 block "
+                          >
+                            <div className="">
+                              <span className="block text-lg ">
+                                Content Writing
+                              </span>
+                            </div>
+                          </Link>
+                        </li>
+                      </ul>
+                    </motion.div>
+                  )}
                 </li>
-                <li>
-                  <Link href={"/contact"} className="font-bold font-Antonio">
-                    <div className="relative overflow-y-hidden link-swipe">
-                      <span className=" transform transition-transform translate-y-0 duration-300">
-                        Contact
-                      </span>
-                      <span className="absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 ">
-                        Contact
-                      </span>
-                    </div>
-                  </Link>
+
+                <li className="w-full ">
+                  <div className="">
+                    <Link
+                      href={"/contact"}
+                      className="font-bold font-Antonio  w-1/2 block"
+                    >
+                      <div className=" ">
+                        <span className=" transform transition-transform translate-y-0 duration-300">
+                          Contact
+                        </span>
+                      </div>
+                    </Link>
+                  </div>
                 </li>
               </ul>
             </motion.div>
