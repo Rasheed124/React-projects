@@ -17,7 +17,7 @@ const NavbarMain = () => {
   
   const [DropDownIsToggleP, setDropDownIsToggleP] = useState(false);
 
-  const isScrollSize = SetScrollSize(137);
+  const isScrollSize = SetScrollSize(110);
 
   const isAboveSmallScreens = useMediaQuery("(min-width: 1024px)");
 

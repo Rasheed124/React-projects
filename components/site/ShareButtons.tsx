@@ -15,7 +15,7 @@ import {
 
 const ShareButtons = ({ title, url } : any) => {
   return (
-    <div>
+    <div className="space-x-3">
       <FacebookShareButton url={url}>
         <FacebookIcon size={40} round={true} />
       </FacebookShareButton>

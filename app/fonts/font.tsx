@@ -6,15 +6,16 @@ import localFont from "next/font/local";
 
 // Font files can be colocated inside of `pages`
 
-const antonio = Antonio({
+const libre_baskerville = Libre_Baskerville({
   subsets: ["latin"],
-  fallback: ["system-ui", "Antonio"],
-  display: "fallback",
-  variable: "--font-antonio",
+  weight: "400",
+  variable: "--font-libre_baskerville",
 });
 
 const sohneBold = localFont({
   src: "../fonts/sohne/test-soehne-buch.woff2",
+  fallback: ["system-ui", "sohneBold"],
+  display: "fallback",
   variable: "--font-sohneBold",
 });
 
@@ -25,13 +26,14 @@ const migraLight = localFont({
   variable: "--font-migraLight",
 });
 
-
-const libre_baskerville = Libre_Baskerville({
+const antonio = Antonio({
   subsets: ["latin"],
-  weight: "400",
-  fallback: ["system-ui", "libre_baskerville"],
-  variable: "--font-libre_baskerville",
+  fallback: ["antonio"],
+  variable: "--font-antonio",
+  display: "fallback",
 });
+
+
 
 export const fonts = {
   antonio,

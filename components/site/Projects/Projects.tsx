@@ -26,12 +26,10 @@ const Projects = ({ projects }: Props) => {
         </motion.div>
 
         {projects.map((project) => (
-          <div className="grid grid-cols-1  w-full px-5 ">
+          <div key={project._id} className="grid grid-cols-1  w-full px-5 ">
             <ClientSideRoute
               key={project._id}
-              route={`
-                                           /portfolio/${project.slug.current}
-                                           `}
+              route={` /portfolio/${project.slug.current} `}
             >
               <div className=" ">
                 <motion.div

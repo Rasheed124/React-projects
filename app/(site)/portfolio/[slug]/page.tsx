@@ -47,25 +47,27 @@ async function Projects({ params: { slug } }: Props) {
           <div>
             <div>
               {project.projectContent &&
-                project.projectContent.map((content) => (
-                  <div className="space-y-5">
-                    {content.image && (
-                      <Image
-                        src={urlFor(content.image).url()}
-                        width={400}
-                        height={600}
-                        alt={project.title}
-                      />
-                    )}
+                project.projectContent.map((project) => (
+                  <div key={project._id}>
+                    <div className="space-y-5">
+                      {project.image && (
+                        <Image
+                          src={urlFor(project.image).url()}
+                          width={400}
+                          height={600}
+                          alt={project.title}
+                        />
+                      )}
 
-                    {content.video && (
-                      <video
-                        src={`${content.video}`}
-                        width={600}
-                        height={600}
-                        controls
-                      ></video>
-                    )}
+                      {project.video && (
+                        <video
+                          src={`${project.video}`}
+                          width={600}
+                          height={600}
+                          controls
+                        ></video>
+                      )}
+                    </div>
                   </div>
                 ))}
             </div>
@@ -86,8 +88,8 @@ async function Projects({ params: { slug } }: Props) {
               </div>
               <div className=" grid grid-cols-2 place-items-start  max-w-[350px] mb-5  ">
                 {project.skillsTitle &&
-                  Array.from(project.skillsTitle).map((skill) => (
-                    <p className="text-lg ">
+                  Array.from(project.skillsTitle).map((skill, index) => (
+                    <p key={index} className="text-lg ">
                       {" "}
                       <span className="text-black">✔</span> {skill}
                     </p>
@@ -103,8 +105,8 @@ async function Projects({ params: { slug } }: Props) {
                   </h3>
 
                   <div className=" grid grid-cols-1 space-y-5   place-items-start  max-w-md  ">
-                    {Array.from(project.keyResult).map((result) => (
-                      <p className="text-lg border-b border-dotted border-light-overlay pb-3 ">
+                    {Array.from(project.keyResult).map((result, index) => (
+                      <p key={index} className="text-lg border-b border-dotted border-light-overlay pb-3 ">
                         {" "}
                         <span></span> {result}
                       </p>
@@ -176,8 +178,8 @@ async function Projects({ params: { slug } }: Props) {
                     <h4 className="text-md font-bold pb-3 font-Antonio ">
                       {" "}
                       SHARE:
-                      {Array.from(project.shareProject).map((share) => (
-                        <span className="font-Sohne-Bold text-xs ml-2 space-x-1">
+                      {Array.from(project.shareProject).map((share, id) => (
+                        <span key={id} className="font-Sohne-Bold text-xs ml-2 space-x-1">
                           {share.length > 1 && share.includes("twitter") && (
                             <Link href={`${share}`} className="underline">
                               <span>Twitter</span>

@@ -1,7 +1,15 @@
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+
 import { client } from "@/lib/sanity.client";
 import { groq } from "next-sanity";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
+
+import { HiOutlineShare } from "react-icons/hi";
+
+import { MdOutlineCancel } from "react-icons/md";
 
 import urlFor from "@/lib/urlFor";
 import Navbar from "@/components/site/Navbars/Navbar";
@@ -11,6 +19,8 @@ import Layout from "@/components/site/Navbars/NavbarLayout";
 import { draftMode } from "next/headers";
 import { PreviewSuspense } from "next-sanity/preview";
 import { usePreview } from "@/lib/sanity.preview";
+import ShareButtons from "@/components/site/ShareButtons";
+import { BiDotsVerticalRounded } from "react-icons/bi";
 
 // import {Porta}
 
@@ -38,8 +48,16 @@ export async function generateStaticParams() {
 }
 
 async function Post({ params: { slug } }: Props) {
-  const { isEnabled } = draftMode();
+  const [IsShowShareIcons, setIsShowShareIcons] = React.useState(false);
 
+  const [ClickedIndex, setClickedIndex] = React.useState(false);
+
+  const handleClick = () => () => {
+    setClickedIndex(ClickedIndex);
+  };
+
+  // const title = `Read ${posts.map((post ) => post.title)} `;
+  // const url = window.location.href;
   const query = groq`
   *[_type == 'post' && slug.current == $slug][0]
   {
@@ -62,7 +80,7 @@ async function Post({ params: { slug } }: Props) {
 
   return (
     <Layout route="/contact">
-      <article className="px-10 pb-20 border">
+      <article className="px-10 pb-20 border relative">
         <section className="py-14  ">
           <div className="  ">
             <div className=" pb-5 max-w-5xl  mx-auto  ">
@@ -92,8 +110,9 @@ async function Post({ params: { slug } }: Props) {
                     <form action="/">
                       <div>
                         <input
-                          className="border outline-none px-3 py-1.5"
+                          className="border w-full outline-none px-3 py-1.5"
                           type="search"
+                          placeholder="Search"
                           name=""
                           id=""
                         />
@@ -129,9 +148,21 @@ async function Post({ params: { slug } }: Props) {
                   </div>
 
                   <div className="flex flex-wrap max-w-md">
-                    <Link className="font-medium" href={"/"}>
-                      <h5>share</h5>
-                    </Link>
+                    <span className="block cursor-pointer relative">
+                      <BiDotsVerticalRounded onClick={handleClick()} />
+
+                      {!ClickedIndex ? (
+                        <div
+                          className="absolute top-3 right-6 shadow-lg py-3 px-5 w-[200px] bg-white border flex justify-center items-center space-x-3"
+                          onClick={() => setIsShowShareIcons(!IsShowShareIcons)}
+                        >
+                          <HiOutlineShare />
+                          <p className="text-lg font-semibold">Share Post</p>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </span>
                   </div>
                 </div>
 
@@ -161,6 +192,46 @@ async function Post({ params: { slug } }: Props) {
             </div>
           </div>
         </section>
+
+        {IsShowShareIcons && (
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.8 }}
+            transition={{ duration: 0.6 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1 },
+            }}
+            className="min-h-screen  fixed top-0 left-0  bg-black bg-opacity-60 bg-blend-overlay w-full flex justify-center items-center z-[60]"
+          >
+            <div className="">
+              <div className="flex flex-col ">
+                <span className="block  absolute top-3  right-3">
+                  <MdOutlineCancel
+                    className="w-14 cursor-pointer h-14 font-bold text-white"
+                    onClick={() => setIsShowShareIcons(!IsShowShareIcons)}
+                  />
+                </span>
+                <div
+                  onClick={() => setIsShowShareIcons(IsShowShareIcons)}
+                  className="flex justify-center flex-col text-center max-w-3xl items-center py-10 px-6 space-x-3 bg-white  "
+                >
+                  <h4>Share Post</h4>
+                  <div className="w-full flex  py-5 ">
+                    <div>
+                      <ShareButtons
+                        title={post.title}
+                        url={post.slug.current}
+                        // tags={}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
       </article>
     </Layout>
   );

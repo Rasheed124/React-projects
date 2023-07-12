@@ -21,10 +21,28 @@ import { MdOutlineCancel } from "react-icons/md";
 import { BiMessageAlt } from "react-icons/bi";
 import { SlLike } from "react-icons/sl";
 import ShareButtons from "../ShareButtons";
+import { client } from "@/lib/sanity.client";
+import { groq } from "next-sanity";
+
+// type Props = {
+//   posts: Post[];
+// };
 
 type Props = {
+  // params: {
+  //   slug: string;
+  // };
+
   posts: Post[];
 };
+
+
+// async function Post({ params: { slug } }: Props) {
+ 
+
+
+
+// }
 
 const BlogList = ({ posts }: Props) => {
   const [IsShowShareIcons, setIsShowShareIcons] = useState(false);
@@ -38,9 +56,8 @@ const BlogList = ({ posts }: Props) => {
     }));
   };
 
-  const title = `Read ${posts.map((post) => post.title)} `;
-  // const url = window.location.href;
-  // const twitterHandle = "_MsLinda";
+  const title = `Read ${posts.map((post ) => post.title)} `;
+  const url = window.location.href;
 
   return (
     <section className="py-14  bg-light-white relative">
@@ -120,23 +137,6 @@ const BlogList = ({ posts }: Props) => {
                             ) : (
                               ""
                             )}
-
-                            {/* <div>
-                              <div
-                                className="post-body__content"
-                                dangerouslySetInnerHTML={{
-                                  __html: post.title,
-                                }}
-                              ></div>
-                              <div>
-                                <ShareButtons
-                                  title={title}
-                                  url={url}
-                                  twitterHandle={twitterHandle}
-                                  tags={tags}
-                                />
-                              </div>
-                            </div> */}
                           </span>
                         </div>
 
@@ -168,54 +168,50 @@ const BlogList = ({ posts }: Props) => {
                     </div>
                   </motion.div>
                 </div>
-              </div>
-            ))}
 
-            {IsShowShareIcons && (
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.8 }}
-                transition={{ duration: 0.6 }}
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: { opacity: 1 },
-                }}
-             
-                className="min-h-screen  fixed top-0 left-0  bg-black bg-opacity-60 bg-blend-overlay w-full flex justify-center items-center z-[60]"
-              >
-                <div className="">
-                  <div className="flex flex-col ">
-                    <span className="block  absolute top-3  right-3">
-                      <MdOutlineCancel
-                        className="w-14 cursor-pointer h-14 font-bold text-white"
-                        onClick={() => setIsShowShareIcons(!IsShowShareIcons)}
-                      />
-                    </span>
-                    <div
-                      onClick={() => setIsShowShareIcons(IsShowShareIcons)}
-                      className="flex justify-center flex-col text-center max-w-3xl items-center py-10 px-6 space-x-3 bg-white  "
-                    >
-                      <h4>Share Post</h4>
-                      <div className="w-full flex space-x-3 py-5 ">
-                        <Link href={"#"} className="block">
-                          <span className="rounded-full w-14 h-14 block bg-blue-500  "></span>
-                        </Link>
-                        <Link href={"#"} className="block">
-                          <span className="rounded-full w-14 h-14 block bg-red-500 "></span>
-                        </Link>
-                        <Link href={"#"} className="block">
-                          <span className="rounded-full w-14 h-14 block bg-blue-500 "></span>
-                        </Link>
-                        <Link href={"#"} className="block">
-                          <span className="rounded-full w-14 h-14 block bg-black "></span>
-                        </Link>
+                {IsShowShareIcons && (
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.8 }}
+                    transition={{ duration: 0.6 }}
+                    variants={{
+                      hidden: { opacity: 0 },
+                      visible: { opacity: 1 },
+                    }}
+                    className="min-h-screen  fixed top-0 left-0  bg-black bg-opacity-60 bg-blend-overlay w-full flex justify-center items-center z-[60]"
+                  >
+                    <div className="">
+                      <div className="flex flex-col ">
+                        <span className="block  absolute top-3  right-3">
+                          <MdOutlineCancel
+                            className="w-14 cursor-pointer h-14 font-bold text-white"
+                            onClick={() =>
+                              setIsShowShareIcons(!IsShowShareIcons)
+                            }
+                          />
+                        </span>
+                        <div
+                          onClick={() => setIsShowShareIcons(IsShowShareIcons)}
+                          className="flex justify-center flex-col text-center max-w-3xl items-center py-10 px-6 space-x-3 bg-white  "
+                        >
+                          <h4>Share Post</h4>
+                          <div className="w-full flex  py-5 ">
+                            <div >
+                              <ShareButtons
+                                title={title}
+                                url={url}
+                                // tags={}
+                              />
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </motion.div>
-            )}
+                  </motion.div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
