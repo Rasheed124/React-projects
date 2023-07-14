@@ -19,9 +19,9 @@ type Props = {
 
 const PostList = ({ posts }: Props) => {
   return (
-    <section className="py-14 ">
+    <section className="py-16 lg:py-20  ">
       <div className="flex flex-col max-w-6xl mx-auto  ">
-        <div className=" pb-5 px-5 text-center">
+        <div className=" px-5 text-center">
           <h4 className="font-Antonio text-2xl ">Recent Blog Posts</h4>
 
           <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 ">

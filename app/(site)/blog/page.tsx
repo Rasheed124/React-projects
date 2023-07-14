@@ -30,7 +30,7 @@ export default async function Blog() {
           </div>
         }
       >
-        <div className="border border-red-400">
+        <div className="">
           <Layout route="/contact">
             <PreviewBlogList query={BlogListQuery} />
           </Layout>

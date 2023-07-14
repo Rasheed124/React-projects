@@ -57,23 +57,27 @@ const BlogList = ({ posts }: Props) => {
   };
 
   const title = `Read ${posts.map((post ) => post.title)} `;
-  const url = window.location.href;
+  // const url = window.location.href;
 
   return (
-    <section className="py-14  bg-light-white relative">
-      <div className="flex flex-col   ">
-        <div className=" pb-5  ">
-          <div className="pt-10  ">
-            <div className=" w-full max-w-2xl mt-14 md:mt-0 ">
-              <h4 className=" font-extrabold text-7xl text-deep-black z-30 pl-10 ">
-                {" "}
-                Blog
-              </h4>
-              <span className="relative w-full block -z-10 bg-light-white -top-[35px] left-0 h-[150px] "></span>
+    <section className="  ">
+      <div className=" ">
+        <header className="px-5 py-16 bg-light-white ">
+          <div className=" max-w-6xl mx-auto mt-24 lg:mt-16">
+            <h2 className="uppercase font-extrabold font-Antonio text-6xl mb-1 ">
+              Blog
+            </h2>
+
+            <div className="space-x-1">
+              <Link href={"/"}>Home</Link>
+              <span>/</span>
+              <Link href={"#"}>Blog</Link>
             </div>
           </div>
+        </header>
 
-          <div className=" md:mt-6 grid grid-cols-1 gap-10 text-center max-w-6xl mx-auto px-5 ">
+        <div className="bg-white px-5 py-16">
+          <div className=" grid grid-cols-1 gap-10 text-center max-w-6xl mx-auto  ">
             {posts.map((post, index) => (
               <div key={post._id}>
                 <div className="flex flex-col justify-center text-left">
@@ -197,10 +201,10 @@ const BlogList = ({ posts }: Props) => {
                         >
                           <h4>Share Post</h4>
                           <div className="w-full flex  py-5 ">
-                            <div >
+                            <div>
                               <ShareButtons
                                 title={title}
-                                url={url}
+                                // url={url}
                                 // tags={}
                               />
                             </div>

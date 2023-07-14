@@ -28,9 +28,9 @@ const Testimonial = ({ testimonials }: Props) => {
   const nextRef = useRef();
 
   return (
-    <section className="py-14 ">
+    <section className="py-16 lg:py-20  ">
       <div className="flex flex-col max-w-6xl mx-auto  ">
-        <div className=" pb-5 px-5">
+        <div className=" px-5">
           <Swiper
             modules={[Navigation, EffectFade]}
             effect="crossfade"

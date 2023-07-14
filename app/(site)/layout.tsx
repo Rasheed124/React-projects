@@ -25,7 +25,7 @@ export default  function RootLayout({
         className={`${fonts.antonio.variable} ${fonts.sohneBold.variable} ${fonts.migraLight.variable} ${fonts.libre_baskerville.variable} bg-transparent `}
       >
         {/* Header */}
-        <main className="bg-transparent">
+        <main className="bg-transparent ">
           <div className="max-w-8xl mx-auto ">
             {children}
 

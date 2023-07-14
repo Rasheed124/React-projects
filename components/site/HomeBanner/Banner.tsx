@@ -11,13 +11,13 @@ const HomeBanner = ({ homeBanners }: Props) => {
       {homeBanners.map((homeBanner) => (
         <div
           key={homeBanner._id}
-          className="flex flex-col pt-10 px-2   text-center "
+          className="flex flex-col pt-10   text-center "
         >
           {/* HEADER CONTENT */}
 
           <div className="max-w-sm sm:max-w-lg  md:max-w-3xl mx-auto  mb-10 p-2 lg:py-16">
             <div className="   leading-[10rem] flex justify-center items-center  ">
-              <h2 className="text-[6rem] text-light-white sm:whitespace-nowrap sm:text-[4.2rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[10rem] sm:px-5 tracking-[0.4rem] font-Antonio leading-[7rem] lg:tracking-[-0.5rem] uppercase ">
+              <h2 className="text-[6rem] text-light-white sm:whitespace-nowrap sm:text-[4.0rem] lg:text-[7rem] xl:text-[10rem] sm:px-5 tracking-[0.4rem] font-Antonio leading-[7rem] lg:tracking-[-0.5rem] uppercase ">
                 {homeBanner.name}
               </h2>
             </div>

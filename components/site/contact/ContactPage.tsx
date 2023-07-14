@@ -14,7 +14,7 @@ const ContactPage = ({ contactPage }: Props) => {
     <>
       {contactPage &&
         contactPage.map((contact) => (
-          <div className="   xl:px-0">
+          <div key={contact._id} className=" ">
             <section className="pt-24 bg-light-white">
               <div className=" ">
                 <motion.div
@@ -28,7 +28,7 @@ const ContactPage = ({ contactPage }: Props) => {
                     visible: { opacity: 1, y: 0 },
                   }}
                 >
-                  <div className="max-w-6xl px-4 mx-auto text-left  grid grid-cols-1 md:grid-cols-2 gap-10 pb-24 ">
+                  <div className="max-w-6xl px-5 mx-auto text-left  grid grid-cols-1 md:grid-cols-2 gap-10 pb-24 ">
                     <div className=" ">
                       <h2 className="font-Antonio text-5xl font-bold mb-10 lg:mb-16 max-w-[455px] md:text-7xl uppercase leading-[3.4rem]">
                         {contact.title}
@@ -95,7 +95,7 @@ const ContactPage = ({ contactPage }: Props) => {
                     </div>
                   </div>
 
-                  <div className=" py-2  bg-white w-full ">
+                  <div className=" py-2  bg-white w-full px-5">
                     <div className="text-lg font-bold">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Quas cupiditate possimus dolorum vitae est placeat totam,

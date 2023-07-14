@@ -9,9 +9,9 @@ const ContactInfo = ({ contacts }: Props) => {
   return (
     <div>
       {contacts.map((contact) => (
-        <section className="py-14 " key={contact._id}>
-          <div className=" max-w-6xl mx-auto  ">
-            <div className=" pb-5 px-5 text-center">
+        <section className="py-16 lg:py-20 " key={contact._id}>
+          <div className=" max-w-6xl mx-auto  px-5">
+            <div className="  px-5 text-center">
               <h4 className="font-migra-light text-[6rem] ">
                 {contact.heading}
               </h4>

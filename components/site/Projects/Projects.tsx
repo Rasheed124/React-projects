@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import ClientSideRoute from "../ClientSideRoute";
+import Link from "next/link";
+import { HiArrowNarrowRight } from "react-icons/hi";
 
 type Props = {
   projects: Projects[];
@@ -9,10 +11,10 @@ type Props = {
 
 const Projects = ({ projects }: Props) => {
   return (
-    <section className="py-14 ">
+    <section className="py-16 lg:py-20  ">
       <div className="flex flex-col max-w-6xl mx-auto  ">
         <motion.div
-          className="text-center py-7 px-5"
+          className="text-center  px-5"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.8 }}
@@ -60,6 +62,24 @@ const Projects = ({ projects }: Props) => {
             </ClientSideRoute>
           </div>
         ))}
+
+        <Link
+          className="block hover:transition-colors duration-500 self-center mt-10 "
+          id="btn-link"
+          href={"/contact"}
+        >
+          <div className="flex justify-center items-center gap-3 text-lg font-Antonio">
+            <div className="uppercase">View more</div>
+            <div className="relative btn overflow-x-hidden">
+              <span>
+                <HiArrowNarrowRight className="text-3xl hover:transform hover:-translate-x-full hover:transition-transform hover:duration-500" />
+              </span>
+              <span className="absolute top-0 left-0 transform -translate-x-full transition-transform duration-500">
+                <HiArrowNarrowRight className="text-3xl" />
+              </span>
+            </div>
+          </div>
+        </Link>
       </div>
     </section>
   );

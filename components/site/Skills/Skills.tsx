@@ -12,9 +12,9 @@ type Props = {
 
 const Skills = ({ skills }: Props) => {
   return (
-    <section className="py-14 ">
+    <section className="py-16 lg:py-20 ">
       {skills.map((skill) => (
-        <div key={skill._id} className="flex flex-col max-w-6xl mx-auto  ">
+        <div key={skill._id} className="flex flex-col max-w-6xl mx-auto   ">
           <div className="  text-center py-7 px-5 ">
             <h2 className="font-Sohne-Bold text-lg pb-3 mb-5 xl:mb-0">
               {skill.heading}
@@ -31,11 +31,7 @@ const Skills = ({ skills }: Props) => {
                   {skill.subHeading.split(" ").slice(7, 8).join(" ")}
                 </span>{" "}
                 {skill.subHeading.split(" ").slice(8)}
-                {/* Creating  
-                                        <span className="text-light-overlay">data-driven</span> 
-                                         strategies and immersive content for
-                                         <span className="text-light-overlay">meaningful</span> 
-                                          communities. */}
+           
               </h3>
             </div>
 
@@ -76,7 +72,7 @@ const Skills = ({ skills }: Props) => {
           <Link
             className="block hover:transition-colors duration-500 self-center mt-10 "
             id="btn-link"
-            href={"/"}
+            href={"/contact"}
           >
             <div className="flex justify-center items-center gap-3 text-lg font-Antonio">
               <div className="uppercase">Get in touch</div>

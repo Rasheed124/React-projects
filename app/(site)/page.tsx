@@ -66,7 +66,7 @@ export default async function Home() {
           </div>
         }
       >
-        <div className=" text-light-white px-4 xl:px-0 bg-deep-black ">
+        <div className=" text-light-white xl:px-0 bg-deep-black ">
           <Layout  route="/">
             {/* Preview Blog List */}
             <PreviewBanner query={BannerQuery} />
@@ -87,7 +87,7 @@ export default async function Home() {
   }
 
   return (
-    <div className="bg-deep-black text-light-white px-4 xl:px-0">
+    <div className="bg-deep-black text-light-white  xl:px-0">
       <Layout route="/">
         {/* BANNERS */}
         <Banner homeBanners={homeBanners} />

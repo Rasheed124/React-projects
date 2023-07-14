@@ -29,7 +29,7 @@ export default async function Contact() {
           </div>
         }
       >
-        <div className="border border-red-400">
+        <div className="">
           <Layout route="/contact">
             <PreviewContact query={ContactQuery} />
           </Layout>

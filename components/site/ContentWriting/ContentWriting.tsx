@@ -16,10 +16,10 @@ const ContentWriting = ({ contentwritings }: Props) => {
   //   { console.log(contentwritings)}
   return (
     <>
-      <div className="  ">
-        <div className="bg-slate-50  ">
-          <header className="px-4 py-16">
-            <div className=" max-w-6xl mx-auto">
+      <section className="  ">
+        <div className=" ">
+          <header className="px-5 py-16 bg-light-white ">
+            <div className=" max-w-6xl mx-auto mt-24 lg:mt-16">
               <h2 className="uppercase font-extrabold font-Antonio text-6xl mb-1 ">
                 Content Writing
               </h2>
@@ -27,12 +27,12 @@ const ContentWriting = ({ contentwritings }: Props) => {
               <div className="space-x-1">
                 <Link href={"/"}>Home</Link>
                 <span>/</span>
-                <Link href={"/"}>Content Writing</Link>
+                <Link href={"#"}>Content Writing</Link>
               </div>
             </div>
           </header>
 
-          <div className="bg-white px-4 py-16">
+          <div className="bg-white px-5 py-16">
             {contentwritings.map((contentwriting) => (
               <div
                 key={contentwriting._id}
@@ -76,7 +76,7 @@ const ContentWriting = ({ contentwritings }: Props) => {
             ))}
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

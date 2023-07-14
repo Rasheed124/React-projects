@@ -29,7 +29,7 @@ export default async function ContactWriting() {
           </div>
         }
       >
-        <div className="border border-red-400">
+        <div className="text-deep-black">
           {/* Preview Blog List */}
 
           <PreviewContentWriting query={contentwritingQuery} />
