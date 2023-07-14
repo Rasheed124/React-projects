@@ -183,7 +183,7 @@ const BlogList = ({ posts }: Props) => {
                       hidden: { opacity: 0 },
                       visible: { opacity: 1 },
                     }}
-                    className="min-h-screen  fixed top-0 left-0  bg-black bg-opacity-60 bg-blend-overlay w-full flex justify-center items-center z-[60]"
+                    className="min-h-screen  fixed top-0 left-0  bg-black bg-opacity-30 bg-blend-overlay w-full flex justify-center items-center z-[60]"
                   >
                     <div className="">
                       <div className="flex flex-col ">

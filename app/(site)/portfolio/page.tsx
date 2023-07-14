@@ -29,7 +29,7 @@ export default async function Portfolio() {
           </div>
         }
       >
-        <div className="border border-red-400">
+        <div className="">
           <Layout route="/contact">
             <PortfolioProject projects={portfolio} />
           </Layout>
@@ -39,7 +39,7 @@ export default async function Portfolio() {
   }
 
   return (
-    <div className=" text-light-white ">
+    <div className=" text-deep-black ">
       <Layout route="/projects">
         <PortfolioProject projects={portfolio} />
       </Layout>

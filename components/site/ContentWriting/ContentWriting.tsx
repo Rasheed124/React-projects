@@ -50,7 +50,10 @@ const ContentWriting = ({ contentwritings }: Props) => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 sm:col-start-2 sm:col-end-4 gap-9 my-10  ">
                   {contentwriting.writings &&
                     contentwriting.writings.map((writing) => (
-                      <div key={writing._id} className="space-y-3  ">
+                      <div
+                        key={writing._id}
+                        className="space-y-3  flex flex-col"
+                      >
                         <div className="relative h-[200px] w-full">
                           <Image
                             className="object-cover max-w-full"
@@ -61,12 +64,11 @@ const ContentWriting = ({ contentwritings }: Props) => {
                         </div>
 
                         <h3 className="font-bold text-xl">{writing.title}</h3>
-                        <p className="mb-4">
-                          How To Boost E-Commerce Revenue Using Instagram
-                          Product Tagging
-                        </p>
-
-                        <Link className="mt-2" href={`${writing.url}`}>
+                        <p className="mb-4">{writing.description}</p>
+                        <Link
+                          className="mt-6 pt-2 pb-0.5 border-b-2 border-deep-black block self-start  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-deep-black hover:after:w-full hover:after:h-0.5"
+                          href={`${writing.url}`}
+                        >
                           Read More
                         </Link>
                       </div>
