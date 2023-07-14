@@ -14,7 +14,7 @@ const Navbar = () => {
 
     const [DropDownIsToggleP, setDropDownIsToggleP] = useState(false);
 
-  const [IsHover, setIsHover] = useState(false);
+
 
   const isAboveSmallScreens = useMediaQuery("(min-width: 1024px)");
 

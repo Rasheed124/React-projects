@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer";
 
 
 
-const Layout =  ( {
+const Layout = async ( {
   children,
   route,
 
@@ -16,7 +16,7 @@ const Layout =  ( {
   route: string;
 }) => {
 
-  // const contactInfo = await getContactInfo();
+  const contactInfo = await getContactInfo();
 
   return (
     <>
@@ -25,7 +25,7 @@ const Layout =  ( {
 
       {children}
 
-      {/* {route !== "/" ? <Footer footer={contactInfo} /> : null} */}
+      {route !== "/" ? <Footer footer={contactInfo} /> : null}
     </>
   );
 };

@@ -13,7 +13,10 @@ const Footer = ({ footer }: Props) => {
     <>
       {footer &&
         footer.map((footerData) => (
-          <footer className="pb-14  bg-contact-dark-overlay text-deep-black">
+          <footer
+            key={footerData._id}
+            className="pb-14  bg-contact-dark-overlay text-deep-black"
+          >
             <div className="flex flex-col w-full  ">
               <div className=" pb-5">
                 <div className="px-4 pt-14 ">
@@ -38,9 +41,13 @@ const Footer = ({ footer }: Props) => {
                             INFO
                           </h4>
                           <div className=" flex flex-col flex-wrap">
-                            {Array.from(footerData.infoText).map((address) => (
-                              <p className="">{address}</p>
-                            ))}
+                            {Array.from(footerData.infoText).map(
+                              (address, id) => (
+                                <p key={id} className="">
+                                  {address}
+                                </p>
+                              ),
+                            )}
                           </div>
 
                           <Link

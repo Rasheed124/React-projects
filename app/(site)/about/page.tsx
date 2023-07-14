@@ -29,7 +29,7 @@ export default async function About() {
           </div>
         }
       >
-        <div className="border border-red-400">
+        <div className="">
           {/* Preview Blog List */}
 
           <PreviewAbout query={AboutQuery} />

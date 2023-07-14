@@ -18,21 +18,19 @@ async function Projects({ params: { slug } }: Props) {
   const query = groq`*[_type == "projects" && slug.current == $slug][0]{
             _id,
               ...,
-                text[]{
+                projectContent[]->{
+
+                  title,
+
+            "image" : image.asset->url,
+
                 _type == "muxVideo" => {
             ...,
             asset->{
-                ...,
+            
                 "video": "https://stream.mux.com/" + playbackId
                 }
-            },
-
-
-        projectContent[]->{
-               ...,
-             "image" : image.asset->url,
-            }
-                }
+            },          }
            
              } `;
 
@@ -49,23 +47,27 @@ async function Projects({ params: { slug } }: Props) {
               {project.projectContent &&
                 project.projectContent.map((project) => (
                   <div key={project._id}>
-                    <div className="space-y-5">
+                    <div className="space-y-5 flex flex-col justify-center items-center">
                       {project.image && (
-                        <Image
-                          src={urlFor(project.image).url()}
-                          width={400}
-                          height={600}
-                          alt={project.title}
-                        />
+                        <div className="space-y-5">
+                          <Image
+                            src={urlFor(project.image).url()}
+                            width={500}
+                            height={500}
+                            alt={project.title}
+                          />
+                        </div>
                       )}
 
                       {project.video && (
-                        <video
-                          src={`${project.video}`}
-                          width={600}
-                          height={600}
-                          controls
-                        ></video>
+                        <div className="space-y-5">
+                          <video
+                            src={`${project.video}`}
+                            width={500}
+                            height={500}
+                            controls
+                          ></video>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -106,7 +108,10 @@ async function Projects({ params: { slug } }: Props) {
 
                   <div className=" grid grid-cols-1 space-y-5   place-items-start  max-w-md  ">
                     {Array.from(project.keyResult).map((result, index) => (
-                      <p key={index} className="text-lg border-b border-dotted border-light-overlay pb-3 ">
+                      <p
+                        key={index}
+                        className="text-lg border-b border-dotted border-light-overlay pb-3 "
+                      >
                         {" "}
                         <span></span> {result}
                       </p>
@@ -140,13 +145,13 @@ async function Projects({ params: { slug } }: Props) {
                       <span className="ml-2">
                         <Link
                           href={`
-                                                     ${
-                                                       !project.projectlink
-                                                         ? "#/" + ""
-                                                         : project.projectlink
-                                                     }
-                                                
-                                                `}
+                                ${
+                                  !project.projectlink
+                                    ? "#/" + ""
+                                    : project.projectlink
+                                }
+                          
+                          `}
                           className="underline"
                         >
                           <span>{project.title}</span>
@@ -179,7 +184,10 @@ async function Projects({ params: { slug } }: Props) {
                       {" "}
                       SHARE:
                       {Array.from(project.shareProject).map((share, id) => (
-                        <span key={id} className="font-Sohne-Bold text-xs ml-2 space-x-1">
+                        <span
+                          key={id}
+                          className="font-Sohne-Bold text-xs ml-2 space-x-1"
+                        >
                           {share.length > 1 && share.includes("twitter") && (
                             <Link href={`${share}`} className="underline">
                               <span>Twitter</span>

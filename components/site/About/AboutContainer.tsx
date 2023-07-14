@@ -10,8 +10,8 @@ import useMediaQuery from "../UseMediaQuery";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import urlFor from "@/lib/urlFor";
-import AnimatedNavbar from "../Navbars/AnimatedNavbar";
 import SetScrollSize from "../SetScrollSize";
+import { BiChevronDown, BiChevronRight } from "react-icons/bi";
 
 type Props = {
   abouts: About[];
@@ -19,6 +19,10 @@ type Props = {
 
 const AboutContainer = ({ abouts }: Props) => {
   const [MenuIsToggle, setMenuIstoggle] = useState(false);
+
+  const [DropDownIsToggle, setDropDownIsToggle] = useState(false);
+
+  const [DropDownIsToggleP, setDropDownIsToggleP] = useState(false);
 
   const isAboveSmallScreens = useMediaQuery("(min-width: 1024px)");
 
@@ -40,8 +44,6 @@ const AboutContainer = ({ abouts }: Props) => {
             visible: { opacity: 1 },
           }}
         >
-          {/* {animateHeader &&  <AnimatedNavbar /> } */}
-
           <nav
             className={`
                                  
@@ -226,48 +228,176 @@ const AboutContainer = ({ abouts }: Props) => {
                     visible: { opacity: 1, y: 0 },
                   }}
                 >
-                  <ul className="flex flex-col text-deep-black justify-between items-start absolute top-8 bg-white left-0 w-full p-5 z-10 space-y-3">
-                    <li>
-                      <Link href={"/about"} className="font-bold font-Antonio">
-                        <div className="relative overflow-y-hidden link-swipe">
-                          <span className=" transform transition-transform translate-y-0 duration-300">
-                            About
-                          </span>
-                          <span className="absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 ">
-                            About
-                          </span>
+                  <ul className="flex flex-col text-deep-black justify-between items-start absolute top-6 bg-white left-0 w-full p-5 z-10 space-y-3.5">
+                    <li className="w-full ">
+                      <div className="flex justify-between  items-center">
+                        <Link
+                          href={"/about"}
+                          className="font-bold font-Antonio  w-1/2 block"
+                        >
+                          <div className=" ">
+                            <span className=" transform transition-transform translate-y-0 duration-300">
+                              About
+                            </span>
+                          </div>
+                        </Link>
+
+                        <div className="  ">
+                          {!DropDownIsToggle ? (
+                            // Open Menu
+                            <button
+                              className="outline-none pl-5  py-[2px] "
+                              onClick={() =>
+                                setDropDownIsToggle(!DropDownIsToggle)
+                              }
+                            >
+                              <BiChevronRight className="w-6 h-6 " />
+                            </button>
+                          ) : (
+                            // Close Menu
+                            <button
+                              className="outline-none  pl-5  py-[2px]"
+                              onClick={() =>
+                                setDropDownIsToggle(!DropDownIsToggle)
+                              }
+                            >
+                              <BiChevronDown className="w-6 h-6 " />
+                            </button>
+                          )}
                         </div>
-                      </Link>
+                      </div>
+
+                      {DropDownIsToggle && (
+                        <motion.div
+                          className="   py-2.5"
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: false }}
+                          transition={{ duration: 0.5 }}
+                          variants={{
+                            hidden: { opacity: 0, y: 0 },
+                            visible: { opacity: 1, y: 0 },
+                          }}
+                        >
+                          <ul className={`space-y-1py-5 px-5`}>
+                            <li className="">
+                              <Link
+                                href={"/blog"}
+                                className=" whitespace-nowrap  w-2/3 block "
+                              >
+                                <div className="">
+                                  <span className="block text-lg ">Blog</span>
+                                </div>
+                              </Link>
+                            </li>
+                            <li className="">
+                              <Link
+                                href={"#"}
+                                className=" whitespace-nowrap   w-2/3 block "
+                              >
+                                <div className="">
+                                  <span className="block text-lg ">Resume</span>
+                                </div>
+                              </Link>
+                            </li>
+                          </ul>
+                        </motion.div>
+                      )}
                     </li>
-                    <li>
-                      <Link
-                        href={"/portfolio"}
-                        className="font-bold font-Antonio"
-                      >
-                        <div className="relative overflow-y-hidden link-swipe">
-                          <span className=" transform transition-transform translate-y-0 duration-300">
-                            Portfolio
-                          </span>
-                          <span className="absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 ">
-                            Portfolio
-                          </span>
+
+                    <li className="w-full ">
+                      <div className="flex justify-between  items-center">
+                        <Link
+                          href={"#"}
+                          className="font-bold font-Antonio  w-1/2 block"
+                        >
+                          <div className=" ">
+                            <span className=" transform transition-transform translate-y-0 duration-300">
+                              Portfolio
+                            </span>
+                          </div>
+                        </Link>
+
+                        <div className="  ">
+                          {!DropDownIsToggleP ? (
+                            // Open Menu
+                            <button
+                              className="outline-none pl-5  py-[2px] "
+                              onClick={() =>
+                                setDropDownIsToggleP(!DropDownIsToggleP)
+                              }
+                            >
+                              <BiChevronRight className="w-6 h-6 " />
+                            </button>
+                          ) : (
+                            // Close Menu
+                            <button
+                              className="outline-none  pl-5  py-[2px]"
+                              onClick={() =>
+                                setDropDownIsToggleP(!DropDownIsToggleP)
+                              }
+                            >
+                              <BiChevronDown className="w-6 h-6 " />
+                            </button>
+                          )}
                         </div>
-                      </Link>
+                      </div>
+
+                      {DropDownIsToggleP && (
+                        <motion.div
+                          className="   py-2.5"
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: false }}
+                          transition={{ duration: 0.5 }}
+                          variants={{
+                            hidden: { opacity: 0, y: 0 },
+                            visible: { opacity: 1, y: 0 },
+                          }}
+                        >
+                          <ul className={`space-y-1py-5 px-5`}>
+                            <li className="">
+                              <Link
+                                href={"/portfolio"}
+                                className=" whitespace-nowrap  w-2/3 block "
+                              >
+                                <div className="">
+                                  <span className="block text-lg ">
+                                    Social Media Strategy
+                                  </span>
+                                </div>
+                              </Link>
+                            </li>
+                            <li className="">
+                              <Link
+                                href={"/content-writing"}
+                                className=" whitespace-nowrap   w-2/3 block "
+                              >
+                                <div className="">
+                                  <span className="block text-lg ">
+                                    Content Writing
+                                  </span>
+                                </div>
+                              </Link>
+                            </li>
+                          </ul>
+                        </motion.div>
+                      )}
                     </li>
-                    <li>
-                      <Link
-                        href={"/contact"}
-                        className="font-bold font-Antonio"
-                      >
-                        <div className="relative overflow-y-hidden link-swipe">
-                          <span className=" transform transition-transform translate-y-0 duration-300">
-                            Contact
-                          </span>
-                          <span className="absolute delay-75 transition-transform duration-300 top-0 transform -translate-y-full left-0 ">
-                            Contact
-                          </span>
-                        </div>
-                      </Link>
+
+                    <li className="w-full ">
+                      <div className="">
+                        <Link
+                          href={"/contact"}
+                          className="font-bold font-Antonio  w-1/2 block"
+                        >
+                          <div className=" ">
+                            <span className=" transform transition-transform translate-y-0 duration-300">
+                              Contact
+                            </span>
+                          </div>
+                        </Link>
+                      </div>
                     </li>
                   </ul>
                 </motion.div>
@@ -282,7 +412,7 @@ const AboutContainer = ({ abouts }: Props) => {
           {/* ABOUT ME DETAILS */}
           <div className=" py-14 bg-white text-deep-black">
             <motion.div
-              className="max-w-6xl px-4 mx-auto text-left  grid grid-cols-1 md:grid-cols-3 gap-10 "
+              className="max-w-6xl px-5 mx-auto text-left  grid grid-cols-1 md:grid-cols-3 gap-10 "
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.8 }}
@@ -298,8 +428,8 @@ const AboutContainer = ({ abouts }: Props) => {
                 </h2>
 
                 <div className=" space-y-5 pr-10 md:pr-0 font-libre-baskerville text-lg mt-5">
-                  {Array.from(about.storyText).map((text) => (
-                    <p>{text}</p>
+                  {Array.from(about.storyText).map((text, id) => (
+                    <p key={id}>{text}</p>
                   ))}
                 </div>
               </div>
@@ -323,10 +453,9 @@ const AboutContainer = ({ abouts }: Props) => {
           </div>
 
           {/* ABOUT COMPANY */}
-
           <div className=" py-14 bg-light-white text-deep-black">
             <motion.div
-              className=" max-w-6xl px-4 mx-auto text-center "
+              className=" max-w-6xl px-5 mx-auto text-center "
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.8 }}
@@ -343,8 +472,8 @@ const AboutContainer = ({ abouts }: Props) => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 md:gap-10">
-                {about.companys.map((company) => (
-                  <div className="">
+                {about.companys.map((company, id) => (
+                  <div key={id} className="">
                     <div className="py-3 border-t border-b text-left border-deep-black">
                       <Link href={"/"} className="inline-block">
                         <p className="text-xl">{company.title}</p>
