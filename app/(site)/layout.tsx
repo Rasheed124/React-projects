@@ -3,9 +3,7 @@
 import "../styles/globals.css";
 
 import { fonts } from "../fonts/font";
-import Footer from "@/components/site/Footer/Footer";
-import { getContactInfo } from "@/schemas/utils/sanity.utils";
-import Layout from "@/components/site/Navbars/NavbarLayout";
+
 
 export const metadata = {
   title: "Durodola Abdulhad",

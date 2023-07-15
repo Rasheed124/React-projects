@@ -1,6 +1,4 @@
-import { Antonio } from "next/font/google";
-
-import { Libre_Baskerville } from "next/font/google";
+import { Antonio, Libre_Baskerville } from "next/font/google";
 
 import localFont from "next/font/local";
 
