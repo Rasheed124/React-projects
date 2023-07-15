@@ -1,21 +1,41 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
 import Link from "next/link";
 
 import { motion } from "framer-motion";
+import { FaAngleUp } from "react-icons/fa";
+
 
 type Props = {
   footer: Contact[];
 };
 
 const Footer = ({ footer }: Props) => {
+  const [showTopBtn, setShowTopBtn] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 400) {
+        setShowTopBtn(true);
+      } else {
+        setShowTopBtn(false);
+      }
+    });
+  }, []);
+
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <>
       {footer &&
         footer.map((footerData) => (
           <footer
             key={footerData._id}
-            className="pb-14  bg-contact-dark-overlay text-deep-black"
+            className="pb-14  bg-contact-dark-overlay text-deep-black relative"
           >
             <div className="flex flex-col w-full  ">
               <div className=" pb-5">
@@ -123,6 +143,19 @@ const Footer = ({ footer }: Props) => {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Go to Top */}
+              <div className="absolute bottom-10 right-10 w-10 h-10 flex p-5 rounded-full justify-center items-center flex-col bg-light-white text-deep-black">
+                {" "}
+                {showTopBtn && (
+                  <FaAngleUp
+                    className=""
+                    onClick={goToTop}
+                  >
+                    Top Up
+                  </FaAngleUp>
+                )}{" "}
               </div>
             </div>
           </footer>
