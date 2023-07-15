@@ -40,7 +40,7 @@ export default async function About() {
 
   return (
     <div className=" text-deep-black ">
-      <Layout route="/about">
+      <Layout route="/show">
         <AboutContainer abouts={aboutContainer} />
       </Layout>
     </div>
