@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import {useState, useEffect} from "react";
 import { motion } from "framer-motion";
 
 import { client } from "@/lib/sanity.client";
@@ -48,13 +48,10 @@ export async function generateStaticParams() {
 }
 
 async function Post({ params: { slug } }: Props) {
-  const [IsShowShareIcons, setIsShowShareIcons] = React.useState(false);
+  const [IsShowShareIcons, setIsShowShareIcons] = useState(false);
 
-  const [ClickedIndex, setClickedIndex] = React.useState(false);
+  const [ShowShare, setShowShare] = useState(false);
 
-  const handleClick = () => () => {
-    setClickedIndex(ClickedIndex);
-  };
 
   // const title = `Read ${posts.map((post ) => post.title)} `;
   // const url = window.location.href;
@@ -67,14 +64,28 @@ async function Post({ params: { slug } }: Props) {
    }
    `;
 
-  const singlePostTitleQuery = groq`
-  *[_type == 'post'][0]
-  {
-    title
-   }
-   `;
+//   const postByCategory = groq`
+// *[_type == 'post'] {
+//   ...,
+//  'relatedPosts': *[_type == 'post' &amp;&amp; ^.category._ref match category._ref]
 
-  const single: Post = await client.fetch(singlePostTitleQuery, { slug });
+// }
+
+//    `;
+
+
+
+  // const singlePostTitleQuery = groq`
+  // *[_type == 'post'][0]
+  // {
+  //   title
+  //  }
+  //  `;
+
+
+
+  // const pByCat: Post = await client.fetch(postByCategory);
+  // const single: Post = await client.fetch(singlePostTitleQuery, { slug });
 
   const post: Post = await client.fetch(query, { slug });
 
@@ -101,8 +112,6 @@ async function Post({ params: { slug } }: Props) {
                             <Link href={"/"}>{category.title}</Link>
                           </li>
                         ))}
-
-                      {/* {post.categories.map()} */}
                     </ul>
                   </div>
 
@@ -122,7 +131,6 @@ async function Post({ params: { slug } }: Props) {
                 </div>
               </div>
 
-              {/* <div className="mt-10 grid grid-cols-1 max-w-4xl min-h-screen w-full border mx-auto gap-10 text-center  px-5 "></div> */}
               <div className="mt-10  max-w-3xl  shadow-sm mx-auto   p-5 ">
                 <div className="flex justify-between items-center ">
                   <div className="flex flex-wrap max-w-lg space-x-2 justify-center items-start md:items-center">
@@ -149,9 +157,11 @@ async function Post({ params: { slug } }: Props) {
 
                   <div className="flex flex-wrap max-w-md">
                     <span className="block cursor-pointer relative">
-                      <BiDotsVerticalRounded onClick={handleClick()} />
+                      <BiDotsVerticalRounded
+                        onClick={() => setShowShare(!ShowShare)}
+                      />
 
-                      {!ClickedIndex ? (
+                      {ShowShare ? (
                         <div
                           className="absolute top-3 right-6 shadow-lg py-3 px-5 w-[200px] bg-white border flex justify-center items-center space-x-3"
                           onClick={() => setIsShowShareIcons(!IsShowShareIcons)}
@@ -214,7 +224,7 @@ async function Post({ params: { slug } }: Props) {
                   />
                 </span>
                 <div
-                  onClick={() => setIsShowShareIcons(IsShowShareIcons)}
+                  onClick={() => setIsShowShareIcons(!IsShowShareIcons)}
                   className="flex justify-center flex-col text-center max-w-3xl items-center py-10 px-6 space-x-3 bg-white  "
                 >
                   <h4>Share Post</h4>

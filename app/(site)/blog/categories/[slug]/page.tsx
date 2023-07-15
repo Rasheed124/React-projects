@@ -13,7 +13,7 @@ const CategoryListQuery = getServerSideQueries().BlogListQuery;
 export default async function Blog() {
   const { isEnabled } = draftMode();
 
-  const categoryList = await getBlogList();
+  // const categoryList = await getBlogList();
 
   // SETTING PREVIEW MODE
   if (isEnabled) {
@@ -41,7 +41,7 @@ export default async function Blog() {
   return (
     <div className=" text-deep-black px-4 xl:px-0">
       <Layout route="/contact">
-        <Categories posts={categoryList} />
+     
       </Layout>
     </div>
   );

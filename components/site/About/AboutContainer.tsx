@@ -137,7 +137,7 @@ const AboutContainer = ({ abouts }: Props) => {
                           <ul className="space-y-3 top-2 absolute flex flex-col flex-grow  -left-24   py-5 px-5 bg-deep-overlay-black ">
                             <li className="">
                               <Link
-                                href={"/blog"}
+                                href={"/portfolio"}
                                 className=" whitespace-nowrap  block  relative after:content-[''] after:absolute after:-bottom-0.5 after:left-0  after:w-0 after:h-0 after:transition-all after:duration-700 after:bg-light-white hover:after:w-full hover:after:h-0.5"
                               >
                                 <div className="">

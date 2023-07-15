@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import urlFor from "@/lib/urlFor";
 import { ArrowDownRightIcon } from "@heroicons/react/24/solid";
@@ -13,20 +13,58 @@ import { BsEye } from "react-icons/bs";
 import { BiMessageAlt } from "react-icons/bi";
 import { SlLike } from "react-icons/sl";
 import post from "@/schemas/post";
+import { groq } from "next-sanity";
+import { client } from "@/lib/sanity.client";
+
 
 type Props = {
-  posts: Post[];
+  params: {
+    slug: string;
+  };
 };
 
-const Categories = ({ posts }: Props) => {
-  return (
-    <section className="py-14 ">
-      <div className="flex flex-col max-w-6xl mx-auto  ">
-        <div className=" pb-5 px-5 text-center">
-          <h4 className="font-Antonio text-2xl ">Recent Blog Posts</h4>
+  const postByCategory = groq`
+*[_type == 'post' && slug.current == $slug][0]{
+  ...,
+ 'relatedPosts': *[_type == 'post' &amp;&amp; ^.category._ref match category._ref]
 
-          <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 ">
-            {posts.map((post) => post.categories.map((cat) => <div></div>))}
+}
+// *[_type == 'category'] {
+//   ...,
+//   "posts": *[_type == 'post' && references(^._id)]
+// }
+   `;
+
+
+const Categories = async ({ params: { slug } }: Props) => {
+
+  const pByCat: Post = await client.fetch(postByCategory, { slug });
+
+  return (
+    <section className="  ">
+      <div className=" ">
+        <header className="px-5 py-16 bg-light-white ">
+          <div className=" max-w-6xl mx-auto mt-24 lg:mt-16">
+            <h2 className="uppercase font-extrabold font-Antonio text-6xl mb-1 ">
+              Blog
+            </h2>
+
+            <div className="space-x-1">
+              <Link href={"/"}>Home</Link>
+              <span>/</span>
+              <Link href={"#"}>Blog</Link>
+            </div>
+          </div>
+        </header>
+
+        <div className="bg-white px-5 py-16">
+          <div className=" grid grid-cols-1 gap-10 text-center max-w-6xl mx-auto  ">
+           { pByCat.relatedPosts.map( pt => (
+
+            <div key={pt._id}>
+               {pt.title}
+            </div>
+           ))}
           </div>
         </div>
       </div>
