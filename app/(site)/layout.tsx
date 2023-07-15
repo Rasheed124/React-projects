@@ -27,9 +27,7 @@ export default  function RootLayout({
           <div className="max-w-8xl mx-auto ">
             {children}
 
-            {/* <Layout route="/custom">
-              <Footer footer={contactInfo} />
-            </Layout> */}
+        
           </div>
         </main>
       </body>
