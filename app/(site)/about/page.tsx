@@ -21,7 +21,7 @@ export default async function About() {
         fallback={
           <div
             role="status"
-            className="flex min-h-screen justify-center items-center"
+        className="flex min-h-screen justify-center items-center bg-deep-black"
           >
             <p className="text-center text-lg text-light-white  ">
               Loading Preview Data....
@@ -40,7 +40,7 @@ export default async function About() {
 
   return (
     <div className=" text-deep-black ">
-      <Layout route="/show">
+      <Layout route="/about">
         <AboutContainer abouts={aboutContainer} />
       </Layout>
     </div>

@@ -25,7 +25,7 @@ const Layout = async ( {
 
       {children}
 
-      {route !== "/" ? <Footer footer={contactInfo} /> : null}
+      {route !== "/" &&  route == "/about" ? <Footer footer={contactInfo} /> : null}
     </>
   );
 };

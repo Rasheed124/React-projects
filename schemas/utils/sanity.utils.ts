@@ -121,7 +121,7 @@ export async function getPostList(): Promise<Post[]> {
     return client.fetch(
 
         groq`
-        *[_type == "post"][0...5]{
+        *[_type == "post"][0...6]{
             ...,
             author->,
             categories[]->

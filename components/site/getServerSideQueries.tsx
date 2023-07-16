@@ -47,7 +47,7 @@ export default function getServerSideQueries() {
              } | order(_createdAt desc)`;
 
   const PostQuery = groq`
-  *[_type == "post"][0...5]{
+  *[_type == "post"][0...6]{
     ...,
     author->,
     categories[]->

@@ -28,10 +28,10 @@ const NavbarMain = () => {
                               
                     ${
                       !isAboveSmallScreens
-                        ? "bg-deep-black fixed w-full top-0 z-50 text-light-white transition duration-200 translate-y-0"
+                        ? "bg-deep-black fixed w-full top-0 z-[100] text-light-white transition duration-200 translate-y-0"
                         : isScrollSize
-                        ? "bg-deep-black z-50 fixed w-full top-0 text-light-white transition duration-200 translate-y-0 "
-                        : "bg-white pt-4 z-[80] text-deep-overlay-black transform transition duration-700 translate-y-0"
+                        ? "bg-deep-black z-[100] fixed w-full top-0 text-light-white transition duration-200 translate-y-0 "
+                        : "bg-white pt-4 z-[100] text-deep-overlay-black transform transition duration-700 translate-y-0"
                     } 
                 
                 `}

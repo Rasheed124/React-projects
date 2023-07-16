@@ -51,6 +51,9 @@ export default async function Home() {
   const posts = await getPostList();
   const contactInfo = await getContactInfo();
 
+
+
+
   // SETTING PREVIEW MODE
   if (isEnabled) {
     return (
@@ -67,9 +70,9 @@ export default async function Home() {
         }
       >
         <div className=" text-light-white xl:px-0 bg-deep-black ">
-          <Layout  route="/">
+          <Layout route="/">
             {/* Preview Blog List */}
-            <PreviewBanner query={BannerQuery} />
+            <PreviewBanner contactQuery={ContactInfoQuery} query={BannerQuery} />
 
             <PreviewSkills query={SkillQuery} />
 
@@ -90,7 +93,7 @@ export default async function Home() {
     <div className="bg-deep-black text-light-white  xl:px-0">
       <Layout route="/">
         {/* BANNERS */}
-        <Banner homeBanners={homeBanners} />
+        <Banner homeBanners={homeBanners} contactPage={contactInfo} />
 
         {/* SKILLS */}
         <Skills skills={skills} />

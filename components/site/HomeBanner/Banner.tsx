@@ -3,9 +3,11 @@ import Link from "next/link";
 
 type Props = {
   homeBanners: HomeBanner[];
+  contactPage: Contact[];
 };
 
-const HomeBanner = ({ homeBanners }: Props) => {
+
+const HomeBanner = ({ homeBanners , contactPage }: Props) => {
   return (
     <div className="">
       {homeBanners.map((homeBanner) => (
@@ -18,7 +20,9 @@ const HomeBanner = ({ homeBanners }: Props) => {
           <div className="max-w-sm sm:max-w-lg  md:max-w-3xl mx-auto  mb-10 p-2 lg:py-16">
             <div className="   leading-[10rem] flex justify-center items-center  ">
               <h2 className="text-[6rem] text-light-white sm:whitespace-nowrap sm:text-[4.0rem] lg:text-[7rem] xl:text-[10rem] sm:px-5 tracking-[0.4rem] font-Antonio leading-[7rem] lg:tracking-[-0.5rem] uppercase ">
-                {homeBanner.name}
+                {contactPage.map( contact => (
+                  contact.logo
+                ))}
               </h2>
             </div>
           </div>
@@ -34,7 +38,7 @@ const HomeBanner = ({ homeBanners }: Props) => {
             <div className=" xl:w-full xl:max-w-lg xl:flex xl:flex-col xl:justify-start xl:items-center">
               <p className="text-xs space-x-3">
                 {homeBanner.skills}
-                {/* <span className="mr-3">DIGITAL STRATEGY</span>|<span className="mr-3">SOCIAL MEDIA </span>|<span>COPYWRITING</span> */}
+         
               </p>
             </div>
             <div className=" xl:w-full xl:max-w-lg xl:flex xl:flex-col xl:justify-center xl:items-end">
