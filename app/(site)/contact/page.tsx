@@ -30,7 +30,7 @@ export default async function Contact() {
         }
       >
         <div className="">
-          <Layout route="/contact">
+          <Layout route="/all">
             <PreviewContact query={ContactQuery} />
           </Layout>
         </div>
@@ -39,8 +39,8 @@ export default async function Contact() {
   }
 
   return (
-    <div className=" text-deep-black ">
-      <Layout route="/contact">
+    <div className="  ">
+      <Layout route="/all">
         <ContactPage contactPage={contacts} />
       </Layout>
     </div>

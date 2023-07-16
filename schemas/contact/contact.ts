@@ -63,7 +63,7 @@ export default defineType({
       title: 'Marquee Text',
       type: 'array',
          of: [
-          {  name: 'marqueText', type: 'string', title: 'Add Marquee Text' }
+          {  name: 'marqueText', type: 'text', title: 'Add Marquee Text' }
         ],
     }),
 

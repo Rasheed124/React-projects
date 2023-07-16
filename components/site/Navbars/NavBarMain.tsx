@@ -9,12 +9,15 @@ import { motion } from "framer-motion";
 import useMediaQuery from "../UseMediaQuery";
 import SetScrollSize from "../SetScrollSize";
 
-const NavbarMain = () => {
+type Props = {
+  contacts: Contact[];
+};
+
+const NavbarMain = ({ contacts }: Props) => {
   const [MenuIsToggle, setMenuIstoggle] = useState(false);
 
   const [DropDownIsToggle, setDropDownIsToggle] = useState(false);
 
-  
   const [DropDownIsToggleP, setDropDownIsToggleP] = useState(false);
 
   const isScrollSize = SetScrollSize(110);
@@ -28,10 +31,10 @@ const NavbarMain = () => {
                               
                     ${
                       !isAboveSmallScreens
-                        ? "bg-deep-black fixed w-full top-0 z-[100] text-light-white transition duration-200 translate-y-0"
+                        ? "bg-deep-black fixed w-full top-0 z-[80] text-light-white transition duration-200 translate-y-0"
                         : isScrollSize
-                        ? "bg-deep-black z-[100] fixed w-full top-0 text-light-white transition duration-200 translate-y-0 "
-                        : "bg-white pt-4 z-[100] text-deep-overlay-black transform transition duration-700 translate-y-0"
+                        ? "bg-deep-black z-[80] fixed w-full top-0 text-light-white transition duration-200 translate-y-0 "
+                        : "bg-white pt-4 z-[80] text-deep-overlay-black transform transition duration-700 translate-y-0"
                     } 
                 
                 `}
@@ -52,7 +55,9 @@ const NavbarMain = () => {
               href={"/"}
               className="block text-2xl hover:transition-colors hover:duration-500 hover:text-header-dark-overlay font-semibold font-Antonio"
             >
-              <h2>Durodola Abdulhad</h2>
+              {contacts.map((contact) => (
+                <h1 key={contact._id}>{contact.logo}</h1>
+              ))}
             </Link>
             {/* DESKTOP NAV */}
             {isAboveSmallScreens ? (
@@ -203,8 +208,6 @@ const NavbarMain = () => {
                 visible: { opacity: 1, y: 0 },
               }}
             >
-            
-
               <ul className="flex flex-col text-deep-black justify-between items-start absolute top-6 bg-white left-0 w-full p-5 z-10 space-y-3.5">
                 <li className="w-full ">
                   <div className="flex justify-between  items-center">

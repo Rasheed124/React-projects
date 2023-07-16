@@ -20,12 +20,22 @@ const Layout = async ( {
 
   return (
     <>
-      {route === "/" ? <Navbar /> : null}
-      {route !== "/" && route !== "/about" ? <NavbarMain /> : null}
+      {route === "/" ? <Navbar contacts={contactInfo} /> : null}
+     
+      {route !== "/" && route !== "/about" ? (
+        <NavbarMain contacts={contactInfo} />
+      ) : null}
+      {route == "all" ? <NavbarMain contacts={contactInfo} /> : null}
 
       {children}
 
-      {route !== "/" &&  route == "/about" ? <Footer footer={contactInfo} /> : null}
+      {route == "about" && <Footer footer={contactInfo} /> }
+
+
+      {route !== "/" && route == "/all" ? (
+        <Footer footer={contactInfo} />
+      ) : null}
+
     </>
   );
 };

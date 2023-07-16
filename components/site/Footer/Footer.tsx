@@ -32,7 +32,7 @@ const Footer = ({ footer }: Props) => {
         footer.map((footerData) => (
           <footer
             key={footerData._id}
-            className="pb-14  bg-contact-dark-overlay text-deep-black relative"
+            className="pb-14  bg-contact-dark-overlay text-deep-black relative "
           >
             <div className="flex flex-col w-full  ">
               <div className=" pb-5">
@@ -145,7 +145,7 @@ const Footer = ({ footer }: Props) => {
               {/* Go to Top */}
               {showTopBtn && (
                 <div
-                  className="absolute bottom-10 right-10 w-20 h-20 flex p-10 rounded-full justify-center items-center flex-col bg-light-white text-deep-black text-xl font-Antonio font-extrabold cursor-pointer transition-all duration-700 "
+                  className="absolute bottom-10 right-10 w-20 h-20 flex p-10 z-10 rounded-full justify-center items-center flex-col bg-light-white text-deep-black text-xl font-Antonio font-extrabold cursor-pointer transition-all duration-700 "
                   onClick={goToTop}
                 >
 

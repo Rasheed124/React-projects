@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useState } from "react";
 
 import { HiMenu, HiX } from "react-icons/hi";
@@ -8,15 +8,19 @@ import { motion } from "framer-motion";
 import useMediaQuery from "../UseMediaQuery";
 import { BiChevronDown, BiChevronRight } from "react-icons/bi";
 
-const Navbar = () => {
-  const [MenuIsToggle, setMenuIstoggle] = useState(false);
-    const [DropDownIsToggle, setDropDownIsToggle] = useState(false);
 
-    const [DropDownIsToggleP, setDropDownIsToggleP] = useState(false);
+type Props = {
+  contacts: Contact[];
+};
 
-
-
+const Navbar = ({ contacts }: Props) => {
   const isAboveSmallScreens = useMediaQuery("(min-width: 1024px)");
+
+  const [MenuIsToggle, setMenuIstoggle] = useState(false);
+  const [DropDownIsToggle, setDropDownIsToggle] = useState(false);
+
+  const [DropDownIsToggleP, setDropDownIsToggleP] = useState(false);
+
 
   return (
     <>
@@ -31,7 +35,9 @@ const Navbar = () => {
                   href={"/"}
                   className="block text-2xl font-semibold font-Antonio "
                 >
-                  <h2>Durodola Abdulhad</h2>
+                  {contacts.map( contact => (
+                    <h1 key={contact._id}>{contact.logo}</h1>
+                  ))}
                 </Link>
 
                 <div className="flex justify-center items-center">

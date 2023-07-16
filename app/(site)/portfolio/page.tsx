@@ -30,7 +30,7 @@ export default async function Portfolio() {
         }
       >
         <div className="">
-          <Layout route="/contact">
+          <Layout route="/all">
             <PortfolioProject projects={portfolio} />
           </Layout>
         </div>
@@ -39,8 +39,8 @@ export default async function Portfolio() {
   }
 
   return (
-    <div className=" text-deep-black ">
-      <Layout route="/projects">
+    <div className="  ">
+      <Layout route="/all">
         <PortfolioProject projects={portfolio} />
       </Layout>
     </div>

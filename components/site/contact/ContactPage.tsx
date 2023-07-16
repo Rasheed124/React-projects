@@ -10,6 +10,13 @@ type Props = {
 };
 
 const ContactPage = ({ contactPage }: Props) => {
+  const variants = {
+    initial: { x: 0 },
+    animate: {
+      x: "100%",
+      transition: { ease: "linear", duration: 30, repeat: Infinity },
+    },
+  };
   return (
     <>
       {contactPage &&
@@ -40,9 +47,30 @@ const ContactPage = ({ contactPage }: Props) => {
                       >
                         {contact.mail}
                       </Link>
-                      <Link href={"/"} className="block ">
-                        LINKEDIN
-                      </Link>
+                      <div className="space-y-2">
+                        {Array.from(contact.socialHandle).map((share, id) => (
+                          <span
+                            key={id}
+                            className="font-Sohne-Bold text-xs uppercase block  "
+                          >
+                            {share.length > 1 && share.includes("twitter") && (
+                              <Link href={`${share}`} className="underline">
+                                <span>Twitter</span>
+                              </Link>
+                            )}
+                            {share.length > 1 && share.includes("facebook") && (
+                              <Link href={`${share}`} className="underline">
+                                <span>Facebook</span>
+                              </Link>
+                            )}
+                            {share.length > 1 && share.includes("linkedin") && (
+                              <Link href={`${share}`} className="underline">
+                                <span>Linkedin</span>
+                              </Link>
+                            )}
+                          </span>
+                        ))}
+                      </div>
                     </div>
 
                     <div className=" ">
@@ -95,13 +123,21 @@ const ContactPage = ({ contactPage }: Props) => {
                     </div>
                   </div>
 
-                  <div className=" py-2  bg-white w-full px-5">
-                    <div className="text-lg font-bold">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Quas cupiditate possimus dolorum vitae est placeat totam,
-                      eligendi rem, explicabo sint libero cum voluptas quidem
-                      doloremque optio ipsum, natus tempora nesciunt!{" "}
-                    </div>
+                  <div className=" py-2  bg-white w-full  overflow-x-hidden ">
+                    <motion.div
+                      className=" flex space-x-1 whitespace-nowrap"
+                      variants={variants}
+                      initial="initial"
+                      animate="animate"
+                    >
+                      {Array.from(contact.marquee).map((marq, id) => (
+                        <span key={id} className=" w-full  whitespace-nowrap">
+                          <span className="font-Antonio  font-extrabold">
+                            {marq}
+                          </span>
+                        </span>
+                      ))}
+                    </motion.div>
                   </div>
                 </motion.div>
               </div>

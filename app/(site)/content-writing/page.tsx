@@ -29,18 +29,18 @@ export default async function ContactWriting() {
           </div>
         }
       >
-        <div className="text-deep-black">
-          {/* Preview Blog List */}
-
-          <PreviewContentWriting query={contentwritingQuery} />
+        <div className="">
+          <Layout route="/all">
+            <PreviewContentWriting query={contentwritingQuery} />
+          </Layout>
         </div>
       </PreviewSuspense>
     );
   }
 
   return (
-    <div className=" text-deep-black ">
-      <Layout route="/contact">
+    <div className="  ">
+      <Layout route="/all">
         <ContentWriting contentwritings={contentwriting} />
       </Layout>
     </div>

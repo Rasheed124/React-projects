@@ -31,7 +31,7 @@ export default async function Blog() {
         }
       >
         <div className="">
-          <Layout route="/contact">
+          <Layout route="/all">
             <PreviewBlogList query={BlogListQuery} />
           </Layout>
         </div>
@@ -41,7 +41,7 @@ export default async function Blog() {
 
   return (
     <div className=" ">
-      <Layout route="/blog">
+      <Layout route="/all">
         <BlogList posts={blogList} />
       </Layout>
     </div>
