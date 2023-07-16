@@ -90,7 +90,7 @@ async function Post({ params: { slug } }: Props) {
   const post: Post = await client.fetch(query, { slug });
 
   return (
-    <Layout route="/contact">
+    <Layout route="/all">
       <article className="px-10 pb-20 border relative">
         <section className="py-14  ">
           <div className="  ">

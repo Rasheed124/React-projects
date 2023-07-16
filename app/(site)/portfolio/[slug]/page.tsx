@@ -37,7 +37,7 @@ async function Projects({ params: { slug } }: Props) {
   const project: Projects = await client.fetch(query, { slug });
 
   return (
-    <Layout route="/contact">
+    <Layout route="/all">
       <div className="bg-white ">
         <div className="max-w-6xl mx-auto  grid grid-cols-1 md:grid-cols-2 gap-5 py-10 px-4 mt-16">
           {/* IMAGES & VIDEOS */}
