@@ -23,7 +23,7 @@ export default  function RootLayout({
       >
         {/* Header */}
         <main className="bg-transparent ">
-          <div className="max-w-8xl mx-auto ">
+          <div className=" ">
             {children}
 
         
