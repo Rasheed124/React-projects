@@ -11,7 +11,7 @@ export default function Home() {
     <main className="">
 
       <section className='intro-container py-20 px-6 '>
-         <div className=' px-4'>
+         <div className=' px-4 md:max-w-xl py-2'>
            <div className=''>
 
               <h4 className='font-calibre-Bold text-xl text-accent-color font-bold'> Hi, my name is</h4>
@@ -31,9 +31,9 @@ export default function Home() {
             <div className='mt-10'>
 
               <a href="#_" className="relative inline-block px-4 py-2 font-medium group">
-              <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-accent-color group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-              <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-accent-color"></span>
-              <span className="relative text-black group-hover:text-white">Button Text</span>
+                <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-accent-color group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+                <span className="absolute inset-0 w-full h-full bg-white border-2 border-accent-color group-hover:bg-accent-color"></span>
+                <span className="relative text-black group-hover:text-white">Check my course! </span>
               </a>
 
               {/* <a href="#" 
