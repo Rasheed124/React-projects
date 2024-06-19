@@ -1,0 +1,11 @@
+# Dependency directory
+node_modules/
+
+# Build directory
+dist/
+build/
+index.js/
+
+# System files
+.DS_Store
+Thumbs.db
