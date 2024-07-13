@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 
 const LoginSignUp = () => {
   const [state, setState] = useState("Sign Up");
@@ -13,61 +14,50 @@ const LoginSignUp = () => {
   };
 
   const login = async () => {
-    console.log("Login Function Executed", formData);
+    console.log("Login Function Excuted", formData);
 
-    try {
-      const response = await fetch('http://localhost:4000/login', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-      });
+    let responseData;
+    await fetch('http://localhost:4000/login', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/form-data',
+        'Content-Type' : 'application/json',
+      },
+      body: JSON.stringify(formData)
+    }).then( (response) => response.json()).then(data => responseData = data)
 
-      const responseData = await response.json();
-      console.log("Response Data:", responseData);
-
-      if (responseData.success) {
-        localStorage.setItem('auth-token', responseData.token);
-        window.location.replace("/");
-      } else {
-        alert(responseData.errors);
-      }
-    } catch (error) {
-      console.error("Error during login:", error);
-      alert("An error occurred during login. Please try again.");
+    if(responseData.sucess){
+      localStorage.setItem('auth-token', responseData.token)
+      window.location.replace("/")
+    }
+    else{
+      alert(responseData.errors)
     }
   };
+
+
 
   const signup = async () => {
-    console.log("Signup Function Executed", formData);
+    console.log("Signup Function Excuted", formData);
 
-    try {
-      const response = await fetch('http://localhost:4000/signup', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-      });
+    let responseData;
+    await fetch('http://localhost:4000/signup', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/form-data',
+        'Content-Type' : 'application/json',
+      },
+      body: JSON.stringify(formData)
+    }).then( (response) => response.json()).then(data => responseData = data)
 
-      const responseData = await response.json();
-      console.log("Response Data:", responseData);
-
-      if (responseData.success) {
-        localStorage.setItem('auth-token', responseData.token);
-        window.location.replace("/");
-      } else {
-        alert(responseData.errors);
-      }
-    } catch (error) {
-      console.error("Error during signup:", error);
-      alert("An error occurred during signup. Please try again.");
+    if(responseData.sucess){
+      localStorage.setItem('auth-token', responseData.token)
+      window.location.replace("/")
+    }
+    else{
+      alert(responseData.errors)
     }
   };
-
   return (
     <>
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
@@ -75,16 +65,21 @@ const LoginSignUp = () => {
           <h1 className="text-2xl font-bold sm:text-3xl">
             {state === "Sign Up" ? "Sign Up" : state}
           </h1>
+
           <p className="mt-4 text-gray-500">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero
             nulla eaque error neque ipsa culpa autem, at itaque nostrum!
           </p>
         </div>
 
-        <div className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+        {/* Form started */}
+        <div action="#" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
           {state === "Sign Up" && (
             <div>
-              <label htmlFor="yourName" className="sr-only">Your name</label>
+              <label htmlFor="yourName" className="sr-only">
+                Your name
+              </label>
+
               <div className="relative">
                 <input
                   type="text"
@@ -99,7 +94,10 @@ const LoginSignUp = () => {
           )}
 
           <div>
-            <label htmlFor="email" className="sr-only">Email</label>
+            <label htmlFor="email" className="sr-only">
+              Email
+            </label>
+
             <div className="relative">
               <input
                 name="email"
@@ -108,6 +106,7 @@ const LoginSignUp = () => {
                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter email"
               />
+
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +127,10 @@ const LoginSignUp = () => {
           </div>
 
           <div>
-            <label htmlFor="password" className="sr-only">Password</label>
+            <label htmlFor="password" className="sr-only">
+              Password
+            </label>
+
             <div className="relative">
               <input
                 type="password"
@@ -138,6 +140,7 @@ const LoginSignUp = () => {
                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter password"
               />
+
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -183,7 +186,7 @@ const LoginSignUp = () => {
                   className="underline"
                   href="#"
                 >
-                  Sign up
+                  Sign up 
                 </a>
               </p>
             )}
