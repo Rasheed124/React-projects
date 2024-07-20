@@ -16,6 +16,9 @@ const getDefaultCart = () => {
 };
 
 const ProductContextProvider = ({ children }) => {
+
+  // form
+  // const [all_product, setAll_Product] = useState([])
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
   const addToCart = (itemId) => {

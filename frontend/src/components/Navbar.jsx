@@ -1,7 +1,7 @@
 import logo from "../assets/logo.png";
 
 import { FaBars, FaTimes } from "react-icons/fa";
-import { IoCartOutline, IoPersonOutline } from "react-icons/io5";
+import { IoCartOutline, IoLogIn, IoLogOut, IoPersonOutline } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
 import { IoIosArrowDown } from "react-icons/io";
 import { useContext, useState } from "react";
@@ -23,9 +23,9 @@ const Navbar = () => {
         <nav>
           <div
             id="navmain"
-            className="py-2 w-full fixed bg-gray-300 shadow-lg z-10"
+            className="py-2 w-full  fixed bg-gray-300 shadow-lg z-10"
           >
-            <div className="sl:max-w-[1200px] px-6 sl:px-0 m-auto">
+            <div className="sm:max-w-[1200px] px-6 sl:px-0 m-auto">
               <div className="flex justify-between items-center">
                 <div>
                   <a href="/" className="">
@@ -125,6 +125,22 @@ const Navbar = () => {
                             </div>
                       </div>
                     </Link>
+
+                    {localStorage.getItem('auth-token') ? (
+
+                            <Link to="/login">
+                            <button onClick={() => {localStorage.removeItem('auth-token'); window.location.replace('/')}} className="flex items-center gap-2">
+                                <IoLogOut className="text-2xl font-light text-gray-700" />
+                                <span className="hidden lg:flex">Logout</span>
+                              </button>
+                            </Link>
+                    ) : (     <Link to="/login">
+                      <button className="flex items-center gap-2">
+                          <IoLogIn className="text-2xl font-light text-gray-700" />
+                          <span className="hidden lg:flex">Login</span>
+                        </button>
+                      </Link>)}
+               
                   </div>
                   <div className="lg:hidden">
                     <FaBars className="text-gray-700 text-2xl cursor-pointer" />

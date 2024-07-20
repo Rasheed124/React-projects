@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const LoginSignUp = () => {
   const [state, setState] = useState("Sign Up");
+  
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -70,18 +71,19 @@ const LoginSignUp = () => {
 
   return (
     <>
-      <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <section className="bg-gray-800 flex justify-center items-start flex-col text-white h-screen w-full">
+    <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg text-center">
           <h1 className="text-2xl font-bold sm:text-3xl">
             {state === "Sign Up" ? "Sign Up" : state}
           </h1>
-          <p className="mt-4 text-gray-500">
+          <p className="mt-4 ">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero
             nulla eaque error neque ipsa culpa autem, at itaque nostrum!
           </p>
         </div>
 
-        <div className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+        <div className="mx-auto text-black mb-0 mt-8 max-w-md space-y-4">
           {state === "Sign Up" && (
             <div>
               <label htmlFor="yourName" className="sr-only">Your name</label>
@@ -200,6 +202,8 @@ const LoginSignUp = () => {
           </div>
         </div>
       </div>
+    </section>
+   
     </>
   );
 };

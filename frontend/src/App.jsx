@@ -32,6 +32,9 @@ function App() {
 
         <Route path="/account" element={<Account />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/login" element={<LoginSignUp />}></Route>
+
+
       </Routes>
     </>
   );
