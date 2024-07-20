@@ -43,7 +43,22 @@ const ProductContextProvider = ({ children }) => {
     return totalAmount;
   }
 
-  const contextValue = { getTotalCartAmount, all_product, cartItems, addToCart, removeFromCart };
+
+  const getTotalItems = () => {
+
+    let totalItem = 0;
+
+    for(const item in cartItems){
+      if(cartItems[item] > 0){
+        totalItem+= cartItems[item]
+      }
+    }
+
+    return totalItem;
+    
+  }
+
+  const contextValue = { getTotalItems, getTotalCartAmount, all_product, cartItems, addToCart, removeFromCart };
 
   return (
     <ProductContext.Provider value={contextValue}>

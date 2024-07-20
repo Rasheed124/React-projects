@@ -4,8 +4,9 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { IoCartOutline, IoPersonOutline } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
 import { IoIosArrowDown } from "react-icons/io";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { ProductContext } from "../Context/ProductContext";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("home");
@@ -13,6 +14,8 @@ const Navbar = () => {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
+
+    const {getTotalItems} = useContext(ProductContext)
 
   return (
     <div className="z-10 ">
@@ -117,6 +120,9 @@ const Navbar = () => {
                       <div className="relative flex gap-3">
                         <IoCartOutline className="text-2xl font-light text-gray-700" />
                         <span className="hidden lg:flex">Cart</span>
+                        <div className="absolute top-[-14px] right-[-10px] lg:right-7 bg-gray-700 rounded-full w-fit h-fit">
+                              <p className="px-2 text-center rounded-full text-[0.7rem] text-gray-200">{getTotalItems()}</p>
+                            </div>
                       </div>
                     </Link>
                   </div>
