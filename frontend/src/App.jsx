@@ -27,10 +27,11 @@ function App() {
           path="/tubulars"
           element={<Category category="tubular" />}
         ></Route>
-        <Route path="/product" element={<ListProduct />}>
+        <Route path="/product" element={<Product />}>
           <Route path="/product/:name/:productId" element={<Product />}></Route>
         </Route>
 
+        <Route path="/products" element={<ListProduct />}></Route>
         <Route path="/account" element={<Account />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/login" element={<LoginSignUp />}></Route>

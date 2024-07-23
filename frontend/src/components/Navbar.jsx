@@ -91,7 +91,7 @@ const Navbar = () => {
                           }} to="/tubulars">Tubular Batteries</Link>
                         </li>
                         <li className="">
-                          <Link className="px-4 py-2 hover:bg-gray-100 block" to="/product">All Products</Link>
+                          <Link className="px-4 py-2 hover:bg-gray-100 block" to="/products">All Products</Link>
                         </li>
                       </ul>
                     </div>

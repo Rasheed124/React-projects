@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 // import { Footer, Header } from "../../Compnents";
-import { Link } from "react-router-dom";
-import power from "../assets/power.jpg";
-import power2 from "../assets/power2.png";
-import power3 from "../assets/power3.png";
-import power4 from "../assets/power4.png";
+// import { Link } from "react-router-dom";
+// import power from "../assets/power.jpg";
+// import power2 from "../assets/power2.png";
+// import power3 from "../assets/power3.png";
+// import power4 from "../assets/power4.png";
 
-import data_product from "../assets/data";
+// import data_product from "../assets/data";
 import Item from "../components/Item";
 import Navbar from "../components/Navbar";
+import { ProductContext } from "../Context/ProductContext";
 
 const Home = () => {
+
+  const { all_product } = useContext(ProductContext);
   return (
     <>
       <Navbar />
@@ -32,7 +35,7 @@ const Home = () => {
 
               {/* Product Deals Data  */}
               <div className="grid md:grid-cols-2 lg:max-w-[900px] m-auto bg-gray-300 bg-transparent px-6 sl:px-0 gap-3 md:gap-4 lg:gap-6 item">
-                {data_product.map((item, i) => {
+                {all_product.map((item, i) => {
                   return (
                     <Item
                       key={i}
@@ -54,7 +57,7 @@ const Home = () => {
                 </h2>
               </div>
               <div className="px-6 sl:px-0 lg:max-w-[900px] m-auto pt-7">
-                <div className="shadow-2xl h-[12rem] grid grid-cols-2 relative mb-4">
+                {/* <div className="shadow-2xl h-[12rem] grid grid-cols-2 relative mb-4">
                   <img src={power3} alt="" className="h-[192px] w-full" />
                   <div className="rounded-e-lg bg-gray-500 px-3 py-3">
                     <h3 className="text-[.9rem] pb-2">Recently Viewed 1</h3>
@@ -75,7 +78,7 @@ const Home = () => {
                     </ul>
                     <p className="absolute bottom-4">₦ 2500</p>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
