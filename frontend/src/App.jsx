@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import Product from "./pages/Product";
 import Account from "./pages/Account";
 import Cart from "./pages/Cart";
+import ListProduct from "./components/ListProduct";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
           path="/tubulars"
           element={<Category category="tubular" />}
         ></Route>
-        <Route path="/product" element={<Product />}>
+        <Route path="/product" element={<ListProduct />}>
           <Route path="/product/:name/:productId" element={<Product />}></Route>
         </Route>
 

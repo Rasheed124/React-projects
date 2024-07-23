@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ProductContext } from "../Context/ProductContext";
 import Item from "../components/Item";
 
-const Category = ({ category }) => {
+const ListProduct = () => {
   const { all_product } = useContext(ProductContext);
 
   return (
@@ -27,7 +27,7 @@ const Category = ({ category }) => {
             <div className="lithium max-w-[900px] m-auto grid grid-cols-1 md:grid-cols-2 gap-4 pt-20 pb-8 px-6">
               {all_product &&
                 all_product.map((item, i) => {
-                  if (category === item.category) {
+                
                     return (
                       <Item
                         key={i}
@@ -39,8 +39,8 @@ const Category = ({ category }) => {
                         new_price={item.new_price}
                       />
                     );
-                  }
-                  return null;
+              
+                
                 })}
              
             </div>
@@ -51,4 +51,4 @@ const Category = ({ category }) => {
   );
 };
 
-export default Category;
+export default ListProduct;
