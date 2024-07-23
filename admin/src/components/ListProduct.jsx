@@ -12,6 +12,7 @@ const ListProduct = () => {
       })
     );
   };
+  
   useEffect(() => {
     fetchInfo();
   }, []);
@@ -28,6 +29,7 @@ const ListProduct = () => {
 
     await fetchInfo();
   };
+
   return (
     <div>
       <h2>All Products</h2>
@@ -38,7 +40,13 @@ const ListProduct = () => {
           <thead className="ltr:text-left rtl:text-right">
             <tr>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Product Image
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                 Product Title
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Brand
               </th>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                 Old Price
@@ -48,6 +56,9 @@ const ListProduct = () => {
               </th>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                 Category
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Features
               </th>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                 Remove
@@ -67,15 +78,24 @@ const ListProduct = () => {
                     {product.name}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {product.brand}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     ${product.old_price}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     ${product.new_price}
                   </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {product.category}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {product.features.join(", ")}
+                  </td>
                   <td className="px-4 py-2">
                     <a
                       href="#"
-                      className=" rounded flex justify-center items-center  px-4 py-2 text-xs font-medium text-white "
+                      className="rounded flex justify-center items-center px-4 py-2 text-xs font-medium text-white"
                     >
                       <img
                         onClick={() => {

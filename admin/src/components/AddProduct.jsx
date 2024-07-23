@@ -11,15 +11,13 @@ const AddProduct = () => {
     category: "women",
     new_price: "",
     old_price: "",
+    features: "",
+    brand: "",
   });
 
   const imagHandler = (e) => {
     setImage(e.target.files[0]);
   };
-
-  // const changeHandler = (e) => {
-  //   setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
-  // };
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -27,10 +25,12 @@ const AddProduct = () => {
   };
 
   const Add_Product = async () => {
-    console.log(productDetails);
+    const featuresArray = productDetails.features.split(",").map((feature) => feature.trim());
+    const product = { ...productDetails, features: featuresArray };
+
+    console.log(product);
 
     let responseData;
-    let product = productDetails;
 
     let formData = new FormData();
     formData.append("product", image);
@@ -67,17 +67,14 @@ const AddProduct = () => {
 
   return (
     <>
-      <section class="bg-gray-100 text-black/60">
-        <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-          <div class="grid grid-cols-1 gap-x-16 gap-y-8 ">
-            <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-              {/* <form action="#" class="space-y-4"> */}
+      <section className="bg-gray-100 text-black/60">
+        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-x-16 gap-y-8">
+            <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
               <div>
-                <label class="" for="name">
-                  Product TItle
-                </label>
+                <label htmlFor="name">Product Title</label>
                 <input
-                  class="w-full text-black rounded-lg border-gray-200 p-3 "
+                  className="w-full text-black rounded-lg border-gray-200 p-3"
                   placeholder="Type here"
                   type="text"
                   name="name"
@@ -86,30 +83,25 @@ const AddProduct = () => {
                 />
               </div>
 
-              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 space-y-3">
                 <div>
-                  <label class="" for="email">
-                    New Price
-                  </label>
+                  <label htmlFor="old_price">New Price</label>
                   <input
-                    class="w-full rounded-lg border-gray-200 p-3 text-sm"
+                    className="w-full rounded-lg border-gray-200 p-3 text-sm"
                     placeholder="Type here"
                     type="number"
                     name="old_price"
-                    id="email"
                     value={productDetails.old_price}
                     onChange={changeHandler}
                   />
                 </div>
 
                 <div>
-                  <label class="" for="phone">
-                    Offer Price
-                  </label>
+                  <label htmlFor="new_price">Offer Price</label>
                   <input
-                    class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                    placeholder="Phone Number"
-                    type="tel"
+                    className="w-full rounded-lg border-gray-200 p-3 text-sm"
+                    placeholder="Type here"
+                    type="number"
                     name="new_price"
                     value={productDetails.new_price}
                     onChange={changeHandler}
@@ -118,53 +110,74 @@ const AddProduct = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="HeadlineAct"
-                  className="block text-sm font-medium text-gray-900"
-                >
+                <label htmlFor="category" className="block text-sm font-medium text-gray-900">
                   Product Category
                 </label>
-
                 <select
                   name="category"
-                  className="mt-1.5 w-full rounded-lg border-gray-300 text-gray-700 sm:text-sm"
+                  className="mt-1.5 mb-3 w-full rounded-lg border-black text-gray-700 sm:text-sm"
                   value={productDetails.category}
                   onChange={changeHandler}
                 >
                   <option value="">Please select</option>
-                  <option value="JM">Men</option>
-                  <option value="SRV">Women</option>
-                  <option value="JH">Kid</option>
+                  <option value="inverter">Inverter</option>
+                  <option value="lithium">Lithium</option>
+                  <option value="acid">Acid</option>
+                  <option value="tubular">Tubular</option>
+                  <option value="solar">Solar</option>
                 </select>
               </div>
 
+              <div>
+                <label htmlFor="brand" className="block text-sm font-medium text-gray-900">
+                  Brand Name
+                </label>
+                <input
+                  className="w-full text-black rounded-lg border-gray-200 p-3"
+                  placeholder="Type here"
+                  type="text"
+                  name="brand"
+                  value={productDetails.brand}
+                  onChange={changeHandler}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="features" className="block text-sm font-medium text-gray-900">
+                  Features
+                </label>
+                <textarea
+                  className="w-full text-black rounded-lg border-gray-200 p-3"
+                  placeholder="Enter features separated by commas"
+                  name="features"
+                  value={productDetails.features}
+                  onChange={changeHandler}
+                />
+              </div>
+
               <div className="relative">
-                <label class="" for="image_upload">
+                <label htmlFor="image_upload">
                   <img
                     src={image ? URL.createObjectURL(image) : upload_area}
                     alt="image upload"
                   />
                 </label>
-
                 <input
                   onChange={imagHandler}
                   type="file"
                   name="image"
-                  className="  border object-cover"
+                  className="border object-cover"
                 />
               </div>
 
-              <div class="mt-4">
+              <div className="mt-4">
                 <button
-                  class="block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
-                  onClick={() => {
-                    Add_Product();
-                  }}
+                  className="block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
+                  onClick={Add_Product}
                 >
                   ADD
                 </button>
               </div>
-              {/* </form> */}
             </div>
           </div>
         </div>

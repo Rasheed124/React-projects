@@ -1,6 +1,6 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
-import all_product from "../assets/all_product";
+// import all_product from "../assets/all_product";
 
 export const ProductContext = createContext(null);
 
@@ -8,7 +8,9 @@ export const ProductContext = createContext(null);
 const getDefaultCart = () => {
   let cart = {};
 
-  for (let index = 0; index < all_product.length + 1; index++) {
+
+  // why 300+1
+  for (let index = 0; index < 300+1; index++) {
     cart[index] = 0;
   }
 
@@ -18,8 +20,25 @@ const getDefaultCart = () => {
 const ProductContextProvider = ({ children }) => {
 
   // form
-  // const [all_product, setAll_Product] = useState([])
+  const [all_product, setAll_Product] = useState([]);
   const [cartItems, setCartItems] = useState(getDefaultCart());
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/allproducts');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setAll_Product(data);
+      } catch (error) {
+        console.error('Failed to fetch products:', error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));

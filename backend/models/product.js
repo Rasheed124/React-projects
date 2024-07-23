@@ -25,9 +25,17 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    features: {
+        type: [String],
+        required: true,
+    },
+    brand: {
+        type: String,
+        required: true,
+    },
     date: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
     available: {
         type: Boolean,

@@ -20,6 +20,7 @@ app.use(express.json());
 // app will connect to port
 app.use(cors());
 
+
 // Db connection with MongoDB
 mongoose
   .connect(
@@ -79,10 +80,12 @@ app.post("/addproduct", async (req, res) => {
       category: req.body.category,
       new_price: req.body.new_price,
       old_price: req.body.old_price,
+      features: req.body.features, 
+      brand: req.body.brand,
     });
 
     await product.save();
-    console.log("Product saved:", product);
+    console.log("Product saved");
 
     res.status(201).json({
       success: true,
@@ -96,6 +99,7 @@ app.post("/addproduct", async (req, res) => {
     });
   }
 });
+
 
 // Create route to delete products
 app.post("/removeproduct", async (req, res) => {
