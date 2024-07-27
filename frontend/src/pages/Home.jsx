@@ -10,10 +10,11 @@ import React, { useContext } from "react";
 import Item from "../components/Item";
 import Navbar from "../components/Navbar";
 import { ProductContext } from "../Context/ProductContext";
+import RecentlyViewed from "../components/RecentlyViewed";
 
 const Home = () => {
 
-  const { all_product } = useContext(ProductContext);
+  const { recently_published } = useContext(ProductContext);
   return (
     <>
       <Navbar />
@@ -35,7 +36,7 @@ const Home = () => {
 
               {/* Product Deals Data  */}
               <div className="grid md:grid-cols-2 lg:max-w-[900px] m-auto bg-gray-300 bg-transparent px-6 sl:px-0 gap-3 md:gap-4 lg:gap-6 item">
-                {all_product.map((item, i) => {
+                {recently_published.map((item, i) => {
                   return (
                     <Item
                       key={i}
@@ -57,28 +58,7 @@ const Home = () => {
                 </h2>
               </div>
               <div className="px-6 sl:px-0 lg:max-w-[900px] m-auto pt-7">
-                {/* <div className="shadow-2xl h-[12rem] grid grid-cols-2 relative mb-4">
-                  <img src={power3} alt="" className="h-[192px] w-full" />
-                  <div className="rounded-e-lg bg-gray-500 px-3 py-3">
-                    <h3 className="text-[.9rem] pb-2">Recently Viewed 1</h3>
-                    <ul className="list-disc pl-4">
-                      <li>Feature 5</li>
-                      <li>Feature 6</li>
-                    </ul>
-                    <p className="absolute bottom-4">₦ 1500</p>
-                  </div>
-                </div>
-                <div className="shadow-2xl h-[12rem] grid grid-cols-2 relative mb-4">
-                  <img src={power4} alt="" className="h-[192px] w-full" />
-                  <div className="rounded-e-lg bg-gray-500 px-3 py-3">
-                    <h3 className="text-[.9rem] pb-2">Recently Viewed 2</h3>
-                    <ul className="list-disc pl-4">
-                      <li>Feature 7</li>
-                      <li>Feature 8</li>
-                    </ul>
-                    <p className="absolute bottom-4">₦ 2500</p>
-                  </div>
-                </div> */}
+                  <RecentlyViewed />
               </div>
             </div>
           </div>

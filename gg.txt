@@ -1,267 +1,36 @@
+// Creating endpoint for fetching "You May Also Like" products
+app.get('/likelyproduct/:productId', async (req, res) => {
+  try {
+    const productId = req.params.productId;
+    const product = await Product.findById(productId);
 
-function fizzBuzz(num) {
-    let result = num;
-    
-    if(result  % 3  === 0){
-        result+="Fizz"
-    }else if(result % 5 == 0){
-        result+="Buzz"
-    }else{
-        result += "FizzBuzz"
+    if (!product) {
+      return res.status(404).send({ error: "Product not found" });
     }
-    
-    return result;
 
-}
-
-fizzBuzz(5)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-add all_product before
-
-
-
-
-
-
-
-import React, { useState } from "react";
-
-import upload_area from "../assets/upload_area.svg";
-
-const AddProduct = () => {
-  const [image, setImage] = useState(false);
-
-  const [productDetails, setProductDetails] = useState({
-    name: "",
-    image: "",
-    category: "women",
-    new_price: "",
-    old_price: "",
-  });
-
-  const imagHandler = (e) => {
-    setImage(e.target.files[0]);
-  };
-
-  // const changeHandler = (e) => {
-  //   setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
-  // };
-
-  const changeHandler = (e) => {
-    const { name, value } = e.target;
-    setProductDetails({ ...productDetails, [name]: value });
-  };
-
-  const Add_Product = async () => {
-    console.log(productDetails);
-
-    let responseData;
-    let product = productDetails;
-
-    let formData = new FormData();
-    formData.append("product", image);
-
-    await fetch("http://localhost:4000/upload", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-      body: formData,
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        responseData = data;
-      });
-    if (responseData.success) {
-      product.image = responseData.image_url;
-      console.log(product);
-
-      await fetch("http://localhost:4000/addproduct", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(product),
-      })
-        .then((resp) => resp.json())
-        .then((data) => {
-          data.success ? alert("Product Added") : alert("Failed");
-        });
-    }
-  };
-
-  return (
-    <>
-      <section class="bg-gray-100 text-black/60">
-        <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-          <div class="grid grid-cols-1 gap-x-16 gap-y-8 ">
-            <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-              {/* <form action="#" class="space-y-4"> */}
-              <div>
-                <label class="" for="name">
-                  Product TItle
-                </label>
-                <input
-                  class="w-full text-black rounded-lg border-gray-200 p-3 "
-                  placeholder="Type here"
-                  type="text"
-                  name="name"
-                  value={productDetails.name}
-                  onChange={changeHandler}
-                />
-              </div>
-
-              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 space-y-3">
-                <div>
-                  <label class="" for="email">
-                    New Price
-                  </label>
-                  <input
-                    class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                    placeholder="Type here"
-                    type="number"
-                    name="old_price"
-                    id="email"
-                    value={productDetails.old_price}
-                    onChange={changeHandler}
-                  />
-                </div>
-
-                <div>
-                  <label class="" for="phone">
-                    Offer Price
-                  </label>
-                  <input
-                    class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                    placeholder="Phone Number"
-                    type="tel"
-                    name="new_price"
-                    value={productDetails.new_price}
-                    onChange={changeHandler}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="HeadlineAct"
-                  className="block text-sm font-medium text-gray-900"
-                >
-                  Product Category
-                </label>
-
-                <select
-                  name="category"
-                  className="mt-1.5 mb-3 w-full rounded-lg border-black text-gray-700 sm:text-sm"
-                  value={productDetails.category}
-                  onChange={changeHandler}
-                >
-                  <option value="">Please select</option>
-                  <option value="inverter">Inverter</option>
-                  <option value="lithium">Lithium</option>
-                  <option value="acid">Acid</option>
-                  <option value="tubular">Tublar</option>
-                  <option value="solar">Solar</option>
-                </select>
-              </div>
-
-              <div className="relative">
-                <label class="" for="image_upload">
-                  <img
-                    src={image ? URL.createObjectURL(image) : upload_area}
-                    alt="image upload"
-                  />
-                </label>
-
-                <input
-                  onChange={imagHandler}
-                  type="file"
-                  name="image"
-                  className="  border object-cover"
-                />
-              </div>
-
-              <div class="mt-4">
-                <button
-                  class="block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
-                  onClick={() => {
-                    Add_Product();
-                  }}
-                >
-                  ADD
-                </button>
-              </div>
-              {/* </form> */}
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-};
-
-export default AddProduct;
+    const recommendedProducts = await Product.find({
+      category: product.category,
+      _id: { $ne: productId }
+    }).limit(5); 
+
+    console.log("Recommended products retrieved");
+
+    res.status(200).send(recommendedProducts);
+  } catch (error) {
+    console.error("Error retrieving recommended products:", error);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+});
+// Creating endpoint for New Collections Data
+app.get('/newcollection', async (req, res) => {
+  try {
+    // Fetch products sorted by 'createdAt' or a similar field indicating newness
+    let products = await Product.find({}).sort({ createdAt: -1 }).limit(5); // Adjust the limit as needed
+    console.log("New collection products retrieved");
+
+    res.status(200).send(products);
+  } catch (error) {
+    console.error("Error retrieving new collection products:", error);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+});
