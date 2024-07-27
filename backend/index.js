@@ -166,7 +166,7 @@ app.get('/recentlyviewed', async (req, res) => {
   try {
    
     let products = await Product.find({}).sort({ viewedAt: -1 }).limit(4); // Adjust the limit as needed
-    console.log("Recently viewed products retrieved");
+    // console.log("Recently viewed products retrieved");
 
     res.status(200).send(products);
   } catch (error) {
@@ -176,7 +176,11 @@ app.get('/recentlyviewed', async (req, res) => {
 });
 
 
-// Creating
+// Creating endpoint fir adding products in cartData
+
+app.post('/addtocart', async (req, res) => {
+  const { itemId } = req.body;
+})
 
 
 // Creating user Signup Endpoint
