@@ -192,16 +192,49 @@ const fetchUser = async (req,  res, next) => {
     }
   }
 }
-// Creating endpoint fir adding products in cartData
+
+
+// Creating endpoint for adding products in cartData
+// app.post('/addtocart', fetchUser, async (req, res) => {
+
+
+//   let userData = await Users.findOne({_id:req.user.id});
+//   userData.cartData[req.body.itemId] += 1;
+//   await Users.findOneAndUpdate({_id:req.user.id}, {cartData:userData.cartData});
+//   res.send("Added");
+
+// })
+
+// Creating endpoint for adding products to cartData
 app.post('/addtocart', fetchUser, async (req, res) => {
-  // console.log(req.body, req.user)
+  try {
+    // Find the user by ID
+    let userData = await Users.findOne({ _id: req.user.id });
+    
+    if (!userData) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    
+    // Update the cartData
+    if (!userData.cartData[req.body.itemId]) {
+      userData.cartData[req.body.itemId] = 0;
+    }
+    userData.cartData[req.body.itemId] += 1;
+    
+    // Save the updated cartData
+    await Users.findOneAndUpdate(
+      { _id: req.user.id },
+      { cartData: userData.cartData },
+      { new: true } // Return the updated document
+    );
 
-  let userData = await Users.findOne({_id:req.user.if});
-  userData.cartData[req.body.itemId] += 1;
-  await Users.findOneAndUpdate({_id:req.user.id}, {cartData:userData});
-  res.send("Added");
-
-})
+    // Send a JSON response
+    res.status(200).json({ message: "Added", cartData: userData.cartData });
+  } catch (error) {
+    console.error('Error adding to cart:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 
 // Creating user Signup Endpoint
