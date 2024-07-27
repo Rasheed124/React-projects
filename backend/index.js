@@ -100,7 +100,6 @@ app.post("/addproduct", async (req, res) => {
   }
 });
 
-
 // Create route to delete products
 app.post("/removeproduct", async (req, res) => {
   try {
@@ -126,16 +125,61 @@ app.post("/removeproduct", async (req, res) => {
   }
 });
 
-// Creating api for getting all products
+// Creating endpoint for fetching all products in ascending order
+app.get('/allproducts', async (req, res) => {
+  try {
+    let products = await Product.find({}).sort({ date: -1 });
+    console.log("All products retrieved in ascending order");
 
-app.get("/allproducts", async (req, res) => {
-  let products = await Product.find({});
-  console.log("All products Fetched");
-  res.send(products);
+    res.status(200).send(products);
+  } catch (error) {
+    console.error("Error retrieving products:", error);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
 });
 
-// Creating user Signup Endpoint
+// Creating endpoint for Recently Published Products
+app.get('/recentlypublished', async (req, res) => {
+  try {
+    // console.log("Received request to /recentlypublished");
 
+    const days = parseInt(req.query.days) || 7;
+    // console.log(`Filtering products from the last ${days} days`);
+
+    const dateThreshold = new Date();
+    dateThreshold.setDate(dateThreshold.getDate() - days);
+    // console.log(`Date threshold: ${dateThreshold}`);
+
+    // Use the 'date' field from your schema to filter recently published products
+    let products = await Product.find({ date: { $gte: dateThreshold } }).sort({ date: -1 });
+    // console.log("Products found:", products);
+
+    res.status(200).send(products);
+  } catch (error) {
+    console.error("Error retrieving recently published products:", error);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+});
+
+// Creating endpoint for Recently Viewed Data
+app.get('/recentlyviewed', async (req, res) => {
+  try {
+   
+    let products = await Product.find({}).sort({ viewedAt: -1 }).limit(4); // Adjust the limit as needed
+    console.log("Recently viewed products retrieved");
+
+    res.status(200).send(products);
+  } catch (error) {
+    console.error("Error retrieving recently viewed products:", error);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+});
+
+
+// Creating
+
+
+// Creating user Signup Endpoint
 app.post("/signup", async (req, res) => {
   let check = await Users.findOne({ email: req.body.email });
 
@@ -175,7 +219,6 @@ app.post("/signup", async (req, res) => {
 });
 
 // Creating endpoint for user login
-
 app.post("/login", async (req, res) => {
   let user = await Users.findOne({ email: req.body.email });
 
