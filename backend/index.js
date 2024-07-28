@@ -229,7 +229,48 @@ app.post('/addtocart', fetchUser, async (req, res) => {
   }
 });
 
-// creating endpoint to remove product
+// creating endpoint to remove products to cartData
+app.post('/removefromcart', fetchUser, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const itemId = req.body.itemId;
+    const userData = await Users.findOne({ _id: userId });
+
+    if (!userData) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Initialize cartData if it doesn't exist
+    if (!userData.cartData) {
+      userData.cartData = {};
+    }
+
+    // Ensure item count is not below zero
+    if (userData.cartData[itemId] && userData.cartData[itemId] > 0) {
+      userData.cartData[itemId] -= 1;
+    }
+
+    // Save the updated cartData
+    await Users.findOneAndUpdate(
+      { _id: userId },
+      { cartData: userData.cartData },
+      { new: true } // Return the updated document
+    );
+
+    res.status(200).json({ message: "Removed", cartData: userData.cartData });
+  } catch (error) {
+    console.error('Error removing from cart:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Creating endpoint to get CartData for each user
+app.post('/getcart', fetchUser, async (req, res) => {
+  console.log("Get Cart");
+
+  let userData = await Users.findOne({_id:req.user.id});
+  res.json(userData.cartData);
+})
 
 
 // Creating user Signup Endpoint
