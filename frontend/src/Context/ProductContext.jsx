@@ -70,7 +70,7 @@ const ProductContextProvider = ({ children }) => {
         'auth-token': localStorage.getItem('auth-token'),
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ "itemid": itemId })
+      body: JSON.stringify({ "itemId": itemId })
     })
     .then((response) => {
       if (!response.ok) {
@@ -86,7 +86,7 @@ const ProductContextProvider = ({ children }) => {
     });
   }
 
-    // console.log(cartItems)
+  
   };
 
 

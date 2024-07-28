@@ -176,22 +176,19 @@ app.get('/recentlyviewed', async (req, res) => {
 });
 
 // Creating middleware for fetch user
-const fetchUser = async (req,  res, next) => {
+const fetchUser = async (req, res, next) => {
   const token = req.header('auth-token');
-  if(!token){
-    res.status(401).send({errors:"Please authente using valid token"})
-  }else{
-    try{
-      const data =  jwt.verify(token, 'secret_ecom');
-      req.user = data.user;
-      next();
-    }catch(error){
-
-      res.status(401).send({errors:"please authenticate using a valid token"})
-
-    }
+  if (!token) {
+    return res.status(401).send({ errors: "Please authenticate using a valid token" });
   }
-}
+  try {
+    const data = jwt.verify(token, 'secret_ecom');
+    req.user = { id: data.user.id }; // Corrected typo
+    next();
+  } catch (error) {
+    res.status(401).send({ errors: "Please authenticate using a valid token" });
+  }
+};
 
 
 // Creating endpoint for adding products in cartData
@@ -208,27 +205,32 @@ const fetchUser = async (req,  res, next) => {
 // Creating endpoint for adding products to cartData
 app.post('/addtocart', fetchUser, async (req, res) => {
   try {
-    // Find the user by ID
-    let userData = await Users.findOne({ _id: req.user.id });
-    
+    const userId = req.user.id;
+    const itemId = req.body.itemId; // Ensure this is consistent
+    const userData = await Users.findOne({ _id: userId });
+
     if (!userData) {
       return res.status(404).json({ error: "User not found" });
     }
-    
-    // Update the cartData
-    if (!userData.cartData[req.body.itemId]) {
-      userData.cartData[req.body.itemId] = 0;
+
+    // Initialize cartData if it doesn't exist
+    if (!userData.cartData) {
+      userData.cartData = {};
     }
-    userData.cartData[req.body.itemId] += 1;
-    
+
+    // Initialize item count if it doesn't exist
+    if (!userData.cartData[itemId]) {
+      userData.cartData[itemId] = 0;
+    }
+
+    userData.cartData[itemId] += 1;
+
     // Save the updated cartData
     await Users.findOneAndUpdate(
-      { _id: req.user.id },
-      { cartData: userData.cartData },
-      { new: true } // Return the updated document
+      { _id: userId },
+      { cartData: userData.cartData }
     );
 
-    // Send a JSON response
     res.status(200).json({ message: "Added", cartData: userData.cartData });
   } catch (error) {
     console.error('Error adding to cart:', error);
