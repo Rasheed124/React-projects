@@ -70,7 +70,7 @@ const ProductContextProvider = ({ children }) => {
         'auth-token': localStorage.getItem('auth-token'),
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ "itemId": itemId })
+      body: JSON.stringify({itemId })
     })
     .then((response) => {
       if (!response.ok) {
@@ -80,6 +80,7 @@ const ProductContextProvider = ({ children }) => {
     })
     .then((data) => {
       console.log('Cart updated:', data);
+      setCartItems(data.cartData);
     })
     .catch((error) => {
       console.error('Error adding to cart:', error);

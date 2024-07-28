@@ -183,7 +183,7 @@ const fetchUser = async (req, res, next) => {
   }
   try {
     const data = jwt.verify(token, 'secret_ecom');
-    req.user = { id: data.user.id }; // Corrected typo
+    req.user = { id: data.user.if }; // Corrected typo
     next();
   } catch (error) {
     res.status(401).send({ errors: "Please authenticate using a valid token" });
@@ -191,19 +191,9 @@ const fetchUser = async (req, res, next) => {
 };
 
 
-// Creating endpoint for adding products in cartData
-// app.post('/addtocart', fetchUser, async (req, res) => {
-
-
-//   let userData = await Users.findOne({_id:req.user.id});
-//   userData.cartData[req.body.itemId] += 1;
-//   await Users.findOneAndUpdate({_id:req.user.id}, {cartData:userData.cartData});
-//   res.send("Added");
-
-// })
-
 // Creating endpoint for adding products to cartData
 app.post('/addtocart', fetchUser, async (req, res) => {
+
   try {
     const userId = req.user.id;
     const itemId = req.body.itemId; // Ensure this is consistent
@@ -228,7 +218,8 @@ app.post('/addtocart', fetchUser, async (req, res) => {
     // Save the updated cartData
     await Users.findOneAndUpdate(
       { _id: userId },
-      { cartData: userData.cartData }
+      { cartData: userData.cartData },
+      { new: true } // Return the updated document
     );
 
     res.status(200).json({ message: "Added", cartData: userData.cartData });
@@ -237,6 +228,8 @@ app.post('/addtocart', fetchUser, async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+// creating endpoint to remove product
 
 
 // Creating user Signup Endpoint
