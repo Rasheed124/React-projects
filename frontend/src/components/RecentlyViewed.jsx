@@ -9,7 +9,7 @@ const RecentlyViewed = () => {
   useEffect(() => {
     const recentlyViewed = async () => {
       try {
-        const response = await fetch('http://localhost:4000/recentlyviewed');
+        const response = await fetch('http://localhost:4000/products/recentlyviewed');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

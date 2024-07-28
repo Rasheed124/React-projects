@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const LoginSignUp = () => {
   const [state, setState] = useState("Sign Up");
-  
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -17,7 +16,7 @@ const LoginSignUp = () => {
     console.log("Login Function Executed", formData);
 
     try {
-      const response = await fetch('http://localhost:4000/login', {
+      const response = await fetch('http://localhost:4000/auth/login', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -45,7 +44,7 @@ const LoginSignUp = () => {
     console.log("Signup Function Executed", formData);
 
     try {
-      const response = await fetch('http://localhost:4000/signup', {
+      const response = await fetch('http://localhost:4000/auth/signup', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -61,7 +60,7 @@ const LoginSignUp = () => {
         localStorage.setItem('auth-token', responseData.token);
         window.location.replace("/");
       } else {
-        alert(responseData.errors);
+        alert(responseData.errors || "An error occurred during signup. Please try again.");
       }
     } catch (error) {
       console.error("Error during signup:", error);
@@ -70,14 +69,13 @@ const LoginSignUp = () => {
   };
 
   return (
-    <>
     <section className="bg-gray-800 flex justify-center items-start flex-col text-white h-screen w-full">
-    <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg text-center">
           <h1 className="text-2xl font-bold sm:text-3xl">
-            {state === "Sign Up" ? "Sign Up" : state}
+            {state === "Sign Up" ? "Sign Up" : "Login"}
           </h1>
-          <p className="mt-4 ">
+          <p className="mt-4">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero
             nulla eaque error neque ipsa culpa autem, at itaque nostrum!
           </p>
@@ -86,7 +84,7 @@ const LoginSignUp = () => {
         <div className="mx-auto text-black mb-0 mt-8 max-w-md space-y-4">
           {state === "Sign Up" && (
             <div>
-              <label htmlFor="yourName" className="sr-only">Your name</label>
+              <label htmlFor="username" className="sr-only">Your name</label>
               <div className="relative">
                 <input
                   type="text"
@@ -104,6 +102,7 @@ const LoginSignUp = () => {
             <label htmlFor="email" className="sr-only">Email</label>
             <div className="relative">
               <input
+                type="email"
                 name="email"
                 value={formData.email}
                 onChange={changeHandler}
@@ -113,7 +112,7 @@ const LoginSignUp = () => {
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="size-4 text-gray-400"
+                  className="h-6 w-6 text-gray-400"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -143,7 +142,7 @@ const LoginSignUp = () => {
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="size-4 text-gray-400"
+                  className="h-6 w-6 text-gray-400"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -171,8 +170,7 @@ const LoginSignUp = () => {
                 Already have an account?
                 <a
                   onClick={() => setState("Login")}
-                  className="underline"
-                  href="#"
+                  className="underline cursor-pointer"
                 >
                   login in
                 </a>
@@ -182,8 +180,7 @@ const LoginSignUp = () => {
                 No account?
                 <a
                   onClick={() => setState("Sign Up")}
-                  className="underline"
-                  href="#"
+                  className="underline cursor-pointer"
                 >
                   Sign up
                 </a>
@@ -194,7 +191,7 @@ const LoginSignUp = () => {
               onClick={() => {
                 state === "Login" ? login() : signup();
               }}
-              type="submit"
+              type="button"
               className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
             >
               Continue
@@ -203,8 +200,6 @@ const LoginSignUp = () => {
         </div>
       </div>
     </section>
-   
-    </>
   );
 };
 
