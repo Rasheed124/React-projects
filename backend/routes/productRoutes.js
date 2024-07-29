@@ -1,6 +1,8 @@
 const express = require('express');
 const { addProduct, removeProduct, getAllProducts, getRecentlyPublished, getRecentlyViewed } = require('../controllers/productController');
 const { fetchUser } = require('../middleware/authMiddleware');
+const Users = require("../models/user");
+
 
 const router = express.Router();
 
@@ -12,10 +14,13 @@ router.get('/recentlyviewed', getRecentlyViewed);
 
 // Cart routes
 router.post('/addtocart', fetchUser, async (req, res) => {
+
+  // console.log(req.user)
   try {
     const userId = req.user.id;
     const itemId = req.body.itemId;
     const userData = await Users.findOne({ _id: userId });
+
 
     if (!userData) {
       return res.status(404).json({ error: "User not found" });
