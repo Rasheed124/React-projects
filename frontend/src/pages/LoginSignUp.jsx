@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = import.meta.env.VITE_BACKEND_APP_URL;
 
 const LoginSignUp = () => {
   const [state, setState] = useState("Sign Up");
