@@ -6,7 +6,7 @@ exports.fetchUser = async (req, res, next) => {
     return res.status(401).send({ errors: "Please authenticate using a valid token" });
   }
   try {
-    const data = jwt.verify(token, 'secret_ecom');
+    const data = jwt.verify(token, process.env.JWT_SECRET);
     req.user = { id: data.user.id };
     next();
   } catch (error) {
