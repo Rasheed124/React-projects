@@ -3,12 +3,16 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
 const multer = require("multer");
+const dotenv = require("dotenv");
 
 const { dbConnection } = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
 const uploadRoutes = require('./routes/uploadRoutes');
 const { fetchUser } = require('./middleware/authMiddleware');
+
+
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 4000;

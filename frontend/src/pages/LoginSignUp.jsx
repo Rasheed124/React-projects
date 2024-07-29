@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const LoginSignUp = () => {
   const [state, setState] = useState("Sign Up");
   const [formData, setFormData] = useState({
@@ -16,7 +18,7 @@ const LoginSignUp = () => {
     console.log("Login Function Executed", formData);
 
     try {
-      const response = await fetch('http://localhost:4000/auth/login', {
+      const response = await fetch(`${API_URL}/auth/login`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -44,7 +46,7 @@ const LoginSignUp = () => {
     console.log("Signup Function Executed", formData);
 
     try {
-      const response = await fetch('http://localhost:4000/auth/signup', {
+      const response = await fetch(`${API_URL}/auth/signup`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
