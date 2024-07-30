@@ -35,7 +35,7 @@ const ProductDisplay = (props) => {
             </div>
             <div className="md:pt-3 max-w-[400px] m-auto md:m-0">
               <p className="text-[0.9rem]">
-                Static description text here...
+                {product.description.description.join(", ")}
                 <button className="text-blue-600 hover:text-blue-800">
                   Show More
                   {/* <MdKeyboardArrowRight /> */}
@@ -43,10 +43,10 @@ const ProductDisplay = (props) => {
               </p>
               <p className="text-[0.9rem] pt-1">{product.name}</p>
               <p className="text-[1.2rem] text-gray-800 pt-1 font-bold">
-                Static Price
+                ${product.new_price}
               </p>
-              <p className="text-[0.9rem] pt-1">Stock Status</p>
-              <p className="text-[0.9rem] pt-1">Delivery Info</p>
+              <p className="text-[0.9rem] pt-1">{product.stockStatus}</p>
+              <p className="text-[0.9rem] pt-1">{product.deliveryInfo}</p>
               <p className="text-[0.9rem] pt-1">
                 Category : {product.category}
               </p>
@@ -75,115 +75,80 @@ const ProductDisplay = (props) => {
                     {/* <MdKeyboardArrowRight /> */}
                   </p>
                   <div className="px-5 pt-3">
-                    <p className="text-[0.9rem] pt-1">
                     <div>
-                     
-                     {/* Description */}
-                      <div >
+                      {/* Description */}
+                      <div>
                         <h2 className="text-[1rem] font-bold pt-5 pb-2">
-                        Description
+                          Description
                         </h2>
-                        <ul className="list-disc space-y-1 pl-6 ">
-                        
-                            <li  className="text-[0.9rem]">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                        <ul className="list-disc space-y-1 pl-6">
+                          {product.description.description.map((item, index) => (
+                            <li key={index} className="text-[0.9rem]">
+                              {item}
                             </li>
-                            <li  className="text-[0.9rem]">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
-                            </li>
-                            <li  className="text-[0.9rem]">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
-                            </li>
-                        
+                          ))}
                         </ul>
                       </div>
-                     {/* Lightining */}
-                      <div >
+                      {/* Lightning */}
+                      <div>
                         <h2 className="text-[1rem] font-bold pt-5 pb-2">
-                        Lightining
+                          Lightning
                         </h2>
-                        <ul className="list-disc space-y-1 pl-6 ">
-                        
-                            <li  className="text-[0.9rem]">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                        <ul className="list-disc space-y-1 pl-6">
+                          {product.description.lightning.map((item, index) => (
+                            <li key={index} className="text-[0.9rem]">
+                              {item}
                             </li>
-                            <li  className="text-[0.9rem]">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
-                            </li>
-                            <li  className="text-[0.9rem]">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
-                            </li>
-                        
-                        </ul>
-                      </div>
-                      {/* What's in the box*/}
-                      <div >
-                        <h2 className="text-[1rem] font-bold pt-5 pb-2">
-                        What's in the box
-                        </h2>
-                        <ul className="list-disc space-y-1 pl-6 ">
-                        
-                            <li  className="text-[0.9rem]">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
-                            </li>
-                            <li  className="text-[0.9rem]">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
-                            </li>
-                            <li  className="text-[0.9rem]">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
-                            </li>
-                        
+                          ))}
                         </ul>
                       </div>
                       {/* Key Features */}
-                      <div >
+                      <div>
                         <h2 className="text-[1rem] font-bold pt-5 pb-2">
-                        Key Features
+                          Key Features
                         </h2>
-                        <ul className="list-disc space-y-1 pl-6 ">
-                        
-                            <li  className="text-[0.9rem]">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                        <ul className="list-disc space-y-1 pl-6">
+                          {product.description.keyFeatures.map((item, index) => (
+                            <li key={index} className="text-[0.9rem]">
+                              {item}
                             </li>
-                            <li  className="text-[0.9rem]">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
-                            </li>
-                            <li  className="text-[0.9rem]">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
-                            </li>
-                        
+                          ))}
                         </ul>
                       </div>
-                   {/* Specifications */}
-                       <div >
-                          <h2 className="text-[1rem] font-bold pt-5 pb-2">
-                          Specifications
-                          </h2>
-                          <ul className="list-disc space-y-1 pl-6 ">
-                          
-                              <li  className="text-[0.9rem]">
-                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
-                              </li>
-                              <li  className="text-[0.9rem]">
-                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
-                              </li>
-                              <li  className="text-[0.9rem]">
-                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
-                              </li>
-                          
-                          </ul>
-                        </div>
+                      {/* What's in the box */}
+                      <div>
+                        <h2 className="text-[1rem] font-bold pt-5 pb-2">
+                          What's in the box
+                        </h2>
+                        <ul className="list-disc space-y-1 pl-6">
+                          {product.description.whatsInTheBox.map((item, index) => (
+                            <li key={index} className="text-[0.9rem]">
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                    </p>
+                      {/* Specifications */}
+                      <div>
+                        <h2 className="text-[1rem] font-bold pt-5 pb-2">
+                          Specifications
+                        </h2>
+                        <ul className="list-disc space-y-1 pl-6">
+                          {product.description.specifications.map((item, index) => (
+                            <li key={index} className="text-[0.9rem]">
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </li>
               </ul>
             </div>
           </div>
-
           {/* Related Product */}
           <RelatedProduct />
-
           <div className="md:hidden relative small sticky-button-container flex gap-4 items-center shadow-[3rem] border-gray-700 ">
             <div className="w-12 h-10">
               {/* <FaPhoneAlt className="border border-gray-800 rounded-md w-full h-full py-2 text-[1rem]" /> */}

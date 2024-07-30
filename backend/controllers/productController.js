@@ -14,6 +14,19 @@ exports.addProduct = async (req, res) => {
       old_price: req.body.old_price,
       features: req.body.features,
       brand: req.body.brand,
+      installationServiceAvailable: req.body.installationServiceAvailable,
+      installationPrice: req.body.installationPrice,
+      notifyEmail: req.body.notifyEmail,
+      available: req.body.available,
+      description: {
+        description: req.body.description.description,
+        lightning: req.body.description.lightning,
+        keyFeatures: req.body.description.keyFeatures,
+        whatsInTheBox: req.body.description.whatsInTheBox,
+        specifications: req.body.description.specifications,
+      },
+      deliveryInfo: req.body.deliveryInfo,
+      stockStatus: req.body.stockStatus,
     });
 
     await product.save();
@@ -22,6 +35,7 @@ exports.addProduct = async (req, res) => {
     res.status(500).json({ success: false, error: error.message });
   }
 };
+
 
 exports.removeProduct = async (req, res) => {
   try {

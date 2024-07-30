@@ -14,6 +14,8 @@ const AddProduct = () => {
     old_price: "",
     features: "",
     brand: "",
+    deliveryInfo: "",
+    stockStatus: "",
     description: {
       description: "",
       lightning: "",
@@ -170,6 +172,33 @@ const AddProduct = () => {
                   placeholder="Enter features separated by commas"
                   name="features"
                   value={productDetails.features}
+                  onChange={changeHandler}
+                />
+              </div>
+
+              <div className="my-4">
+                <label htmlFor="deliveryInfo" className="block text-sm font-medium text-gray-900">
+                  Delivery Info
+                </label>
+                <textarea
+                  className="w-full border-2 outline-none text-black rounded-lg border-gray-400 p-3 mt-2 resize-y"
+                  placeholder="Enter delivery information"
+                  name="deliveryInfo"
+                  value={productDetails.deliveryInfo}
+                  onChange={changeHandler}
+                />
+              </div>
+
+              <div className="my-4">
+                <label htmlFor="stockStatus" className="block text-sm font-medium text-gray-900">
+                  Stock Status
+                </label>
+                <input
+                  className="w-full border-2 outline-none text-black rounded-lg border-gray-400 p-3"
+                  placeholder="Enter stock status"
+                  type="text"
+                  name="stockStatus"
+                  value={productDetails.stockStatus}
                   onChange={changeHandler}
                 />
               </div>

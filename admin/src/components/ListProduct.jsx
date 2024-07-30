@@ -62,6 +62,12 @@ const ListProduct = () => {
                 Features
               </th>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Delivery Info
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Stock Status
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                 Description
               </th>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
@@ -107,19 +113,25 @@ const ListProduct = () => {
                   {product.features.join(", ")}
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {/* {product.description.description.join(", ")} */}
+                  {product.deliveryInfo}
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {/* {product.description.lightning.join(", ")} */}
+                  {product.stockStatus}
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {/* {product.description.keyFeatures.join(", ")} */}
+                  {product.description.description.join(", ")}
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {/* {product.description.whatsInTheBox.join(", ")} */}
+                  {product.description.lightning.join(", ")}
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {/* {product.description.specifications.join(", ")} */}
+                  {product.description.keyFeatures.join(", ")}
+                </td>
+                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {product.description.whatsInTheBox.join(", ")}
+                </td>
+                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {product.description.specifications.join(", ")}
                 </td>
                 <td className="whitespace-nowrap px-4 py-2">
                   <a

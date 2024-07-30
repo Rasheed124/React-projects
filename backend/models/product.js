@@ -78,6 +78,14 @@ const productSchema = new mongoose.Schema({
         },
         default: {},
     },
+    deliveryInfo: {
+        type: String,
+        required: false,
+    },
+    stockStatus: {
+        type: String,
+        required: false,
+    },
 });
 
 const Product = mongoose.model("Product", productSchema);
