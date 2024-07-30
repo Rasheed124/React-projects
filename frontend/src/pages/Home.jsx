@@ -1,12 +1,5 @@
 import React, { useContext } from "react";
 // import { Footer, Header } from "../../Compnents";
-// import { Link } from "react-router-dom";
-// import power from "../assets/power.jpg";
-// import power2 from "../assets/power2.png";
-// import power3 from "../assets/power3.png";
-// import power4 from "../assets/power4.png";
-
-// import data_product from "../assets/data";
 import Item from "../components/Item";
 import Navbar from "../components/Navbar";
 import { ProductContext } from "../Context/ProductContext";
@@ -14,7 +7,7 @@ import RecentlyViewed from "../components/RecentlyViewed";
 
 const Home = () => {
 
-  const { recently_published } = useContext(ProductContext);
+  const { all_product } = useContext(ProductContext);
   return (
     <>
       <Navbar />
@@ -36,7 +29,7 @@ const Home = () => {
 
               {/* Product Deals Data  */}
               <div className="grid md:grid-cols-2 lg:max-w-[900px] m-auto bg-gray-300 bg-transparent px-6 sl:px-0 gap-3 md:gap-4 lg:gap-6 item">
-                {recently_published.map((item, i) => {
+                {all_product.map((item, i) => {
                   return (
                     <Item
                       key={i}

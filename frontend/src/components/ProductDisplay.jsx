@@ -76,7 +76,104 @@ const ProductDisplay = (props) => {
                   </p>
                   <div className="px-5 pt-3">
                     <p className="text-[0.9rem] pt-1">
-                      Static description text here...
+                    <div>
+                     
+                     {/* Description */}
+                      <div >
+                        <h2 className="text-[1rem] font-bold pt-5 pb-2">
+                        Description
+                        </h2>
+                        <ul className="list-disc space-y-1 pl-6 ">
+                        
+                            <li  className="text-[0.9rem]">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                            </li>
+                            <li  className="text-[0.9rem]">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                            </li>
+                            <li  className="text-[0.9rem]">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                            </li>
+                        
+                        </ul>
+                      </div>
+                     {/* Lightining */}
+                      <div >
+                        <h2 className="text-[1rem] font-bold pt-5 pb-2">
+                        Lightining
+                        </h2>
+                        <ul className="list-disc space-y-1 pl-6 ">
+                        
+                            <li  className="text-[0.9rem]">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                            </li>
+                            <li  className="text-[0.9rem]">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                            </li>
+                            <li  className="text-[0.9rem]">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                            </li>
+                        
+                        </ul>
+                      </div>
+                      {/* What's in the box*/}
+                      <div >
+                        <h2 className="text-[1rem] font-bold pt-5 pb-2">
+                        What's in the box
+                        </h2>
+                        <ul className="list-disc space-y-1 pl-6 ">
+                        
+                            <li  className="text-[0.9rem]">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                            </li>
+                            <li  className="text-[0.9rem]">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                            </li>
+                            <li  className="text-[0.9rem]">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                            </li>
+                        
+                        </ul>
+                      </div>
+                      {/* Key Features */}
+                      <div >
+                        <h2 className="text-[1rem] font-bold pt-5 pb-2">
+                        Key Features
+                        </h2>
+                        <ul className="list-disc space-y-1 pl-6 ">
+                        
+                            <li  className="text-[0.9rem]">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                            </li>
+                            <li  className="text-[0.9rem]">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                            </li>
+                            <li  className="text-[0.9rem]">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                            </li>
+                        
+                        </ul>
+                      </div>
+                   {/* Specifications */}
+                       <div >
+                          <h2 className="text-[1rem] font-bold pt-5 pb-2">
+                          Specifications
+                          </h2>
+                          <ul className="list-disc space-y-1 pl-6 ">
+                          
+                              <li  className="text-[0.9rem]">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                              </li>
+                              <li  className="text-[0.9rem]">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                              </li>
+                              <li  className="text-[0.9rem]">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt provident libero sint explicabo consequatur, alias eum est ratione? Rem, eligendi.
+                              </li>
+                          
+                          </ul>
+                        </div>
+                      </div>
                     </p>
                   </div>
                 </li>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-
 import upload_area from "../assets/upload_area.svg";
+
+const API_URL = import.meta.env.VITE_BACKEND_APP_URL;
 
 const AddProduct = () => {
   const [image, setImage] = useState(false);
@@ -8,11 +9,18 @@ const AddProduct = () => {
   const [productDetails, setProductDetails] = useState({
     name: "",
     image: "",
-    category: "women",
+    category: "lithium",
     new_price: "",
     old_price: "",
     features: "",
     brand: "",
+    description: {
+      description: "",
+      lightning: "",
+      keyFeatures: "",
+      whatsInTheBox: "",
+      specifications: "",
+    },
   });
 
   const imagHandler = (e) => {
@@ -24,18 +32,32 @@ const AddProduct = () => {
     setProductDetails({ ...productDetails, [name]: value });
   };
 
+  const descriptionChangeHandler = (e) => {
+    const { name, value } = e.target;
+    setProductDetails({
+      ...productDetails,
+      description: { ...productDetails.description, [name]: value },
+    });
+  };
+
   const Add_Product = async () => {
     const featuresArray = productDetails.features.split(",").map((feature) => feature.trim());
-    const product = { ...productDetails, features: featuresArray };
+    const description = {
+      description: productDetails.description.description.split(",").map(item => item.trim()),
+      lightning: productDetails.description.lightning.split(",").map(item => item.trim()),
+      keyFeatures: productDetails.description.keyFeatures.split(",").map(item => item.trim()),
+      whatsInTheBox: productDetails.description.whatsInTheBox.split(",").map(item => item.trim()),
+      specifications: productDetails.description.specifications.split(",").map(item => item.trim()),
+    };
 
-    console.log(product);
+    const product = { ...productDetails, features: featuresArray, description: description };
 
     let responseData;
 
     let formData = new FormData();
     formData.append("product", image);
 
-    await fetch("http://localhost:4000/upload/upload", {
+    await fetch(`${API_URL}/upload/upload`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -48,9 +70,8 @@ const AddProduct = () => {
       });
     if (responseData.success) {
       product.image = responseData.image_url;
-      console.log(product);
 
-      await fetch("http://localhost:4000/products/addproduct", {
+      await fetch(`${API_URL}/products/addproduct`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -72,9 +93,9 @@ const AddProduct = () => {
           <div className="grid grid-cols-1 gap-x-16 gap-y-8">
             <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
               <div>
-                <label htmlFor="name">Product Title</label>
+                <label htmlFor="name" className="font-bold">Product Title</label>
                 <input
-                  className="w-full text-black rounded-lg border-gray-200 p-3"
+                  className="w-full border-2 outline-none text-black rounded-lg border-gray-400 p-3 mt-2"
                   placeholder="Type here"
                   type="text"
                   name="name"
@@ -83,11 +104,11 @@ const AddProduct = () => {
                 />
               </div>
 
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 space-y-3">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 space-y-3 my-4">
                 <div>
-                  <label htmlFor="old_price">New Price</label>
+                  <label htmlFor="old_price " className="text-gray-900 font-semibold">Old Price</label>
                   <input
-                    className="w-full rounded-lg border-gray-200 p-3 text-sm"
+                    className="w-full rounded-lg border-gray-400 outline-none border-2 p-3 text-sm"
                     placeholder="Type here"
                     type="number"
                     name="old_price"
@@ -96,10 +117,10 @@ const AddProduct = () => {
                   />
                 </div>
 
-                <div>
-                  <label htmlFor="new_price">Offer Price</label>
+                <div className="my-4">
+                  <label htmlFor="new_price" className="text-gray-900 font-semibold">New Price</label>
                   <input
-                    className="w-full rounded-lg border-gray-200 p-3 text-sm"
+                    className="w-full rounded-lg border-gray-400 outline-none border-2 p-3 text-sm"
                     placeholder="Type here"
                     type="number"
                     name="new_price"
@@ -109,13 +130,11 @@ const AddProduct = () => {
                 </div>
               </div>
 
-              <div>
-                <label htmlFor="category" className="block text-sm font-medium text-gray-900">
-                  Product Category
-                </label>
+              <div className="my-4">
+                <label htmlFor="category" className="text-gray-900 font-semibold">Product Category</label>
                 <select
                   name="category"
-                  className="mt-1.5 mb-3 w-full rounded-lg border-black text-gray-700 sm:text-sm"
+                  className="mt-1.5 mb-3 w-full rounded-lg border-2 p-3 outline-none border-gray-400 text-gray-700 sm:text-sm"
                   value={productDetails.category}
                   onChange={changeHandler}
                 >
@@ -128,12 +147,12 @@ const AddProduct = () => {
                 </select>
               </div>
 
-              <div>
+              <div className="my-4">
                 <label htmlFor="brand" className="block text-sm font-medium text-gray-900">
                   Brand Name
                 </label>
                 <input
-                  className="w-full text-black rounded-lg border-gray-200 p-3"
+                  className="w-full border-2 outline-none text-black rounded-lg border-gray-400 p-3"
                   placeholder="Type here"
                   type="text"
                   name="brand"
@@ -142,12 +161,12 @@ const AddProduct = () => {
                 />
               </div>
 
-              <div>
+              <div className="my-4">
                 <label htmlFor="features" className="block text-sm font-medium text-gray-900">
                   Features
                 </label>
                 <textarea
-                  className="w-full text-black rounded-lg border-gray-200 p-3"
+                  className="w-full border-2 outline-none text-black rounded-lg border-gray-400 p-3 mt-2 resize-y"
                   placeholder="Enter features separated by commas"
                   name="features"
                   value={productDetails.features}
@@ -155,7 +174,75 @@ const AddProduct = () => {
                 />
               </div>
 
-              <div className="relative">
+              {/* Description */}
+              <div>
+                <h3 className="my-4 font-bold">Description Details</h3>
+
+                <div className="border rounded p-3 space-y-4">
+                  <div>
+                    <label htmlFor="description" className="block text-sm font-medium text-gray-900">
+                      Description
+                    </label>
+                    <textarea
+                      className="w-full border-2 outline-none text-black rounded-lg border-gray-400 p-3 mt-2 resize-y"
+                      placeholder="Enter description separated by commas"
+                      name="description"
+                      value={productDetails.description.description}
+                      onChange={descriptionChangeHandler}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="lightning" className="block text-sm font-medium text-gray-900">
+                      Lightning
+                    </label>
+                    <textarea
+                      className="w-full border-2 outline-none text-black rounded-lg border-gray-400 p-3 mt-2 resize-y"
+                      placeholder="Enter lightning details separated by commas"
+                      name="lightning"
+                      value={productDetails.description.lightning}
+                      onChange={descriptionChangeHandler}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="keyFeatures" className="block text-sm font-medium text-gray-900">
+                      Key Features
+                    </label>
+                    <textarea
+                      className="w-full border-2 outline-none text-black rounded-lg border-gray-400 p-3 mt-2 resize-y"
+                      placeholder="Enter key features separated by commas"
+                      name="keyFeatures"
+                      value={productDetails.description.keyFeatures}
+                      onChange={descriptionChangeHandler}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="whatsInTheBox" className="block text-sm font-medium text-gray-900">
+                      What's in the Box
+                    </label>
+                    <textarea
+                      className="w-full border-2 outline-none text-black rounded-lg border-gray-400 p-3 mt-2 resize-y"
+                      placeholder="Enter contents of the box separated by commas"
+                      name="whatsInTheBox"
+                      value={productDetails.description.whatsInTheBox}
+                      onChange={descriptionChangeHandler}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="specifications" className="block text-sm font-medium text-gray-900">
+                      Specifications
+                    </label>
+                    <textarea
+                      className="w-full border-2 outline-none text-black rounded-lg border-gray-400 p-3 mt-2 resize-y"
+                      placeholder="Enter specifications separated by commas"
+                      name="specifications"
+                      value={productDetails.description.specifications}
+                      onChange={descriptionChangeHandler}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative mt-4">
                 <label htmlFor="image_upload">
                   <img
                     src={image ? URL.createObjectURL(image) : upload_area}
@@ -165,17 +252,31 @@ const AddProduct = () => {
                 <input
                   onChange={imagHandler}
                   type="file"
-                  name="image"
-                  className="border object-cover"
+                  name="image_upload"
+                  id="image_upload"
+                  className="hidden"
                 />
               </div>
 
               <div className="mt-4">
                 <button
-                  className="block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
+                  type="submit"
                   onClick={Add_Product}
+                  className="inline-flex w-full items-center justify-center rounded-lg bg-black px-5 py-3 text-white sm:w-auto"
                 >
-                  ADD
+                  <span className="font-medium"> Add Product </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="ml-3 h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
                 </button>
               </div>
             </div>

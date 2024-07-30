@@ -33,6 +33,18 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    installationServiceAvailable: {
+        type: Boolean,
+        default: false,
+    },
+    installationPrice: {
+        type: Number,
+        default: 0,
+    },
+    notifyEmail: {
+        type: String,
+        required: false,
+    },
     date: {
         type: Date,
         default: Date.now,
@@ -40,6 +52,31 @@ const productSchema = new mongoose.Schema({
     available: {
         type: Boolean,
         default: true,
+    },
+    description: {
+        type: {
+            description: {
+                type: [String], // Full description as an array of strings
+                required: false,
+            },
+            lightning: {
+                type: [String], // Lightning points as an array of strings
+                required: false,
+            },
+            keyFeatures: {
+                type: [String], // Key features as an array
+                required: false,
+            },
+            whatsInTheBox: {
+                type: [String], // What's in the box as an array
+                required: false,
+            },
+            specifications: {
+                type: [String], // Specifications as an array
+                required: false,
+            },
+        },
+        default: {},
     },
 });
 

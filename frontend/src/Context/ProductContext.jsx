@@ -2,6 +2,9 @@ import React, { createContext, useEffect, useState } from "react";
 
 export const ProductContext = createContext(null);
 
+const API_URL = import.meta.env.VITE_BACKEND_APP_URL;
+
+
 // Cart
 const getDefaultCart = () => {
   let cart = {};
@@ -20,7 +23,7 @@ const ProductContextProvider = ({ children }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:4000/products/allproducts');
+        const response = await fetch(`${API_URL}/products/allproducts`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -35,7 +38,7 @@ const ProductContextProvider = ({ children }) => {
     fetchProducts();
 
     if (localStorage.getItem('auth-token')) {
-      fetch('http://localhost:4000/products/getcart', {
+      fetch(`${API_URL}/products/getcart`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -64,7 +67,7 @@ const ProductContextProvider = ({ children }) => {
   useEffect(() => {
     const recentlyPublished = async () => {
       try {
-        const response = await fetch('http://localhost:4000/products/recentlypublished');
+        const response = await fetch(`${API_URL}/products/recentlypublished`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -83,7 +86,7 @@ const ProductContextProvider = ({ children }) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
 
     if (localStorage.getItem('auth-token')) {
-      fetch('http://localhost:4000/products/addtocart', {
+      fetch(`${API_URL}/products/addtocart`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -111,7 +114,7 @@ const ProductContextProvider = ({ children }) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
 
     if (localStorage.getItem('auth-token')) {
-      fetch('http://localhost:4000/products/removefromcart', {
+      fetch(`${API_URL}/products/removefromcart`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
