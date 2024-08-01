@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-// import { Footer, Header } from "../../Compnents";
+
 import Item from "../components/Item";
 import Navbar from "../components/Navbar";
 import { ProductContext } from "../Context/ProductContext";
 import RecentlyViewed from "../components/RecentlyViewed";
+import Footer from "../components/Footer";
 
 const Home = () => {
 
@@ -57,6 +58,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+    <Footer />
+
+    
     </>
   );
 };

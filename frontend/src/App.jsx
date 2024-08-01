@@ -7,37 +7,30 @@ import Product from "./pages/Product";
 import Account from "./pages/Account";
 import Cart from "./pages/Cart";
 import ListProduct from "./components/ListProduct";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 
 function App() {
+  
   return (
     <>
+      {/* <Navbar />  */}
+
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route
-          path="/inverters"
-          element={<Category category="inverter" />}
-        ></Route>
-        <Route
-          path="/lithiums"
-          element={<Category category="lithium" />}
-        ></Route>
-        <Route path="/acids" element={<Category category="acid" />}></Route>
-        <Route path="/solars" element={<Category category="solar" />}></Route>
-        <Route
-          path="/tubulars"
-          element={<Category category="tubular" />}
-        ></Route>
-        <Route path="/product" element={<Product />}>
-          <Route path="/product/:name/:productId" element={<Product />}></Route>
-        </Route>
-
-        <Route path="/products" element={<ListProduct />}></Route>
-        <Route path="/account" element={<Account />}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/login" element={<LoginSignUp />}></Route>
-
+           <Route path="/" element={<Home />} />
+        <Route path="/inverters" element={<Category category="inverter" />} />
+        <Route path="/lithiums" element={<Category category="lithium" />} />
+        <Route path="/acids" element={<Category category="acid" />} />
+        <Route path="/solars" element={<Category category="solar" />} />
+        <Route path="/tubulars" element={<Category category="tubular" />} />
+        <Route path="/product/:name/:productId" element={<Product />} />
+        <Route path="/products" element={<ListProduct />} />
+        <Route path="/account" element={<Account />} />
+        <Route path="/cart" element={<Cart />} />
 
       </Routes>
+
+   
     </>
   );
 }
