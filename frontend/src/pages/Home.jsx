@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 
-import Item from "../components/Item";
+// import Item from "../components/Item";
 import Navbar from "../components/Navbar";
-import { ProductContext } from "../Context/ProductContext";
-import RecentlyViewed from "../components/RecentlyViewed";
+// import { ProductContext } from "../Context/ProductContext";
+// import RecentlyViewed from "../components/RecentlyViewed";
 import Footer from "../components/Footer";
 
 const Home = () => {
 
-  const { all_product } = useContext(ProductContext);
+  // const { all_product } = useContext(ProductContext);
   return (
     <>
       <Navbar />
@@ -30,7 +30,7 @@ const Home = () => {
 
               {/* Product Deals Data  */}
               <div className="grid md:grid-cols-2 lg:max-w-[900px] m-auto bg-gray-300 bg-transparent px-6 sl:px-0 gap-3 md:gap-4 lg:gap-6 item">
-                {all_product.map((item, i) => {
+                {/* {all_product.map((item, i) => {
                   return (
                     <Item
                       key={i}
@@ -42,7 +42,7 @@ const Home = () => {
                       new_price={item.new_price}
                     />
                   );
-                })}
+                })} */}
               </div>
             </div>
             <div className="py-10 bg-gray-300 sl:bg-transparent">
@@ -52,7 +52,7 @@ const Home = () => {
                 </h2>
               </div>
               <div className="px-6 sl:px-0 lg:max-w-[900px] m-auto pt-7">
-                  <RecentlyViewed />
+                  {/* <RecentlyViewed /> */}
               </div>
             </div>
           </div>

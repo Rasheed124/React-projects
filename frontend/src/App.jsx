@@ -1,16 +1,22 @@
-import Category from "./pages/Category";
+// import Category from "./pages/Category";
 import Home from "./pages/Home";
-import LoginSignUp from "./pages/LoginSignUp";
+// import LoginSignUp from "./pages/LoginSignUp";
 
 import { Routes, Route } from "react-router-dom";
-import Product from "./pages/Product";
-import Account from "./pages/Account";
-import Cart from "./pages/Cart";
-import ListProduct from "./components/ListProduct";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
+import { useSelector } from "react-redux";
+// import Product from "./pages/Product";
+// import Account from "./pages/Account";
+// import Cart from "./pages/Cart";
+// import ListProduct from "./components/ListProduct";
+// import Footer from "./components/Footer";
+// import Navbar from "./components/Navbar";
 
 function App() {
+
+  const user = useSelector((state) => state.user);
+
   
   return (
     <>
@@ -18,7 +24,16 @@ function App() {
 
       <Routes>
            <Route path="/" element={<Home />} />
-        <Route path="/inverters" element={<Category category="inverter" />} />
+       
+           {!user && (
+                <>
+                      <Route path="/signup" element={<SignUp />} />
+                      <Route path="/login" element={<Login />} />
+                </>
+            )}
+
+        <Route path="*" element={<Home />} />
+        {/* <Route path="/inverters" element={<Category category="inverter" />} />
         <Route path="/lithiums" element={<Category category="lithium" />} />
         <Route path="/acids" element={<Category category="acid" />} />
         <Route path="/solars" element={<Category category="solar" />} />
@@ -26,7 +41,7 @@ function App() {
         <Route path="/product/:name/:productId" element={<Product />} />
         <Route path="/products" element={<ListProduct />} />
         <Route path="/account" element={<Account />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart />} /> */}
 
       </Routes>
 

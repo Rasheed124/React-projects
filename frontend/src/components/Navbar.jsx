@@ -6,16 +6,31 @@ import { CiSearch } from "react-icons/ci";
 import { IoIosArrowDown } from "react-icons/io";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { ProductContext } from "../Context/ProductContext";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../features/userSlice";
+
+// import { logout, resetNotifications } from "../features/userSlice";
+
+// import { ProductContext } from "../Context/ProductContext";
 
 const Navbar = () => {
+
+  const user = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
+
+
   const [menu, setMenu] = useState("home");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
-    const {getTotalItems} = useContext(ProductContext)
+  const handleLogout = () => {
+    dispatch(logout());
+}
+
+    // const {getTotalItems} = useContext(ProductContext)
 
   return (
     <div className="z-10 ">
@@ -112,36 +127,85 @@ const Navbar = () => {
                 </div>
                 <div className="flex items-center gap-6">
                   <div className="flex items-center gap-6 xl:gap-16">
-                    <Link to="/account">
-                      <p className="flex items-center gap-2">
-                        <IoPersonOutline className="text-2xl font-light text-gray-700" />
-                        <span className="hidden lg:flex">Account</span>
-                      </p>
-                    </Link>
-                    <Link to="/cart">
-                      <div className="relative flex gap-3">
-                        <IoCartOutline className="text-2xl font-light text-gray-700" />
-                        <span className="hidden lg:flex">Cart</span>
-                        <div className="absolute top-[-14px] right-[-10px] lg:right-7 bg-gray-700 rounded-full w-fit h-fit">
-                              <p className="px-2 text-center rounded-full text-[0.7rem] text-gray-200">{getTotalItems()}</p>
-                            </div>
-                      </div>
-                    </Link>
+                 
 
-                    {localStorage.getItem('auth-token') ? (
-
+                        {/* if no user */}
+                        {!user && (
                             <Link to="/login">
-                            <button onClick={() => {localStorage.removeItem('auth-token'); window.location.replace('/')}} className="flex items-center gap-2">
-                                <IoLogOut className="text-2xl font-light text-gray-700" />
-                                <span className="hidden lg:flex">Logout</span>
-                              </button>
+                              <button className="flex items-center gap-2">
+                                  <IoLogIn className="text-2xl font-light text-gray-700" />
+                                  <span className="hidden lg:flex">Login</span>
+                                </button>
                             </Link>
-                    ) : (     <Link to="/login">
-                      <button className="flex items-center gap-2">
-                          <IoLogIn className="text-2xl font-light text-gray-700" />
-                          <span className="hidden lg:flex">Login</span>
-                        </button>
-                      </Link>)}
+                        )}
+                        {/* if user */}
+                        {user && (
+                          <>
+
+
+                                {user.isAdmin && (
+                                        <>
+                                         
+                                            <Link to="/dashboard" className="flex items-center gap-2">
+                                            
+                                                <IoPersonOutline className="text-2xl font-light text-gray-700" />
+                                                <span className="hidden lg:flex">Dashboard</span>
+                                          
+                                           </Link>
+
+                                            <Link to="/new-product" className="flex items-center gap-2">
+                                            
+                                                <IoPersonOutline className="text-2xl font-light text-gray-700" />
+                                                <span className="hidden lg:flex">Dashboard</span>
+                                          
+                                           </Link>
+
+                                         
+                                        </>
+                                    )}
+                                    {!user.isAdmin && (
+                                        <>
+                                             
+
+                                              <Link to="/cart">
+                                                <div className="relative flex gap-3">
+                                                  <IoCartOutline className="text-2xl font-light text-gray-700" />
+                                                  <span className="hidden lg:flex">Cart</span>
+                                                  <div className="absolute top-[-14px] right-[-10px] lg:right-7 bg-gray-700 rounded-full w-fit h-fit">
+                                                        <p className="px-2 text-center rounded-full text-[0.7rem] text-gray-200"></p>
+                                                      </div>
+                                                </div>
+                                              </Link>
+
+                                              
+                                            <Link to="/orders" className="flex items-center gap-2">
+                                                    <span className="hidden lg:flex">Orders</span>
+                                              </Link>
+                                        </>
+                                    )}
+
+                                        <Link to="/account">
+                                                  <p className="flex items-center gap-2">
+                                                    <IoPersonOutline className="text-2xl font-light text-gray-700" />
+                                                    <span className="hidden lg:flex">Account</span>
+                                                    <span className="hidden lg:flex">{user.email}</span>
+                                                  </p>
+                                              </Link>
+
+                      
+
+                          <Link to="#">
+                              <button  onClick={handleLogout}  className="flex items-center gap-2">
+                                  <IoLogOut className="text-2xl font-light text-gray-700" />
+                                  <span className="hidden lg:flex">Signout</span>
+                                </button>
+                            </Link>
+                          </>
+                          
+                        )}
+
+                 
+
                
                   </div>
                   <div className="lg:hidden">

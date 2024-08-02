@@ -1,93 +1,27 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const ProductSchema = mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, "can't be blank"]
+  },
+  description: {
+    type: String,
+    required: [true, "can't be blank"]
+  },
+  price: {
+    type: String,
+    required: [true, "can't be blank"]
+  },
+  category: {
+    type: String,
+    required: [true, "can't be blank"]
+  },
+  pictures: {
+    type: Array,
+    required: true
+  }
+}, {minimize: false});
 
-const productSchema = new mongoose.Schema({
-    id: {
-        type: Number,
-        required: true,
-    },
-    name: {
-        type: String,
-        required: true,
-    },
-    image: {
-        type: String,
-        required: true,
-    },
-    category: {
-        type: String,
-        required: true,
-    },
-    new_price: {
-        type: Number,
-        required: true,
-    },
-    old_price: {
-        type: Number,
-        required: true,
-    },
-    features: {
-        type: [String],
-        required: true,
-    },
-    brand: {
-        type: String,
-        required: true,
-    },
-    installationServiceAvailable: {
-        type: Boolean,
-        default: false,
-    },
-    installationPrice: {
-        type: Number,
-        default: 0,
-    },
-    notifyEmail: {
-        type: String,
-        required: false,
-    },
-    date: {
-        type: Date,
-        default: Date.now,
-    },
-    available: {
-        type: Boolean,
-        default: true,
-    },
-    description: {
-        type: {
-            description: {
-                type: [String], // Full description as an array of strings
-                required: false,
-            },
-            lightning: {
-                type: [String], // Lightning points as an array of strings
-                required: false,
-            },
-            keyFeatures: {
-                type: [String], // Key features as an array
-                required: false,
-            },
-            whatsInTheBox: {
-                type: [String], // What's in the box as an array
-                required: false,
-            },
-            specifications: {
-                type: [String], // Specifications as an array
-                required: false,
-            },
-        },
-        default: {},
-    },
-    deliveryInfo: {
-        type: String,
-        required: false,
-    },
-    stockStatus: {
-        type: String,
-        required: false,
-    },
-});
-
-const Product = mongoose.model("Product", productSchema);
+const Product = mongoose.model('Product', ProductSchema);
 
 module.exports = Product;
