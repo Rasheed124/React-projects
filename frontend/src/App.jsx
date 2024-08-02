@@ -6,6 +6,8 @@ import { Routes, Route } from "react-router-dom";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import { useSelector } from "react-redux";
+import NewProduct from "./pages/NewProduct";
+import ProductPage from "./pages/ProductPage";
 // import Product from "./pages/Product";
 // import Account from "./pages/Account";
 // import Cart from "./pages/Cart";
@@ -31,6 +33,11 @@ function App() {
                       <Route path="/login" element={<Login />} />
                 </>
             )}
+
+        <Route path="/new-product" element={<NewProduct />} />
+
+        <Route path="/product/:id" element={<ProductPage />} />
+        {/* <Route path="/category/:category" element={<CategoryPage />} /> */}
 
         <Route path="*" element={<Home />} />
         {/* <Route path="/inverters" element={<Category category="inverter" />} />

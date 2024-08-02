@@ -22,13 +22,13 @@ export const appApi = createApi({
             }),
         }),
         // creating product
-        // createProduct: builder.mutation({
-        //     query: (product) => ({
-        //         url: "/products",
-        //         body: product,
-        //         method: "POST",
-        //     }),
-        // }),
+        createProduct: builder.mutation({
+            query: (product) => ({
+                url: "/api/products",
+                body: product,
+                method: "POST",
+            }),
+        }),
 
         // deleteProduct: builder.mutation({
         //     query: ({ product_id, user_id }) => ({
@@ -96,7 +96,7 @@ export const appApi = createApi({
 export const {
     useSignupMutation,
     useLoginMutation,
-    // useCreateProductMutation,
+    useCreateProductMutation,
     // useAddToCartMutation,
     // useRemoveFromCartMutation,
     // useIncreaseCartProductMutation,

@@ -20,6 +20,7 @@ const io = new Server(server, {
 
 const { dbConnection } = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
+
 const productRoutes = require('./routes/productRoutes');
 const uploadRoutes = require('./routes/uploadRoutes');
 const { fetchUser } = require('./middleware/authMiddleware');
@@ -49,10 +50,12 @@ app.use("/images", express.static("upload/images"));
 
 // New Routes
 app.use('/api/users', userRoutes);
+app.use('/api/products', productRoutes);
+
 
 // Routes
 app.use('/auth', authRoutes);
-app.use('/products', productRoutes);
+// app.use('/products', productRoutes);
 app.use('/upload', uploadRoutes);
 
 // Start server

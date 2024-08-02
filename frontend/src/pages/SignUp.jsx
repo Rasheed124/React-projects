@@ -25,8 +25,12 @@ const SignUp = () => {
                 Signup
               </h1>
 
-              {isError && alert(error.data)}
-  
+              {isError && (
+              <div className="mt-4 p-2.5 bg-red-200 text-red-700 rounded-md">
+                {error.data}
+              </div>
+            )}
+
               <p className="mt-4 leading-relaxed text-gray-500">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
                 quibusdam aperiam voluptatum.

@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Item = ({ id, name, image, features, old_price, new_price }) => {
+const ProductPreview = ({ _id, name, image, features, old_price, new_price }) => {
   const formattedName = name.trim().toLowerCase().replace(/\s+/g, "-");
   return (
-    <div key={id}>
+    <div key={_id}>
       <Link
-        to={`/product/${formattedName}/${id}`}
+        to={`/product/${_id}`}
         //if neccessary
         onClick={window.scrollTo(0, 0)}
       >
@@ -34,4 +34,4 @@ const Item = ({ id, name, image, features, old_price, new_price }) => {
   );
 };
 
-export default Item;
+export default ProductPreview;

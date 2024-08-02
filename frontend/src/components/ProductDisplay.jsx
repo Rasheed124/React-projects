@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 import RelatedProduct from "./RelatedProduct";
-import { ProductContext } from "../Context/ProductContext";
+// import RelatedProduct from "./RelatedProduct";
+// import { ProductContext } from "../Context/ProductContext";
 
 const ProductDisplay = (props) => {
-  const { product } = props;
+  const { product, similarProducts } = props;
 
-  const { addToCart } = useContext(ProductContext);
+  // const { addToCart } = useContext(ProductContext);
 
   return (
     <div>
@@ -148,7 +149,8 @@ const ProductDisplay = (props) => {
             </div>
           </div>
           {/* Related Product */}
-          <RelatedProduct />
+          <RelatedProduct similarProducts={similarProducts} />
+
           <div className="md:hidden relative small sticky-button-container flex gap-4 items-center shadow-[3rem] border-gray-700 ">
             <div className="w-12 h-10">
               {/* <FaPhoneAlt className="border border-gray-800 rounded-md w-full h-full py-2 text-[1rem]" /> */}

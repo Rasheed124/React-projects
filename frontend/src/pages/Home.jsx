@@ -1,14 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import axios from "../axios";
 
-// import Item from "../components/Item";
+import { useDispatch, useSelector } from "react-redux";
+import { updateProducts } from "../features/productSlice";
+// import ProductPreview from "../components/ProductPreview";
+
+import Item from "../components/ProductPreview";
 import Navbar from "../components/Navbar";
 // import { ProductContext } from "../Context/ProductContext";
 // import RecentlyViewed from "../components/RecentlyViewed";
 import Footer from "../components/Footer";
+import ProductPreview from "../components/ProductPreview";
 
 const Home = () => {
 
-  // const { all_product } = useContext(ProductContext);
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products);
+  const lastProducts = products.slice(0, 8);
+
+  console.log(lastProducts);
+  useEffect(() => {
+      axios.get("/api/products").then(({ data }) => dispatch(updateProducts(data)));
+  }, []);
   return (
     <>
       <Navbar />
@@ -30,19 +43,11 @@ const Home = () => {
 
               {/* Product Deals Data  */}
               <div className="grid md:grid-cols-2 lg:max-w-[900px] m-auto bg-gray-300 bg-transparent px-6 sl:px-0 gap-3 md:gap-4 lg:gap-6 item">
-                {/* {all_product.map((item, i) => {
+                {lastProducts.map((product, index) => {
                   return (
-                    <Item
-                      key={i}
-                      id={item.id}
-                      name={item.name}
-                      features={item.features}
-                      image={item.image}
-                      old_price={item.old_price}
-                      new_price={item.new_price}
-                    />
+                    <ProductPreview key={index} {...product} />
                   );
-                })} */}
+                })}
               </div>
             </div>
             <div className="py-10 bg-gray-300 sl:bg-transparent">

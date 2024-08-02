@@ -1,19 +1,15 @@
-import React, { useState } from 'react'
-
+import React, { useState } from 'react';
 import { useLoginMutation } from "../services/appApi";
 
 const Login = () => {
-
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [login, { isError, isLoading, error }] = useLoginMutation();
 
-    const handleLogin = (e) => {
-      e.preventDefault();
-      login({ email, password });
+  const handleLogin = (e) => {
+    e.preventDefault();
+    login({ email, password });
   }
-  
 
   return (
     <section className="bg-white/20">
@@ -21,11 +17,15 @@ const Login = () => {
         <main className="flex items-center justify-center px-8 py-8 sm:px-12 lg:px-16 lg:py-12 max-w-xl mx-auto">
           <div className="max-w-xl lg:max-w-3xl">
             <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-             Login 
+              Login 
             </h1>
 
-            {/* if errror */}
-            {isError && alert(error.data)}
+            {/* Display error message */}
+            {isError && (
+              <div className="mt-4 p-2.5 bg-red-200 text-red-700 rounded-md">
+                {error.data}
+              </div>
+            )}
 
             <p className="mt-4 leading-relaxed text-gray-500">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
@@ -33,8 +33,6 @@ const Login = () => {
             </p>
 
             <form onSubmit={handleLogin} className="mt-8 grid grid-cols-6 gap-6">
-        
-
               <div className="col-span-6">
                 <label htmlFor="Email" className="block text-sm font-medium text-gray-700">
                   Email
@@ -65,8 +63,8 @@ const Login = () => {
 
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
                 <button
-                type='submit'  
-                disabled={isLoading}
+                  type='submit'  
+                  disabled={isLoading}
                   className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
                 >
                   Login
@@ -85,4 +83,4 @@ const Login = () => {
   );
 }
 
-export default Login
+export default Login;
