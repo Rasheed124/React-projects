@@ -6,14 +6,19 @@ import { Routes, Route } from "react-router-dom";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import { useSelector } from "react-redux";
-import NewProduct from "./pages/NewProduct";
+
 import ProductPage from "./pages/ProductPage";
+import CategoryPage from "./components/CategoryPage";
+import NewProduct from "./pages/admin/NewProduct";
+import ScrollToTop from "./components/ScrollToTop";
 // import Product from "./pages/Product";
 // import Account from "./pages/Account";
 // import Cart from "./pages/Cart";
 // import ListProduct from "./components/ListProduct";
 // import Footer from "./components/Footer";
 // import Navbar from "./components/Navbar";
+
+
 
 function App() {
 
@@ -23,7 +28,7 @@ function App() {
   return (
     <>
       {/* <Navbar />  */}
-
+      <ScrollToTop />
       <Routes>
            <Route path="/" element={<Home />} />
        
@@ -37,7 +42,7 @@ function App() {
         <Route path="/new-product" element={<NewProduct />} />
 
         <Route path="/product/:id" element={<ProductPage />} />
-        {/* <Route path="/category/:category" element={<CategoryPage />} /> */}
+        <Route path="/category/:category" element={<CategoryPage />} />
 
         <Route path="*" element={<Home />} />
         {/* <Route path="/inverters" element={<Category category="inverter" />} />

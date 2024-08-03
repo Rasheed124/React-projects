@@ -25,7 +25,6 @@ const ProductPage = () => {
   return (
     <>
       <ProductDisplay product={product} similarProducts={similar} />
-      {/* <RelatedProduct similarProducts={similar} /> */}
     </>
   );
 };

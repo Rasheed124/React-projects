@@ -1,14 +1,13 @@
-import React, { useContext } from "react";
-import Navbar from "./Navbar";
-import { Link } from "react-router-dom";
-import RelatedProduct from "./RelatedProduct";
-// import RelatedProduct from "./RelatedProduct";
-// import { ProductContext } from "../Context/ProductContext";
+import React, { useContext } from 'react';
+import Navbar from './Navbar';
+import { Link } from 'react-router-dom';
+import RelatedProduct from './RelatedProduct';
+import { useSelector } from 'react-redux';
 
 const ProductDisplay = (props) => {
   const { product, similarProducts } = props;
 
-  // const { addToCart } = useContext(ProductContext);
+  const user = useSelector((state) => state.user);
 
   return (
     <div>
@@ -36,7 +35,7 @@ const ProductDisplay = (props) => {
             </div>
             <div className="md:pt-3 max-w-[400px] m-auto md:m-0">
               <p className="text-[0.9rem]">
-                {product.description.description.join(", ")}
+                {product.description.description.join(', ')}
                 <button className="text-blue-600 hover:text-blue-800">
                   Show More
                   {/* <MdKeyboardArrowRight /> */}
@@ -51,17 +50,38 @@ const ProductDisplay = (props) => {
               <p className="text-[0.9rem] pt-1">
                 Category : {product.category}
               </p>
-              <div className="hidden md:block pt-6 relative">
-                <button
-                  onClick={() => {
-                    addToCart(product.id);
-                  }}
-                  className="bg-gray-800 text-white py-2 w-full rounded-md"
-                >
-                  ADD TO CART
-                </button>
-                {/* <BsFillCartPlusFill className="absolute top-8 left-12 text-gray-200 text-[1.3rem]" /> */}
-              </div>
+
+              {/* Cart Button */}
+
+              {user && !user.isAdmin && (
+                <div className="hidden md:block pt-6 relative">
+                  <button
+                    // onClick={() => {
+                    //   addToCart(product.id);
+                    // }}
+                    className="bg-gray-800 text-white py-2 w-full rounded-md"
+                  >
+                    ADD TO CART
+                  </button>
+                  {/* <BsFillCartPlusFill className="absolute top-8 left-12 text-gray-200 text-[1.3rem]" /> */}
+                </div>
+              )}
+
+              {user && user.isAdmin && (
+                <div className="hidden md:block pt-6 relative">
+                  <Link to={`/product/${product._id}/edit`}>
+                    <button
+                      // onClick={() => {
+                      //   addToCart(product.id);
+                      // }}
+                      className="bg-gray-800 text-white py-2 w-full rounded-md"
+                    >
+                      Edit Product
+                    </button>
+                  </Link>
+                  {/* <BsFillCartPlusFill className="absolute top-8 left-12 text-gray-200 text-[1.3rem]" /> */}
+                </div>
+              )}
             </div>
           </div>
           <div className="bg-gray-300 lg:bg-gray-800 pt-2">
@@ -83,11 +103,13 @@ const ProductDisplay = (props) => {
                           Description
                         </h2>
                         <ul className="list-disc space-y-1 pl-6">
-                          {product.description.description.map((item, index) => (
-                            <li key={index} className="text-[0.9rem]">
-                              {item}
-                            </li>
-                          ))}
+                          {product.description.description.map(
+                            (item, index) => (
+                              <li key={index} className="text-[0.9rem]">
+                                {item}
+                              </li>
+                            ),
+                          )}
                         </ul>
                       </div>
                       {/* Lightning */}
@@ -109,11 +131,13 @@ const ProductDisplay = (props) => {
                           Key Features
                         </h2>
                         <ul className="list-disc space-y-1 pl-6">
-                          {product.description.keyFeatures.map((item, index) => (
-                            <li key={index} className="text-[0.9rem]">
-                              {item}
-                            </li>
-                          ))}
+                          {product.description.keyFeatures.map(
+                            (item, index) => (
+                              <li key={index} className="text-[0.9rem]">
+                                {item}
+                              </li>
+                            ),
+                          )}
                         </ul>
                       </div>
                       {/* What's in the box */}
@@ -122,11 +146,13 @@ const ProductDisplay = (props) => {
                           What's in the box
                         </h2>
                         <ul className="list-disc space-y-1 pl-6">
-                          {product.description.whatsInTheBox.map((item, index) => (
-                            <li key={index} className="text-[0.9rem]">
-                              {item}
-                            </li>
-                          ))}
+                          {product.description.whatsInTheBox.map(
+                            (item, index) => (
+                              <li key={index} className="text-[0.9rem]">
+                                {item}
+                              </li>
+                            ),
+                          )}
                         </ul>
                       </div>
                       {/* Specifications */}
@@ -135,11 +161,13 @@ const ProductDisplay = (props) => {
                           Specifications
                         </h2>
                         <ul className="list-disc space-y-1 pl-6">
-                          {product.description.specifications.map((item, index) => (
-                            <li key={index} className="text-[0.9rem]">
-                              {item}
-                            </li>
-                          ))}
+                          {product.description.specifications.map(
+                            (item, index) => (
+                              <li key={index} className="text-[0.9rem]">
+                                {item}
+                              </li>
+                            ),
+                          )}
                         </ul>
                       </div>
                     </div>
