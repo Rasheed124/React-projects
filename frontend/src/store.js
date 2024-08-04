@@ -30,7 +30,10 @@ const store = configureStore({
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
-            serializableCheck: false, // You might want to customize this depending on your needs
+            serializableCheck: {
+                ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
+                ignoredPaths: ['register', 'rehydrate'],
+            },
         }).concat(thunk, appApi.middleware),
 });
 

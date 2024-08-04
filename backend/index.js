@@ -4,6 +4,7 @@ const cors = require("cors");
 const path = require("path");
 const multer = require("multer");
 const dotenv = require("dotenv");
+const stripe = require('stripe')(process.env.STRIPE_SECRET);
 
 
 const http = require('http');
@@ -57,6 +58,25 @@ app.use('/api/products', productRoutes);
 app.use('/auth', authRoutes);
 // app.use('/products', productRoutes);
 app.use('/upload', uploadRoutes);
+
+
+
+app.post('/api/create-payment', async(req, res)=> {
+  const {amount} = req.body;
+  console.log(amount);
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount,
+      currency: 'usd',
+      payment_method_types: ['card']
+    });
+    res.status(200).json(paymentIntent)
+  } catch (e) {
+    console.log(e.message);
+    res.status(400).json(e.message);
+   }
+})
+
 
 // Start server
 app.listen(port, () => {

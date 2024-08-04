@@ -1,16 +1,19 @@
 // import Category from "./pages/Category";
-import Home from "./pages/Home";
+import Home from './pages/Home';
 // import LoginSignUp from "./pages/LoginSignUp";
 
-import { Routes, Route } from "react-router-dom";
-import SignUp from "./pages/SignUp";
-import Login from "./pages/Login";
-import { useSelector } from "react-redux";
+import { Routes, Route } from 'react-router-dom';
+import SignUp from './pages/SignUp';
+import Login from './pages/Login';
+import { useSelector } from 'react-redux';
 
-import ProductPage from "./pages/ProductPage";
-import CategoryPage from "./components/CategoryPage";
-import NewProduct from "./pages/admin/NewProduct";
-import ScrollToTop from "./components/ScrollToTop";
+import ProductPage from './pages/ProductPage';
+import CategoryPage from './components/CategoryPage';
+import NewProduct from './pages/admin/NewProduct';
+import ScrollToTop from './components/ScrollToTop';
+import CartPage from './pages/CartPage';
+import DeliveryPage from './pages/DeliveryPage';
+import OrderConfirmationPage from './pages/OrderConfirmationPage';
 // import Product from "./pages/Product";
 // import Account from "./pages/Account";
 // import Cart from "./pages/Cart";
@@ -18,31 +21,36 @@ import ScrollToTop from "./components/ScrollToTop";
 // import Footer from "./components/Footer";
 // import Navbar from "./components/Navbar";
 
-
-
 function App() {
-
   const user = useSelector((state) => state.user);
 
-  
   return (
     <>
       {/* <Navbar />  */}
       <ScrollToTop />
       <Routes>
-           <Route path="/" element={<Home />} />
-       
-           {!user && (
-                <>
-                      <Route path="/signup" element={<SignUp />} />
-                      <Route path="/login" element={<Login />} />
-                </>
-            )}
+        <Route path="/" element={<Home />} />
 
-        <Route path="/new-product" element={<NewProduct />} />
+        {!user && (
+          <>
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+          </>
+        )}
+
+        {user && (
+          <>
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/delivery" element={<DeliveryPage />} />
+            <Route path="/confirm-order" element={<OrderConfirmationPage />} />
+            {/* <Route path="/orders" element={<OrdersPage />} /> */}
+          </>
+        )}
 
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/category/:category" element={<CategoryPage />} />
+
+        <Route path="/new-product" element={<NewProduct />} />
 
         <Route path="*" element={<Home />} />
         {/* <Route path="/inverters" element={<Category category="inverter" />} />
@@ -54,10 +62,7 @@ function App() {
         <Route path="/products" element={<ListProduct />} />
         <Route path="/account" element={<Account />} />
         <Route path="/cart" element={<Cart />} /> */}
-
       </Routes>
-
-   
     </>
   );
 }

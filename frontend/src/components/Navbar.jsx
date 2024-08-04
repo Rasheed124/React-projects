@@ -66,10 +66,7 @@ const Navbar = () => {
                   {dropdownOpen && (
                     <div className="absolute top-full left-0 mt-2 bg-gray-300 border text-gray-700 border-gray-500 shadow-xl rounded-bl-md rounded-br-md w-48 z-20">
                       <ul className="py-2">
-                        <li
-                         
-                          className=""
-                        >
+                        <li className="">
                           <Link
                             className="px-4 py-2 hover:bg-gray-100 block"
                             to={`/category/inverters`}
@@ -77,10 +74,7 @@ const Navbar = () => {
                             Inverter
                           </Link>
                         </li>
-                        <li
-                        
-                          className=""
-                        >
+                        <li className="">
                           <Link
                             className="px-4 py-2 hover:bg-gray-100 block"
                             to={`/category/lithiums`}
@@ -101,10 +95,7 @@ const Navbar = () => {
                             Acid Batteries
                           </Link>
                         </li>
-                        <li
-                        
-                          className=""
-                        >
+                        <li className="">
                           <Link
                             className="px-4 py-2 hover:bg-gray-100 block"
                             to={`/category/solar`}
@@ -112,13 +103,9 @@ const Navbar = () => {
                             Solar
                           </Link>
                         </li>
-                        <li
-                        
-                          className=""
-                        >
+                        <li className="">
                           <Link
                             className="px-4 py-2 hover:bg-gray-100 block"
-                           
                             to={`/category/tubulars`}
                           >
                             Tubular Batteries
@@ -188,8 +175,13 @@ const Navbar = () => {
                               <div className="relative flex gap-3">
                                 <IoCartOutline className="text-2xl font-light text-gray-700" />
                                 <span className="hidden lg:flex">Cart</span>
+
                                 <div className="absolute top-[-14px] right-[-10px] lg:right-7 bg-gray-700 rounded-full w-fit h-fit">
-                                  <p className="px-2 text-center rounded-full text-[0.7rem] text-gray-200"></p>
+                                  {user?.cart.count > 0 && (
+                                    <p className="px-2 text-center rounded-full text-[0.7rem] text-gray-200">
+                                      {user.cart.count}
+                                    </p>
+                                  )}
                                 </div>
                               </div>
                             </Link>

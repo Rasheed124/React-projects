@@ -16,6 +16,8 @@ const Home = () => {
 
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
+
+  console.log(products);
   const lastProducts = products.slice(0, 8);
 
 

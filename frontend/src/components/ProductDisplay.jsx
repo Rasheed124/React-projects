@@ -3,11 +3,15 @@ import Navbar from './Navbar';
 import { Link } from 'react-router-dom';
 import RelatedProduct from './RelatedProduct';
 import { useSelector } from 'react-redux';
+import { useAddToCartMutation } from '../services/appApi';
 
 const ProductDisplay = (props) => {
-  const { product, similarProducts } = props;
+  const { user, product, similarProducts, id } = props;
 
-  const user = useSelector((state) => state.user);
+  console.log(product);
+
+
+  const [addToCart, { isSuccess }] = useAddToCartMutation();
 
   return (
     <div>
@@ -56,9 +60,14 @@ const ProductDisplay = (props) => {
               {user && !user.isAdmin && (
                 <div className="hidden md:block pt-6 relative">
                   <button
-                    // onClick={() => {
-                    //   addToCart(product.id);
-                    // }}
+                    onClick={() =>
+                      addToCart({
+                        userId: user._id,
+                        productId: id,
+                        price: product.new_price,
+                        image: product.image.url
+                      })
+                    }
                     className="bg-gray-800 text-white py-2 w-full rounded-md"
                   >
                     ADD TO CART
@@ -66,20 +75,19 @@ const ProductDisplay = (props) => {
                   {/* <BsFillCartPlusFill className="absolute top-8 left-12 text-gray-200 text-[1.3rem]" /> */}
                 </div>
               )}
+              {isSuccess && (
+                <>
+                  <div>product has been added sucessfully to your Cart</div>
+                </>
+              )}
 
               {user && user.isAdmin && (
                 <div className="hidden md:block pt-6 relative">
                   <Link to={`/product/${product._id}/edit`}>
-                    <button
-                      // onClick={() => {
-                      //   addToCart(product.id);
-                      // }}
-                      className="bg-gray-800 text-white py-2 w-full rounded-md"
-                    >
+                    <button className="bg-gray-800 text-white py-2 w-full rounded-md">
                       Edit Product
                     </button>
                   </Link>
-                  {/* <BsFillCartPlusFill className="absolute top-8 left-12 text-gray-200 text-[1.3rem]" /> */}
                 </div>
               )}
             </div>
