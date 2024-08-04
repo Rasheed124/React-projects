@@ -34,48 +34,48 @@ const Footer = () => {
             <div className=" basis-[70%]">
 
               <ul className="    flex flex-wrap justify-center  gap-y-4 md:grid grid-cols-3   md:max-w-[700px]  lg:max-w-[1000px] ">
-                <a href="/Help">
+                <a href="/help">
                   <li className=" flex-auto w-full  md:w-full   px-4 text-[0.8rem]">
                     Help Center
                   </li>
                 </a>
-                <a href="/Contacts">
+                <a href="/contact">
                   <li className=" flex-auto w-full  md:w-full   px-4 text-[0.8rem]">
                     Contact Us
                   </li>
                 </a>
               
-                <a href="/Terms">
+                <a href="/terms">
                   <li className=" flex-auto w-full  md:w-full   px-4 text-[0.8rem]">
                     Terms & Conditions
                   </li>
                 </a>
-                <a href="/Privacy">
+                <a href="/privacy">
                   <li className=" flex-auto w-full  md:w-full   px-4 text-[0.8rem]">
                     Privacy Notice
                   </li>
                 </a>
-                <a href="/Cookies">
+                <a href="/cookies">
                   <li className=" flex-auto w-full  md:w-full   px-4 text-[0.8rem]">
                     Cookie Notice
                   </li>
                 </a>
-                 <a href="/Enquiries">
+                 <a href="/enquiries">
                   <li className=" flex-auto w-full  md:w-full   px-4 text-[0.8rem]">
                   Enquiries
                   </li>
                 </a>
-                <a href="/Upgrade">
+                <a href="/upgrade">
                   <li className=" flex-auto w-full  md:w-full   px-4 text-[0.8rem]">
                     Request For Upgrade
                   </li>
                 </a>
-                <a href="/Repair">
+                <a href="repair">
                   <li className=" flex-auto w-full  md:w-full   px-4 text-[0.8rem]">
                     Request For Repair
                   </li>
                 </a>
-                   <a href="/About">
+                   <a href="/about">
                   <li className=" flex-auto w-full  md:w-full  hidden lg:flex  px-4 text-[0.8rem]">
                     About Us
                   </li>

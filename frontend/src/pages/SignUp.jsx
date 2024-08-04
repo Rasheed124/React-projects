@@ -1,17 +1,42 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import { useSignupMutation } from '../services/appApi';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [signup, { error, isLoading, isError }] = useSignupMutation();
 
+  useEffect(() => {
+    if (isError && error) {
+      setErrorMessage(error.data);
+      const timer = setTimeout(() => setErrorMessage(''), 5000); // Clear error message after 5 seconds
+      return () => clearTimeout(timer);
+    }
+  }, [isError, error]);
+
   const handleSignup = (e) => {
     e.preventDefault();
-    signup({ name, email, password });
+    if (!name || !email || !password || !number) {
+      setErrorMessage('Please fill in all fields.');
+      setTimeout(() => setErrorMessage(''), 5000); // Clear error message after 5 seconds
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setErrorMessage('Please enter a valid email address.');
+      setTimeout(() => setErrorMessage(''), 5000); // Clear error message after 5 seconds
+      return;
+    }
+    if (!/^0\d{10}$/.test(number)) {
+      setErrorMessage('Please enter a valid Nigerian phone number.');
+      setTimeout(() => setErrorMessage(''), 5000); // Clear error message after 5 seconds
+      return;
+    }
+    signup({ name, email, password, number });
   };
 
   return (
@@ -23,9 +48,9 @@ const SignUp = () => {
               Signup
             </h1>
 
-            {isError && (
+            {errorMessage && (
               <div className="mt-4 p-2.5 bg-red-200 text-red-700 rounded-md">
-                {error.data}
+                {errorMessage}
               </div>
             )}
 
@@ -74,19 +99,45 @@ const SignUp = () => {
 
               <div className="col-span-6">
                 <label
+                  htmlFor="Number"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Phone Number
+                </label>
+                <input
+                  type="text"
+                  id="Number"
+                  name="number"
+                  className="mt-1 p-2.5 outline-none border w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                  value={number}
+                  onChange={(e) => setNumber(e.target.value)}
+                />
+              </div>
+
+              <div className="col-span-6">
+                <label
                   htmlFor="Password"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Password
                 </label>
-                <input
-                  type="password"
-                  id="Password"
-                  name="password"
-                  className="mt-1 p-2.5 outline-none border w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    id="Password"
+                    name="password"
+                    className="mt-1 p-2.5 outline-none border w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+                  >
+                    {showPassword ? 'Hide' : 'Show'}
+                  </button>
+                </div>
               </div>
 
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4">

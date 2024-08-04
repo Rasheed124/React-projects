@@ -1,28 +1,29 @@
-import React, { useContext, useEffect } from "react";
-import axios from "../axios";
+import React, { useContext, useEffect } from 'react';
+import axios from '../axios';
 
-import { useDispatch, useSelector } from "react-redux";
-import { updateProducts } from "../features/productSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { updateProducts } from '../features/productSlice';
 // import ProductPreview from "../components/ProductPreview";
 
-import Item from "../components/ProductPreview";
-import Navbar from "../components/Navbar";
+import Item from '../components/ProductPreview';
+import Navbar from '../components/Navbar';
 // import { ProductContext } from "../Context/ProductContext";
 // import RecentlyViewed from "../components/RecentlyViewed";
-import Footer from "../components/Footer";
-import ProductPreview from "../components/ProductPreview";
+import Footer from '../components/Footer';
+import ProductPreview from '../components/ProductPreview';
+import PromoMessage from '../components/PromoMessage';
 
 const Home = () => {
-
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
 
   console.log(products);
   const lastProducts = products.slice(0, 8);
 
-
   useEffect(() => {
-      axios.get("/api/products").then(({ data }) => dispatch(updateProducts(data)));
+    axios
+      .get('/api/products')
+      .then(({ data }) => dispatch(updateProducts(data)));
   }, []);
   return (
     <>
@@ -31,9 +32,8 @@ const Home = () => {
         <div className="lg:bg-gray-600">
           <div className="pt-[7.3rem] lg:pt-[4.3rem] w-full relative">
             <div className="bg-gray-700 py-4">
-              <div className="max-w-[400px] m-auto text-center text-white">
-                <p>CALL TO ORDER: 08184370911</p>
-                <p>REDEFINE THE WAY YOU CHARGE</p>
+              <div className="max-w-[400px] m-auto">
+                <PromoMessage />
               </div>
             </div>
           </div>
@@ -46,9 +46,7 @@ const Home = () => {
               {/* Product Deals Data  */}
               <div className="grid md:grid-cols-2 lg:max-w-[900px] m-auto bg-gray-300 bg-transparent px-6 sl:px-0 gap-3 md:gap-4 lg:gap-6 item">
                 {lastProducts.map((product, index) => {
-                  return (
-                    <ProductPreview key={index} {...product} />
-                  );
+                  return <ProductPreview key={index} {...product} />;
                 })}
               </div>
             </div>
@@ -59,15 +57,13 @@ const Home = () => {
                 </h2>
               </div>
               <div className="px-6 sl:px-0 lg:max-w-[900px] m-auto pt-7">
-                  {/* <RecentlyViewed /> */}
+                {/* <RecentlyViewed /> */}
               </div>
             </div>
           </div>
         </div>
       </div>
-    <Footer />
-
-    
+      <Footer />
     </>
   );
 };

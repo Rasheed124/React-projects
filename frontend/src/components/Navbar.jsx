@@ -14,10 +14,6 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../features/userSlice';
 
-// import { logout, resetNotifications } from "../features/userSlice";
-
-// import { ProductContext } from "../Context/ProductContext";
-
 const Navbar = () => {
   const user = useSelector((state) => state.user);
 
@@ -28,12 +24,14 @@ const Navbar = () => {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
+  const [adminDropdownOpen, setAdminDropdownOpen] = useState(false);
+  const toggleAdminDropdown = () => {
+    setAdminDropdownOpen(!adminDropdownOpen);
+  };
 
   const handleLogout = () => {
     dispatch(logout());
   };
-
-  // const {getTotalItems} = useContext(ProductContext)
 
   return (
     <div className="z-10 ">
@@ -137,7 +135,7 @@ const Navbar = () => {
                   </form>
                 </div>
                 <div className="flex items-center gap-6">
-                  <div className="flex items-center gap-6 xl:gap-16">
+                  <div className="flex items-center gap-6 xl:gap-6">
                     {/* if no user */}
                     {!user && (
                       <Link to="/login">
@@ -150,58 +148,62 @@ const Navbar = () => {
                     {/* if user */}
                     {user && (
                       <>
-                        {user.isAdmin && (
-                          <>
-                            <Link
-                              to="/dashboard"
-                              className="flex items-center gap-2"
-                            >
-                              <IoPersonOutline className="text-2xl font-light text-gray-700" />
-                              <span className="hidden lg:flex">Dashboard</span>
-                            </Link>
+                        <Link to="/cart">
+                          <div className="relative flex gap-3">
+                            <IoCartOutline className="text-2xl font-light text-gray-700" />
+                            <span className="hidden lg:flex">Cart</span>
 
-                            <Link
-                              to="/new-product"
-                              className="flex items-center gap-2"
-                            >
-                              <IoPersonOutline className="text-2xl font-light text-gray-700" />
-                              <span className="hidden lg:flex">Dashboard</span>
-                            </Link>
-                          </>
-                        )}
-                        {!user.isAdmin && (
-                          <>
-                            <Link to="/cart">
-                              <div className="relative flex gap-3">
-                                <IoCartOutline className="text-2xl font-light text-gray-700" />
-                                <span className="hidden lg:flex">Cart</span>
-
-                                <div className="absolute top-[-14px] right-[-10px] lg:right-7 bg-gray-700 rounded-full w-fit h-fit">
-                                  {user?.cart.count > 0 && (
-                                    <p className="px-2 text-center rounded-full text-[0.7rem] text-gray-200">
-                                      {user.cart.count}
-                                    </p>
-                                  )}
-                                </div>
-                              </div>
-                            </Link>
-
-                            <Link
-                              to="/orders"
-                              className="flex items-center gap-2"
-                            >
-                              <span className="hidden lg:flex">Orders</span>
-                            </Link>
-                          </>
-                        )}
-
+                            <div className="absolute top-[-14px] right-[-10px] lg:right-7 bg-gray-700 rounded-full w-fit h-fit">
+                              {user?.cart.count > 0 && (
+                                <p className="px-2 text-center rounded-full text-[0.7rem] text-gray-200">
+                                  {user.cart.count}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        </Link>
                         <Link to="/account">
                           <p className="flex items-center gap-2">
                             <IoPersonOutline className="text-2xl font-light text-gray-700" />
                             <span className="hidden lg:flex">Account</span>
-                            <span className="hidden lg:flex">{user.email}</span>
                           </p>
                         </Link>
+
+                        {user.isAdmin && (
+                          <>
+                            <div
+                              onClick={toggleAdminDropdown}
+                              className="relative cursor-pointer hidden lg:flex items-center gap-2"
+                            >
+                              {/* <IoPersonOutline className="text-2xl font-light text-gray-700" /> */}
+                              <span className="hidden lg:flex">Admin</span>
+                              <IoIosArrowDown className="text-xl" />
+
+                              {adminDropdownOpen && (
+                                <div className="absolute top-full left-0 mt-2 bg-gray-300 border text-gray-700 border-gray-500 shadow-xl rounded-bl-md rounded-br-md w-48 z-20">
+                                  <ul className="py-2">
+                                    <li className="">
+                                      <Link
+                                        className="px-4 py-2 hover:bg-gray-100 block"
+                                        to={`/admin`}
+                                      >
+                                       Dashboard
+                                      </Link>
+                                    </li>
+                                    <li className="">
+                                      <Link
+                                        className="px-4 py-2 hover:bg-gray-100 block"
+                                        to={`/new-product`}
+                                      >
+                                        Add Products
+                                      </Link>
+                                    </li>
+                                  </ul>
+                                </div>
+                              )}
+                            </div>
+                          </>
+                        )}
 
                         <Link to="#">
                           <button

@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import ProductDisplay from "../components/ProductDisplay";
 import RelatedProduct from "../components/RelatedProduct";
 import { useSelector } from "react-redux";
+import Footer from "../components/Footer";
+
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -25,6 +27,7 @@ const ProductPage = () => {
   return (
     <>
       <ProductDisplay user={user} product={product} similarProducts={similar} id={id} />
+      <Footer />
     </>
   );
 };

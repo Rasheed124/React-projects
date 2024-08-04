@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import ProductPreview from './ProductPreview';
 import { Link, useParams } from 'react-router-dom';
 import { IoIosArrowRoundBack } from 'react-icons/io';
+import Footer from './Footer';
 
 const CategoryPage = () => {
   const { category } = useParams();
@@ -72,6 +73,8 @@ const CategoryPage = () => {
             </div>
           </div>
         </div>
+
+        <Footer/>
       </div>
     </>
   );

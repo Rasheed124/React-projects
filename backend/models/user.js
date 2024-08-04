@@ -49,7 +49,20 @@ const UserSchema = mongoose.Schema({
     default: Date.now,
   },
 
-  orders: [{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}]
+  orders: [{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}],
+
+  number: {
+    type: String,
+    required: [true, 'is required'],
+    unique: true,
+    index: true,
+    validate: {
+      validator: function(str) {
+        return /^0\d{10}$/.test(str);
+      },
+      message: props => `${props.value} is not a valid Nigerian phone number`
+    }
+  }
 
 }, {minimize: false});
 

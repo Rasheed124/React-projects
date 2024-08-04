@@ -14,22 +14,44 @@ import ScrollToTop from './components/ScrollToTop';
 import CartPage from './pages/CartPage';
 import DeliveryPage from './pages/DeliveryPage';
 import OrderConfirmationPage from './pages/OrderConfirmationPage';
-// import Product from "./pages/Product";
-// import Account from "./pages/Account";
-// import Cart from "./pages/Cart";
-// import ListProduct from "./components/ListProduct";
-// import Footer from "./components/Footer";
-// import Navbar from "./components/Navbar";
+import Account from './pages/Account';
+import Manage from './components/Manage';
+import OrdersPage from './pages/OrdersPage';
+import CloseAccount from './pages/CloseAccountPage';
+import ChangeNumber from './pages/ChangeNumber';
+import ChangePassword from './pages/ChangePassword';
+import Help from './pages/Help';
+import Contact from './pages/Contact';
+import Terms from './pages/Terms';
+import Upgrade from './pages/Upgrade';
+import Repair from './pages/Repair';
+import Cookies from './pages/Cookies';
+import About from './pages/About';
+import Enquiries from './pages/Enquiries';
+import Privacy from './pages/Privacy';
+import AdminDashboard from './pages/admin/AdminDashboard';
 
 function App() {
   const user = useSelector((state) => state.user);
 
   return (
     <>
+      {/* REMEMBER 404 Page */}
+
       {/* <Navbar />  */}
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
+
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/help" element={<Help />} />
+        <Route path="/upgrade" element={<Upgrade />} />
+        <Route path="/repair" element={<Repair />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/cookies" element={<Cookies />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/enquiries" element={<Enquiries />} />
+        <Route path="/about" element={<About />} />
 
         {!user && (
           <>
@@ -38,12 +60,24 @@ function App() {
           </>
         )}
 
+        {user && user.isAdmin && (
+          <>
+            <Route path="/admin" element={<AdminDashboard />} />
+            {/* <Route path="/product/:id/edit" element={<EditProductPage />} /> */}
+          </>
+        )}
+
         {user && (
           <>
             <Route path="/cart" element={<CartPage />} />
             <Route path="/delivery" element={<DeliveryPage />} />
             <Route path="/confirm-order" element={<OrderConfirmationPage />} />
-            {/* <Route path="/orders" element={<OrdersPage />} /> */}
+            <Route path="/account" element={<Account />} />
+            <Route path="/manage" element={<Manage />} />
+            <Route path="/orders" element={<OrdersPage />} />
+            <Route path="/close-account" element={<CloseAccount />} />
+            <Route path="/change-number" element={<ChangeNumber />} />
+            <Route path="/change-password" element={<ChangePassword />} />
           </>
         )}
 
@@ -53,15 +87,6 @@ function App() {
         <Route path="/new-product" element={<NewProduct />} />
 
         <Route path="*" element={<Home />} />
-        {/* <Route path="/inverters" element={<Category category="inverter" />} />
-        <Route path="/lithiums" element={<Category category="lithium" />} />
-        <Route path="/acids" element={<Category category="acid" />} />
-        <Route path="/solars" element={<Category category="solar" />} />
-        <Route path="/tubulars" element={<Category category="tubular" />} />
-        <Route path="/product/:name/:productId" element={<Product />} />
-        <Route path="/products" element={<ListProduct />} />
-        <Route path="/account" element={<Account />} />
-        <Route path="/cart" element={<Cart />} /> */}
       </Routes>
     </>
   );

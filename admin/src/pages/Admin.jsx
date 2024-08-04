@@ -1,5 +1,5 @@
 import React from "react";
-import SideBar from "../components/SideBar";
+import SideBar from "../../../frontend/src/components/admin/SideBar";
 import { Route, Routes } from "react-router-dom";
 import AddProduct from "../components/AddProduct";
 import ListProduct from "../components/ListProduct";

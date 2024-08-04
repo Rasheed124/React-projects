@@ -1,13 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLoginMutation } from "../services/appApi";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [login, { isError, isLoading, error }] = useLoginMutation();
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    if (isError && error) {
+      setErrorMessage(error.data);
+      const timer = setTimeout(() => setErrorMessage(""), 5000); // Clear error message after 5 seconds
+      return () => clearTimeout(timer);
+    }
+  }, [isError, error]);
 
   const handleLogin = (e) => {
     e.preventDefault();
+    if (!email || !password) {
+      setErrorMessage("Please fill in all fields.");
+      setTimeout(() => setErrorMessage(""), 5000); // Clear error message after 5 seconds
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setErrorMessage("Please enter a valid email address.");
+      setTimeout(() => setErrorMessage(""), 5000); // Clear error message after 5 seconds
+      return;
+    }
     login({ email, password });
   }
 
@@ -21,9 +41,9 @@ const Login = () => {
             </h1>
 
             {/* Display error message */}
-            {isError && (
+            {errorMessage && (
               <div className="mt-4 p-2.5 bg-red-200 text-red-700 rounded-md">
-                {error.data}
+                {errorMessage}
               </div>
             )}
 
@@ -51,19 +71,28 @@ const Login = () => {
                 <label htmlFor="Password" className="block text-sm font-medium text-gray-700">
                   Password
                 </label>
-                <input
-                  type="password"
-                  id="Password"
-                  name="password"
-                  className="mt-1 p-2.5 outline-none border w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id="Password"
+                    name="password"
+                    className="mt-1 p-2.5 outline-none border w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+                  >
+                    {showPassword ? "Hide" : "Show"}
+                  </button>
+                </div>
               </div>
 
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
                 <button
-                  type='submit'  
+                  type='submit'
                   disabled={isLoading}
                   className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
                 >

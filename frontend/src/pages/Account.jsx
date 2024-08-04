@@ -1,11 +1,107 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { MdProductionQuantityLimits } from "react-icons/md";
+import { RiArrowRightSLine } from "react-icons/ri";
+import { IoLockClosedSharp } from "react-icons/io5";
+import { MdManageAccounts } from "react-icons/md";
+import Logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
+import { IoIosArrowRoundBack } from "react-icons/io";
+import { useSelector } from "react-redux";
+
 
 const Account = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  const [loading, setLoading] = useState(true);
 
-export default Account
+  const user = useSelector((state) => state.user);
+
+  // useEffect(() => {
+   
+  //   const timer = setTimeout(() => {
+  //     setLoading(false);
+  //   }, 2000);
+
+  //   return () => clearTimeout(timer);
+  // }, []);
+
+  // if (loading) {
+  //   return (
+  //     <div class="loading-container absolute top-[15rem]">
+  //       <div class="loading"></div>
+  //       <div id="loading-text">loading</div>
+  //     </div>
+  //   );
+  // }
+
+  return (
+    <div className="  bg-gray-200 h-lvh ">
+      <div>
+        <div className=" shadow-lg  fixed w-full z-20">
+          <div className="flex items-center justify-between max-w-[1200px] m-auto px-3 py-2">
+            <p className="text-black text-3xl">
+              <Link to="/">
+                <IoIosArrowRoundBack />
+              </Link>
+            </p>
+            <h2 className="text-black text-[1.1rem] uppercase">
+              Account Overview
+            </h2>
+            <div></div>{" "}
+            {/* This empty div creates space for the center alignment */}
+          </div>
+        </div>
+      </div>
+      <div className="md:max-w-[500px] m-auto">
+        <div className="  md:max-w-[700px] m-auto">
+          <div className=" text-center pt-20 ">
+            <div className=" flex justify-center">
+              <img src={Logo} alt="" className=" w-28 h-28" />
+            </div>
+            <h2 className=" font-bold text-[1.1rem]">Hello {user.name.toUpperCase()}</h2>
+            <p className=" font-semibold text-[1.1rem] pt-3">{user.number}</p>
+          </div>
+
+          <div>
+            <ul className=" space-y-3 px-3 pt-6">
+              <Link to="/orders">
+                {" "}
+                <li className=" flex items-center justify-between px-4 py-3 shadow-lg  border bg-white    ">
+                  <p className=" flex items-center gap-3">
+                    <MdProductionQuantityLimits /> Orders
+                  </p>
+                  <RiArrowRightSLine />
+                </li>
+              </Link>
+              <Link to="/manage ">
+                {" "}
+                <li className=" flex items-center justify-between px-4 py-3 shadow-lg  border bg-white   mt-3  ">
+                  <p className=" flex items-center gap-3">
+                    <MdManageAccounts /> Account Management{" "}
+                  </p>
+                  <RiArrowRightSLine />
+                </li>
+              </Link>
+              <Link to="/close-account ">
+                {" "}
+                <li className=" flex items-center justify-between px-4 py-3 shadow-lg  border bg-white  mt-3   ">
+                  <p className=" flex items-center gap-3">
+                    <IoLockClosedSharp /> Close Account
+                  </p>
+                  <RiArrowRightSLine />
+                </li>
+              </Link>
+            </ul>
+          </div>
+          <div className=" flex justify-center   relative">
+            <div className=" absolute bottom-[-6rem] ">
+              <button className="text-center  font-bold text-gray-800">
+                LOGOUT
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Account;
