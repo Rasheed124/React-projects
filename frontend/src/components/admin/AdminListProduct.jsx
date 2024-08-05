@@ -3,23 +3,19 @@ import { useSelector } from 'react-redux';
 import { useDeleteProductMutation } from '../../services/appApi';
 import { Link } from 'react-router-dom';
 
-// import cross_icon from "../assets/cross_icon.png";
-
 // const API_URL = import.meta.env.VITE_BACKEND_APP_URL;
 
 const AdminListProduct = () => {
-    const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.products);
 
-
-    console.log(products);
-    
-    const user = useSelector((state) => state.user);
-    // removing the product
-    // const [deletProduct, { isLoading, isSuccess }] = useDeleteProductMutation();
-    // function handleDeleteProduct(id) {
-    //     // logic here
-    //     if (window.confirm("Are you sure?")) deletProduct({ product_id: id, user_id: user._id });
-    // }
+  const user = useSelector((state) => state.user);
+  // removing the product
+  const [deletProduct, { isLoading, isSuccess }] = useDeleteProductMutation();
+  function handleDeleteProduct(id) {
+    // logic here
+    if (window.confirm('Are you sure?'))
+      deletProduct({ product_id: id, user_id: user._id });
+  }
 
   return (
     <div>
@@ -67,13 +63,18 @@ const AdminListProduct = () => {
                     href="#"
                     className="rounded flex justify-center items-center px-4 py-2 text-xs font-medium text-white"
                   >
-                    <button className="p-3 bg-red-400 text-white">
+                    <button
+                      onClick={() => handleDeleteProduct(product._id, user._id)}
+                      disabled={isLoading}
+                      className="p-3 bg-red-400 text-white"
+                    >
                       Delete
                     </button>
                   </Link>
                 </td>
                 <td className="whitespace-nowrap px-4 py-2">
                   <Link
+                   to={`/product/${product._id}/edit`}
                     href="#"
                     className="rounded flex justify-center items-center px-4 py-2 text-xs font-medium text-white"
                   >

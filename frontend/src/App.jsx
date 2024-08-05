@@ -30,6 +30,7 @@ import About from './pages/About';
 import Enquiries from './pages/Enquiries';
 import Privacy from './pages/Privacy';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import EditProduct from './pages/admin/EditProduct';
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -63,7 +64,7 @@ function App() {
         {user && user.isAdmin && (
           <>
             <Route path="/admin" element={<AdminDashboard />} />
-            {/* <Route path="/product/:id/edit" element={<EditProductPage />} /> */}
+            <Route path="/product/:id/edit" element={<EditProduct />} />
           </>
         )}
 
