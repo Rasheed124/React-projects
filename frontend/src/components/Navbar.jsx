@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -7,7 +8,7 @@ const Navbar = () => {
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex-1 md:flex md:items-center md:gap-12">
-              <a className="block text-teal-600" href="#">
+              <Link to="/" className="block text-teal-600" >
                 <span className="sr-only">Home</span>
                 <svg
                   className="h-8"
@@ -20,71 +21,47 @@ const Navbar = () => {
                     fill="currentColor"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
 
             <div className="md:flex md:items-center md:gap-12">
               <nav aria-label="Global" className="hidden md:block">
                 <ul className="flex items-center gap-6 text-sm">
-                  <li>
-                    <a
-                      className="text-gray-500 transition hover:text-gray-500/75"
-                      href="#"
-                    >
-                      {' '}
-                      About{' '}
-                    </a>
-                  </li>
+                  <NavLink
+                    to="/"
+                    className="text-gray-500 transition hover:text-gray-500/75"
+                  >
+                    <p>Home</p>
 
-                  <li>
-                    <a
-                      className="text-gray-500 transition hover:text-gray-500/75"
-                      href="#"
-                    >
-                      {' '}
-                      Careers{' '}
-                    </a>
-                  </li>
+                    <hr className="hidden" />
+                  </NavLink>
 
-                  <li>
-                    <a
-                      className="text-gray-500 transition hover:text-gray-500/75"
-                      href="#"
-                    >
-                      {' '}
-                      History{' '}
-                    </a>
-                  </li>
+                  <NavLink
+                    to="/about"
+                    className="text-gray-500 transition hover:text-gray-500/75"
+                  >
+                    <p>About</p>
 
-                  <li>
-                    <a
-                      className="text-gray-500 transition hover:text-gray-500/75"
-                      href="#"
-                    >
-                      {' '}
-                      Services{' '}
-                    </a>
-                  </li>
+                    <hr className="hidden" />
+                  </NavLink>
 
-                  <li>
-                    <a
-                      className="text-gray-500 transition hover:text-gray-500/75"
-                      href="#"
-                    >
-                      {' '}
-                      Projects{' '}
-                    </a>
-                  </li>
+                  <NavLink
+                    to="/contact"
+                    className="text-gray-500 transition hover:text-gray-500/75"
+                  >
+                    <p>Contact</p>
 
-                  <li>
-                    <a
-                      className="text-gray-500 transition hover:text-gray-500/75"
-                      href="#"
-                    >
-                      {' '}
-                      Blog{' '}
-                    </a>
-                  </li>
+                    <hr className="hidden" />
+                  </NavLink>
+
+                  <NavLink
+                    to="/products"
+                    className="text-gray-500 transition hover:text-gray-500/75"
+                  >
+                    <p>Product</p>
+
+                    <hr className="hidden" />
+                  </NavLink>
                 </ul>
               </nav>
 
