@@ -33,7 +33,7 @@ const LatestCollection = () => {
 
 
           {/* Product Item */}
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
             {latestProducts.map((product, index) => (
               <ProductItem
                 key={index}

@@ -55,10 +55,10 @@ const Navbar = () => {
                   </NavLink>
 
                   <NavLink
-                    to="/products"
+                    to="/collection"
                     className="text-gray-500 transition hover:text-gray-500/75"
                   >
-                    <p>Product</p>
+                    <p>Collection</p>
 
                     <hr className="hidden" />
                   </NavLink>
