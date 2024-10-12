@@ -11,12 +11,14 @@ import Cart from './pages/Cart';
 import Login from './pages/Login';
 import PlaceOrder from './pages/PlaceOrder';
 import Orders from './pages/Orders';
+import SearchBar from './components/SearchBar';
 
 function App() {
 
   return (
     <>
       <Navbar />
+      <SearchBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

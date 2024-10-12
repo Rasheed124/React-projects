@@ -9,6 +9,7 @@ const Collection = () => {
   const [filterProducts, setFilterProducts] = useState([]);
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
+  const [sortType, setSortType] = useState('relevant');
 
   const toggleCategory = (e) => {
     if (category.includes(e.target.value)) {
@@ -31,22 +32,51 @@ const Collection = () => {
 
     if (category.length > 0) {
       productsCopy = productsCopy.filter((item) =>
-        category.includes(item.category)
+        category.includes(item.category),
       );
     }
 
-    
+    // Filter by subcategory
+    if (subCategory.length > 0) {
+      productsCopy = productsCopy.filter((item) =>
+        subCategory.includes(item.subCategory),
+      );
+    }
+
+    console.log(productsCopy);
 
     setFilterProducts(productsCopy);
   };
 
+  const sortProduct = () => {
+    let prCopy = filterProducts.slice();
+
+    switch (sortType) {
+      case 'low-high':
+        setFilterProducts(prCopy.sort((a, b) => a.price - b.price));
+      break;
+      case 'high-low':
+        setFilterProducts(prCopy.sort((a, b) => b.price - a.price));
+      break;
+
+      default:
+        applyFilter();
+        break;
+    
+    }
+  };
+
   useEffect(() => {
     setFilterProducts(products);
-  },[]);
+  }, []);
 
   useEffect(() => {
     applyFilter();
   }, [category, subCategory]);
+
+  useEffect(() => {
+    sortProduct();
+  }, [sortType]);
 
   return (
     <div className="mx-auto max-w-screen-xl flex flex-col sm:flex-row gap-5 sm:gap-10 pt-10 border-t px-5 ">
@@ -119,10 +149,10 @@ const Collection = () => {
               <input
                 className="w-3"
                 type="checkbox"
-                value={'Bootomwear'}
+                value={'Bottomwear'}
                 onChange={toggleSubCategory}
               />{' '}
-              Bootomwear
+              Bottomwear
             </p>
             <p className="flex gap-2 ">
               <input
@@ -146,10 +176,11 @@ const Collection = () => {
 
             {/* Product Sort */}
 
-            <select className="mt-1.5  rounded-lg border-gray-300 text-gray-700 sm:text-sm">
-              <option value="">Sort by: Relevant</option>
-              <option value="JM">John Mayer</option>
-              <option value="SRV">Stevie Ray Vaughn</option>
+            <select onChange={(e) => setSortType(e.target.value)} className="mt-1.5  rounded-lg border-gray-300 text-gray-700 sm:text-sm">
+              <option value="relavant">Sort by: Relevant</option>
+              <option value="low-high">Sort by: low-high</option>
+              <option value="high-low">Sort by: high-low</option>
+           
             </select>
           </div>
 
