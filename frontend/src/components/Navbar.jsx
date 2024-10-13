@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { shopContext } from '../context/ShopContext';
+import { CiShoppingCart } from 'react-icons/ci';
 
 const Navbar = () => {
-  const { search, setSearch, showSearch, setShowSearch } =
+  const { search, setSearch, showSearch, setShowSearch, getCartCount } =
     useContext(shopContext);
 
   return (
@@ -70,12 +71,11 @@ const Navbar = () => {
               </nav>
 
               <div className="flex items-center gap-4">
-                <div className="sm:flex sm:gap-4">
+                <div className="flex sm:gap-4">
                   <button
                     type="button"
                     className="text-gray-600 hover:text-gray-700"
-
-                    onClick={()=> setShowSearch(!showSearch)}
+                    onClick={() => setShowSearch(!showSearch)}
                   >
                     <span className="sr-only">Search</span>
 
@@ -94,6 +94,10 @@ const Navbar = () => {
                       />
                     </svg>
                   </button>
+                  <Link to={'/cart'} className='relative'>
+                    <CiShoppingCart className='text-2xl' />
+                    <p className="absolute top-0 right-[-5px] w-2 h-2  text-center flex items-center justify-center p-2 bg-black text-white  rounded-full text-[8px]">{getCartCount()}</p>
+                  </Link>
                 </div>
 
                 <div className="block md:hidden">

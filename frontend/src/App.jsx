@@ -13,10 +13,14 @@ import PlaceOrder from './pages/PlaceOrder';
 import Orders from './pages/Orders';
 import SearchBar from './components/SearchBar';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
 
   return (
     <>
+      <ToastContainer />
       <Navbar />
       <SearchBar />
       <Routes>
