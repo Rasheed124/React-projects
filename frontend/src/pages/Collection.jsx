@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import LatestCollection from '../components/LatestCollection';
 import { assets, products } from '../assets/assets';
 import ProductItem from '../components/ProductItem';
 import { useFetcher } from 'react-router-dom';
+import { shopContext } from '../context/ShopContext';
 
 const Collection = () => {
+  const { products,search, setSearch, showSearch, setShowSearch  } =
+  useContext(shopContext);
+
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
   const [category, setCategory] = useState([]);
@@ -30,6 +34,10 @@ const Collection = () => {
   const applyFilter = () => {
     let productsCopy = products.slice();
 
+    if(showSearch && search){
+      productsCopy =  productsCopy.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
+    }
+
     if (category.length > 0) {
       productsCopy = productsCopy.filter((item) =>
         category.includes(item.category),
@@ -43,7 +51,6 @@ const Collection = () => {
       );
     }
 
-    console.log(productsCopy);
 
     setFilterProducts(productsCopy);
   };
@@ -72,14 +79,14 @@ const Collection = () => {
 
   useEffect(() => {
     applyFilter();
-  }, [category, subCategory]);
+  }, [category, subCategory, search, showSearch]);
 
   useEffect(() => {
     sortProduct();
   }, [sortType]);
 
   return (
-    <div className="mx-auto max-w-screen-xl flex flex-col sm:flex-row gap-5 sm:gap-10 pt-10 border-t px-5 ">
+    <section className="mx-auto max-w-screen-xl flex  flex-col md:flex-row gap-5 sm:gap-10 pt-10 border-t px-5 ">
       <div className="min-w-60">
         <p
           onClick={() => setShowFilter(!showFilter)}
@@ -89,13 +96,13 @@ const Collection = () => {
           Filters
           <img
             src={assets.dropdown_icon}
-            className={`${showFilter ? 'rotate-90' : ''} h-3 sm:hidden`}
+            className={`${showFilter ? 'rotate-90' : ''} h-3 md:hidden`}
             alt=""
           />
         </p>
 
         <div
-          className={`border mt-5 p-5 ${showFilter ? '' : 'hidden'} sm:block`}
+          className={`border mt-5 p-5 ${showFilter ? '' : 'hidden'} md:block`}
         >
           <p>Categories</p>
 
@@ -131,7 +138,7 @@ const Collection = () => {
         </div>
 
         <div
-          className={`border mt-5 p-5 ${showFilter ? '' : 'hidden'} sm:block`}
+          className={`border mt-5 p-5 ${showFilter ? '' : 'hidden'} md:block`}
         >
           <p>Types</p>
 
@@ -186,7 +193,7 @@ const Collection = () => {
 
           {/* Display Product */}
 
-          <div className="mt-8 grid gap-6 grid-cols-2 sm:grid-cols-3">
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {filterProducts.map((product, index) => (
               <ProductItem
                 key={index}
@@ -199,7 +206,7 @@ const Collection = () => {
           </div>
         </div>
       </>
-    </div>
+    </section>
   );
 };
 
