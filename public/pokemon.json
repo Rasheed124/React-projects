@@ -1,0 +1,343 @@
+[
+  {
+    "id": 1,
+    "name": "Bulbasaur",
+    "types": ["Grass", "Poison"],
+    "baseStats": {
+      "hp": 45,
+      "attack": 49,
+      "defense": 49,
+      "specialAttack": 65,
+      "specialDefense": 65,
+      "speed": 45
+    },
+    "abilities": ["Overgrow", "Chlorophyll"],
+    "evolvesTo": "Ivysaur",
+    "moves": ["Tackle", "Growl", "Vine Whip", "Razor Leaf"],
+    "description": "A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon."
+  },
+  {
+    "id": 2,
+    "name": "Ivysaur",
+    "types": ["Grass", "Poison"],
+    "baseStats": {
+      "hp": 60,
+      "attack": 62,
+      "defense": 63,
+      "specialAttack": 80,
+      "specialDefense": 80,
+      "speed": 60
+    },
+    "abilities": ["Overgrow", "Chlorophyll"],
+    "evolvesTo": "Venusaur",
+    "moves": ["Tackle", "Growl", "Vine Whip", "Solar Beam"],
+    "description": "When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs."
+  },
+  {
+    "id": 3,
+    "name": "Venusaur",
+    "types": ["Grass", "Poison"],
+    "baseStats": {
+      "hp": 80,
+      "attack": 82,
+      "defense": 83,
+      "specialAttack": 100,
+      "specialDefense": 100,
+      "speed": 80
+    },
+    "abilities": ["Overgrow", "Chlorophyll"],
+    "evolvesTo": null,
+    "moves": ["Frenzy Plant", "Earthquake", "Sludge Bomb", "Solar Beam"],
+    "description": "Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight."
+  },
+  {
+    "id": 4,
+    "name": "Charmander",
+    "types": ["Fire"],
+    "baseStats": {
+      "hp": 39,
+      "attack": 52,
+      "defense": 43,
+      "specialAttack": 60,
+      "specialDefense": 50,
+      "speed": 65
+    },
+    "abilities": ["Blaze", "Solar Power"],
+    "evolvesTo": "Charmeleon",
+    "moves": ["Scratch", "Ember", "Smokescreen", "Dragon Breath"],
+    "description": "Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail."
+  },
+  {
+    "id": 5,
+    "name": "Charmeleon",
+    "types": ["Fire"],
+    "baseStats": {
+      "hp": 58,
+      "attack": 64,
+      "defense": 58,
+      "specialAttack": 80,
+      "specialDefense": 65,
+      "speed": 80
+    },
+    "abilities": ["Blaze", "Solar Power"],
+    "evolvesTo": "Charizard",
+    "moves": ["Fire Fang", "Flamethrower", "Dragon Claw", "Slash"],
+    "description": "When it swings its burning tail, it elevates the temperature to unbearably high levels."
+  },
+  {
+    "id": 6,
+    "name": "Charizard",
+    "types": ["Fire", "Flying"],
+    "baseStats": {
+      "hp": 78,
+      "attack": 84,
+      "defense": 78,
+      "specialAttack": 109,
+      "specialDefense": 85,
+      "speed": 100
+    },
+    "abilities": ["Blaze", "Solar Power"],
+    "evolvesTo": null,
+    "moves": ["Flamethrower", "Air Slash", "Inferno", "Fire Spin"],
+    "description": "Spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally."
+  },
+  {
+    "id": 7,
+    "name": "Squirtle",
+    "types": ["Water"],
+    "baseStats": {
+      "hp": 44,
+      "attack": 48,
+      "defense": 65,
+      "specialAttack": 50,
+      "specialDefense": 64,
+      "speed": 43
+    },
+    "abilities": ["Torrent", "Rain Dish"],
+    "evolvesTo": "Wartortle",
+    "moves": ["Tackle", "Water Gun", "Withdraw", "Bubble"],
+    "description": "Shoots water at prey while in the water. Withdraws into its shell when in danger."
+  },
+
+  {
+    "id": 8,
+    "name": "Wartortle",
+    "types": ["Water"],
+    "baseStats": {
+      "hp": 59,
+      "attack": 63,
+      "defense": 80,
+      "specialAttack": 65,
+      "specialDefense": 80,
+      "speed": 58
+    },
+    "abilities": ["Torrent", "Rain Dish"],
+    "evolvesTo": "Blastoise",
+    "moves": ["Water Gun", "Bite", "Rapid Spin", "Protect"],
+    "description": "Often hides in water to stalk unwary prey. For swimming fast, it moves its ears to maintain balance."
+  },
+  {
+    "id": 9,
+    "name": "Blastoise",
+    "types": ["Water"],
+    "baseStats": {
+      "hp": 79,
+      "attack": 83,
+      "defense": 100,
+      "specialAttack": 85,
+      "specialDefense": 105,
+      "speed": 78
+    },
+    "abilities": ["Torrent", "Rain Dish"],
+    "evolvesTo": null,
+    "moves": ["Hydro Pump", "Skull Bash", "Iron Defense", "Surf"],
+    "description": "A brutal Pokémon with pressurized water jets on its shell. They are used for high-speed tackles."
+  },
+  {
+    "id": 10,
+    "name": "Caterpie",
+    "types": ["Bug"],
+    "baseStats": {
+      "hp": 45,
+      "attack": 30,
+      "defense": 35,
+      "specialAttack": 20,
+      "specialDefense": 20,
+      "speed": 45
+    },
+    "abilities": ["Shield Dust", "Run Away"],
+    "evolvesTo": "Metapod",
+    "moves": ["Tackle", "String Shot"],
+    "description": "For protection, it releases a horrible stench from the antennae on its head to drive away enemies."
+  },
+  {
+    "id": 11,
+    "name": "Metapod",
+    "types": ["Bug"],
+    "baseStats": {
+      "hp": 50,
+      "attack": 20,
+      "defense": 55,
+      "specialAttack": 25,
+      "specialDefense": 25,
+      "speed": 30
+    },
+    "abilities": ["Shed Skin"],
+    "evolvesTo": "Butterfree",
+    "moves": ["Harden"],
+    "description": "This Pokémon is vulnerable to attack while its shell is soft, exposing its weak and tender body."
+  },
+  {
+    "id": 12,
+    "name": "Butterfree",
+    "types": ["Bug", "Flying"],
+    "baseStats": {
+      "hp": 60,
+      "attack": 45,
+      "defense": 50,
+      "specialAttack": 90,
+      "specialDefense": 80,
+      "speed": 70
+    },
+    "abilities": ["Compound Eyes", "Tinted Lens"],
+    "evolvesTo": null,
+    "moves": ["Gust", "Confusion", "Poison Powder", "Sleep Powder"],
+    "description": "In battle, it flaps its wings at great speed to release highly toxic dust into the air."
+  },
+  {
+    "id": 13,
+    "name": "Weedle",
+    "types": ["Bug", "Poison"],
+    "baseStats": {
+      "hp": 40,
+      "attack": 35,
+      "defense": 30,
+      "specialAttack": 20,
+      "specialDefense": 20,
+      "speed": 50
+    },
+    "abilities": ["Shield Dust", "Run Away"],
+    "evolvesTo": "Kakuna",
+    "moves": ["Poison Sting", "String Shot"],
+    "description": "Beware of the sharp stinger on its head. It hides in grass and bushes where it eats leaves."
+  },
+  {
+    "id": 14,
+    "name": "Kakuna",
+    "types": ["Bug", "Poison"],
+    "baseStats": {
+      "hp": 45,
+      "attack": 25,
+      "defense": 50,
+      "specialAttack": 25,
+      "specialDefense": 25,
+      "speed": 35
+    },
+    "abilities": ["Shed Skin"],
+    "evolvesTo": "Beedrill",
+    "moves": ["Harden"],
+    "description": "Almost incapable of moving, this Pokémon can only harden its shell to protect itself from predators."
+  },
+  {
+    "id": 15,
+    "name": "Beedrill",
+    "types": ["Bug", "Poison"],
+    "baseStats": {
+      "hp": 65,
+      "attack": 90,
+      "defense": 40,
+      "specialAttack": 45,
+      "specialDefense": 80,
+      "speed": 75
+    },
+    "abilities": ["Swarm", "Sniper"],
+    "evolvesTo": null,
+    "moves": ["Twinneedle", "Rage", "Agility", "Pursuit"],
+    "description": "It has three poisonous stingers on its forelegs and tail. They are used to jab its enemy repeatedly."
+  },
+  {
+    "id": 16,
+    "name": "Pidgey",
+    "types": ["Normal", "Flying"],
+    "baseStats": {
+      "hp": 40,
+      "attack": 45,
+      "defense": 40,
+      "specialAttack": 35,
+      "specialDefense": 35,
+      "speed": 56
+    },
+    "abilities": ["Keen Eye", "Tangled Feet"],
+    "evolvesTo": "Pidgeotto",
+    "moves": ["Gust", "Sand Attack", "Quick Attack"],
+    "description": "A common sight in forests and woods. It flaps its wings at ground level to kick up blinding sand."
+  },
+  {
+    "id": 17,
+    "name": "Pidgeotto",
+    "types": ["Normal", "Flying"],
+    "baseStats": {
+      "hp": 63,
+      "attack": 60,
+      "defense": 55,
+      "specialAttack": 50,
+      "specialDefense": 50,
+      "speed": 71
+    },
+    "abilities": ["Keen Eye", "Tangled Feet"],
+    "evolvesTo": "Pidgeot",
+    "moves": ["Gust", "Wing Attack", "Agility", "Feather Dance"],
+    "description": "Very protective of its sprawling territorial area, this Pokémon will fiercely peck at any intruder."
+  },
+  {
+    "id": 18,
+    "name": "Pidgeot",
+    "types": ["Normal", "Flying"],
+    "baseStats": {
+      "hp": 83,
+      "attack": 80,
+      "defense": 75,
+      "specialAttack": 70,
+      "specialDefense": 70,
+      "speed": 101
+    },
+    "abilities": ["Keen Eye", "Tangled Feet"],
+    "evolvesTo": null,
+    "moves": ["Hurricane", "Roost", "Tailwind", "Brave Bird"],
+    "description": "This Pokémon flies at Mach 2 speed, seeking prey. Its large wings allow it to fly for extended periods."
+  },
+  {
+    "id": 19,
+    "name": "Rattata",
+    "types": ["Normal"],
+    "baseStats": {
+      "hp": 30,
+      "attack": 56,
+      "defense": 35,
+      "specialAttack": 25,
+      "specialDefense": 35,
+      "speed": 72
+    },
+    "abilities": ["Run Away", "Guts"],
+    "evolvesTo": "Raticate",
+    "moves": ["Tackle", "Tail Whip", "Quick Attack", "Hyper Fang"],
+    "description": "Bites anything when it attacks. Small and very quick, it is a common sight in many places."
+  },
+  {
+    "id": 20,
+    "name": "Locate",
+    "types": ["Normal"],
+    "baseStats": {
+      "hp": 55,
+      "attack": 81,
+      "defense": 60,
+      "specialAttack": 50,
+      "specialDefense": 70,
+      "speed": 97
+    },
+    "abilities": ["Run Away", "Guts"],
+    "evolvesTo": "Locate",
+    "moves": ["Hyper Fang", "Crunch", "Sucker Punch", "Scary Face"],
+    "description": "Its rear feet have three toes each. They are webbed, enabling it to swim across rivers."
+  }
+]
