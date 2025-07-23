@@ -1,8 +1,8 @@
+import { useQuery } from "@tanstack/react-query";
 import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useReducer,
 } from "react";
@@ -26,13 +26,11 @@ interface Pokemon {
 }
 
 type PokemonState = {
-  pokemon: Pokemon[];
+  // pokemon: Pokemon[];
   search: string;
 };
 
-type PokemonAction =
-  | { type: "setPokemon"; payload: Pokemon[] }
-  | { type: "setSearch"; payload: string };
+type PokemonAction = { type: "setSearch"; payload: string };
 
 // USe POkemon
 export function usePokemonSource(): {
@@ -40,26 +38,22 @@ export function usePokemonSource(): {
   search: string;
   setSearch: (search: string) => void;
 } {
-  const [{ pokemon, search }, dispatch] = useReducer(
+  const { data: pokemon } = useQuery<Pokemon[]>({
+    queryKey: ["pokemon"],
+    queryFn: () => fetch("/pokemon.json").then((res) => res.json()),
+    initialData: [],
+  });
+  const [{ search }, dispatch] = useReducer(
     (state: PokemonState, action: PokemonAction) => {
       switch (action.type) {
-        case "setPokemon":
-          return { ...state, pokemon: action.payload };
         case "setSearch":
           return { ...state, search: action.payload };
       }
     },
     {
-      pokemon: [],
       search: "",
     }
   );
-
-  useEffect(() => {
-    fetch("/pokemon.json")
-      .then((response) => response.json())
-      .then((data) => dispatch({ type: "setPokemon", payload: data }));
-  }, []);
 
   const setSearch = useCallback((search: string) => {
     dispatch({
@@ -85,18 +79,9 @@ export function usePokemonSource(): {
   return { pokemon: sortedPokemon(), search, setSearch };
 }
 
-// const pokemonContext = createContext<
-//   ReturnType<typeof usePokemonSource> | undefined
-// >(undefined);
-
 const PokemonContext = createContext<ReturnType<typeof usePokemonSource>>(
   {} as unknown as ReturnType<typeof usePokemonSource>
 );
-
-// using the user generic syntax
-// const PokemonContext = createContext({
-//   pokemon: [] a Pokemon[],
-// });
 
 export function usePokemon() {
   // return useContext(PokemonContext)!;
