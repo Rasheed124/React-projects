@@ -1,5 +1,5 @@
 import "./App.css";
-import { usePokemon, PokemonProvider } from "./store";
+import { usePokemon, usePokemonSource, pokemonContext } from "./store";
 
 function SearchBox() {
   const { search, setSearch } = usePokemon();
@@ -41,12 +41,12 @@ const PokemonList = () => {
 function App() {
   return (
     <>
-      <PokemonProvider>
+      <pokemonContext.Provider value={usePokemonSource()}>
         <div className="mx-auto max-w-3xl py-10">
           <SearchBox />
           <PokemonList />
         </div>
-      </PokemonProvider>
+      </pokemonContext.Provider>
     </>
   );
 }

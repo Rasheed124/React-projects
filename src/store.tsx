@@ -5,7 +5,6 @@ import {
   useEffect,
   useMemo,
   useReducer,
-  useState,
 } from "react";
 
 interface Pokemon {
@@ -90,16 +89,24 @@ export function usePokemonSource(): {
 //   ReturnType<typeof usePokemonSource> | undefined
 // >(undefined);
 
-export const pokemonContext = createContext<
-  ReturnType<typeof usePokemonSource>
->({} as unknown as ReturnType<typeof usePokemonSource>);
+const PokemonContext = createContext<ReturnType<typeof usePokemonSource>>(
+  {} as unknown as ReturnType<typeof usePokemonSource>
+);
 
 // using the user generic syntax
-// const pokemonContext = createContext({
-//   pokemon: [] as Pokemon[],
+// const PokemonContext = createContext({
+//   pokemon: [] a Pokemon[],
 // });
 
 export function usePokemon() {
-  // return useContext(pokemonContext)!;
-  return useContext(pokemonContext)!;
+  // return useContext(PokemonContext)!;
+  return useContext(PokemonContext)!;
+}
+
+export function PokemonProvider({ children }: { children: React.ReactNode }) {
+  return (
+    <PokemonContext.Provider value={usePokemonSource()}>
+      {children}
+    </PokemonContext.Provider>
+  );
 }
