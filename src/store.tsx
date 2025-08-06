@@ -1,5 +1,4 @@
-
-import { create } from "zustand";
+import { proxy } from "valtio";
 
 interface Pokemon {
   id: number;
@@ -19,35 +18,24 @@ interface Pokemon {
   description: string;
 }
 
-const searchAndSortPokem = (pokemon: Pokemon[], search: string) =>
-  pokemon
-    .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
-    .slice(0, 10)
-    .sort((a, b) => a.name.localeCompare(b.name));
+export const store = proxy({
+  query: "",
+  pokemon: [] as Pokemon[],
 
-export const usePokemon = create<{
-  pokemon: Pokemon[];
-  allPokemon: Pokemon[];
-  setAllPokemon: (pokemon: Pokemon[]) => void;
-  search: string;
-  setSearch: (search: string) => void;
-}>((set, get) => ({
-  pokemon: [],
-  allPokemon: [],
-  setAllPokemon: (pokemon) =>
-    set({
-      allPokemon: pokemon,
-      pokemon: searchAndSortPokem(pokemon, get().search),
-    }),
-  search: "",
-  setSearch: (search) =>
-    set({ search, pokemon: searchAndSortPokem(get().allPokemon, search) }),
-}));
+  // Computed value as a getter
+  get filteredList() {
+    const q = this.query.toLowerCase();
+    return this.pokemon
+      .filter((p) => p.name.toLowerCase().includes(q))
+      .slice(0, 10)
+      .sort((a, b) => a.name.localeCompare(b.name));
+  },
+});
 
 fetch("/pokemon.json")
   .then((response) => response.json())
   .then((pokemon) => {
-    usePokemon.getState().setAllPokemon(pokemon);
+    store.pokemon = pokemon;
   });
 
 export function PokemonProvider({ children }: { children: React.ReactNode }) {

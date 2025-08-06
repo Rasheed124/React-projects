@@ -1,7 +1,6 @@
+import { useSnapshot } from "valtio";
 import "./App.css";
-// import { usePokemon, PokemonProvider } from "./store";
 
-// import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Link,
   Outlet,
@@ -9,34 +8,30 @@ import {
   Router,
   useMatch,
 } from "@tanstack/react-location";
-import { usePokemon } from "./store";
-
-// const queryClient = new QueryClient();
+import { store } from "./store";
 
 const location = new ReactLocation();
 
 function SearchBox() {
-
-  const search = usePokemon((state) => state.search)
-  const setSearch = usePokemon((state) => state.setSearch)
+  const snap = useSnapshot(store);
   return (
     <div>
       <input
         className="mt-3 block w-full rounded-md  border-gray-300 border-2 focus:border-2 outline-0 shadow-sm  mb-3 sm:text-lg p-2"
         placeholder="Search"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        value={snap.query}
+        onChange={(e) => (store.query = e.target.value)}
       />
     </div>
   );
 }
 
 const PokemonList = () => {
-  const pokemon = usePokemon((state) => state.pokemon)
+  const snap = useSnapshot(store);
 
   return (
     <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-3">
-      {pokemon.map((p) => (
+      {snap.filteredList.map((p) => (
         <Link key={p.id} to={`/pokemon/${p.id}`}>
           <li className="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200">
             <div className="flex-1 flex flex-col p-8">
@@ -60,9 +55,9 @@ const PokemonDetails = () => {
   const {
     params: { id },
   } = useMatch();
-  const { pokemon } = usePokemon();
+  const snap = useSnapshot(store);
 
-  const pokemonData = pokemon.find((pokem) => pokem.id === +id);
+  const pokemonData = snap.pokemon.find((pokem) => pokem.id === +id);
   if (!pokemonData) {
     return <div>No pokemon found</div>;
   }
@@ -122,15 +117,11 @@ const routes = [
 function App() {
   return (
     <>
-      {/* <QueryClientProvider client={queryClient}> */}
-        {/* <PokemonProvider> */}
-          <Router location={location} routes={routes}>
-            <div className="mx-auto max-w-3xl py-10">
-              <Outlet />
-            </div>
-          </Router>
-        {/* </PokemonProvider> */}
-      {/* </QueryClientProvider> */}
+      <Router location={location} routes={routes}>
+        <div className="mx-auto max-w-3xl py-10">
+          <Outlet />
+        </div>
+      </Router>
     </>
   );
 }
