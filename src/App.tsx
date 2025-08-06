@@ -1,7 +1,7 @@
 import "./App.css";
-import { usePokemon, PokemonProvider } from "./store";
+// import { usePokemon, PokemonProvider } from "./store";
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Link,
   Outlet,
@@ -9,13 +9,16 @@ import {
   Router,
   useMatch,
 } from "@tanstack/react-location";
+import { usePokemon } from "./store";
 
-const queryClient = new QueryClient();
+// const queryClient = new QueryClient();
 
 const location = new ReactLocation();
 
 function SearchBox() {
-  const { search, setSearch } = usePokemon();
+
+  const search = usePokemon((state) => state.search)
+  const setSearch = usePokemon((state) => state.setSearch)
   return (
     <div>
       <input
@@ -29,7 +32,8 @@ function SearchBox() {
 }
 
 const PokemonList = () => {
-  const { pokemon } = usePokemon();
+  const pokemon = usePokemon((state) => state.pokemon)
+
   return (
     <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-3">
       {pokemon.map((p) => (
@@ -118,15 +122,15 @@ const routes = [
 function App() {
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <PokemonProvider>
+      {/* <QueryClientProvider client={queryClient}> */}
+        {/* <PokemonProvider> */}
           <Router location={location} routes={routes}>
             <div className="mx-auto max-w-3xl py-10">
               <Outlet />
             </div>
           </Router>
-        </PokemonProvider>
-      </QueryClientProvider>
+        {/* </PokemonProvider> */}
+      {/* </QueryClientProvider> */}
     </>
   );
 }

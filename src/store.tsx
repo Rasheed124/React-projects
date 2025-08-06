@@ -1,11 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useReducer,
-} from "react";
+
+import { create } from "zustand";
 
 interface Pokemon {
   id: number;
@@ -25,73 +19,37 @@ interface Pokemon {
   description: string;
 }
 
-type PokemonState = {
-  // pokemon: Pokemon[];
-  search: string;
-};
+const searchAndSortPokem = (pokemon: Pokemon[], search: string) =>
+  pokemon
+    .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
+    .slice(0, 10)
+    .sort((a, b) => a.name.localeCompare(b.name));
 
-type PokemonAction = { type: "setSearch"; payload: string };
-
-// USe POkemon
-export function usePokemonSource(): {
+export const usePokemon = create<{
   pokemon: Pokemon[];
+  allPokemon: Pokemon[];
+  setAllPokemon: (pokemon: Pokemon[]) => void;
   search: string;
   setSearch: (search: string) => void;
-} {
-  const { data: pokemon } = useQuery<Pokemon[]>({
-    queryKey: ["pokemon"],
-    queryFn: () => fetch("/pokemon.json").then((res) => res.json()),
-    initialData: [],
+}>((set, get) => ({
+  pokemon: [],
+  allPokemon: [],
+  setAllPokemon: (pokemon) =>
+    set({
+      allPokemon: pokemon,
+      pokemon: searchAndSortPokem(pokemon, get().search),
+    }),
+  search: "",
+  setSearch: (search) =>
+    set({ search, pokemon: searchAndSortPokem(get().allPokemon, search) }),
+}));
+
+fetch("/pokemon.json")
+  .then((response) => response.json())
+  .then((pokemon) => {
+    usePokemon.getState().setAllPokemon(pokemon);
   });
-  const [{ search }, dispatch] = useReducer(
-    (state: PokemonState, action: PokemonAction) => {
-      switch (action.type) {
-        case "setSearch":
-          return { ...state, search: action.payload };
-      }
-    },
-    {
-      search: "",
-    }
-  );
-
-  const setSearch = useCallback((search: string) => {
-    dispatch({
-      type: "setSearch",
-      payload: search,
-    });
-  }, []);
-
-  const filteredPokemon = useMemo(
-    () =>
-      pokemon
-        .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
-        .slice(0, 20),
-    [pokemon, search]
-  );
-
-  const sortedPokemon = () =>
-    useMemo(
-      () => [...filteredPokemon].sort((a, b) => a.name.localeCompare(b.name)),
-      [filteredPokemon]
-    );
-
-  return { pokemon: sortedPokemon(), search, setSearch };
-}
-
-const PokemonContext = createContext<ReturnType<typeof usePokemonSource>>(
-  {} as unknown as ReturnType<typeof usePokemonSource>
-);
-
-export function usePokemon() {
-  // return useContext(PokemonContext)!;
-  return useContext(PokemonContext)!;
-}
 
 export function PokemonProvider({ children }: { children: React.ReactNode }) {
-  return (
-    <PokemonContext.Provider value={usePokemonSource()}>
-      {children}
-    </PokemonContext.Provider>
-  );
+  return { children };
 }
